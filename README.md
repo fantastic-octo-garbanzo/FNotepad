@@ -1,5 +1,4 @@
-# fantastic-octo-garbanzo
-## FNotepad
+# FNotepad
 
 Texteditor in Deutsch und Englisch, geschrieben in Java.
 
