@@ -5,16 +5,16 @@ import javax.swing.*;
 
 
 public class FNotepad implements ItemListener{  
-    Checkbox en, de;  
+    JButton en, de;  
     Label label;  
     FNotepad(){    
         Frame f = new Frame("FNotepad - Language");    
         label = new Label();            
         label.setAlignment(Label.CENTER);    
         label.setSize(600,400);    
-        en = new Checkbox("English");    
+        en = new JButton("English");    
         en.setBounds(100,100, 250,50);    
-        de = new Checkbox("Deutsch");    
+        de = new JButton("Deutsch");    
         de.setBounds(100,150, 250,50);    
         f.add(en); f.add(de); f.add(label);    
         en.addItemListener(this);    
