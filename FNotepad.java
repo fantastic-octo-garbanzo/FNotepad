@@ -2,40 +2,68 @@ import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JFrame;
 
 
-public class FNotepad implements ItemListener{  
-    JButton en, de;  
-    Label label;  
-    FNotepad(){    
-        Frame f = new Frame("FNotepad - Language");    
-        label = new Label();            
-        label.setAlignment(Label.CENTER);    
-        label.setSize(600,400);    
-        en = new JButton("English");    
-        en.setBounds(100,100, 250,50);    
-        de = new JButton("Deutsch");    
-        de.setBounds(100,150, 250,50);    
-        f.add(en); f.add(de); f.add(label);    
-        en.addItemListener(this);    
-        de.addItemListener(this);    
-        f.setSize(400,400);    
-        f.setLayout(null);    
-        f.setVisible(true);    
-    }    
-     
-    public void itemStateChanged(ItemEvent e) {      
-        if(e.getSource()==en) {
-            // label.setText("Language English: "+ (e.getStateChange()==1?"Welcome to FNotepad!":" ")); 
-            new FNotepadEN();  
-        }
-        if(e.getSource()==de) {
-        	// label.setText("Sprache Deutsch: "+ (e.getStateChange()==1?"Willkommen bei FNotepad!":" "));
-        	new FNotepadDE();
-        }    
-    }  
+public class FNotepad extends JFrame{
+	public FNotepad(){
+		setTitle("Language - FNotepad");
+		addWindowListener(new WindowListener());
+		JLabel l = new JLabel();
+		l.setBounds(225,50, 100,50);
+		l.setSize(400,100);
+		
+		JButton b = new JButton("Choose Language");
+		b.setBounds(200,250, 200,50);
+		
+		Choice c = new Choice();
+		c.setBounds(250,150, 100,50);
+		c.add("English");
+		c.add("Deutsch");
+		
+		add(l);
+		add(b);
+		add(c);
+		
+		setSize(600,400);
+		setLayout(null);
+		setVisible(true);
+		
+		c.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent ie){
+				if(c.getSelectedItem() == "Deutsch") {
+					l.setText("Willkommen im FNotepad!");
+					setTitle("FNotepad - Sprache");
+					b.setText("Sprache auswählen");
+				}
+				if(c.getSelectedItem() == "English"){
+					l.setText("Welcome to FNotepad!");
+					setTitle("FNotepad - Language");
+					b.setText("Choose Language");
+				}
+			}
+		});
+		
+		b.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if(c.getItem(c.getSelectedIndex()) == "Deutsch"){
+					new FNotepadDE();
+				}
+				if(c.getItem(c.getSelectedIndex()) == "English"){
+					new FNotepadEN();
+				}
+			}
+		});
+	}
+    
+	class WindowListener extends WindowAdapter {
+		public void windowClosing(WindowEvent e){
+			e.getWindow().dispose();
+			System.exit(0);
+		}
+	}
      
 	public static void main(String args[]) {    
-    	new FNotepad();    
+		new FNotepad();    
 	}    
 }
