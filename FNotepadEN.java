@@ -647,10 +647,10 @@ interface MenuConstants {
     final String helpAboutFNotepadEN = "About Javapad";
 
     final String aboutText =
-            "<html><big>Your Javapad</big><hr><hr>"
-                    + "<p align=right>Prepared by a Ducatian!"
-                    + "<hr><p align=left>I Used jdk1.5 to compile the source code.<br><br>"
-                    + "<strong>Thanx 4 using Javapad</strong><br>"
-                    + "Ur Comments as well as bug reports r very welcome at<p align=center>"
-                    + "<hr><em><big>radialgoal@gmail.com</big></em><hr><html>";
+            "<html><big>FNotepad</big><hr><hr>"
+                    + "<p align=right>Von kubi und ff03!"
+                    + "<hr><p align=left>Mit OpenJDK11 compiliert.<br><br>"
+                    + "<strong>Danke fürs Benutzen von FNotepad</strong><br>"
+                    + "Gerne kommentieren und Bug Reports an<p align=center>"
+                    + "<hr><em><big>xxx@xxx.com</big></em><hr><html>";
 }
