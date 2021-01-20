@@ -574,6 +574,7 @@ fileHandler.saved=true;
         LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
 
 
+
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         temp.setEnabled(false);
         helpMenu.addSeparator();
