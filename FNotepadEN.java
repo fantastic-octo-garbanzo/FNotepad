@@ -177,11 +177,11 @@ class FileOperation {
         if (saved) {
             this.saved = true;
             fileName = new String(temp.getName());
-            if (!temp.canWrite()) {
+            if (!temptemp.canWrite()) {
                 fileName += "(Read only)";
                 newFileFlag = true;
             }
-            fileRef = temp;
+            fileRef = ;
             npd.f.setTitle(fileName + " - " + applicationTitle);
             npd.statusBar.setText("File : " + temp.getPath() + " saved/opened successfully.");
             newFileFlag = false;
@@ -423,7 +423,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpAboutFNotepadEN)) {
+        else if (cmdText.equals(MenuConstants.helpAboutFNotepadEN)) {
             JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "Dedicated 2 u!", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("This " + cmdText + " command is yet to be implemented");
@@ -562,7 +562,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         temp.setEnabled(false);
         helpMenu.addSeparator();
-        createMenuItem(helpAboutFNotepadEN, KeyEvent.VK_A, helpMenu, this);
+        createMenuItem(MenuConstants.helpAboutFNotepadEN, KeyEvent.VK_A, helpMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
