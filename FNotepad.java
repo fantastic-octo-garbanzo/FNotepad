@@ -25,7 +25,7 @@ public class FNotepad extends JFrame{
 		add(b);
 		add(c);
 		
-		setSize(600,400);
+		setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
 		setLayout(null);
 		setVisible(true);
 		
