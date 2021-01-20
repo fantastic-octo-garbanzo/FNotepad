@@ -20,5 +20,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 15.0.1
-    - name: Run the Gradle package task
-        run: ./gradlew -b ci.gradle package
+    - name: Build with Gradle
+      run: ./gradlew build
