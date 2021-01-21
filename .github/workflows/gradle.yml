@@ -20,5 +20,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 15.0.1
+    - name: Install Dependencies
+      run: sdk install gradle
     - name: Build with Gradle
       run: ./gradlew build
