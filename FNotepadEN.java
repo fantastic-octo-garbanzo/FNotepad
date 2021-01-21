@@ -241,7 +241,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
-    FNotepadEN() {
+    FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
         statusBar = new JLabel("||       Ln 1, Col 1  ", JLabel.RIGHT);
@@ -250,7 +250,11 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-        f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        if(fullscreen){
+            f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        }else{
+
+        }
         f.pack();
         //f.setLocation(100, 50);
         f.setVisible(true);
@@ -603,7 +607,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
-        new FNotepadEN();
+        new FNotepadEN(true);
     }
 }
 

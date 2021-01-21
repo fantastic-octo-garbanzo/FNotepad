@@ -21,6 +21,8 @@ public class FNotepad extends JFrame{
 		c.setBounds(250,150, 100,50);
 		c.add("English");
 		c.add("Deutsch");
+
+
 		
 		add(l);
 		add(b);
@@ -48,10 +50,10 @@ public class FNotepad extends JFrame{
 		b.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(c.getItem(c.getSelectedIndex()) == "Deutsch"){
-					new FNotepadDE();
+					new FNotepadDE(true);
 				}
 				if(c.getItem(c.getSelectedIndex()) == "English"){
-					new FNotepadEN();
+					new FNotepadEN(true);
 				}
 			}
 		});

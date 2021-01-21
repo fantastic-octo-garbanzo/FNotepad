@@ -247,20 +247,24 @@ class FNotepadDE implements ActionListener, MenuConstants {
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
-    FNotepadDE() {
+    FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
         statusBar = new JLabel("||       Z. 1, Sp. 1  ", JLabel.RIGHT);
+        if(fullscreen){
+            f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        }
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-        f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        f.setLocation(0, 0);
+
         f.pack();
-        f.setLocation(100, 50);
+        //f.setLocation(100, 50);
         f.setVisible(true);
-        f.setLocation(150, 50);
+
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         fileHandler = new FileOperationDE(this);
@@ -617,7 +621,7 @@ fileHandler.saved=true;
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
-        new FNotepadDE();
+        new FNotepadDE(true);
     }
 }
 
