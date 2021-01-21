@@ -250,11 +250,11 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-//f.setSize(350,350);
+        f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         f.pack();
-        f.setLocation(100, 50);
+        //f.setLocation(100, 50);
         f.setVisible(true);
-        f.setLocation(150, 50);
+        //f.setLocation(150, 50);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         fileHandler = new FileOperationEN(this);

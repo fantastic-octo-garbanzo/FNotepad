@@ -256,7 +256,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-//f.setSize(350,350);
+        f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         f.pack();
         f.setLocation(100, 50);
         f.setVisible(true);
