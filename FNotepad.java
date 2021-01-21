@@ -1,4 +1,5 @@
-import java.io.*;
+import FNotepadDE.FNotepadDE;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

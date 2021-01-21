@@ -1,5 +1,3 @@
-//package p1;
-
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
@@ -13,7 +11,7 @@ import javax.swing.event.*;
 //import p1.MyFileFilter;
 
 /************************************/
-class FileOperation {
+class FileOperationDE {
     FNotepadDE npd;
 
     boolean saved;
@@ -42,7 +40,7 @@ class FileOperation {
     }
 
     /////////////////////////
-    FileOperation(FNotepadDE npd) {
+    FileOperationDE(FNotepadDE npd) {
         this.npd = npd;
 
         saved = true;
@@ -239,7 +237,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
     String searchString, replaceString;
     int lastSearchIndex;
 
-    FileOperation fileHandler;
+    FileOperationDE fileHandler;
     FontChooser fontDialog = null;
     FindDialog findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
@@ -265,7 +263,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
         f.setLocation(150, 50);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        fileHandler = new FileOperation(this);
+        fileHandler = new FileOperationDE(this);
 
 /////////////////////
 

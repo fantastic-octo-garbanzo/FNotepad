@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 /************************************/
-class FileOperation {
+class FileOperationEN {
     FNotepadEN npd;
 
     boolean saved;
@@ -35,7 +35,7 @@ class FileOperation {
     }
 
     /////////////////////////
-    FileOperation(FNotepadEN npd) {
+    FileOperationEN(FNotepadEN npd) {
         this.npd = npd;
 
         saved = true;
@@ -177,11 +177,11 @@ class FileOperation {
         if (saved) {
             this.saved = true;
             fileName = new String(temp.getName());
-            if (!temptemp.canWrite()) {
+            if (!temp.canWrite()) {
                 fileName += "(Read only)";
                 newFileFlag = true;
             }
-            fileRef = ;
+            fileRef = temp;
             npd.f.setTitle(fileName + " - " + applicationTitle);
             npd.statusBar.setText("File : " + temp.getPath() + " saved/opened successfully.");
             newFileFlag = false;
@@ -215,10 +215,10 @@ class FileOperation {
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-}// end defination of class FileOperation
+}// end defination of class FNotepadDE.FileOperation
 
 /************************************/
-class FNotepadEN implements ActionListener, MenuConstants {
+class FNotepadEN implements ActionListener, MenuConstantsEN {
 
     JFrame f;
     JTextArea ta;
@@ -231,7 +231,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
     String searchString, replaceString;
     int lastSearchIndex;
 
-    FileOperation fileHandler;
+    FileOperationEN fileHandler;
     FontChooser fontDialog = null;
     FindDialog findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
@@ -257,7 +257,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
         f.setLocation(150, 50);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        fileHandler = new FileOperation(this);
+        fileHandler = new FileOperationEN(this);
 
 /////////////////////
 
@@ -423,7 +423,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(MenuConstants.helpAboutFNotepadEN)) {
+        else if (cmdText.equals(helpAboutFNotepadEN)) {
             JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "Dedicated 2 u!", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("This " + cmdText + " command is yet to be implemented");
@@ -562,7 +562,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         temp.setEnabled(false);
         helpMenu.addSeparator();
-        createMenuItem(MenuConstants.helpAboutFNotepadEN, KeyEvent.VK_A, helpMenu, this);
+        createMenuItem(helpAboutFNotepadEN, KeyEvent.VK_A, helpMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -609,7 +609,7 @@ class FNotepadEN implements ActionListener, MenuConstants {
 
 /**************************************/
 //public
-interface MenuConstants {
+interface MenuConstantsEN {
     final String fileText = "File";
     final String editText = "Edit";
     final String formatText = "Format";
