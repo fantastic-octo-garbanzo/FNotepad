@@ -215,7 +215,7 @@ class FileOperationEN {
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-}// end defination of class FNotepadDE.FileOperation
+}// end defination of class FileOperationEN
 
 /************************************/
 class FNotepadEN implements ActionListener, MenuConstantsEN {
