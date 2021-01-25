@@ -80,6 +80,5 @@ public class FNotepad extends JFrame{
      
 	public static void main(String args[]) {    
 		new FNotepad();
-		System.out.println("Test");
 	}    
 }
