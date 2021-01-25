@@ -19,6 +19,6 @@ jobs:
     - name: Install Dependencies
       run: npm install gradle
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x ./gradlew
     - name: Build with Gradle
       run: cd ${GITHUB_WORKSPACE} && ./gradlew build
