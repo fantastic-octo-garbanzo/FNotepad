@@ -7,6 +7,16 @@ import javax.swing.JFrame;
 
 
 public class FNotepad extends JFrame{
+
+	public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = screenSize.width;
+		int height = screenSize.height;
+		Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
+		int taskBarSize = screenInsets.bottom;
+		return new Dimension(width, height - taskBarSize);
+	}
+
 	public FNotepad(){
 		setTitle("Language - FNotepad");
 		addWindowListener(new WindowListener());
@@ -27,8 +37,10 @@ public class FNotepad extends JFrame{
 		add(l);
 		add(b);
 		add(c);
-		
-		setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+
+
+		setSize(getScreenDimensionWithoutTaskbar(this));
+
 		setLayout(null);
 		setVisible(true);
 		

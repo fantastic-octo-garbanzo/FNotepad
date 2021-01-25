@@ -240,6 +240,15 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
     JDialog foregroundDialog = null;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
+
+    public static Dimension getScreenDimensionWithoutTaskbarEN(Frame frame) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = screenSize.width;
+        int height = screenSize.height;
+        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
+        int taskBarSize = screenInsets.bottom;
+        return new Dimension(width, height - taskBarSize);
+    }
     /****************************/
     FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
@@ -250,16 +259,16 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-        if(fullscreen){
-            f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        }else{
 
-        }
+
+
         f.pack();
         //f.setLocation(100, 50);
         f.setVisible(true);
         //f.setLocation(150, 50);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        f.setSize(getScreenDimensionWithoutTaskbarEN(f));
 
         fileHandler = new FileOperationEN(this);
 

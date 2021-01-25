@@ -247,13 +247,23 @@ class FNotepadDE implements ActionListener, MenuConstants {
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
+    public static Dimension getScreenDimensionWithoutTaskbarDE(Frame frame) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = screenSize.width;
+        int height = screenSize.height;
+        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
+        int taskBarSize = screenInsets.bottom;
+        return new Dimension(width, height - taskBarSize);
+    }
+
     FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
         statusBar = new JLabel("||       Z. 1, Sp. 1  ", JLabel.RIGHT);
-        if(fullscreen){
-            f.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        }
+
+
+
+
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
@@ -266,6 +276,8 @@ class FNotepadDE implements ActionListener, MenuConstants {
         f.setVisible(true);
 
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        f.setSize(getScreenDimensionWithoutTaskbarDE(f));
 
         fileHandler = new FileOperationDE(this);
 
