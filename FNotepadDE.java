@@ -678,8 +678,8 @@ interface MenuConstants {
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=right>Von kubi und ff03!"
-                    + "<hr><p align=left>Mit OpenJDK11 compiliert.<br><br>"
+                    + "<p align=right>Von kubi, ff03 und lm41!"
+                    + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke fürs Benutzen von FNotepad</strong><br>"
                     + "Gerne kommentieren und Bug Reports an<p align=center>"
                     + "<hr><em><big>xxx@xxx.com</big></em><hr><html>";
