@@ -661,9 +661,9 @@ interface MenuConstantsEN {
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=right>Von kubi, ff03 und lm41!"
-                    + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke fürs Benutzen von FNotepad</strong><br>"
-                    + "Gerne kommentieren und Bug Reports an<p align=center>"
-                    + "<hr><em><big>xxx@xxx.com</big></em><hr><html>";
+                    + "<p align=right>From fantastic-octo-garbanzo!"
+                    + "<hr><p align=left>Compiled by OpenJDK15.<br><br>"
+                    + "<strong>Thank you for using FNotepad!</strong><br>"
+                    + "Please make an issue on<p align=center>"
+                    + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
 }

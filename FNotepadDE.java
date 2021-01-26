@@ -680,7 +680,7 @@ interface MenuConstants {
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>Von kubi, ff03 und lm41!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke fürs Benutzen von FNotepad</strong><br>"
-                    + "Gerne kommentieren und Bug Reports an<p align=center>"
-                    + "<hr><em><big>xxx@xxx.com</big></em><hr><html>";
+                    + "<strong>Danke fürs Benutzen von FNotepad!</strong><br>"
+                    + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
+                    + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
 }
