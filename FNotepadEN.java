@@ -45,7 +45,7 @@ class FileOperationEN {
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
 
-        // Einführung verschiedener Dateiendungen
+        // Different file extensions 
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new MyFileFilter(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".txt", "Text Files(*.txt)"));
@@ -229,7 +229,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 
     private String fileName = "Untitled";
     private boolean saved = true;
-    String applicationName = "Javapad";
+    String applicationName = "FNotepad";
 
     String searchString, replaceString;
     int lastSearchIndex;
@@ -266,9 +266,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 
 
         f.pack();
-        //f.setLocation(100, 50);
         f.setVisible(true);
-        //f.setLocation(150, 50);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setSize(getScreenDimensionWithoutTaskbarEN(f));
@@ -627,7 +625,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 }
 
 /**************************************/
-// Menüleiste
+// Menu
 interface MenuConstantsEN {
     final String fileText = "File";
     final String editText = "Edit";
@@ -663,7 +661,7 @@ interface MenuConstantsEN {
     final String viewStatusBar = "Status Bar";
 
     final String helpHelpTopic = "Help Topic";
-    final String helpAboutFNotepadEN = "About Javapad";
+    final String helpAboutFNotepadEN = "About FNotepad";
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
