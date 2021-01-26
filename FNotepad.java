@@ -17,7 +17,6 @@ public class FNotepad extends JFrame{
 
 	public FNotepad(){
 		setTitle("Language - FNotepad");
-		// addWindowListener(new WindowListener());
 		JLabel l = new JLabel();
 		l.setBounds(225,50, 100,50);
 		l.setSize(400,100);
@@ -66,18 +65,10 @@ public class FNotepad extends JFrame{
 				if(c.getItem(c.getSelectedIndex()) == "English"){
 					new FNotepadEN(true);
 				}
-				// System.exit(0);
 			}
 		});
 	}
-    
-	/* class WindowListener extends WindowAdapter {
-		public void windowClosing(WindowEvent e){
-			e.getWindow().dispose();
-			System.exit(0);
-		}
-	} */
-     
+         
 	public static void main(String args[]) {    
 		new FNotepad();
 	}    
