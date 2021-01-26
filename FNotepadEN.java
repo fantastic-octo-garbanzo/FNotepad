@@ -1,3 +1,4 @@
+// Imports
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
@@ -12,7 +13,7 @@ class FileOperationEN {
     boolean saved;
     boolean newFileFlag;
     String fileName;
-    String applicationTitle = "Javapad";
+    String applicationTitle = "FNotepad";
 
     File fileRef;
     JFileChooser chooser;
@@ -44,6 +45,7 @@ class FileOperationEN {
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
 
+        // Einführung verschiedener Dateiendungen
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new MyFileFilter(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".txt", "Text Files(*.txt)"));
@@ -625,7 +627,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 }
 
 /**************************************/
-//public
+// Menüleiste
 interface MenuConstantsEN {
     final String fileText = "File";
     final String editText = "Edit";
