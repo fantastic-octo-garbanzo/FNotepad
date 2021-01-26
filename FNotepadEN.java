@@ -50,6 +50,7 @@ class FileOperationEN {
         chooser.addChoosableFileFilter(new MyFileFilter(".py", "Python Files(*.py)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".cpp", "C Plus Plus Files(*.cpp)"));
+        chooser.addChoosableFileFilter(new MyFileFilter("*", "Alle Files"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
@@ -277,19 +278,22 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
-                        int lineNumber = 0, column = 0, pos = 0;
+                        int lineNumber = 0, column = 0, pos = 0, wordNumber = 0;
 
                         try {
                             pos = ta.getCaretPosition();
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
+                            String[] split = ta.getText().split(" ");
+                            wordNumber = split.length;
+                            System.out.println(wordNumber);
                         } catch (Exception excp) {
                         }
                         if (ta.getText().length() == 0) {
                             lineNumber = 0;
                             column = 0;
                         }
-                        statusBar.setText("||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("       ||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
                     }
                 });
 //////////////////
