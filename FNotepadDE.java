@@ -1,16 +1,14 @@
+// Imports
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-//import p1.FontChooser;
-//import p1.FontDialog;
-//import p1.FindDialog;
-//import p1.LookAndFeelMenu;
-//import p1.MyFileFilter;
+
 
 /************************************/
+// Start der Klasse FileOperationDE
 class FileOperationDE {
     FNotepadDE npd;
 
@@ -221,7 +219,7 @@ class FileOperationDE {
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-}// end defination of class FileOperation
+}// Ende der Klasse FileOperationDE
 
 /************************************/
 class FNotepadDE implements ActionListener, MenuConstants {
@@ -648,7 +646,7 @@ fileHandler.saved=true;
 }
 
 /**************************************/
-//public
+// Menü-Leiste
 interface MenuConstants {
     final String fileText = "Datei";
     final String editText = "Bearbeiten";
@@ -688,7 +686,7 @@ interface MenuConstants {
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=right>Von kubi, ff03 und lm41!"
+                    + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke fürs Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
