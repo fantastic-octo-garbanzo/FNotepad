@@ -288,7 +288,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 
                             letterCount = text.length();
                             wordCount = text.split("\\s").length;
-                            System.out.println(wordCount+ " " +letterCount);
+                            //System.out.println(wordCount+ " " +letterCount);
 
 
 
