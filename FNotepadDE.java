@@ -286,23 +286,29 @@ class FNotepadDE implements ActionListener, MenuConstants {
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
-                        int lineNumber = 0, column = 0, pos = 0, wordNumber = 0;
+                        int lineNumber = 0, column = 0, pos = 0, wordCount = 0, letterCount = 0;
 
                         try {
                             pos = ta.getCaretPosition();
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
-                            String[] split = ta.getText().split(" ");
-                            wordNumber = split.length;
-                            System.out.println(wordNumber);
+                            String text = ta.getText();
+
+                            letterCount = text.length();
+                            wordCount = text.split("\\s").length;
+                            System.out.println(wordCount+ " " +letterCount);
+
+
+
                         } catch (Exception excp) {
                         }
                         if (ta.getText().length() == 0) {
                             lineNumber = 0;
                             column = 0;
+                            wordCount = 0;
+                            letterCount = 0;
                         }
-                        statusBar.setText("       ||       L. " + (lineNumber + 1) + ", Sp. " + (column + 1));
-                        //statusBar.setText("Wörter "+(wordNumber+1)+"       ||       L. " + (lineNumber + 1) + ", Sp. " + (column + 1));
+                        statusBar.setText("Zeichen " + letterCount*1 + ", Wörter "+ wordCount*1 + "       ||       Zeile " + (lineNumber + 1) + ", Col " + (column + 1));
                     }
                 });
 //////////////////
