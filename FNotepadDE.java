@@ -1,16 +1,14 @@
+// Imports
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-//import p1.FontChooser;
-//import p1.FontDialog;
-//import p1.FindDialog;
-//import p1.LookAndFeelMenu;
-//import p1.MyFileFilter;
+
 
 /************************************/
+// Start der Klasse FileOperationDE
 class FileOperationDE {
     FNotepadDE npd;
 
@@ -221,7 +219,7 @@ class FileOperationDE {
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-}// end defination of class FileOperation
+}// Ende der Klasse FileOperationDE
 
 /************************************/
 class FNotepadDE implements ActionListener, MenuConstants {
@@ -259,7 +257,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
     FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("||       Z. 1, Sp. 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Zeichen 0, Wörter 0       ||       Z. 1, Sp. 1  ", JLabel.RIGHT);
 
 
 
@@ -286,23 +284,29 @@ class FNotepadDE implements ActionListener, MenuConstants {
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
-                        int lineNumber = 0, column = 0, pos = 0, wordNumber = 0;
+                        int lineNumber = 0, column = 0, pos = 0, wordCount = 0, letterCount = 0;
 
                         try {
                             pos = ta.getCaretPosition();
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
-                            String[] split = ta.getText().split(" ");
-                            wordNumber = split.length;
-                            System.out.println(wordNumber);
+                            String text = ta.getText();
+
+                            letterCount = text.length();
+                            wordCount = text.split("\\s").length;
+                            //System.out.println(wordCount+ " " +letterCount);
+
+
+
                         } catch (Exception excp) {
                         }
                         if (ta.getText().length() == 0) {
                             lineNumber = 0;
                             column = 0;
+                            wordCount = 0;
+                            letterCount = 0;
                         }
-                        statusBar.setText("       ||       L. " + (lineNumber + 1) + ", Sp. " + (column + 1));
-                        //statusBar.setText("Wörter "+(wordNumber+1)+"       ||       L. " + (lineNumber + 1) + ", Sp. " + (column + 1));
+                        statusBar.setText("Zeichen " + letterCount + ", Wörter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Col " + (column + 1));
                     }
                 });
 //////////////////
@@ -642,7 +646,7 @@ fileHandler.saved=true;
 }
 
 /**************************************/
-//public
+// Menü-Leiste
 interface MenuConstants {
     final String fileText = "Datei";
     final String editText = "Bearbeiten";
@@ -682,7 +686,7 @@ interface MenuConstants {
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=right>Von kubi, ff03 und lm41!"
+                    + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke fürs Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
