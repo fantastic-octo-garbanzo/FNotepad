@@ -257,7 +257,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
     FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("||       Z. 1, Sp. 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Zeichen 0, Wörter 0       ||       Z. 1, Sp. 1  ", JLabel.RIGHT);
 
 
 
@@ -306,7 +306,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Zeichen " + letterCount*1 + ", Wörter "+ wordCount*1 + "       ||       Zeile " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("Zeichen " + letterCount + ", Wörter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Col " + (column + 1));
                     }
                 });
 //////////////////
