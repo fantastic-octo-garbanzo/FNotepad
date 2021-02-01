@@ -1,3 +1,4 @@
+//Imports
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -13,16 +14,19 @@ public class FNotepad extends JFrame{
         int taskBarSize = screenInsets.bottom;
         return new Dimension(width, height - taskBarSize);
     }
-
+    //Constructor
     public FNotepad(){
         setTitle("Language - FNotepad");
+        //JLabel l wird erstellt
         JLabel l = new JLabel();
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
 
+        //JButton b wird erstellt
         JButton b = new JButton("Choose Language");
         b.setBounds(200,250, 200,50);
 
+        //Choice c wird erstellt
         Choice c = new Choice();
         c.setBounds(250,150, 100,50);
         c.add("English");
@@ -40,8 +44,10 @@ public class FNotepad extends JFrame{
         setLayout(null);
         setVisible(true);
 
+        //l und b werden beschrieben
         l.setText("Welcome to FNotepad!");
         b.setText("Choose Language");
+        //wenn sich der Status von c ändert wird der text geändert
         c.addItemListener(ie -> {
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
@@ -55,6 +61,7 @@ public class FNotepad extends JFrame{
             }
         });
 
+        //jenachdem was ausgewählt ist, wird FNotepadDE oder FNotepadEN gestartet.
         b.addActionListener(e -> {
             dispose();
             if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
@@ -66,6 +73,7 @@ public class FNotepad extends JFrame{
         });
     }
 
+    //Main methode
     public static void main(String[] args) {
         new FNotepad();
     }

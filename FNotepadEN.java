@@ -6,7 +6,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+
 /************************************/
+// Start der Klasse FileOperationDE
 class FileOperationEN {
     FNotepadEN npd;
 
@@ -218,7 +220,7 @@ class FileOperationEN {
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-}// end defination of class FileOperationEN
+}// Ende der Klasse FNotepadEN
 
 /************************************/
 class FNotepadEN implements ActionListener, MenuConstantsEN {
@@ -632,7 +634,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 }
 
 /**************************************/
-// Menu
+// Menü-Leiste
 interface MenuConstantsEN {
     final String fileText = "File";
     final String editText = "Edit";
