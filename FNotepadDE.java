@@ -1,4 +1,4 @@
-// Imports
+//imports
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
@@ -144,10 +144,10 @@ class FileOperationDE {
     ///////////////////////
     void openFile() {
         if (!confirmSave()) return;
-        chooser.setDialogTitle("Öffne Datei...");
-        chooser.setApproveButtonText("Öffnen");
+        chooser.setDialogTitle("\u00D6ffne Datei...");
+        chooser.setApproveButtonText("\u00D6ffnen");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
-        chooser.setApproveButtonToolTipText("Ausgewählte Datei öffnen.");
+        chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei \u00F6ffnen.");
 
         File temp = null;
         do {
@@ -159,7 +159,7 @@ class FileOperationDE {
 
             JOptionPane.showMessageDialog(this.npd.f,
                     "<html>" + temp.getName() + "<br>Datei nicht gefunden.<br>" +
-                            "Bitte überprüfen Sie den angegebenen Dateinamen.<html>",
+                            "Bitte \u00FCberpr\u00FCfen Sie den angegebenen Dateinamen.<html>",
                     "Öffnen", JOptionPane.INFORMATION_MESSAGE);
 
         } while (true);
@@ -182,22 +182,22 @@ class FileOperationDE {
             this.saved = true;
             fileName = new String(temp.getName());
             if (!temp.canWrite()) {
-                fileName += "(Schreibgeschützt)";
+                fileName += "(Schreibgesch\u00FCtzt)";
                 newFileFlag = true;
             }
             fileRef = temp;
             npd.f.setTitle(fileName + " - " + applicationTitle);
-            npd.statusBar.setText("Datei : " + temp.getPath() + " erfolgreich gespeichert/geöffnet.");
+            npd.statusBar.setText("Datei : " + temp.getPath() + " erfolgreich gespeichert/ge\u00F6ffnet.");
             newFileFlag = false;
         } else {
-            npd.statusBar.setText("Fehler beim Öffnen/Speichern : " + temp.getPath());
+            npd.statusBar.setText("Fehler beim \u00D6ffnen/Speichern : " + temp.getPath());
         }
     }
 
     ///////////////////////
     boolean confirmSave() {
-        String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde geändert.<br>" +
-                "Wollen Sie die Änderungen speichern?<html>";
+        String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde ge\u00E4ndert.<br>" +
+                "Wollen Sie die \u00C4nderungen speichern?<html>";
         if (!saved) {
             int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);
 
@@ -379,8 +379,8 @@ fileHandler.saved=true;
         else if (cmdText.equals(filePrint))
             JOptionPane.showMessageDialog(
                     FNotepadDE.this.f,
-                    "Get ur printer repaired first! It seems u dont have one!",
-                    "Bad Printer",
+                    "Es wurde kein Drucker gefunden, bitte schlie\u00DF einen Drucker an!!",
+                    "Falscher Drucker!!",
                     JOptionPane.INFORMATION_MESSAGE
             );
 ////////////////////////////////////
@@ -409,7 +409,7 @@ fileHandler.saved=true;
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                statusBar.setText("Nichts zu suchen, bitte Finden im Bearbeiten-Menü zuerst probieren !!!!");
+                statusBar.setText("Nichts zu suchen, bitte Finden im Bearbeiten-Men\u00FC zuerst probieren !!!!");
             else
                 findReplaceDialog.findNextWithSelection();
         }
@@ -461,7 +461,7 @@ fileHandler.saved=true;
         }
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepadDE)) {
-            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "Nur für Dich!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "Nur f\u00FCr Dich!", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
     }//action Performed
@@ -655,23 +655,23 @@ interface MenuConstants {
     final String helpText = "Hilfe";
 
     final String fileNew = "Neu";
-    final String fileOpen = "Öffnen...";
+    final String fileOpen = "\u00D6ffnen...";
     final String fileSave = "Speichern";
     final String fileSaveAs = "Speichern Als...";
     final String filePageSetup = "Seiteneinstellungen...";
     final String filePrint = "Drucken";
     final String fileExit = "Beenden";
 
-    final String editUndo = "Rückgängig";
+    final String editUndo = "R\u00FCckg\u00E4ngig";
     final String editCut = "Ausschneiden";
     final String editCopy = "Kopieren";
-    final String editPaste = "Einfügen";
-    final String editDelete = "Löschen";
+    final String editPaste = "Einf\u00FCgen";
+    final String editDelete = "L\u00F6schen";
     final String editFind = "Finden...";
-    final String editFindNext = "Nächstes finden";
+    final String editFindNext = "N\u00E4chstes finden";
     final String editReplace = "Ersetzen";
     final String editGoTo = "Gehe zu...";
-    final String editSelectAll = "Alles auswählen";
+    final String editSelectAll = "Alles ausw\u00E4hlen";
     final String editTimeDate = "Zeit/Datum";
 
     final String formatWordWrap = "Word Wrap";
@@ -682,13 +682,13 @@ interface MenuConstants {
     final String viewStatusBar = "Statusleiste";
 
     final String helpHelpTopic = "Hilfe";
-    final String helpAboutFNotepadDE = "Über FNotepad";
+    final String helpAboutFNotepadDE = "\u00DCber FNotepad";
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke fürs Benutzen von FNotepad!</strong><br>"
+                    + "<strong>Danke f\u00FCrs Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
                     + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
 }
