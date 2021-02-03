@@ -46,7 +46,7 @@ public class FNotepad extends JFrame{
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
-                b.setText("Sprache auswählen");
+                b.setText("Sprache ausw\u00E4hlen");
             }
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
