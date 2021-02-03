@@ -256,7 +256,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
     FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("||       Ln 1, Col 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
@@ -278,22 +278,29 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
-                        int lineNumber = 0, column = 0, pos = 0, wordNumber = 0;
+                        int lineNumber = 0, column = 0, pos = 0, wordCount = 0, letterCount = 0;
 
                         try {
                             pos = ta.getCaretPosition();
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
-                            String[] split = ta.getText().split(" ");
-                            wordNumber = split.length;
-                            System.out.println(wordNumber);
+                            String text = ta.getText();
+
+                            letterCount = text.length();
+                            wordCount = text.split("\\s").length;
+                            //System.out.println(wordCount+ " " +letterCount);
+
+
+
                         } catch (Exception excp) {
                         }
                         if (ta.getText().length() == 0) {
                             lineNumber = 0;
                             column = 0;
+                            wordCount = 0;
+                            letterCount = 0;
                         }
-                        statusBar.setText("       ||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("Letters " + letterCount + ", Words "+ wordCount + "       ||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
                     }
                 });
 //////////////////

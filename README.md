@@ -21,3 +21,4 @@ Download the newest release or `out/artifacts/FNotepad.jar` and run it with `jav
 -> See [CONTRIBUTERS.md][1]
 
 [1]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/CONTRIBUTERS.md
+
