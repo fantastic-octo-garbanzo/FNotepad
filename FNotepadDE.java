@@ -1,4 +1,4 @@
-//imports
+// Imports
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
@@ -167,7 +167,7 @@ class FileOperationDE {
         this.npd.ta.setText("");
 
         if (!openFile(temp)) {
-            fileName = "Unbennant";
+            fileName = "Unbenannt";
             saved = true;
             this.npd.f.setTitle(fileName + " - " + applicationTitle);
         }
@@ -212,7 +212,7 @@ class FileOperationDE {
         if (!confirmSave()) return;
 
         this.npd.ta.setText("");
-        fileName = new String("Unbennant");
+        fileName = new String("Unbenannt");
         fileRef = new File(fileName);
         saved = true;
         newFileFlag = true;
@@ -228,7 +228,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
     JTextArea ta;
     JLabel statusBar;
 
-    private String fileName = "Unbennant";
+    private String fileName = "Unbenannt";
     private boolean saved = true;
     String applicationName = "FNotepad";
 
