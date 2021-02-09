@@ -210,6 +210,8 @@ class FileOperationDE {
     ///////////////////////////////////////
     void newFile() {
         if (!confirmSave()) return;
+        
+        new FNotepadDE(true);
 
         this.npd.ta.setText("");
         fileName = new String("Unbenannt");
