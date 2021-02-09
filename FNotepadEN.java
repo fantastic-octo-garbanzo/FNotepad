@@ -209,6 +209,8 @@ class FileOperationEN {
     ///////////////////////////////////////
     void newFile() {
         if (!confirmSave()) return;
+        
+        new FNotepadEN(true);
 
         this.npd.ta.setText("");
         fileName = new String("Untitled");
