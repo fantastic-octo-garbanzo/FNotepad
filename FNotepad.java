@@ -1,3 +1,4 @@
+// Imports
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -18,33 +19,31 @@ public class FNotepad extends JFrame{
     }
 
     public FNotepad(){
-        setTitle("Language - FNotepad");
-        JLabel l = new JLabel();
+        setTitle("Language - FNotepad"); // Titel
+        JLabel l = new JLabel("Welcome to FNotepad"); // Text über Auswahlmenü
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
 
+        // Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
         b.setBounds(200,250, 200,50);
-
+		
+		// Auswahlmenü
         Choice c = new Choice();
         c.setBounds(250,150, 100,50);
         c.add("English");
         c.add("Deutsch");
-
-
 
         add(l);
         add(b);
         add(c);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSize(getScreenDimensionWithoutTaskbar(this));
+        setSize(getScreenDimensionWithoutTaskbar(this)); // Öffnet Fenster im Vollbild
 
         setLayout(null);
         setVisible(true);
 
-        l.setText("Welcome to FNotepad!");
-        b.setText("Choose Language");
         c.addItemListener(ie -> {
             // Wenn Deutsch ausgewählt ist, wird alles auf Deutsch gesetzt
             if(c.getSelectedItem().equals("Deutsch")) {
