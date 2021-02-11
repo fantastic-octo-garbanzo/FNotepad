@@ -22,6 +22,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            FNotepad/*.zip
-            FNotepad/*.exe
-            FNotepad/out/artifacts/*.jar
+            *.zip
+            *.exe
+            out/artifacts/*.jar
