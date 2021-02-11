@@ -209,6 +209,8 @@ class FileOperationEN {
     ///////////////////////////////////////
     void newFile() {
         if (!confirmSave()) return;
+        
+        new FNotepadEN(true);
 
         this.npd.ta.setText("");
         fileName = new String("Untitled");
@@ -256,7 +258,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
     FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("||       Ln 1, Col 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
@@ -300,7 +302,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Letters " + letterCount*1 + ", Words "+ wordCount*1 + "       ||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("Letters " + letterCount + ", Words "+ wordCount + "       ||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
                     }
                 });
 //////////////////
