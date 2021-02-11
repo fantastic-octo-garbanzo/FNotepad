@@ -4,9 +4,10 @@ import javax.swing.JFrame;
 
 /**********/
 
-//
+// Beginn der Klasse FNotepad
 public class FNotepad extends JFrame{
 
+    // Holt die Bildschrimgröße ohne Taskbar
     public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
