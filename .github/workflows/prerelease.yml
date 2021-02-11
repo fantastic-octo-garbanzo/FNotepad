@@ -24,6 +24,6 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            *.zip
-            *.exe
-            /out/*.jar
+            FNotepad/*.zip
+            FNotepad/*.exe
+            FNotepad/out/artifacts/*.jar
