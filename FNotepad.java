@@ -2,7 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 
+/**********/
 
+//
 public class FNotepad extends JFrame{
 
     public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
@@ -43,11 +45,13 @@ public class FNotepad extends JFrame{
         l.setText("Welcome to FNotepad!");
         b.setText("Choose Language");
         c.addItemListener(ie -> {
+            // Wenn Deutsch ausgewählt ist, wird alles auf Deutsch gesetzt
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
             }
+            // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
@@ -55,13 +59,14 @@ public class FNotepad extends JFrame{
             }
         });
 
+        // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
-            dispose();
-            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
-                new FNotepadDE(true);
+            dispose(); // Schließt das Sprachauswahlfenster
+            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){ // Wenn die Sprache Deutsch ausgewählt ist ...
+                new FNotepadDE(true); // wird das FNotepad auf Deutsch gestartet
             }
-            if(c.getItem(c.getSelectedIndex()).equals("English")){
-                new FNotepadEN(true);
+            if(c.getItem(c.getSelectedIndex()).equals("English")){ // Wenn die Sprache Englisch ausgewählt ist ...
+                new FNotepadEN(true); // wird das FNotepad auf Englisch gestartet
             }
         });
     }
