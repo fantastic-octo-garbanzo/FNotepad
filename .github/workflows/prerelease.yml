@@ -24,4 +24,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            FNotepad.jar
+            *.jar
