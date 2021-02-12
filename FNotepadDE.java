@@ -1,4 +1,4 @@
-//imports
+// Imports
 import java.io.*;
 import java.util.Date;
 import java.awt.*;
@@ -8,229 +8,13 @@ import javax.swing.event.*;
 
 
 /************************************/
-// Start der Klasse FileOperationDE
-class FileOperationDE {
-    FNotepadDE npd;
-
-    boolean saved;
-    boolean newFileFlag;
-    String fileName;
-    String applicationTitle = "FNotepad";
-
-    File fileRef;
-    JFileChooser chooser;
-
-    /////////////////////////////
-    boolean isSave() {
-        return saved;
-    }
-
-    void setSave(boolean saved) {
-        this.saved = saved;
-    }
-
-    String getFileName() {
-        return new String(fileName);
-    }
-
-    void setFileName(String fileName) {
-        this.fileName = new String(fileName);
-    }
-
-    /////////////////////////
-    FileOperationDE(FNotepadDE npd) {
-        this.npd = npd;
-
-        saved = true;
-        newFileFlag = true;
-        fileName = new String("Unbenannt");
-        fileRef = new File(fileName);
-        this.npd.f.setTitle(fileName + " - " + applicationTitle);
-
-        chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new MyFileFilter(".java", "Java Source Files(*.java)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".txt", "Text Files(*.txt)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".pdf", "Portable Document Files(*.pdf)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".cpp", "C Plus Plus Files(*.cpp)"));
-        chooser.setCurrentDirectory(new File("."));
-
-    }
-//////////////////////////////////////
-
-    boolean saveFile(File temp) {
-        FileWriter fout = null;
-        try {
-            fout = new FileWriter(temp);
-            fout.write(npd.ta.getText());
-        } catch (IOException ioe) {
-            updateStatus(temp, false);
-            return false;
-        } finally {
-            try {
-                fout.close();
-            } catch (IOException excp) {
-            }
-        }
-        updateStatus(temp, true);
-        return true;
-    }
-
-    ////////////////////////
-    boolean saveThisFile() {
-
-        if (!newFileFlag) {
-            return saveFile(fileRef);
-        }
-
-        return saveAsFile();
-    }
-
-    ////////////////////////////////////
-    boolean saveAsFile() {
-        File temp = null;
-        chooser.setDialogTitle("Speichern als...");
-        chooser.setApproveButtonText("Jetzt speichern");
-        chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
-        chooser.setApproveButtonToolTipText("Hier speichern!");
-
-        do {
-            if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
-                return false;
-            temp = chooser.getSelectedFile();
-            if (!temp.exists()) break;
-            if (JOptionPane.showConfirmDialog(
-                    this.npd.f, "<html>" + temp.getPath() + " existiert schon.<br>Ersetzen?<html>",
-                    "Speichern", JOptionPane.YES_NO_OPTION
-            ) == JOptionPane.YES_OPTION)
-                break;
-        } while (true);
-
-
-        return saveFile(temp);
-    }
-
-    ////////////////////////
-    boolean openFile(File temp) {
-        FileInputStream fin = null;
-        BufferedReader din = null;
-
-        try {
-            fin = new FileInputStream(temp);
-            din = new BufferedReader(new InputStreamReader(fin));
-            String str = " ";
-            while (str != null) {
-                str = din.readLine();
-                if (str == null)
-                    break;
-                this.npd.ta.append(str + "\n");
-            }
-
-        } catch (IOException ioe) {
-            updateStatus(temp, false);
-            return false;
-        } finally {
-            try {
-                din.close();
-                fin.close();
-            } catch (IOException excp) {
-            }
-        }
-        updateStatus(temp, true);
-        this.npd.ta.setCaretPosition(0);
-        return true;
-    }
-
-    ///////////////////////
-    void openFile() {
-        if (!confirmSave()) return;
-        chooser.setDialogTitle("\u00D6ffne Datei...");
-        chooser.setApproveButtonText("\u00D6ffnen");
-        chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
-        chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei \u00F6ffnen.");
-
-        File temp = null;
-        do {
-            if (chooser.showOpenDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
-                return;
-            temp = chooser.getSelectedFile();
-
-            if (temp.exists()) break;
-
-            JOptionPane.showMessageDialog(this.npd.f,
-                    "<html>" + temp.getName() + "<br>Datei nicht gefunden.<br>" +
-                            "Bitte \u00FCberpr\u00FCfen Sie den angegebenen Dateinamen.<html>",
-                    "Öffnen", JOptionPane.INFORMATION_MESSAGE);
-
-        } while (true);
-
-        this.npd.ta.setText("");
-
-        if (!openFile(temp)) {
-            fileName = "Unbennant";
-            saved = true;
-            this.npd.f.setTitle(fileName + " - " + applicationTitle);
-        }
-        if (!temp.canWrite())
-            newFileFlag = true;
-
-    }
-
-    ////////////////////////
-    void updateStatus(File temp, boolean saved) {
-        if (saved) {
-            this.saved = true;
-            fileName = new String(temp.getName());
-            if (!temp.canWrite()) {
-                fileName += "(Schreibgesch\u00FCtzt)";
-                newFileFlag = true;
-            }
-            fileRef = temp;
-            npd.f.setTitle(fileName + " - " + applicationTitle);
-            npd.statusBar.setText("Datei : " + temp.getPath() + " erfolgreich gespeichert/ge\u00F6ffnet.");
-            newFileFlag = false;
-        } else {
-            npd.statusBar.setText("Fehler beim \u00D6ffnen/Speichern : " + temp.getPath());
-        }
-    }
-
-    ///////////////////////
-    boolean confirmSave() {
-        String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde ge\u00E4ndert.<br>" +
-                "Wollen Sie die \u00C4nderungen speichern?<html>";
-        if (!saved) {
-            int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);
-
-            if (x == JOptionPane.CANCEL_OPTION) return false;
-            if (x == JOptionPane.YES_OPTION && !saveAsFile()) return false;
-        }
-        return true;
-    }
-
-    ///////////////////////////////////////
-    void newFile() {
-        if (!confirmSave()) return;
-        
-        new FNotepadDE(true);
-
-        this.npd.ta.setText("");
-        fileName = new String("Unbennant");
-        fileRef = new File(fileName);
-        saved = true;
-        newFileFlag = true;
-        this.npd.f.setTitle(fileName + " - " + applicationTitle);
-    }
-//////////////////////////////////////
-}// Ende der Klasse FileOperationDE
-
-/************************************/
-class FNotepadDE implements ActionListener, MenuConstants {
+public class FNotepadDE implements ActionListener, MenuConstants {
 
     JFrame f;
     JTextArea ta;
     JLabel statusBar;
 
-    private String fileName = "Unbennant";
+    private String fileName = "Unbenannt";
     private boolean saved = true;
     String applicationName = "FNotepad";
 
@@ -329,7 +113,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
 /////////
         WindowListener frameClose = new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
-                if (fileHandler.confirmSave()) System.exit(0);
+                if (fileHandler.confirmSave()) f.dispose();
             }
         };
         f.addWindowListener(frameClose);
@@ -548,7 +332,7 @@ fileHandler.saved=true;
 
     /*********************************/
     void createMenuBar(JFrame f) {
-        JMenuBar mb = new JMenuBar();
+        JMenuBar mb = new JMenuBar(); // Menü-Leiste
         JMenuItem temp;
 
         JMenu fileMenu = createMenu(fileText, KeyEvent.VK_F, mb);
