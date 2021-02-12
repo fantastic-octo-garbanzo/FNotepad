@@ -5,12 +5,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-class FileOperationExample extends JFrame {
+class FileOperationExampleEN extends JFrame {
 	JMenuBar mb;
 	JMenu file;
 	JMenuItem open;
 	JTextArea ta;
-	FileOperationExample(){
+	FileOperationExampleEN(){
 		open = new JMenuItem("Open File");
 		file = new JMenu("File");
 		file.add(open);
@@ -44,7 +44,7 @@ class FileOperationExample extends JFrame {
     }
 ///////////////////////////////////////
     public static void main(String[] args) {
-		new FileOperationExample();
+		new FileOperationExampleEN();
 	}
 }
 /*************************************/
