@@ -9,7 +9,7 @@ import javax.swing.event.*;
 
 /************************************/
 
-public class FNotepadDE implements ActionListener, MenuConstants {
+public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
 
     JFrame f;
@@ -436,7 +436,7 @@ fileHandler.saved=true;
 
 /**************************************/
 // Menü-Leiste
-interface MenuConstants {
+interface MenuConstantsDE {
     final String fileText = "Datei";
     final String editText = "Bearbeiten";
     final String formatText = "Format";
