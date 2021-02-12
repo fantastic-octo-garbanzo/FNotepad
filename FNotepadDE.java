@@ -249,8 +249,8 @@ fileHandler.saved=true;
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpAboutFNotepadDE)) {
-            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "Nur f\u00FCr Dich!", JOptionPane.INFORMATION_MESSAGE);
+        else if (cmdText.equals(helpAboutFNotepad)) {
+            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "\u00FCber FNotepad", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
     }//action Performed
@@ -389,7 +389,7 @@ fileHandler.saved=true;
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         temp.setEnabled(false);
         helpMenu.addSeparator();
-        createMenuItem(helpAboutFNotepadDE, KeyEvent.VK_A, helpMenu, this);
+        createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -463,7 +463,7 @@ interface MenuConstantsDE {
     final String editSelectAll = "Alles ausw\u00E4hlen";
     final String editTimeDate = "Zeit/Datum";
 
-    final String formatWordWrap = "Word Wrap";
+    final String formatWordWrap = "Zeilenumbruch";
     final String formatFont = "Schrift...";
     final String formatForeground = "Textfarbe...";
     final String formatBackground = "Hintergrundfarbe...";
@@ -471,13 +471,13 @@ interface MenuConstantsDE {
     final String viewStatusBar = "Statusleiste";
 
     final String helpHelpTopic = "Hilfe";
-    final String helpAboutFNotepadDE = "\u00DCber FNotepad";
+    final String helpAboutFNotepad = "\u00DCber FNotepad";
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke f\u00FCrs Benutzen von FNotepad!</strong><br>"
+                    + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
                     + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
 }

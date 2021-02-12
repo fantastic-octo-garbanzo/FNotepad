@@ -231,8 +231,8 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpAboutFNotepadEN)) {
-            JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "Dedicated 2 u!", JOptionPane.INFORMATION_MESSAGE);
+        else if (cmdText.equals(helpAboutFNotepad)) {
+            JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "About FNotepad!", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("This " + cmdText + " command is yet to be implemented");
     }//action Performed
@@ -370,7 +370,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         temp.setEnabled(false);
         helpMenu.addSeparator();
-        createMenuItem(helpAboutFNotepadEN, KeyEvent.VK_A, helpMenu, this);
+        createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -452,7 +452,7 @@ interface MenuConstantsEN {
     final String viewStatusBar = "Status Bar";
 
     final String helpHelpTopic = "Help Topic";
-    final String helpAboutFNotepadEN = "About FNotepad";
+    final String helpAboutFNotepad = "About FNotepad";
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
