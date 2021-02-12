@@ -34,9 +34,19 @@ public class FNotepad extends JFrame{
         c.add("English");
         c.add("Deutsch");
 
+
+        Choice ch = new Choice();
+        ch.setBounds(250,200, 100,50);
+        ch.add("fullscreen");
+        ch.add("windowed");
+
+
+
         add(l);
         add(b);
         add(c);
+        add(ch);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setSize(getScreenDimensionWithoutTaskbar(this)); // Öffnet Fenster im Vollbild
@@ -50,23 +60,34 @@ public class FNotepad extends JFrame{
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
+                ch.removeAll();
+                ch.add("Vollbild");
+                ch.add("Fenstermodus");
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
+                ch.removeAll();
+                ch.add("fullscreen");
+                ch.add("windowed");
             }
         });
 
         // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
-            dispose(); // Schließt das Sprachauswahlfenster
-            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){ // Wenn die Sprache Deutsch ausgewählt ist ...
-                new FNotepadDE(true); // wird das FNotepad auf Deutsch gestartet
+
+            dispose();
+            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
+                if ( ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
+                if ( ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
+
             }
-            if(c.getItem(c.getSelectedIndex()).equals("English")){ // Wenn die Sprache Englisch ausgewählt ist ...
-                new FNotepadEN(true); // wird das FNotepad auf Englisch gestartet
+            if(c.getItem(c.getSelectedIndex()).equals("English")){
+                if ( ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
+                if ( ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
+
             }
         });
     }
