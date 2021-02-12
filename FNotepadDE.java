@@ -24,8 +24,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     int lastSearchIndex;
 
     FileOperationDE fileHandler;
-    FontChooser fontDialog = null;
-    FindDialog findReplaceDialog = null;
+    FontChooserDE fontDialog = null;
+    FindDialogDE findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
     JColorChooser fcolorChooser = null;
     JDialog backgroundDialog = null;
@@ -45,7 +45,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Zeichen 0, Wörter 0       ||       Z. 1, Sp. 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
 
@@ -61,7 +61,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        if(!fullscreen){f.setSize(650, 600);}
+        if(!fullscreen){f.setSize(800, 600);}
 
         f.setVisible(true);
 
@@ -98,7 +98,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Zeichen " + letterCount + ", Wörter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("Zeichen " + letterCount + ", W\u00F6rter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Spalte  " + (column + 1));
                     }
                 });
 //////////////////
@@ -192,7 +192,7 @@ fileHandler.saved=true;
             if (FNotepadDE.this.ta.getText().length() == 0)
                 return;    // text box have no text
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialog(FNotepadDE.this.ta);
+                findReplaceDialog = new FindDialogDE(FNotepadDE.this.ta);
             findReplaceDialog.showDialog(FNotepadDE.this.f, true);//find
         }
 ////////////////////////////////////
@@ -211,7 +211,7 @@ fileHandler.saved=true;
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialog(FNotepadDE.this.ta);
+                findReplaceDialog = new FindDialogDE(FNotepadDE.this.ta);
             findReplaceDialog.showDialog(FNotepadDE.this.f, false);//replace
         }
 ////////////////////////////////////
@@ -234,9 +234,9 @@ fileHandler.saved=true;
 ////////////////////////////////////
         else if (cmdText.equals(formatFont)) {
             if (fontDialog == null)
-                fontDialog = new FontChooser(ta.getFont());
+                fontDialog = new FontChooserDE(ta.getFont());
 
-            if (fontDialog.showDialog(FNotepadDE.this.f, "Schrift auswählen"))
+            if (fontDialog.showDialog(FNotepadDE.this.f, "Schrift ausw\u00E4hlen"))
                 FNotepadDE.this.ta.setFont(fontDialog.createFont());
         }
 ////////////////////////////////////
@@ -385,7 +385,7 @@ fileHandler.saved=true;
 
         createCheckBoxMenuItem(viewStatusBar, KeyEvent.VK_S, viewMenu, this).setSelected(true);
 /************For Look and Feel, May not work properly on different operating environment***/
-        LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
+        LookAndFeelMenuDE.createLookAndFeelMenuItem(viewMenu, this.f);
 
 
 
@@ -459,7 +459,7 @@ interface MenuConstantsDE {
     final String editCopy = "Kopieren";
     final String editPaste = "Einf\u00FCgen";
     final String editDelete = "L\u00F6schen";
-    final String editFind = "Finden...";
+    final String editFind = "Suchen...";
     final String editFindNext = "N\u00E4chstes finden";
     final String editReplace = "Ersetzen";
     final String editGoTo = "Gehe zu...";
