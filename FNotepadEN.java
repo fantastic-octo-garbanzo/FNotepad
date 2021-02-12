@@ -323,7 +323,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 /////////
         WindowListener frameClose = new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
-                if (fileHandler.confirmSave()) System.exit(0);
+                if (fileHandler.confirmSave()) f.dispose();
             }
         };
         f.addWindowListener(frameClose);
