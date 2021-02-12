@@ -8,7 +8,9 @@ import javax.swing.event.*;
 
 
 /************************************/
+
 public class FNotepadDE implements ActionListener, MenuConstants {
+
 
     JFrame f;
     JTextArea ta;
