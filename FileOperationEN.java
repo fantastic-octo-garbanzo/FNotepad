@@ -90,11 +90,17 @@ class FileOperationEN {
         // Different file extensions 
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new MyFileFilter(".java", "Java Source Files(*.java)"));
+		chooser.addChoosableFileFilter(new MyFileFilter(".cpp", "C++(.cpp)"));
+		chooser.addChoosableFileFilter(new MyFileFilter(".cs", "C#"));
+		chooser.addChoosableFileFilter(new MyFileFilter(".d", "D Programming Language(.d)"));
+		chooser.addChoosableFileFilter(new MyFileFilter(".bat", "Batch File(*.bat)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".txt", "Text Files(*.txt)"));
+		chooser.addChoosableFileFilter(new MyFileFilter(".rtf", "Rich Text Format(*.rtf)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".py", "Python Files(*.py)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new MyFileFilter(".html", "Hyper Text Markup Language(*.html)"));
-        chooser.addChoosableFileFilter(new MyFileFilter("*", "All Files"));
+        chooser.addChoosableFileFilter(new MyFileFilter(".asm", "Assembler(*.asm)"));
+		chooser.addChoosableFileFilter(new MyFileFilter("*", "Alle Dateien"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
