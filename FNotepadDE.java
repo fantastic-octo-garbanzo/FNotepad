@@ -54,15 +54,18 @@ public class FNotepadDE implements ActionListener, MenuConstants {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-        if (fullscreen){f.setLocation(0, 0); f.setSize(getScreenDimensionWithoutTaskbarDE(f)); f.setExtendedState(JFrame.MAXIMIZED_BOTH);}
-        if(!fullscreen){f.setLocation(100, 50); f.setSize(400,400);}
+
 
 
         f.pack();
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        if(!fullscreen){f.setSize(650, 600);}
 
         f.setVisible(true);
 
-        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
 
 
 
