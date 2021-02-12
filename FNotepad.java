@@ -35,6 +35,7 @@ public class FNotepad extends JFrame{
         c.add("Deutsch");
 
 
+
         Choice ch = new Choice();
         ch.setBounds(250,200, 100,50);
         ch.add("fullscreen");
@@ -49,10 +50,13 @@ public class FNotepad extends JFrame{
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSize(getScreenDimensionWithoutTaskbar(this)); // Öffnet Fenster im Vollbild
+        setSize(650, 600);
 
         setLayout(null);
         setVisible(true);
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Öffnet Fenster im Vollbild
 
         c.addItemListener(ie -> {
             // Wenn Deutsch ausgewählt ist, wird alles auf Deutsch gesetzt
