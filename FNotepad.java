@@ -28,11 +28,18 @@ public class FNotepad extends JFrame{
         c.add("English");
         c.add("Deutsch");
 
+        Choice ch = new Choice();
+        ch.setBounds(250,200, 100,50);
+        ch.add("fullscreen");
+        ch.add("windowed");
+
 
 
         add(l);
         add(b);
         add(c);
+        add(ch);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         setSize(getScreenDimensionWithoutTaskbar(this));
@@ -47,21 +54,30 @@ public class FNotepad extends JFrame{
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
+                ch.removeAll();
+                ch.add("Vollbild");
+                ch.add("Fenstermodus");
             }
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
+                ch.removeAll();
+                ch.add("fullscreen");
+                ch.add("windowed");
             }
         });
 
         b.addActionListener(e -> {
             dispose();
             if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
-                new FNotepadDE(true);
+                if ( ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
+                if ( ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
+
             }
             if(c.getItem(c.getSelectedIndex()).equals("English")){
-                new FNotepadEN(true);
+                if ( ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
+                if ( ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
             }
         });
     }

@@ -260,24 +260,25 @@ class FNotepadDE implements ActionListener, MenuConstants {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
         statusBar = new JLabel("Zeichen 0, Wörter 0       ||       Z. 1, Sp. 1  ", JLabel.RIGHT);
-
-
-
-
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
+
+
+
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-        f.setLocation(0, 0);
+        if (fullscreen){f.setLocation(0, 0); f.setSize(getScreenDimensionWithoutTaskbarDE(f)); f.setExtendedState(JFrame.MAXIMIZED_BOTH);}
+        if(!fullscreen){f.setLocation(100, 50); f.setSize(400,400);}
+
 
         f.pack();
-        //f.setLocation(100, 50);
+
         f.setVisible(true);
 
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        f.setSize(getScreenDimensionWithoutTaskbarDE(f));
+
+
 
         fileHandler = new FileOperationDE(this);
 
