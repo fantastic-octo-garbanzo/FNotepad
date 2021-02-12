@@ -53,7 +53,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        f.setSize(getScreenDimensionWithoutTaskbarEN(f));
+        if(!fullscreen){f.setSize(650, 600);}
 
         fileHandler = new FileOperationEN(this);
 
