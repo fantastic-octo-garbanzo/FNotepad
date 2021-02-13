@@ -89,18 +89,18 @@ public class FileOperationDE {
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new MyFileFilter(".java", "Java Source Files(*.java)"));
-		chooser.addChoosableFileFilter(new MyFileFilter(".cpp", "C++(.cpp)"));
-		chooser.addChoosableFileFilter(new MyFileFilter(".cs", "C#"));
-		chooser.addChoosableFileFilter(new MyFileFilter(".d", "D Programming Language(.d)"));
-		chooser.addChoosableFileFilter(new MyFileFilter(".bat", "Batch File(*.bat)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".txt", "Text Files(*.txt)"));
-		chooser.addChoosableFileFilter(new MyFileFilter(".rtf", "Rich Text Format(*.rtf)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".pdf", "Portable Document Files(*.pdf)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".html", "Hyper Text Markup Language(*.html)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".asm", "Assembler(*.asm)"));
-		chooser.addChoosableFileFilter(new MyFileFilter("*", "Alle Dateien"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".cpp", "C++(.cpp)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".cs", "C#"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(.d)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".bat", "Batch File(*.bat)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".rtf", "Rich Text Format(*.rtf)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".html", "Hyper Text Markup Language(*.html)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".asm", "Assembler(*.asm)"));
+		chooser.addChoosableFileFilter(new FileFilterDE("*", "Alle Dateien"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
