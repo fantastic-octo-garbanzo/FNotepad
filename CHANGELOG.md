@@ -1,5 +1,18 @@
 # FNotepad Changelog
 
+## FNotepad v1.3.2 (2021-02-13)
+
+### Added
+- File extensions
+- Cancel button
+- Changelogs
+
+### Changed
+- Better folder structure
+- All releases are now in the release folder
+- All files were split in German and English ones
+
+
 ## FNotepad v1.3.1 (2021-02-12)
 
 ### Added
