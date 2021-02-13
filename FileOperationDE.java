@@ -90,13 +90,15 @@ public class FileOperationDE {
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".cpp", "C++(.cpp)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".cs", "C#"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(.d)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".bat", "Batch File(*.bat)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".rtf", "Rich Text Format(*.rtf)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".html", "Hyper Text Markup Language(*.html)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".asm", "Assembler(*.asm)"));

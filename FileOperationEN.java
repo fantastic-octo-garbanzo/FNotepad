@@ -90,17 +90,19 @@ class FileOperationEN {
         // Different file extensions 
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new FileFilterEN(".java", "Java Source Files(*.java)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".cpp", "C++(.cpp)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".cs", "C#"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".d", "D Programming Language(.d)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".bat", "Batch File(*.bat)"));
         chooser.addChoosableFileFilter(new FileFilterEN(".txt", "Text Files(*.txt)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".rtf", "Rich Text Format(*.rtf)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".py", "Python Files(*.py)"));
         chooser.addChoosableFileFilter(new FileFilterEN(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new FileFilterEN(".html", "Hyper Text Markup Language(*.html)"));
         chooser.addChoosableFileFilter(new FileFilterEN(".asm", "Assembler(*.asm)"));
-		chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
+		chooser.addChoosableFileFilter(new FileFilterEN("*", "All Files"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
