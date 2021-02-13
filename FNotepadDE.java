@@ -8,227 +8,15 @@ import javax.swing.event.*;
 
 
 /************************************/
-// Start der Klasse FileOperationDE
-class FileOperationDE {
-    FNotepadDE npd;
 
-    boolean saved;
-    boolean newFileFlag;
-    String fileName;
-    String applicationTitle = "FNotepad";
+public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
-    File fileRef;
-    JFileChooser chooser;
-
-    /////////////////////////////
-    boolean isSave() {
-        return saved;
-    }
-
-    void setSave(boolean saved) {
-        this.saved = saved;
-    }
-
-    String getFileName() {
-        return new String(fileName);
-    }
-
-    void setFileName(String fileName) {
-        this.fileName = new String(fileName);
-    }
-
-    /////////////////////////
-    FileOperationDE(FNotepadDE npd) {
-        this.npd = npd;
-
-        saved = true;
-        newFileFlag = true;
-        fileName = new String("Unbenannt");
-        fileRef = new File(fileName);
-        this.npd.f.setTitle(fileName + " - " + applicationTitle);
-
-        chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new MyFileFilter(".java", "Java Source Files(*.java)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".txt", "Text Files(*.txt)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".pdf", "Portable Document Files(*.pdf)"));
-        chooser.addChoosableFileFilter(new MyFileFilter(".cpp", "C Plus Plus Files(*.cpp)"));
-        chooser.setCurrentDirectory(new File("."));
-
-    }
-//////////////////////////////////////
-
-    boolean saveFile(File temp) {
-        FileWriter fout = null;
-        try {
-            fout = new FileWriter(temp);
-            fout.write(npd.ta.getText());
-        } catch (IOException ioe) {
-            updateStatus(temp, false);
-            return false;
-        } finally {
-            try {
-                fout.close();
-            } catch (IOException excp) {
-            }
-        }
-        updateStatus(temp, true);
-        return true;
-    }
-
-    ////////////////////////
-    boolean saveThisFile() {
-
-        if (!newFileFlag) {
-            return saveFile(fileRef);
-        }
-
-        return saveAsFile();
-    }
-
-    ////////////////////////////////////
-    boolean saveAsFile() {
-        File temp = null;
-        chooser.setDialogTitle("Speichern als...");
-        chooser.setApproveButtonText("Jetzt speichern");
-        chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
-        chooser.setApproveButtonToolTipText("Hier speichern!");
-
-        do {
-            if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
-                return false;
-            temp = chooser.getSelectedFile();
-            if (!temp.exists()) break;
-            if (JOptionPane.showConfirmDialog(
-                    this.npd.f, "<html>" + temp.getPath() + " existiert schon.<br>Ersetzen?<html>",
-                    "Speichern", JOptionPane.YES_NO_OPTION
-            ) == JOptionPane.YES_OPTION)
-                break;
-        } while (true);
-
-
-        return saveFile(temp);
-    }
-
-    ////////////////////////
-    boolean openFile(File temp) {
-        FileInputStream fin = null;
-        BufferedReader din = null;
-
-        try {
-            fin = new FileInputStream(temp);
-            din = new BufferedReader(new InputStreamReader(fin));
-            String str = " ";
-            while (str != null) {
-                str = din.readLine();
-                if (str == null)
-                    break;
-                this.npd.ta.append(str + "\n");
-            }
-
-        } catch (IOException ioe) {
-            updateStatus(temp, false);
-            return false;
-        } finally {
-            try {
-                din.close();
-                fin.close();
-            } catch (IOException excp) {
-            }
-        }
-        updateStatus(temp, true);
-        this.npd.ta.setCaretPosition(0);
-        return true;
-    }
-
-    ///////////////////////
-    void openFile() {
-        if (!confirmSave()) return;
-        chooser.setDialogTitle("Öffne Datei...");
-        chooser.setApproveButtonText("Öffnen");
-        chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
-        chooser.setApproveButtonToolTipText("Ausgewählte Datei öffnen.");
-
-        File temp = null;
-        do {
-            if (chooser.showOpenDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
-                return;
-            temp = chooser.getSelectedFile();
-
-            if (temp.exists()) break;
-
-            JOptionPane.showMessageDialog(this.npd.f,
-                    "<html>" + temp.getName() + "<br>Datei nicht gefunden.<br>" +
-                            "Bitte überprüfen Sie den angegebenen Dateinamen.<html>",
-                    "Öffnen", JOptionPane.INFORMATION_MESSAGE);
-
-        } while (true);
-
-        this.npd.ta.setText("");
-
-        if (!openFile(temp)) {
-            fileName = "Unbennant";
-            saved = true;
-            this.npd.f.setTitle(fileName + " - " + applicationTitle);
-        }
-        if (!temp.canWrite())
-            newFileFlag = true;
-
-    }
-
-    ////////////////////////
-    void updateStatus(File temp, boolean saved) {
-        if (saved) {
-            this.saved = true;
-            fileName = new String(temp.getName());
-            if (!temp.canWrite()) {
-                fileName += "(Schreibgeschützt)";
-                newFileFlag = true;
-            }
-            fileRef = temp;
-            npd.f.setTitle(fileName + " - " + applicationTitle);
-            npd.statusBar.setText("Datei : " + temp.getPath() + " erfolgreich gespeichert/geöffnet.");
-            newFileFlag = false;
-        } else {
-            npd.statusBar.setText("Fehler beim Öffnen/Speichern : " + temp.getPath());
-        }
-    }
-
-    ///////////////////////
-    boolean confirmSave() {
-        String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde geändert.<br>" +
-                "Wollen Sie die Änderungen speichern?<html>";
-        if (!saved) {
-            int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);
-
-            if (x == JOptionPane.CANCEL_OPTION) return false;
-            if (x == JOptionPane.YES_OPTION && !saveAsFile()) return false;
-        }
-        return true;
-    }
-
-    ///////////////////////////////////////
-    void newFile() {
-        if (!confirmSave()) return;
-
-        this.npd.ta.setText("");
-        fileName = new String("Unbennant");
-        fileRef = new File(fileName);
-        saved = true;
-        newFileFlag = true;
-        this.npd.f.setTitle(fileName + " - " + applicationTitle);
-    }
-//////////////////////////////////////
-}// Ende der Klasse FileOperationDE
-
-/************************************/
-class FNotepadDE implements ActionListener, MenuConstants {
 
     JFrame f;
     JTextArea ta;
     JLabel statusBar;
 
-    private String fileName = "Unbennant";
+    private String fileName = "Unbenannt";
     private boolean saved = true;
     String applicationName = "FNotepad";
 
@@ -236,8 +24,8 @@ class FNotepadDE implements ActionListener, MenuConstants {
     int lastSearchIndex;
 
     FileOperationDE fileHandler;
-    FontChooser fontDialog = null;
-    FindDialog findReplaceDialog = null;
+    FontChooserDE fontDialog = null;
+    FindDialogDE findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
     JColorChooser fcolorChooser = null;
     JDialog backgroundDialog = null;
@@ -257,25 +45,29 @@ class FNotepadDE implements ActionListener, MenuConstants {
     FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Zeichen 0, Wörter 0       ||       Z. 1, Sp. 1  ", JLabel.RIGHT);
-
-
-
-
+        statusBar = new JLabel("Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
+
+
+
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-        f.setLocation(0, 0);
+
+
 
         f.pack();
-        //f.setLocation(100, 50);
         f.setVisible(true);
-
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        f.setSize(getScreenDimensionWithoutTaskbarDE(f));
+        if(!fullscreen){f.setSize(800, 600);}
+
+        f.setVisible(true);
+
+
+
+
 
         fileHandler = new FileOperationDE(this);
 
@@ -306,7 +98,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Zeichen " + letterCount + ", Wörter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("Zeichen " + letterCount + ", W\u00F6rter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Spalte  " + (column + 1));
                     }
                 });
 //////////////////
@@ -327,7 +119,7 @@ class FNotepadDE implements ActionListener, MenuConstants {
 /////////
         WindowListener frameClose = new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
-                if (fileHandler.confirmSave()) System.exit(0);
+                if (fileHandler.confirmSave()) f.dispose();
             }
         };
         f.addWindowListener(frameClose);
@@ -379,8 +171,8 @@ fileHandler.saved=true;
         else if (cmdText.equals(filePrint))
             JOptionPane.showMessageDialog(
                     FNotepadDE.this.f,
-                    "Get ur printer repaired first! It seems u dont have one!",
-                    "Bad Printer",
+                    "Es wurde kein Drucker gefunden, bitte schlie\u00DF einen Drucker an!!",
+                    "Falscher Drucker!!",
                     JOptionPane.INFORMATION_MESSAGE
             );
 ////////////////////////////////////
@@ -400,7 +192,7 @@ fileHandler.saved=true;
             if (FNotepadDE.this.ta.getText().length() == 0)
                 return;    // text box have no text
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialog(FNotepadDE.this.ta);
+                findReplaceDialog = new FindDialogDE(FNotepadDE.this.ta);
             findReplaceDialog.showDialog(FNotepadDE.this.f, true);//find
         }
 ////////////////////////////////////
@@ -409,7 +201,7 @@ fileHandler.saved=true;
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                statusBar.setText("Nichts zu suchen, bitte Finden im Bearbeiten-Menü zuerst probieren !!!!");
+                statusBar.setText("Nichts zu suchen, bitte Finden im Bearbeiten-Men\u00FC zuerst probieren !!!!");
             else
                 findReplaceDialog.findNextWithSelection();
         }
@@ -419,7 +211,7 @@ fileHandler.saved=true;
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialog(FNotepadDE.this.ta);
+                findReplaceDialog = new FindDialogDE(FNotepadDE.this.ta);
             findReplaceDialog.showDialog(FNotepadDE.this.f, false);//replace
         }
 ////////////////////////////////////
@@ -442,9 +234,9 @@ fileHandler.saved=true;
 ////////////////////////////////////
         else if (cmdText.equals(formatFont)) {
             if (fontDialog == null)
-                fontDialog = new FontChooser(ta.getFont());
+                fontDialog = new FontChooserDE(ta.getFont());
 
-            if (fontDialog.showDialog(FNotepadDE.this.f, "Schrift auswählen"))
+            if (fontDialog.showDialog(FNotepadDE.this.f, "Schrift ausw\u00E4hlen"))
                 FNotepadDE.this.ta.setFont(fontDialog.createFont());
         }
 ////////////////////////////////////
@@ -460,8 +252,8 @@ fileHandler.saved=true;
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpAboutFNotepadDE)) {
-            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "Nur für Dich!", JOptionPane.INFORMATION_MESSAGE);
+        else if (cmdText.equals(helpAboutFNotepad)) {
+            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "\u00FCber FNotepad", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
     }//action Performed
@@ -546,7 +338,7 @@ fileHandler.saved=true;
 
     /*********************************/
     void createMenuBar(JFrame f) {
-        JMenuBar mb = new JMenuBar();
+        JMenuBar mb = new JMenuBar(); // Menü-Leiste
         JMenuItem temp;
 
         JMenu fileMenu = createMenu(fileText, KeyEvent.VK_F, mb);
@@ -593,14 +385,14 @@ fileHandler.saved=true;
 
         createCheckBoxMenuItem(viewStatusBar, KeyEvent.VK_S, viewMenu, this).setSelected(true);
 /************For Look and Feel, May not work properly on different operating environment***/
-        LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
+        LookAndFeelMenuDE.createLookAndFeelMenuItem(viewMenu, this.f);
 
 
 
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         temp.setEnabled(false);
         helpMenu.addSeparator();
-        createMenuItem(helpAboutFNotepadDE, KeyEvent.VK_A, helpMenu, this);
+        createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -647,7 +439,7 @@ fileHandler.saved=true;
 
 /**************************************/
 // Menü-Leiste
-interface MenuConstants {
+interface MenuConstantsDE {
     final String fileText = "Datei";
     final String editText = "Bearbeiten";
     final String formatText = "Format";
@@ -655,26 +447,26 @@ interface MenuConstants {
     final String helpText = "Hilfe";
 
     final String fileNew = "Neu";
-    final String fileOpen = "Öffnen...";
+    final String fileOpen = "\u00D6ffnen...";
     final String fileSave = "Speichern";
     final String fileSaveAs = "Speichern Als...";
     final String filePageSetup = "Seiteneinstellungen...";
     final String filePrint = "Drucken";
     final String fileExit = "Beenden";
 
-    final String editUndo = "Rückgängig";
+    final String editUndo = "R\u00FCckg\u00E4ngig";
     final String editCut = "Ausschneiden";
     final String editCopy = "Kopieren";
-    final String editPaste = "Einfügen";
-    final String editDelete = "Löschen";
-    final String editFind = "Finden...";
-    final String editFindNext = "Nächstes finden";
+    final String editPaste = "Einf\u00FCgen";
+    final String editDelete = "L\u00F6schen";
+    final String editFind = "Suchen...";
+    final String editFindNext = "N\u00E4chstes finden";
     final String editReplace = "Ersetzen";
     final String editGoTo = "Gehe zu...";
-    final String editSelectAll = "Alles auswählen";
+    final String editSelectAll = "Alles ausw\u00E4hlen";
     final String editTimeDate = "Zeit/Datum";
 
-    final String formatWordWrap = "Word Wrap";
+    final String formatWordWrap = "Zeilenumbruch";
     final String formatFont = "Schrift...";
     final String formatForeground = "Textfarbe...";
     final String formatBackground = "Hintergrundfarbe...";
@@ -682,13 +474,13 @@ interface MenuConstants {
     final String viewStatusBar = "Statusleiste";
 
     final String helpHelpTopic = "Hilfe";
-    final String helpAboutFNotepadDE = "Über FNotepad";
+    final String helpAboutFNotepad = "\u00DCber FNotepad";
 
     final String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke fürs Benutzen von FNotepad!</strong><br>"
+                    + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
                     + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
 }

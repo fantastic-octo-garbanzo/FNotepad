@@ -1,2 +1,5 @@
-# Alte Dateien
-Nach hier werden alle alten Dateien verschoben!
+# Alte Versionen
+Hier gibt es die älteren Versionen zum Download
+
+# Old versions
+Here you can download older versions
