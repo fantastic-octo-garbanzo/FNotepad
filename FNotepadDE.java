@@ -123,18 +123,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             }
         };
         f.addWindowListener(frameClose);
-//////////////////
-/*
-ta.append("Hello dear hello hi");
-ta.append("\nwho are u dear mister hello");
-ta.append("\nhello bye hel");
-ta.append("\nHello");
-ta.append("\nMiss u mister hello hell");
-fileHandler.saved=true;
-*/
+////////////////////////////////////
     }
-
-    ////////////////////////////////////
+////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
         try {

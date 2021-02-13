@@ -3,13 +3,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /***************************************************/
-class LookAndFeelDemo extends JFrame
+class LookAndFeelDemoDE extends JFrame
 {
 	JLabel label;
 	JMenuBar jmb;
 	JMenu fileMenu;
 
-	LookAndFeelDemo() {
+	LookAndFeelDemoDE() {
 		super("Aussehen \u00E4ndern");
 		add(label = new JLabel("Das ist ein Text"));
 		add(new JButton("Button")); 
@@ -22,14 +22,14 @@ class LookAndFeelDemo extends JFrame
 		setJMenuBar(jmb);
 		fileMenu = new JMenu("Aussehen \u00E4ndern");
 		jmb.add(fileMenu);
-		LookAndFeelMenu.createLookAndFeelMenuItem(fileMenu, this);
+		LookAndFeelMenuDE.createLookAndFeelMenuItem(fileMenu, this);
 		setVisible(true);
 	}
 	////////////////////////
 
 	///////////////////////
 	public static void main(String[] args) {
-		new LookAndFeelDemo();
+		new LookAndFeelDemoDE();
 	}
 	////////////////////////
 }

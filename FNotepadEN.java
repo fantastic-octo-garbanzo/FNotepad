@@ -20,8 +20,8 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
     int lastSearchIndex;
 
     FileOperationEN fileHandler;
-    FontChooser fontDialog = null;
-    FindDialog findReplaceDialog = null;
+    FontChooserEN fontDialog = null;
+    FindDialogEN findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
     JColorChooser fcolorChooser = null;
     JDialog backgroundDialog = null;
@@ -172,7 +172,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
             if (FNotepadEN.this.ta.getText().length() == 0)
                 return;    // text box have no text
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialog(FNotepadEN.this.ta);
+                findReplaceDialog = new FindDialogEN(FNotepadEN.this.ta);
             findReplaceDialog.showDialog(FNotepadEN.this.f, true);//find
         }
 ////////////////////////////////////
@@ -191,7 +191,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialog(FNotepadEN.this.ta);
+                findReplaceDialog = new FindDialogEN(FNotepadEN.this.ta);
             findReplaceDialog.showDialog(FNotepadEN.this.f, false);//replace
         }
 ////////////////////////////////////
@@ -214,7 +214,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 ////////////////////////////////////
         else if (cmdText.equals(formatFont)) {
             if (fontDialog == null)
-                fontDialog = new FontChooser(ta.getFont());
+                fontDialog = new FontChooserEN(ta.getFont());
 
             if (fontDialog.showDialog(FNotepadEN.this.f, "Choose a font"))
                 FNotepadEN.this.ta.setFont(fontDialog.createFont());
@@ -365,7 +365,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
 
         createCheckBoxMenuItem(viewStatusBar, KeyEvent.VK_S, viewMenu, this).setSelected(true);
 /************For Look and Feel, May not work properly on different operating environment***/
-        LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
+        LookAndFeelMenuEN.createLookAndFeelMenuItem(viewMenu, this.f);
 
 
         temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);

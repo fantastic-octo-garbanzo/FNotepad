@@ -63,7 +63,7 @@ public class FindDialogDE extends JPanel implements ActionListener {
 
 	JButton findNextButton, replaceButton, replaceAllButton, cancelButton;
 
-	JPanel direction,buttonPanel, findButtonPanel, replaceButtonPanel;
+	JPanel direction, buttonPanel, findButtonPanel, replaceButtonPanel;
 	CardLayout card;
 
 	private boolean ok;
@@ -193,7 +193,7 @@ public class FindDialogDE extends JPanel implements ActionListener {
 		if(up.isSelected()) {
 			if(selStart != selEnd) lastIndex = selEnd - s2.length() - 1;
 			
-			/***** Notepad doesn't use the else part, but it should be, instead of using caretPosition.***
+			/***** FNotepad doesn't use the else part, but it should be, instead of using caretPosition.***
 			else
 				lastIndex = lastIndex-s2.length();
 			******/
@@ -289,7 +289,7 @@ public class FindDialogDE extends JPanel implements ActionListener {
 
 		dialog.setVisible(true);
 
-		// System.out.println(dialog.getWidth() + " "+dialog.getHeight());
+		// System.out.println(dialog.getWidth() + " " + dialog.getHeight());
 		return ok;
 	}
 	//////////////////////////////

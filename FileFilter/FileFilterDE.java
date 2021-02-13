@@ -4,24 +4,23 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 /***************************************************/
-class FileFilterDemo extends JFrame {
+class FileFilterDemoDE extends JFrame {
 	JLabel myLabel;
 	JButton myButton;
 
 	JFileChooser chooser;
 
-	FileFilterDemo() {
+	FileFilterDemoDE() {
 		super("File Filter Demo");
 		myLabel = new JLabel("Keine Datei ausgew\u00E4hlt");
 		myButton = new JButton("Datei w\u00E4hlen");
 
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (FileFilterDemo.this.chooser == null) chooser = new JFileChooser();
-				chooser.addChoosableFileFilter(new FileFilterDE(".java","Java Source Files(*.java)"));
-				chooser.addChoosableFileFilter(new FileFilterDE(".txt","Text Files(*.txt)"));
-				//filter=new MyFilter();	then filter is equivalent to select all files
-				if(chooser.showDialog(FileFilterDemo.this, "Diese Datei ausw\u00E4hlen") == JFileChooser.APPROVE_OPTION) FileFilterDemo.this.myLabel.setText(chooser.getSelectedFile().getPath());
+				if (FileFilterDemoDE.this.chooser == null) chooser = new JFileChooser();
+				chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
+				chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
+				if(chooser.showDialog(FileFilterDemoDE.this, "Diese Datei ausw\u00E4hlen") == JFileChooser.APPROVE_OPTION) FileFilterDemoDE.this.myLabel.setText(chooser.getSelectedFile().getPath());
 			}
 		};
 
@@ -35,7 +34,7 @@ class FileFilterDemo extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		FileFilterDemo ffd = new FileFilterDemo();
+		FileFilterDemoDE ffd = new FileFilterDemoDE();
 		ffd.setVisible(true);
 	}
 }
