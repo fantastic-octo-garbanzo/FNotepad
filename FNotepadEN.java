@@ -85,7 +85,7 @@ class FNotepadEN implements ActionListener, MenuConstantsEN {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Letters " + letterCount + ", Words "+ wordCount + "       ||       Ln " + (lineNumber + 1) + ", Col " + (column + 1));
+                        statusBar.setText("Letters " + letterCount + ", Words "+ wordCount + "       ||       Line " + (lineNumber + 1) + ", Column " + (column + 1));
                     }
                 });
 //////////////////
