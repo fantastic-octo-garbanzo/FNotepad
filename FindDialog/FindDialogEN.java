@@ -4,12 +4,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 /******************************************************/
-class FindReplaceDemo extends JFrame {
-	FindDialog dialog = null; 
+class FindReplaceDemoEN extends JFrame {
+	FindDialogEN dialog = null; 
 	JTextArea ta;
 	JButton findButton, replaceButton;
 
-	FindReplaceDemo() {
+	FindReplaceDemoEN() {
 		super("Find Demo");
 
 		ta = new JTextArea(7, 20);
@@ -17,8 +17,8 @@ class FindReplaceDemo extends JFrame {
 
 		ActionListener ac1 = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FindDialog(FindReplaceDemo.this.ta);
-				dialog.showDialog(FindReplaceDemo.this, true);// find
+				if(dialog == null) dialog = new FindDialogEN(FindReplaceDemoEN.this.ta);
+				dialog.showDialog(FindReplaceDemoEN.this, true);// find
 			}
 		};
 		findButton.addActionListener(ac1);
@@ -27,8 +27,8 @@ class FindReplaceDemo extends JFrame {
 
 		ActionListener ac2 = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FindDialog(FindReplaceDemo.this.ta);
-				dialog.showDialog(FindReplaceDemo.this,false);// find
+				if(dialog == null) dialog = new FindDialogEN(FindReplaceDemoEN.this.ta);
+				dialog.showDialog(FindReplaceDemoEN.this,false);// find
 			}
 		};
 		replaceButton.addActionListener(ac2);
@@ -44,12 +44,12 @@ class FindReplaceDemo extends JFrame {
 	}
 	////////////////////////////////
 	public static void main(String[] args) {
-		new FindReplaceDemo();
+		new FindReplaceDemoEN();
 	}
 
 }
 /******************************************************/
-public class FindDialog extends JPanel implements ActionListener {
+public class FindDialogEN extends JPanel implements ActionListener {
 	JTextArea jta;
 	public int lastIndex;
 	JLabel replaceLabel;
@@ -69,7 +69,7 @@ public class FindDialog extends JPanel implements ActionListener {
 	private boolean ok;
 	private JDialog dialog;
 	///////////////////////
-	public FindDialog(JTextArea jta) {
+	public FindDialogEN(JTextArea jta) {
 
 		this.jta = jta;
 		findWhat = new TextField(20);

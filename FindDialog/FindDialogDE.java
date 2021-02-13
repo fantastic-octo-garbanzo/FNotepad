@@ -4,12 +4,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 /******************************************************/
-class FindReplaceDemo extends JFrame {
-	FindDialog dialog = null; 
+class FindReplaceDemoDE extends JFrame {
+	FindDialogDE dialog = null; 
 	JTextArea ta;
 	JButton findButton, replaceButton;
 
-	FindReplaceDemo() {
+	FindReplaceDemoDE() {
 		super("Suchen");
 
 		ta = new JTextArea(7, 20);
@@ -17,8 +17,8 @@ class FindReplaceDemo extends JFrame {
 
 		ActionListener ac1 = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FindDialog(FindReplaceDemo.this.ta);
-				dialog.showDialog(FindReplaceDemo.this, true);// find
+				if(dialog == null) dialog = new FindDialogDE(FindReplaceDemoDE.this.ta);
+				dialog.showDialog(FindReplaceDemoDE.this, true);// find
 			}
 		};
 		findButton.addActionListener(ac1);
@@ -27,8 +27,8 @@ class FindReplaceDemo extends JFrame {
 
 		ActionListener ac2 = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FindDialog(FindReplaceDemo.this.ta);
-				dialog.showDialog(FindReplaceDemo.this,false);// find
+				if(dialog == null) dialog = new FindDialogDE(FindReplaceDemoDE.this.ta);
+				dialog.showDialog(FindReplaceDemoDE.this,false);// find
 			}
 		};
 		replaceButton.addActionListener(ac2);
@@ -44,7 +44,7 @@ class FindReplaceDemo extends JFrame {
 	}
 	////////////////////////////////
 	public static void main(String[] args) {
-		new FindReplaceDemo();
+		new FindReplaceDemoDE();
 	}
 
 }
