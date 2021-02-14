@@ -436,43 +436,43 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 /**************************************/
 // Menü-Leiste
 interface MenuConstantsDE {
-    final String fileText = "Datei";
-    final String editText = "Bearbeiten";
-    final String formatText = "Format";
-    final String viewText = "Ansicht";
-    final String helpText = "Hilfe";
+    String fileText = "Datei";
+    String editText = "Bearbeiten";
+    String formatText = "Format";
+    String viewText = "Ansicht";
+    String helpText = "Hilfe";
 
-    final String fileNew = "Neu";
-    final String fileOpen = "\u00D6ffnen...";
-    final String fileSave = "Speichern";
-    final String fileSaveAs = "Speichern Als...";
-    final String filePageSetup = "Seiteneinstellungen...";
-    final String filePrint = "Drucken";
-    final String fileExit = "Beenden";
+    String fileNew = "Neu";
+    String fileOpen = "\u00D6ffnen...";
+    String fileSave = "Speichern";
+    String fileSaveAs = "Speichern Als...";
+    String filePageSetup = "Seiteneinstellungen...";
+    String filePrint = "Drucken";
+    String fileExit = "Beenden";
 
-    final String editUndo = "R\u00FCckg\u00E4ngig";
-    final String editCut = "Ausschneiden";
-    final String editCopy = "Kopieren";
-    final String editPaste = "Einf\u00FCgen";
-    final String editDelete = "L\u00F6schen";
-    final String editFind = "Suchen...";
-    final String editFindNext = "N\u00E4chstes finden";
-    final String editReplace = "Ersetzen";
-    final String editGoTo = "Gehe zu...";
-    final String editSelectAll = "Alles ausw\u00E4hlen";
-    final String editTimeDate = "Zeit/Datum";
+    String editUndo = "R\u00FCckg\u00E4ngig";
+    String editCut = "Ausschneiden";
+    String editCopy = "Kopieren";
+    String editPaste = "Einf\u00FCgen";
+    String editDelete = "L\u00F6schen";
+    String editFind = "Suchen...";
+    String editFindNext = "N\u00E4chstes finden";
+    String editReplace = "Ersetzen";
+    String editGoTo = "Gehe zu...";
+    String editSelectAll = "Alles ausw\u00E4hlen";
+    String editTimeDate = "Zeit/Datum";
 
-    final String formatWordWrap = "Zeilenumbruch";
-    final String formatFont = "Schrift...";
-    final String formatForeground = "Textfarbe...";
-    final String formatBackground = "Hintergrundfarbe...";
+    String formatWordWrap = "Zeilenumbruch";
+    String formatFont = "Schrift...";
+    String formatForeground = "Textfarbe...";
+    String formatBackground = "Hintergrundfarbe...";
 
-    final String viewStatusBar = "Statusleiste";
+    String viewStatusBar = "Statusleiste";
 
-    final String helpHelpTopic = "Hilfe";
-    final String helpAboutFNotepad = "\u00DCber FNotepad";
+    String helpHelpTopic = "Hilfe";
+    String helpAboutFNotepad = "\u00DCber FNotepad";
 
-    final String aboutText =
+    String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"

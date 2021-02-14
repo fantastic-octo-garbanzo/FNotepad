@@ -425,43 +425,43 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 /**************************************/
 // Menu
 interface MenuConstantsEN {
-    final String fileText = "File";
-    final String editText = "Edit";
-    final String formatText = "Format";
-    final String viewText = "View";
-    final String helpText = "Help";
+    String fileText = "File";
+    String editText = "Edit";
+    String formatText = "Format";
+    String viewText = "View";
+    String helpText = "Help";
 
-    final String fileNew = "New";
-    final String fileOpen = "Open...";
-    final String fileSave = "Save";
-    final String fileSaveAs = "Save As...";
-    final String filePageSetup = "Page Setup...";
-    final String filePrint = "Print";
-    final String fileExit = "Exit";
+    String fileNew = "New";
+    String fileOpen = "Open...";
+    String fileSave = "Save";
+    String fileSaveAs = "Save As...";
+    String filePageSetup = "Page Setup...";
+    String filePrint = "Print";
+    String fileExit = "Exit";
 
-    final String editUndo = "Undo";
-    final String editCut = "Cut";
-    final String editCopy = "Copy";
-    final String editPaste = "Paste";
-    final String editDelete = "Delete";
-    final String editFind = "Find...";
-    final String editFindNext = "Find Next";
-    final String editReplace = "Replace";
-    final String editGoTo = "Go To...";
-    final String editSelectAll = "Select All";
-    final String editTimeDate = "Time/Date";
+    String editUndo = "Undo";
+    String editCut = "Cut";
+    String editCopy = "Copy";
+    String editPaste = "Paste";
+    String editDelete = "Delete";
+    String editFind = "Find...";
+    String editFindNext = "Find Next";
+    String editReplace = "Replace";
+    String editGoTo = "Go To...";
+    String editSelectAll = "Select All";
+    String editTimeDate = "Time/Date";
 
-    final String formatWordWrap = "Word Wrap";
-    final String formatFont = "Font...";
-    final String formatForeground = "Set Text color...";
-    final String formatBackground = "Set Pad color...";
+    String formatWordWrap = "Word Wrap";
+    String formatFont = "Font...";
+    String formatForeground = "Set Text color...";
+    String formatBackground = "Set Pad color...";
 
-    final String viewStatusBar = "Status Bar";
+    String viewStatusBar = "Status Bar";
 
-    final String helpHelpTopic = "Help Topic";
-    final String helpAboutFNotepad = "About FNotepad";
+    String helpHelpTopic = "Help Topic";
+    String helpAboutFNotepad = "About FNotepad";
 
-    final String aboutText =
+    String aboutText =
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>From fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Compiled by OpenJDK15.<br><br>"
