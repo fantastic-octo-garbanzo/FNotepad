@@ -1,3 +1,5 @@
+package LookAndFeelMenu;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -48,7 +50,7 @@ public class LookAndFeelMenuDE {
 			rbm[i].setMnemonic(infos[i].getName().charAt(0));
 			tmp.add(rbm[i]);
 			bg.add(rbm[i]);
-			rbm[i].addActionListener(new LookAndFeelMenuListener(infos[i].getClassName(),cmp));
+			rbm[i].addActionListener(new LookAndFeelMenuListenerDE(infos[i].getClassName(),cmp));
 		}
 
 		rbm[0].setSelected(true);
@@ -58,11 +60,11 @@ public class LookAndFeelMenuDE {
 
 }
 /**************************/
-class LookAndFeelMenuListener implements ActionListener {
+class LookAndFeelMenuListenerDE implements ActionListener {
 	String classname;
 	Component jf;
 	/////////////////////
-	LookAndFeelMenuListener(String cln, Component jf) {
+	LookAndFeelMenuListenerDE(String cln, Component jf) {
 		this.jf = jf;
 		classname = new String(cln);
 	}

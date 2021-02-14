@@ -1,9 +1,13 @@
+package FileOperation;
 // Imports
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import NotePads.FNotepadEN;
+import FileFilter.FileFilterEN;
+
 
 class FileOperationExampleEN extends JFrame {
 	JMenuBar mb;
@@ -49,10 +53,10 @@ class FileOperationExampleEN extends JFrame {
 }
 /*************************************/
 // start of class FileOperationEN
-class FileOperationEN {
+public class FileOperationEN {
     FNotepadEN npd;
 
-    boolean saved;
+    public boolean saved;
     boolean newFileFlag;
     String fileName;
     String applicationTitle = "FNotepad";
@@ -78,7 +82,7 @@ class FileOperationEN {
     }
 
     /////////////////////////
-    FileOperationEN(FNotepadEN npd) {
+    public FileOperationEN(FNotepadEN npd) {
         this.npd = npd;
 
         saved = true;
@@ -90,12 +94,12 @@ class FileOperationEN {
         // Different file extensions 
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new FileFilterEN(".java", "Java Source Files(*.java)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
+        chooser.addChoosableFileFilter(new FileFilterEN(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new FileFilterEN(".c", "C Programming Language(.c)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".cpp", "C++(.cpp)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".cs", "C#"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".d", "D Programming Language(.d)"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
+		chooser.addChoosableFileFilter(new FileFilterEN(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".bat", "Batch File(*.bat)"));
         chooser.addChoosableFileFilter(new FileFilterEN(".txt", "Text Files(*.txt)"));
 		chooser.addChoosableFileFilter(new FileFilterEN(".rtf", "Rich Text Format(*.rtf)"));
@@ -126,7 +130,7 @@ class FileOperationEN {
     }
 
     ////////////////////////
-    boolean saveThisFile() {
+    public boolean saveThisFile() {
 
         if (!newFileFlag) {
             return saveFile(fileRef);
@@ -136,7 +140,7 @@ class FileOperationEN {
     }
 
     ////////////////////////////////////
-    boolean saveAsFile() {
+    public boolean saveAsFile() {
         File temp = null;
         chooser.setDialogTitle("Save As...");
         chooser.setApproveButtonText("Save Now");
@@ -191,7 +195,7 @@ class FileOperationEN {
     }
 
     ///////////////////////
-    void openFile() {
+    public void openFile() {
         if (!confirmSave()) return;
         chooser.setDialogTitle("Open File...");
         chooser.setApproveButtonText("Open this");
@@ -244,7 +248,7 @@ class FileOperationEN {
     }
 
     ///////////////////////
-    boolean confirmSave() {
+    public boolean confirmSave() {
         String strMsg = "<html>The text in the " + fileName + " file has been changed.<br>" +
                 "Do you want to save the changes?<html>";
         if (!saved) {
@@ -257,7 +261,7 @@ class FileOperationEN {
     }
 
     ///////////////////////////////////////
-    void newFile() {
+    public void newFile() {
         if (!confirmSave()) return;
         
         new FNotepadEN(true);

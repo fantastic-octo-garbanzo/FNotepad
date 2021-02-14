@@ -1,4 +1,6 @@
+package NotePads;
 // Imports
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;

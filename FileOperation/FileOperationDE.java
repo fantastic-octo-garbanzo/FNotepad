@@ -1,9 +1,16 @@
+package FileOperation;
 // Imports
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import FileFilter.*;
+import FindDialog.*;
+import FontChooser.*;
+import LookAndFeelMenu.*;
+import NotePads.FNotepadDE;
+
 
 class FileOperationExampleDE extends JFrame {
 	JMenuBar mb;
@@ -52,7 +59,7 @@ class FileOperationExampleDE extends JFrame {
 public class FileOperationDE {
     FNotepadDE npd;
 
-    boolean saved;
+    public boolean saved;
     boolean newFileFlag;
     String fileName;
     String applicationTitle = "FNotepad";
@@ -78,7 +85,7 @@ public class FileOperationDE {
     }
 
     /////////////////////////
-    FileOperationDE(FNotepadDE npd) {
+    public FileOperationDE(FNotepadDE npd) {
         this.npd = npd;
 
         saved = true;
@@ -126,7 +133,7 @@ public class FileOperationDE {
     }
 
     ////////////////////////
-    boolean saveThisFile() {
+    public boolean saveThisFile() {
 
         if (!newFileFlag) {
             return saveFile(fileRef);
@@ -136,7 +143,7 @@ public class FileOperationDE {
     }
 
     ////////////////////////////////////
-    boolean saveAsFile() {
+    public boolean saveAsFile() {
         File temp = null;
         chooser.setDialogTitle("Speichern als...");
         chooser.setApproveButtonText("Jetzt speichern");
@@ -191,7 +198,7 @@ public class FileOperationDE {
     }
 
     ///////////////////////
-    void openFile() {
+    public void openFile() {
         if (!confirmSave()) return;
         chooser.setDialogTitle("\u00D6ffne Datei...");
         chooser.setApproveButtonText("\u00D6ffnen");
@@ -244,7 +251,7 @@ public class FileOperationDE {
     }
 
     ///////////////////////
-    boolean confirmSave() {
+    public boolean confirmSave() {
         String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde ge\u00E4ndert.<br>" +
                 "Wollen Sie die \u00C4nderungen speichern?<html>";
         if (!saved) {
@@ -257,7 +264,7 @@ public class FileOperationDE {
     }
 
     ///////////////////////////////////////
-    void newFile() {
+    public void newFile() {
         if (!confirmSave()) return;
         
         new FNotepadDE(true);
