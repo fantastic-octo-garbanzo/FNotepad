@@ -1,6 +1,6 @@
 # FNotepad Roadmap
 
-## FNotepad [v1.4.0]
+## FNotepad v1.4.0
 
 ### Added
 
