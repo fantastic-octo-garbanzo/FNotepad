@@ -6,24 +6,64 @@ on:
     branches:
       - "main"
 
+
+            
+
+
 jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
-
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
     steps:
-      # ...
-      - name: "Build & test"
-        run: |
-          echo "done!"
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # TODO: Can I just download the artifact from the previous commit run??
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: push to github packages with maven
+        continue-on-error: true
+        run: mvn -B deploy --file pom.xml
+      - name: clean up target folder
+        run: rm -rf ./target/lib ./target/test-classes
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        # TODO: make this only run if the build step at least ran
+        if: always()
+        with:
+          # Artifact name
+          name: auto-pipeline-jar
+          # Directory containing files to upload
+          path: ./target
+      - name: Create zip
+        run: cd target; zip -r ../target.zip .
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
-          files: |
-            FNotepad/*.zip
-            FNotepad/*.exe
-            FNotepad/out/artifacts/*.jar
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./target.zip
+          asset_name: target.zip
+          asset_content_type: application/zip
+      # TODO: Upload the jars individually, but for now this is good enough
