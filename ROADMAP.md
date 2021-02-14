@@ -11,3 +11,10 @@
 ### Changed
 
 - Project struckture (again)
+
+
+## FNotepad v1.5.0
+
+### Added
+
+- Multiple tabs
