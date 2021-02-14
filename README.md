@@ -6,13 +6,13 @@
 
 Ein Texteditor in Java geschrieben, verfügbar in Deutsch und Englisch.
 
-Das [neuste Release][1] oder `release/v.1.3.2/FNotepad_1.3.2.jar` downloaden und mit `java -jar FNotepad_1.3.2.jar` ausführen.
+Das [neuste Release][1] downloaden und die .jar-Datei mit `java -jar FNotepad_1.3.2.jar` ausführen.
 
 ### English
 
 A texteditor written in Java, availible in German and English.
 
-Download the [latest release][1] or `release/v1.3.2/FNotepad_1.3.2.jar` and run it with `java -jar FNotepad_1.3.2.jar`.
+Download the [latest release][1] and run the .jar file with `java -jar FNotepad_1.3.2.jar`.
 
 
 
