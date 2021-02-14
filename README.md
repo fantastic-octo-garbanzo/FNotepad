@@ -16,9 +16,8 @@ Download the [latest release][1] and run the .jar file with `java -jar FNotepad_
 
 
 
-## Contributers
-
--> See [CONTRIBUTERS.md][2]
+## [Contributers][2]
+## [Changelog][3]
 
 
 #### If you want to help us or you have a bug report, you can open a Issue. Thank you!
@@ -26,3 +25,4 @@ Download the [latest release][1] and run the .jar file with `java -jar FNotepad_
 
 [1]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
 [2]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/CONTRIBUTERS.md
+[3]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/CHANGELOG.md
