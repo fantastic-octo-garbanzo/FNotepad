@@ -478,5 +478,5 @@ interface MenuConstantsDE {
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue stellen auf<p align=center>"
-                    + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
+                    + "<hr><em><big><a href=\\\"https://github.com/fantastic-octo-garbanzo/FNotepad\\\">https://github.com/fantastic-octo-garbanzo/FNotepad</a></big></em><hr><html>";
 }
