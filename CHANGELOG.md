@@ -48,11 +48,17 @@
 ## FNotepad [v1.0.0][1]
 
 
-[0] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
-[1] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.0.0
-[2] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.0
-[3] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.1
-[4] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.0
-[5] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.1
-[6] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.2
-[7] = https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.1
+[0]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
+[7]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.1
+[6]:  https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.2
+[5]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.1
+[4]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.0
+[3]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.1
+[2]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.0
+[1]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.0.0
+
+
+
+
+
+
