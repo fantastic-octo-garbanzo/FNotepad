@@ -2,12 +2,12 @@
 
 ## FNotepad [v1.4.0]
 
-###Added
+### Added
 
 - rpm package
 - deb package
 - This roadmap
 
-###Changed
+### Changed
 
 - Project struckture (again)
