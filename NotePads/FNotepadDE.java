@@ -473,6 +473,7 @@ interface MenuConstantsDE {
     String helpAboutFNotepad = "\u00DCber FNotepad";
 
     String aboutText =
+
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=right>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=left>Mit OpenJDK15 compiliert.<br><br>"
