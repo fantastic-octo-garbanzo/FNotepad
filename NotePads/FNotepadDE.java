@@ -56,7 +56,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         c.add("4");
         c.add("8");
         f.add(c);
-        statusBar = new JLabel("Tabulatorbreite: "+tabSize+"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Tabulatorbreite: 4		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
@@ -106,7 +106,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Zeichen " + letterCount + ", W\u00F6rter "+ wordCount + "       ||       Zeile " + (lineNumber + 1) + ", Spalte  " + (column + 1));
+                        statusBar.setText("Tabulatorbreite: "+tabSize+"     ||      Zeichen "+letterCount+", W\u00F6rter "+wordCount+"       ||       Zeile "+(lineNumber + 1)+", Spalte "+(column + 1));
                     }
                 });
 //////////////////
