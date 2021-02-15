@@ -1,8 +1,10 @@
+package NotePads;
 // Imports
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
-
+import java.awt.event.ActionEvent;
 /**********/
 
 // Beginn der Klasse FNotepad
@@ -23,16 +25,21 @@ public class FNotepad extends JFrame{
         JLabel l = new JLabel("Welcome to FNotepad"); // Text über Auswahlmenü
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
-
-        // Button zur Auswahlbestätigung
+        
+		// Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
         b.setBounds(200,250, 200,50);
+     
+		// Button zum Abbrechen
+		JButton a=new JButton("Cancel");
+		a.setBounds(200, 350, 200, 50);
 		
 		// Auswahlmenü
         Choice c = new Choice();
         c.setBounds(250,150, 100,50);
         c.add("English");
         c.add("Deutsch");
+
 
 
         Choice ch = new Choice();
@@ -43,16 +50,20 @@ public class FNotepad extends JFrame{
 
 
         add(l);
-        add(b);
+		add(a);
+		add(b);
         add(c);
         add(ch);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSize(getScreenDimensionWithoutTaskbar(this)); // Öffnet Fenster im Vollbild
+        setSize(650, 600);
 
         setLayout(null);
         setVisible(true);
+
+        
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // Öffnet Fenster im Vollbild
 
         c.addItemListener(ie -> {
             // Wenn Deutsch ausgewählt ist, wird alles auf Deutsch gesetzt
@@ -60,7 +71,8 @@ public class FNotepad extends JFrame{
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
-                ch.removeAll();
+				a.setText("Abbrechen");
+				ch.removeAll();
                 ch.add("Vollbild");
                 ch.add("Fenstermodus");
             }
@@ -69,7 +81,8 @@ public class FNotepad extends JFrame{
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
-                ch.removeAll();
+				a.setText("Cancel");
+				ch.removeAll();
                 ch.add("fullscreen");
                 ch.add("windowed");
             }
@@ -90,7 +103,14 @@ public class FNotepad extends JFrame{
 
             }
         });
-    }
+		a.addActionListener((ActionEvent actionEvent) ->
+		{
+			System.exit(0);
+			setVisible(false);
+		});
+		
+	}
+	
 
     public static void main(String[] args) {
         new FNotepad();

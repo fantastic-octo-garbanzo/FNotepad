@@ -2,7 +2,8 @@
 
 ## Roles
 
-
+- Releases: lm41
+- RPM packages: EFibo
 
 ## Members
 
@@ -10,3 +11,4 @@
 - EFibo
 - FF03de
 - rendeiwave
+
