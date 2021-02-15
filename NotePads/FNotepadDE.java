@@ -129,6 +129,13 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         };
         f.addWindowListener(frameClose);
 ////////////////////////////////////
+		// Get selected tabulator size
+		ta.setTabSize((Integer) TabCombo.getSelectedItem());
+		TabCombo.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				ta.setTabSize((Integer) TabCombo.getSelectedItem());
+			}
+		});
     }
 ////////////////////////////////////
     void goTo() {
