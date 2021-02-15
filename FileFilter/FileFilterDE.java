@@ -1,55 +1,56 @@
+package FileFilter;
+
 import java.io.File;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 /***************************************************/
-class FileFilterDemo extends JFrame {
+class FileFilterDemoDE extends JFrame {
 	JLabel myLabel;
 	JButton myButton;
 
 	JFileChooser chooser;
 
-	FileFilterDemo() {
+	FileFilterDemoDE() {
 		super("File Filter Demo");
-		myLabel = new JLabel("No file is choosed yet");
-		myButton = new JButton("Choose file");
+		myLabel = new JLabel("Keine Datei ausgew\u00E4hlt");
+		myButton = new JButton("Datei w\u00E4hlen");
 
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (FileFilterDemo.this.chooser == null) chooser = new JFileChooser();
-				chooser.addChoosableFileFilter(new MyFileFilter(".java","Java Source Files(*.java)"));
-				chooser.addChoosableFileFilter(new MyFileFilter(".txt","Text Files(*.txt)"));
-				//filter=new MyFilter();	then filter is equivalent to select all files
-				if(chooser.showDialog(FileFilterDemo.this, "Select this") == JFileChooser.APPROVE_OPTION) FileFilterDemo.this.myLabel.setText(chooser.getSelectedFile().getPath());
+				if (FileFilterDemoDE.this.chooser == null) chooser = new JFileChooser();
+				chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
+				chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
+				if(chooser.showDialog(FileFilterDemoDE.this, "Diese Datei ausw\u00E4hlen") == JFileChooser.APPROVE_OPTION) FileFilterDemoDE.this.myLabel.setText(chooser.getSelectedFile().getPath());
 			}
 		};
 
 		myButton.addActionListener(listener);
 
-		add(myLabel, "Center");
-		add(myButton, "South");
+		add(myLabel, "Mitte");
+		add(myButton, "Süden");
 
 		setSize(300,300);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
-		FileFilterDemo ffd = new FileFilterDemo();
+		FileFilterDemoDE ffd = new FileFilterDemoDE();
 		ffd.setVisible(true);
 	}
 }
 /***************************************************/
-public class MyFileFilter extends FileFilter {
+public class FileFilterDE extends FileFilter {
 	private String extension;
 	private String description;
 	////////////////
-	public MyFileFilter() {
+	public FileFilterDE() {
 		setExtension(null);
 		setDescription(null);
 	}
 	////////////////
-	public MyFileFilter(final String ext, final String desc) {
+	public FileFilterDE(final String ext, final String desc) {
 		setExtension(ext);
 		setDescription(desc);
 	}
@@ -66,7 +67,7 @@ public class MyFileFilter extends FileFilter {
 	}
 	////////////////
 	public void setDescription(String desc) {
-		if(desc == null) description = new String("All Files(*.*)");
+		if(desc == null) description = new String("Alle Dateien(*.*)");
 		else description = new String(desc);
 	}
 	////////////////
