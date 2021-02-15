@@ -20,6 +20,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
+    int tabSize = 4;
 
     private String fileName = "Unbenannt";
     private boolean saved = true;
@@ -27,10 +28,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
     String searchString, replaceString;
     int lastSearchIndex;
-    
-    Object[] items = {2, 4, 8};
-    final JComboBox<Object> TabCombo = new JComboBox<>(items);
-
+	
     FileOperationDE fileHandler;
     FontChooserDE fontDialog = null;
     FindDialogDE findReplaceDialog = null;
@@ -53,8 +51,13 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        f.add(TabCombo);
-        statusBar = new JLabel("Tabulatorbreite: "+TabCombo+"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
+        Choice c = new Choice();
+        c.add("2");
+        c.add("4");
+        c.add("8");
+        f.add(c);
+        statusBar = new JLabel("Tabulatorbreite: "+tabSize+"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
+        ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
 
@@ -130,10 +133,17 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.addWindowListener(frameClose);
 ////////////////////////////////////
 		// Get selected tabulator size
-		ta.setTabSize((Integer) TabCombo.getSelectedItem());
-		TabCombo.addItemListener(new ItemListener() {
+		c.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				ta.setTabSize((Integer) TabCombo.getSelectedItem());
+				if(c.getSelectedItem().equals("2")) {
+					tabSize = 2;
+				}
+				else if(c.getSelectedItem().equals("4")) {
+					tabSize = 4;
+				}
+				else if(c.getSelectedItem().equals("8")) {
+					tabSize = 8;
+				}
 			}
 		});
     }
