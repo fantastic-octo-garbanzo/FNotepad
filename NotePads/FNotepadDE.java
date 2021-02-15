@@ -91,6 +91,11 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
                             letterCount = text.length();
                             wordCount = text.split("\\s").length;
+                            if (!FileOperationDE.isSave()){
+                                f.setTitle(FileOperationDE.getFileName() + "* - " + applicationName);
+                            } else {
+                                f.setTitle(FileOperationDE.getFileName() + " - " + applicationName);
+                            }
                             //System.out.println(wordCount+ " " +letterCount);
 
 

@@ -56,16 +56,16 @@ class FileOperationExampleEN extends JFrame {
 public class FileOperationEN {
     FNotepadEN npd;
 
-    public boolean saved;
+    public static boolean saved;
     boolean newFileFlag;
-    String fileName;
+    static String fileName;
     String applicationTitle = "FNotepad";
 
     File fileRef;
     JFileChooser chooser;
 
     /////////////////////////////
-    boolean isSave() {
+    public static boolean isSave() {
         return saved;
     }
 
@@ -73,7 +73,7 @@ public class FileOperationEN {
         this.saved = saved;
     }
 
-    String getFileName() {
+    public static String getFileName() {
         return new String(fileName);
     }
 

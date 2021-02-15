@@ -59,16 +59,16 @@ class FileOperationExampleDE extends JFrame {
 public class FileOperationDE {
     FNotepadDE npd;
 
-    public boolean saved;
+    public static boolean saved;
     boolean newFileFlag;
-    String fileName;
+    static String fileName;
     String applicationTitle = "FNotepad";
 
     File fileRef;
     JFileChooser chooser;
 
     /////////////////////////////
-    boolean isSave() {
+    public static boolean isSave() {
         return saved;
     }
 
@@ -76,7 +76,7 @@ public class FileOperationDE {
         this.saved = saved;
     }
 
-    String getFileName() {
+    public static String getFileName() {
         return new String(fileName);
     }
 
@@ -252,7 +252,7 @@ public class FileOperationDE {
 
     ///////////////////////
     public boolean confirmSave() {
-        String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde ge\u00E4ndert.<br>" +
+        String strMsg = "<html>Der Inhalt der Datei \"" + fileName + "\" wurde ge\u00E4ndert.<br>" +
                 "Wollen Sie die \u00C4nderungen speichern?<html>";
         if (!saved) {
             int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);

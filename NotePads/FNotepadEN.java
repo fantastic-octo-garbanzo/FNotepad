@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import FileOperation.FileOperationDE;
 import FileOperation.FileOperationEN;
 import FindDialog.FindDialogEN;
 import FileFilter.FileFilterEN;
@@ -79,6 +80,11 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 
                             letterCount = text.length();
                             wordCount = text.split("\\s").length;
+                            if (!FileOperationEN.isSave()){
+                                f.setTitle(FileOperationEN.getFileName() + "* - " + applicationName);
+                            } else {
+                                f.setTitle(FileOperationEN.getFileName() + " - " + applicationName);
+                            }
                             //System.out.println(wordCount+ " " +letterCount);
 
 
