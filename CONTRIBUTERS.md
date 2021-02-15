@@ -3,6 +3,7 @@
 ## Roles
 
 - Releases: lm41
+- RPM packages: EFibo
 
 ## Members
 
