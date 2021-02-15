@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 /**********/
-
+/**
 // Beginn der Klasse FNotepad
 public class FNotepad extends JFrame{
 
@@ -116,3 +116,4 @@ public class FNotepad extends JFrame{
         new FNotepad();
     }
 }
+*/

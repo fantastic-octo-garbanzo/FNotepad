@@ -5,16 +5,16 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import NotePads.FNotepadEN;
-import FileFilter.FileFilterEN;
+import NotePads.FNP;
+import FileFilter.FileFilterFNP;
 
 
-class FileOperationExampleEN extends JFrame {
+class FileOperationExample extends JFrame {
 	JMenuBar mb;
 	JMenu file;
 	JMenuItem open;
 	JTextArea ta;
-	FileOperationExampleEN(){
+	FileOperationExample(){
 		open = new JMenuItem("Open File");
 		file = new JMenu("File");
 		file.add(open);
@@ -48,13 +48,13 @@ class FileOperationExampleEN extends JFrame {
     }
 ///////////////////////////////////////
     public static void main(String[] args) {
-		new FileOperationExampleEN();
+		new FileOperationExample();
 	}
 }
 /*************************************/
 // start of class FileOperationEN
-public class FileOperationEN {
-    FNotepadEN npd;
+public class FileOperation {
+    FNP npd;
 
     public static boolean saved;
     boolean newFileFlag;
@@ -82,7 +82,7 @@ public class FileOperationEN {
     }
 
     /////////////////////////
-    public FileOperationEN(FNotepadEN npd) {
+    public FileOperation(FNP npd) {
         this.npd = npd;
 
         saved = true;
@@ -93,20 +93,20 @@ public class FileOperationEN {
 
         // Different file extensions 
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new FileFilterEN(".java", "Java Source Files(*.java)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".c", "C Programming Language(.c)"));
-		chooser.addChoosableFileFilter(new FileFilterEN(".cpp", "C++(.cpp)"));
-		chooser.addChoosableFileFilter(new FileFilterEN(".cs", "C#"));
-		chooser.addChoosableFileFilter(new FileFilterEN(".d", "D Programming Language(.d)"));
-		chooser.addChoosableFileFilter(new FileFilterEN(".sh", "Shell Script File(*.sh)"));
-		chooser.addChoosableFileFilter(new FileFilterEN(".bat", "Batch File(*.bat)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".txt", "Text Files(*.txt)"));
-		chooser.addChoosableFileFilter(new FileFilterEN(".rtf", "Rich Text Format(*.rtf)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".pdf", "Portable Document Files(*.pdf)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".html", "Hyper Text Markup Language(*.html)"));
-        chooser.addChoosableFileFilter(new FileFilterEN(".asm", "Assembler(*.asm)"));
-		chooser.addChoosableFileFilter(new FileFilterEN("*", "All Files"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".java", "Java Source Files(*.java)"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".c", "C Programming Language(.c)"));
+		chooser.addChoosableFileFilter(new FileFilterFNP(".cpp", "C++(.cpp)"));
+		chooser.addChoosableFileFilter(new FileFilterFNP(".cs", "C#"));
+		chooser.addChoosableFileFilter(new FileFilterFNP(".d", "D Programming Language(.d)"));
+		chooser.addChoosableFileFilter(new FileFilterFNP(".sh", "Shell Script File(*.sh)"));
+		chooser.addChoosableFileFilter(new FileFilterFNP(".bat", "Batch File(*.bat)"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".txt", "Text Files(*.txt)"));
+		chooser.addChoosableFileFilter(new FileFilterFNP(".rtf", "Rich Text Format(*.rtf)"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".pdf", "Portable Document Files(*.pdf)"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".html", "Hyper Text Markup Language(*.html)"));
+        chooser.addChoosableFileFilter(new FileFilterFNP(".asm", "Assembler(*.asm)"));
+		chooser.addChoosableFileFilter(new FileFilterFNP("*", "All Files"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
@@ -264,7 +264,7 @@ public class FileOperationEN {
     public void newFile() {
         if (!confirmSave()) return;
         
-        new FNotepadEN(true);
+        new FNP(true);
 
         this.npd.ta.setText("");
         fileName = new String("Untitled");
