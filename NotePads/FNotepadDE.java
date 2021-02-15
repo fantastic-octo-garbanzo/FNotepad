@@ -54,7 +54,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
         f.add(TabCombo);
-        statusBar = new JLabel("Tabulatorbreite: "+TabCombo"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Tabulatorbreite: "+TabCombo+"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
 
