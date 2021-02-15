@@ -55,7 +55,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         c.add("2");
         c.add("4");
         c.add("8");
-        f.add(c);
+        statusBar.add(c);
         statusBar = new JLabel("Tabulatorbreite: "+tabSize+"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
