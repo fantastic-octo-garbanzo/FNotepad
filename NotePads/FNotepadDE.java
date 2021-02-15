@@ -27,6 +27,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
     String searchString, replaceString;
     int lastSearchIndex;
+    
+    Object[] items = {2, 4, 8};
+    final JComboBox<Object> TabCombo = new JComboBox<>(items);
 
     FileOperationDE fileHandler;
     FontChooserDE fontDialog = null;
@@ -50,16 +53,14 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
+        f.add(TabCombo);
+        statusBar = new JLabel("Tabulatorbreite: "+TabCombo"		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
-
-
 
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-
 
 
         f.pack();
@@ -69,10 +70,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         if(!fullscreen){f.setSize(800, 600);}
 
         f.setVisible(true);
-
-
-
-
 
         fileHandler = new FileOperationDE(this);
 
@@ -97,8 +94,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                                 f.setTitle(FileOperationDE.getFileName() + " - " + applicationName);
                             }
                             //System.out.println(wordCount+ " " +letterCount);
-
-
 
                         } catch (Exception excp) {
                         }
