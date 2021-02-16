@@ -35,11 +35,10 @@ public class FNotepad extends JFrame{
 		a.setBounds(200, 350, 200, 50);
 		
 		// Auswahlmenü
-        Choice c = new Choice();
-        c.setBounds(250,150, 100,50);
-        c.add("English");
-        c.add("Deutsch");
+        String languagesList[] = {"English", "Deutsch"};
 
+        JComboBox c = new JComboBox(languagesList);
+        c.setBounds(250,150, 100,50);
 
 
         Choice ch = new Choice();
@@ -92,12 +91,12 @@ public class FNotepad extends JFrame{
         b.addActionListener(e -> {
 
             dispose();
-            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
+            if(c.getSelectedItem().equals("Deutsch")){
                 if ( ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
                 if ( ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
 
             }
-            if(c.getItem(c.getSelectedIndex()).equals("English")){
+            if(c.getSelectedItem().equals("English")){
                 if ( ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
                 if ( ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
 
