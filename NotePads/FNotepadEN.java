@@ -247,7 +247,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         }
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepad)) {
-            JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "About FNotepad!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "About FNotepad", JOptionPane.INFORMATION_MESSAGE);
         }
         else if (cmdText.equals(filePageSetup)) {
             showTabulatorDialog();

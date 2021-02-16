@@ -272,7 +272,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         }
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepad)) {
-            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "\u00FCber FNotepad", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(FNotepadDE.this.f, aboutText, "\u00DCber FNotepad", JOptionPane.INFORMATION_MESSAGE);
         } else
             statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
     }//action Performed
