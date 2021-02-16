@@ -28,25 +28,25 @@ public class FNotepad extends JFrame{
         
 		// Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
-        b.setBounds(200,250, 200,50);
+        b.setBounds(200,300, 200,50);
      
 		// Button zum Abbrechen
-		JButton a=new JButton("Cancel");
-		a.setBounds(200, 350, 200, 50);
+		JButton a = new JButton("Cancel");
+		a.setBounds(200, 375, 200, 50);
 		
 		// Auswahlmenü
         String languagesList[] = {"English", "Deutsch"};
+
 
         JComboBox c = new JComboBox(languagesList);
         c.setBounds(250,150, 100,50);
 
 
+
         Choice ch = new Choice();
-        ch.setBounds(250,200, 100,50);
+        ch.setBounds(250,225, 100,50);
         ch.add("fullscreen");
         ch.add("windowed");
-
-
 
         add(l);
 		add(a);
@@ -109,7 +109,6 @@ public class FNotepad extends JFrame{
 		});
 		
 	}
-	
 
     public static void main(String[] args) {
         new FNotepad();
