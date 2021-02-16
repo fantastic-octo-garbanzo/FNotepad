@@ -36,17 +36,19 @@ public class FNotepad extends JFrame{
 		
 		// Auswahlmenü
         String languagesList[] = {"English", "Deutsch"};
+        String windowList[] = {"fullscreen", "windowed"};
 
 
         JComboBox c = new JComboBox(languagesList);
         c.setBounds(250,150, 100,50);
 
+        JComboBox ch = new JComboBox(windowList);
+        ch.setBounds(250,225, 100,50);
 
-
-        Choice ch = new Choice();
+        /*Choice ch = new Choice();
         ch.setBounds(250,225, 100,50);
         ch.add("fullscreen");
-        ch.add("windowed");
+        ch.add("windowed");*/
 
         add(l);
 		add(a);
@@ -71,9 +73,11 @@ public class FNotepad extends JFrame{
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
 				a.setText("Abbrechen");
-				ch.removeAll();
+				/*ch.removeAll();
                 ch.add("Vollbild");
-                ch.add("Fenstermodus");
+                ch.add("Fenstermodus");*/
+                windowList[0] = "Vollbild";
+                windowList[1] = "Fenstermodus";
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
@@ -81,9 +85,11 @@ public class FNotepad extends JFrame{
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
 				a.setText("Cancel");
-				ch.removeAll();
+				/*ch.removeAll();
                 ch.add("fullscreen");
-                ch.add("windowed");
+                ch.add("windowed");*/
+                windowList[0] = "fullstreen";
+                windowList[1] = "windowed";
             }
         });
 
