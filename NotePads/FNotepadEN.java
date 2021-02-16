@@ -50,7 +50,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     public FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Tabulatorsize: 4     ||      Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Tabulatorsize: "+tabSize+"     ||      Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
@@ -99,7 +99,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Letters " + letterCount + ", Words "+ wordCount + "       ||       Line " + (lineNumber + 1) + ", Column " + (column + 1));
+                        statusBar.setText("Tabulatorsize: "+tabSize+"       ||      Letters " + letterCount + ", Words "+ wordCount + "       ||       Line " + (lineNumber + 1) + ", Column " + (column + 1));
                     }
                 });
 //////////////////
