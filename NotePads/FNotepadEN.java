@@ -386,8 +386,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
-        temp = createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        temp.setEnabled(false);
+        createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
+
         createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         fileMenu.addSeparator();
         createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
