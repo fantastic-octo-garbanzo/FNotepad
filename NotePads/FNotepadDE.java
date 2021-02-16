@@ -56,7 +56,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         c.add("4");
         c.add("8");
         f.add(c);
-        statusBar = new JLabel("Tabulatorbreite: 4		||		Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
+        c.select("4");
+        statusBar = new JLabel("Tabulatorbreite: 4     ||      Zeichen 0, W\u00F6rter 0       ||       Zeile 1, Spalte 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
@@ -75,6 +76,23 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.setVisible(true);
 
         fileHandler = new FileOperationDE(this);
+
+
+        // Get selected tabulator size
+        c.addItemListener(ie -> {
+            if(c.getSelectedItem().equals("2")) {
+                tabSize = 2;
+                ta.setTabSize(tabSize);
+            }
+            if(c.getSelectedItem().equals("4")) {
+                tabSize = 4;
+                ta.setTabSize(tabSize);
+            }
+            if(c.getSelectedItem().equals("8")) {
+                tabSize = 8;
+                ta.setTabSize(tabSize);
+            }
+        });
 
 /////////////////////
 
@@ -132,20 +150,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         };
         f.addWindowListener(frameClose);
 ////////////////////////////////////
-		// Get selected tabulator size
-		c.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent e) {
-				if(c.getSelectedItem().equals("2")) {
-					tabSize = 2;
-				}
-				else if(c.getSelectedItem().equals("4")) {
-					tabSize = 4;
-				}
-				else if(c.getSelectedItem().equals("8")) {
-					tabSize = 8;
-				}
-			}
-		});
+
+
     }
 ////////////////////////////////////
     void goTo() {
@@ -365,8 +371,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
-        temp = createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        temp.setEnabled(false);
+        createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
         createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         fileMenu.addSeparator();
         createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
