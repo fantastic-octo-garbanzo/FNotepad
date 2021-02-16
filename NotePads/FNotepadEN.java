@@ -18,6 +18,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
+    int tabSize = 4;
 
     private String fileName = "Untitled";
     private boolean saved = true;
@@ -33,6 +34,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     JColorChooser fcolorChooser = null;
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
+    JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
 
@@ -48,7 +50,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     public FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Tabulatorsize: 4     ||      Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
@@ -246,11 +248,51 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepad)) {
             JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "About FNotepad!", JOptionPane.INFORMATION_MESSAGE);
-        } else
+        }
+        else if (cmdText.equals(filePageSetup)) {
+            showTabulatorDialog();
+        }
+        else {
             statusBar.setText("This " + cmdText + " command is yet to be implemented");
+        }
     }//action Performed
 
     ////////////////////////////////////
+    void showTabulatorDialog(){
+
+        tabulatorSize = new JDialog();
+        tabulatorSize.setTitle(filePageSetup);
+        tabulatorSize.setBounds(50, 50, 100, 60);
+        tabulatorSize.setVisible(true);
+        tabulatorSize.setAlwaysOnTop(true);
+
+        Choice c = new Choice();
+        c.add("2");
+        c.add("4");
+        c.add("8");
+
+        tabulatorSize.add(c);
+        c.select(String.valueOf(tabSize));
+        ta.setTabSize(tabSize);
+        c.addItemListener(ie -> {
+            if(c.getSelectedItem().equals("2")) {
+                tabSize = 2;
+                ta.setTabSize(tabSize);
+            }
+            if(c.getSelectedItem().equals("4")) {
+                tabSize = 4;
+                ta.setTabSize(tabSize);
+            }
+            if(c.getSelectedItem().equals("8")) {
+                tabSize = 8;
+                ta.setTabSize(tabSize);
+            }
+        });
+        tabulatorSize.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+
     void showBackgroundColorDialog() {
         if (bcolorChooser == null)
             bcolorChooser = new JColorChooser();
