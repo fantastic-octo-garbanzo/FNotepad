@@ -72,20 +72,20 @@ public class FNotepad extends JFrame{
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
-				a.setText("Abbrechen");
+				        a.setText("Abbrechen");
                 ch.removeAllItems();
-                ch.insertItemAt("Vollbild", 0);
-                ch.insertItemAt("Fenstermodus", 1);
+                ch.addItem("Vollbild");
+                ch.addItem("Fenstermodus");
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
-				a.setText("Cancel");
-				ch.removeAllItems();
-				ch.insertItemAt("fullscreen", 0);
-				ch.insertItemAt("windowed", 1);
+				        a.setText("Cancel");
+                ch.removeAllItems();
+                ch.addItem("fullscreen");
+                ch.addItem("windowed");
             }
         });
 
