@@ -200,6 +200,9 @@ public class FileOperationDE {
     ///////////////////////
     public void openFile() {
         if (!confirmSave()) return;
+        if (!FileOperationDE.getFileName().equals("Unbenannt")) {
+            new FNotepadDE(true);
+        }
         chooser.setDialogTitle("\u00D6ffne Datei...");
         chooser.setApproveButtonText("\u00D6ffnen");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
