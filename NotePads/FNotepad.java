@@ -35,15 +35,20 @@ public class FNotepad extends JFrame{
 		a.setBounds(200, 375, 200, 50);
 		
 		// Auswahlmenü
-        Choice c = new Choice();
-        c.setBounds(250,150, 100,50);
-        c.add("English");
-        c.add("Deutsch");
+        String languagesList[] = {"English", "Deutsch"};
+        String windowList[] = {"fullscreen", "windowed"};
 
-        Choice ch = new Choice();
+
+        JComboBox c = new JComboBox(languagesList);
+        c.setBounds(250,150, 100,50);
+
+        JComboBox ch = new JComboBox(windowList);
+        ch.setBounds(250,225, 100,50);
+
+        /*Choice ch = new Choice();
         ch.setBounds(250,225, 100,50);
         ch.add("fullscreen");
-        ch.add("windowed");
+        ch.add("windowed");*/
 
         add(l);
 		add(a);
@@ -68,9 +73,9 @@ public class FNotepad extends JFrame{
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
 				a.setText("Abbrechen");
-				ch.removeAll();
-                ch.add("Vollbild");
-                ch.add("Fenstermodus");
+                ch.removeAllItems();
+                ch.insertItemAt("Vollbild", 0);
+                ch.insertItemAt("Fenstermodus", 1);
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
@@ -78,9 +83,9 @@ public class FNotepad extends JFrame{
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
 				a.setText("Cancel");
-				ch.removeAll();
-                ch.add("fullscreen");
-                ch.add("windowed");
+				ch.removeAllItems();
+				ch.insertItemAt("fullscreen", 0);
+				ch.insertItemAt("windowed", 1);
             }
         });
 
@@ -88,14 +93,14 @@ public class FNotepad extends JFrame{
         b.addActionListener(e -> {
 
             dispose();
-            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
-                if ( ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
-                if ( ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
+            if(c.getSelectedItem().equals("Deutsch")){
+                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
+                if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
 
             }
-            if(c.getItem(c.getSelectedIndex()).equals("English")){
-                if ( ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
-                if ( ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
+            if(c.getSelectedItem().equals("English")){
+                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
+                if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
 
             }
         });
