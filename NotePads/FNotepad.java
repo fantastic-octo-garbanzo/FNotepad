@@ -73,11 +73,9 @@ public class FNotepad extends JFrame{
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
 				a.setText("Abbrechen");
-				/*ch.removeAll();
-                ch.add("Vollbild");
-                ch.add("Fenstermodus");*/
-                windowList[0] = "Vollbild";
-                windowList[1] = "Fenstermodus";
+                ch.removeAllItems();
+                ch.insertItemAt("Vollbild", 0);
+                ch.insertItemAt("Fenstermodus", 1);
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
@@ -85,11 +83,9 @@ public class FNotepad extends JFrame{
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
 				a.setText("Cancel");
-				/*ch.removeAll();
-                ch.add("fullscreen");
-                ch.add("windowed");*/
-                windowList[0] = "fullstreen";
-                windowList[1] = "windowed";
+				ch.removeAllItems();
+				ch.insertItemAt("fullscreen", 0);
+				ch.insertItemAt("windowed", 1);
             }
         });
 
@@ -98,13 +94,13 @@ public class FNotepad extends JFrame{
 
             dispose();
             if(c.getSelectedItem().equals("Deutsch")){
-                if ( ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
-                if ( ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
+                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
+                if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
 
             }
             if(c.getSelectedItem().equals("English")){
-                if ( ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
-                if ( ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
+                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
+                if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
 
             }
         });
