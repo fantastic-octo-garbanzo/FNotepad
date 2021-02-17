@@ -76,8 +76,10 @@ public class FNotepad extends JFrame{
 				/*ch.removeAll();
                 ch.add("Vollbild");
                 ch.add("Fenstermodus");*/
-                windowList[0] = "Vollbild";
-                windowList[1] = "Fenstermodus";
+                ch.removeAllItems();
+                ch.addItem("Vollbild");
+                ch.addItem("Fenstermodus");
+
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
@@ -88,8 +90,9 @@ public class FNotepad extends JFrame{
 				/*ch.removeAll();
                 ch.add("fullscreen");
                 ch.add("windowed");*/
-                windowList[0] = "fullstreen";
-                windowList[1] = "windowed";
+                ch.removeAllItems();
+                ch.addItem("fullscreen");
+                ch.addItem("windowed");
             }
         });
 
