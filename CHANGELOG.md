@@ -15,6 +15,7 @@
 ### Changed
 - Linked help button directly to Github
 - Fixed tabulator bug
+- About Text
 
 
 ## FNotepad [v1.3.2][8] (2021-02-13)
