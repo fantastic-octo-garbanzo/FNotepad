@@ -260,6 +260,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             showTabulatorDialog();
         }
 ////////////////////////////////////
+        else if (cmdText.equals(returntoSetup)) {
+            returntoLanguage();
+        }
+////////////////////////////////////
         else {
             statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
         }
@@ -342,11 +346,11 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         Runtime rt = Runtime.getRuntime();
         String url = "https://github.com/fantastic-octo-garbanzo/FNotepad";
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.indexOf("win") >= 0) {
+        if (os.indexOf("win") >= 0) { // Wenn das Betriebsystem Windows ist
             rt.exec("rundll32 url.dll, FileProtocolHandler "+url);
-        } else if (os.indexOf("mac") >= 0) {
+        } else if (os.indexOf("mac") >= 0) { // Wenn das Betriebssystem MacOS ist
             rt.exec("open "+url);
-        } else if (os.indexOf("nix") >=0 || os.indexOf("nux") >=0) {
+        } else if (os.indexOf("nix") >=0 || os.indexOf("nux") >=0) { // Wenn das Betriebssystem Linux ist
             String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
 
             StringBuffer cmd = new StringBuffer();
@@ -361,6 +365,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         }
     }
 
+    ///////////////////////////////////
+    void returntoLanguage() {
+        if (!FileOperationDE.saved) return;
+        f.dispose();
+        new FNotepad();
+    }
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -409,6 +419,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         JMenu formatMenu = createMenu(formatText, KeyEvent.VK_O, mb);
         JMenu viewMenu = createMenu(viewText, KeyEvent.VK_V, mb);
         JMenu helpMenu = createMenu(helpText, KeyEvent.VK_H, mb);
+        JMenu exitMenu = createMenu(exitText, KeyEvent.VK_G, mb);
 
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
@@ -449,12 +460,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 /************For Look and Feel, May not work properly on different operating environment***/
         LookAndFeelMenuDE.createLookAndFeelMenuItem(viewMenu, this.f);
 
-
-
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         //temp.setEnabled(false);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
+
+        createMenuItem(returntoSetup, KeyEvent.VK_G, exitMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -507,6 +518,7 @@ interface MenuConstantsDE {
     String formatText = "Format";
     String viewText = "Ansicht";
     String helpText = "Hilfe";
+    String exitText = "Verlassen";
 
     String fileNew = "Neu";
     String fileOpen = "\u00D6ffnen...";
@@ -545,4 +557,6 @@ interface MenuConstantsDE {
                     + "<hr><p align=center>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue auf Github stellen<p align=center>";
+
+    String returntoSetup = "Zurück zur Sprachauswahl";
 }
