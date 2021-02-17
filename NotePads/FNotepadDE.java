@@ -368,8 +368,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     ///////////////////////////////////
     void changeLanguage() {
         if (!FileOperationDE.saved) return;
-        f.dispose();
         new FNotepadEN(true);
+        f.dispose();
     }
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
