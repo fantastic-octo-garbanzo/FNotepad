@@ -259,8 +259,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             showTabulatorDialog();
         }
         ////////////////////////////////////
-        else if (cmdText.equals(returntoSetup)) {
-            returntoLanguage();
+        else if (cmdText.equals(changeLang)) {
+            changeLanguage();
         }
 ////////////////////////////////////
         else {
@@ -365,10 +365,10 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     }
 
     ///////////////////////////////////
-    void returntoLanguage() {
+    void changeLanguage() {
         if (!FileOperationEN.saved) return;
         f.dispose();
-        new FNotepad();
+        new FNotepadDE(true);
     }
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
@@ -418,7 +418,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         JMenu formatMenu = createMenu(formatText, KeyEvent.VK_O, mb);
         JMenu viewMenu = createMenu(viewText, KeyEvent.VK_V, mb);
         JMenu helpMenu = createMenu(helpText, KeyEvent.VK_H, mb);
-        JMenu exitMenu = createMenu(exitText, KeyEvent.VK_G, mb);
+        JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
@@ -466,7 +466,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(returntoSetup, KeyEvent.VK_G, exitMenu, this);
+        createMenuItem(changeLang, KeyEvent.VK_G, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -519,7 +519,7 @@ interface MenuConstantsEN {
     String formatText = "Format";
     String viewText = "View";
     String helpText = "Help";
-    String exitText = "Exit";
+    String changeText = "Language";
 
     String fileNew = "New";
     String fileOpen = "Open...";
@@ -558,5 +558,5 @@ interface MenuConstantsEN {
                     + "<strong>Thank you for using FNotepad!</strong><br>"
                     + "For ideas and bug reports<br>"
                     + "feel free to create a issue on Github!<p align=center>";
-    String returntoSetup = "Back to language selection";
+    String changeLang = "Deutsch";
 }
