@@ -4,13 +4,12 @@
 ## FNotepad [v1.3.3][0] (2021-02-17)
 
 ### Added
-- Setting for tabulator size in page settings 
+- Setting for tabulator size in page settings (beta)
 - Added tabulator size to the statusBar
 - Added Roadmap 
 - Added first wiki page
 - Added license (MIT)
 - Added return-to-setup button
-- Added a tabulator size setting (beta)
 
 ### Changed
 - Linked help button directly to Github
