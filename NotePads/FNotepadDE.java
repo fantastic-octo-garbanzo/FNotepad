@@ -265,7 +265,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         }
 ////////////////////////////////////
         else {
-            statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
+            statusBar.setText("Dieser Befehl wird gerade integriert");
         }
     }
     ///////////////////////////////
@@ -427,7 +427,14 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        fileMenu.addSeparator();
+        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        fileMenu.addSeparator();
+        temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp.setEnabled(false);
         fileMenu.addSeparator();
         createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
 
@@ -525,6 +532,8 @@ interface MenuConstantsDE {
     String fileSave = "Speichern";
     String fileSaveAs = "Speichern Als...";
     String filePageSetup = "Seiteneinstellungen...";
+    String fileExportasPDF = "Als PDF exportieren";
+    String fileExportasHTML = "Als HTML exportieren";
     String filePrint = "Drucken";
     String fileExit = "Beenden";
 

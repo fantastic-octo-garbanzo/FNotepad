@@ -426,8 +426,14 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-
-        createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        fileMenu.addSeparator();
+        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        fileMenu.addSeparator();
+        temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp.setEnabled(false);
         fileMenu.addSeparator();
         createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
 
@@ -526,6 +532,8 @@ interface MenuConstantsEN {
     String fileSave = "Save";
     String fileSaveAs = "Save As...";
     String filePageSetup = "Page Setup...";
+    String fileExportasPDF = "Export as PDF file";
+    String fileExportasHTML = "Export as HTML file";
     String filePrint = "Print";
     String fileExit = "Exit";
 
