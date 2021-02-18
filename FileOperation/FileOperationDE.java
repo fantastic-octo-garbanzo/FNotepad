@@ -96,6 +96,7 @@ public class FileOperationDE {
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
+        chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
         chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
@@ -109,7 +110,6 @@ public class FileOperationDE {
         chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".html", "Hyper Text Markup Language(*.html)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".asm", "Assembler(*.asm)"));
-		chooser.addChoosableFileFilter(new FileFilterDE("*", "Alle Dateien"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
