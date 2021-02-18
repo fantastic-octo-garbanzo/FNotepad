@@ -80,13 +80,24 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
                         try {
                             String text = ta.getText();
+                            String textTabs = ta.getText();
+                            for(char c : textTabs.toCharArray()){
+                                System.out.println(c);
+                                if("\t".equals(""+c)){
+                                    letterCount = letterCount + tabSize;
+                                }
+                                else {
+                                    letterCount++;
+                                }
+                            }
                             pos = ta.getCaretPosition();
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
+                            /**
                             if (text.length() == '9')
                                 column = column + tabSize;
-
-                            letterCount = text.length();
+                            */
+                            //letterCount = text.length();
                             wordCount = text.split("\\s").length;
                             if (!FileOperationDE.isSave()){
                                 f.setTitle(FileOperationDE.getFileName() + "* - " + applicationName);
