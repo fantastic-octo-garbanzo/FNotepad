@@ -14,7 +14,7 @@ public class FNotepad extends JFrame {
 
     String os = Locale.getDefault().getLanguage();
     public FNotepad() {
-        if (os.indexOf("de") >= 0)
+        if (os.contains("de"))
             new FNotepadDE(true);
         else
             new FNotepadEN(true);
