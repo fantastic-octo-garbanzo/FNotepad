@@ -88,8 +88,19 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
                             String text = ta.getText();
+                            String textTabs = ta.getText();
 
-                            letterCount = text.length();
+                            for(char c : textTabs.toCharArray()){
+                                System.out.println(c);
+                                if("\t".equals(""+c)){
+                                    letterCount = letterCount + tabSize;
+                                }
+                                else {
+                                    letterCount++;
+                                }
+                            }
+
+                            //letterCount = text.length();
                             wordCount = text.split("\\s").length;
                             if (!FileOperationEN.isSave()){
                                 f.setTitle(FileOperationEN.getFileName() + "* - " + applicationName);
