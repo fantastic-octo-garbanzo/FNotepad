@@ -35,8 +35,8 @@ public class FNotepad extends JFrame{
 		a.setBounds(200, 375, 200, 50);
 		
 		// Auswahlmenü
-        String languagesList[] = {"English", "Deutsch"};
-        String windowList[] = {"fullscreen", "windowed"};
+        String[] languagesList = {"English", "Deutsch"};
+        String[] windowList = {"fullscreen", "windowed"};
 
 
         JComboBox c = new JComboBox(languagesList);
