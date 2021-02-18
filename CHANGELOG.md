@@ -1,7 +1,7 @@
 # FNotepad Changelog 
 #### (not completed jet)
 
-## FNotepad [v1.3.3][0] (2021-02-17)
+## FNotepad [v1.3.3][0] (2021-02-18)
 
 ### Added
 - Setting for tabulator size in page settings (beta)
