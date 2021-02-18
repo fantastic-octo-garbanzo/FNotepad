@@ -536,7 +536,7 @@ interface MenuConstantsDE {
     String helpText = "Hilfe";
     String changeText = "Sprache";
 
-    String windowNew = "Neues Fenster"
+    String windowNew = "Neues Fenster";
     String fileNew = "Neue Datei";
     String fileOpen = "Datei \u00D6ffnen...";
     String fileSave = "Datei speichern";
