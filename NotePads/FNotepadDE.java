@@ -1,5 +1,6 @@
 package NotePads;
 // Imports
+import java.net.URL;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
@@ -50,6 +51,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     /****************************/
     public FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
+
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        f.setIconImage(icon.getImage());
+
         ta = new JTextArea(30, 60);
         statusBar = new JLabel("Tabulatorbreite: "+tabSize+"     ||      Zeichen: 0, W\u00F6rter: 0       ||       Zeile: 1, Spalte: 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);

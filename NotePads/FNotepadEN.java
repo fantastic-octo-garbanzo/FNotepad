@@ -3,6 +3,7 @@ package NotePads;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -51,6 +52,12 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     /****************************/
     public FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
+
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        f.setIconImage(icon.getImage());
+
         ta = new JTextArea(30, 60);
         statusBar = new JLabel("Tabulatorsize: "+tabSize+"     ||      Letters 0, Words 0       ||       Ln 1, Col 1  ", JLabel.RIGHT);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);

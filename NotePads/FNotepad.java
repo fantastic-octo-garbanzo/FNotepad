@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
+import java.net.URL;
 /**********/
 
 // Beginn der Klasse FNotepad
@@ -25,6 +26,12 @@ public class FNotepad extends JFrame{
         JLabel l = new JLabel("Welcome to FNotepad"); // Text über Auswahlmenü
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
+
+
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
 
         // Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
