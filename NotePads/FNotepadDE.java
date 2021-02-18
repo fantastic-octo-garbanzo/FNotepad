@@ -250,7 +250,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpHelpTopic))
+        else if (cmdText.equals(helpHelpOnline))
             try {
                 openGithub();
             } catch (Exception e) {
@@ -476,8 +476,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 /************For Look and Feel, May not work properly on different operating environment***/
         LookAndFeelMenuDE.createLookAndFeelMenuItem(viewMenu, this.f);
 
-        createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
-        //temp.setEnabled(false);
+        temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
+        temp.setEnabled(false);
+        createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
@@ -567,6 +568,7 @@ interface MenuConstantsDE {
     String viewStatusBar = "Statusleiste";
 
     String helpHelpTopic = "Hilfe";
+    String helpHelpOnline = "Github-Hilfe";
     String helpAboutFNotepad = "\u00DCber FNotepad";
 
     String aboutText =
