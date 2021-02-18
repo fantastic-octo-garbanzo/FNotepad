@@ -148,8 +148,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
 ////////////////////////////////////
-        if (cmdText.equals(fileNew))
+        if (cmdText.equals(windowNew))
+            newWindow();
+////////////////////////////////////
+        else if (cmdText.equals(fileNew))
             fileHandler.newFile();
+////////////////////////////////////
         else if (cmdText.equals(fileOpen))
             fileHandler.openFile();
 ////////////////////////////////////
@@ -268,7 +272,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             statusBar.setText("Dieser Befehl wird gerade integriert");
         }
     }
-    ///////////////////////////////
+////////////////////////////////////
     void showTabulatorDialog(){
 
         tabulatorSize = new JDialog();
@@ -372,6 +376,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.dispose();
     }
     ///////////////////////////////////
+    void newWindow() {
+        new FNotepadDE(true);
+    }
+    ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
@@ -421,6 +429,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         JMenu helpMenu = createMenu(helpText, KeyEvent.VK_H, mb);
         JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
+        createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
@@ -527,13 +536,14 @@ interface MenuConstantsDE {
     String helpText = "Hilfe";
     String changeText = "Sprache";
 
-    String fileNew = "Neu";
-    String fileOpen = "\u00D6ffnen...";
-    String fileSave = "Speichern";
-    String fileSaveAs = "Speichern Als...";
+    String windowNew = "Neues Fenster"
+    String fileNew = "Neue Datei";
+    String fileOpen = "Datei \u00D6ffnen...";
+    String fileSave = "Datei speichern";
+    String fileSaveAs = "Datei speichern als...";
     String filePageSetup = "Seiteneinstellungen...";
-    String fileExportasPDF = "Als PDF exportieren";
-    String fileExportasHTML = "Als HTML exportieren";
+    String fileExportasPDF = "Datei als PDF exportieren";
+    String fileExportasHTML = "Datei als HTML exportieren";
     String filePrint = "Drucken";
     String fileExit = "Beenden";
 
