@@ -12,6 +12,11 @@ ODER
 
 Das Repository mit Git klonen: `$ git clone https://github.com/fantastic-octo-garbanzo/FNotepad.git` und das JAR ausführen.
 
+ODER
+
+Ab Version 1.3.5 wird es ein Beta-RPM-Package geben, ab Version 2.0.0 dann für jede Version .deb und .rpm Packages.
+Außerdem gibt es einen Windows-Installer.
+
 ### English
 
 A texteditor written in Java, availible in German and English.
@@ -21,6 +26,10 @@ Download the [latest release][1] and run the JAR file with `$ java -jar FNotepad
 OR
 
 Clone the repository with Git: `$ git clone https://github.com/fantastic-octo-garbanzo/FNotepad.git` and run the JAR.
+
+OR
+
+From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on there will be .deb and .rpm packages for every release. We also provide a windows installer.
 
 
 
