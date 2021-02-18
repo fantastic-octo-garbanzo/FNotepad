@@ -303,7 +303,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                 ta.setTabSize(tabSize);
             }
         });
-        tabulatorSize.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        tabulatorSize.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     ////////////////////////////////////
     void showBackgroundColorDialog() {
