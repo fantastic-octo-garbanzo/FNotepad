@@ -5,12 +5,22 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
+import java.util.Locale;
+
 /**********/
 
 // Beginn der Klasse FNotepad
-public class FNotepad extends JFrame{
+public class FNotepad extends JFrame {
 
-    // Holt die Bildschrimgröße ohne Taskbar
+    String os = Locale.getDefault().getLanguage();
+    public FNotepad() {
+        if (os.indexOf("de") >= 0)
+            new FNotepadDE(true);
+        else
+            new FNotepadEN(true);
+    }
+
+    /* Holt die Bildschrimgröße ohne Taskbar
     public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
@@ -45,12 +55,12 @@ public class FNotepad extends JFrame{
         JComboBox ch = new JComboBox(windowList);
         ch.setBounds(250,225, 100,50);
 
-        /*Choice ch = new Choice();
+        Choice ch = new Choice();
         ch.setBounds(250,225, 100,50);
         ch.add("fullscreen");
         ch.add("windowed");*/
 
-        add(l);
+        /*add(l);
 		add(a);
 		add(b);
         add(c);
@@ -107,7 +117,7 @@ public class FNotepad extends JFrame{
 			setVisible(false);
 		});
 		
-	}
+	}*/
 
     public static void main(String[] args) {
         new FNotepad();
