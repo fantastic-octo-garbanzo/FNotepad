@@ -148,8 +148,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
 ////////////////////////////////////
-        if (cmdText.equals(fileNew))
+        if (cmdText.equals(windowNew))
+            newWindow();
+////////////////////////////////////
+        else if (cmdText.equals(fileNew))
             fileHandler.newFile();
+////////////////////////////////////
         else if (cmdText.equals(fileOpen))
             fileHandler.openFile();
 ////////////////////////////////////
@@ -265,10 +269,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         }
 ////////////////////////////////////
         else {
-            statusBar.setText("Dieser " + cmdText + " Befehl wird gerade integriert");
+            statusBar.setText("Dieser Befehl wird gerade integriert");
         }
     }
-    ///////////////////////////////
+////////////////////////////////////
     void showTabulatorDialog(){
 
         tabulatorSize = new JDialog();
@@ -372,6 +376,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.dispose();
     }
     ///////////////////////////////////
+    void newWindow() {
+        new FNotepadDE(true);
+    }
+    ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
@@ -421,13 +429,21 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         JMenu helpMenu = createMenu(helpText, KeyEvent.VK_H, mb);
         JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
+        createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        fileMenu.addSeparator();
+        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        fileMenu.addSeparator();
+        temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp.setEnabled(false);
         fileMenu.addSeparator();
         createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
 
@@ -520,11 +536,14 @@ interface MenuConstantsDE {
     String helpText = "Hilfe";
     String changeText = "Sprache";
 
-    String fileNew = "Neu";
-    String fileOpen = "\u00D6ffnen...";
-    String fileSave = "Speichern";
-    String fileSaveAs = "Speichern Als...";
+    String windowNew = "Neues Fenster"
+    String fileNew = "Neue Datei";
+    String fileOpen = "Datei \u00D6ffnen...";
+    String fileSave = "Datei speichern";
+    String fileSaveAs = "Datei speichern als...";
     String filePageSetup = "Seiteneinstellungen...";
+    String fileExportasPDF = "Datei als PDF exportieren";
+    String fileExportasHTML = "Datei als HTML exportieren";
     String filePrint = "Drucken";
     String fileExit = "Beenden";
 

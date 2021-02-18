@@ -96,6 +96,8 @@ public class FileOperationDE {
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
+        chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
@@ -104,12 +106,10 @@ public class FileOperationDE {
 		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(.d)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".bat", "Batch File(*.bat)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".rtf", "Rich Text Format(*.rtf)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".html", "Hyper Text Markup Language(*.html)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".asm", "Assembler(*.asm)"));
-		chooser.addChoosableFileFilter(new FileFilterDE("*", "Alle Dateien"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
@@ -200,9 +200,6 @@ public class FileOperationDE {
     ///////////////////////
     public void openFile() {
         if (!confirmSave()) return;
-        if (!FileOperationDE.getFileName().equals("Unbenannt")) {
-            new FNotepadDE(true);
-        }
         chooser.setDialogTitle("\u00D6ffne Datei...");
         chooser.setApproveButtonText("\u00D6ffnen");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
@@ -269,9 +266,6 @@ public class FileOperationDE {
     ///////////////////////////////////////
     public void newFile() {
         if (!confirmSave()) return;
-        
-        new FNotepadDE(true);
-
         this.npd.ta.setText("");
         fileName = new String("Unbenannt");
         fileRef = new File(fileName);

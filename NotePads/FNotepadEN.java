@@ -147,8 +147,12 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
 ////////////////////////////////////
-        if (cmdText.equals(fileNew))
+        if (cmdText.equals(windowNew))
+            newWindow();
+////////////////////////////////////
+        else if (cmdText.equals(fileNew))
             fileHandler.newFile();
+////////////////////////////////////
         else if (cmdText.equals(fileOpen))
             fileHandler.openFile();
 ////////////////////////////////////
@@ -258,17 +262,17 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         else if (cmdText.equals(filePageSetup)) {
             showTabulatorDialog();
         }
-        ////////////////////////////////////
+////////////////////////////////////
         else if (cmdText.equals(changeLang)) {
             changeLanguage();
         }
 ////////////////////////////////////
         else {
-            statusBar.setText("This " + cmdText + " command is yet to be implemented");
+            statusBar.setText("This command is yet to be implemented");
         }
     }//action Performed
 
-    ////////////////////////////////////
+////////////////////////////////////
     void showTabulatorDialog(){
 
         tabulatorSize = new JDialog();
@@ -371,6 +375,10 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         f.dispose();
     }
     ///////////////////////////////////
+    void newWindow() {
+        new FNotepadEN(true);
+    }
+    ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
@@ -420,14 +428,21 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         JMenu helpMenu = createMenu(helpText, KeyEvent.VK_H, mb);
         JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
+        createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-
-        createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        fileMenu.addSeparator();
+        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
+        temp.setEnabled(false);
+        fileMenu.addSeparator();
+        temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp.setEnabled(false);
         fileMenu.addSeparator();
         createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
 
@@ -521,11 +536,14 @@ interface MenuConstantsEN {
     String helpText = "Help";
     String changeText = "Language";
 
-    String fileNew = "New";
-    String fileOpen = "Open...";
-    String fileSave = "Save";
-    String fileSaveAs = "Save As...";
+    String windowNew = "New Window";
+    String fileNew = "New File";
+    String fileOpen = "Open File...";
+    String fileSave = "Save File";
+    String fileSaveAs = "Save File As...";
     String filePageSetup = "Page Setup...";
+    String fileExportasPDF = "Export File as PDF";
+    String fileExportasHTML = "Export File as HTML";
     String filePrint = "Print";
     String fileExit = "Exit";
 
