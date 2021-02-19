@@ -417,7 +417,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         fr = null;
 
         try {
-            String fileName = "/bin/Hilfe.txt";
+            String fileName = "C:/Users/Fynn/IdeaProjects/FNotepad/NotePads/Hilfe.txt";
             fr = new FileReader(fileName);
             StringBuffer sb = new StringBuffer();
             int ch;
