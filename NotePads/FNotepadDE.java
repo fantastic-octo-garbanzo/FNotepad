@@ -548,10 +548,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public static void main(String[] s) {
 
         new FNotepadDE(true);
-        String HelpText=
-    String FileReader = null;
-         FileReader fr;
-
+        String HelpText;
+        String FileReader = null;
+        FileReader fr;
                 
         fr = null;
 
@@ -565,7 +564,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
             System.out.println(sb.toString());
         }
- catch (IOException ex) {
+        catch (IOException ex) {
             System.out.println(ex);
         } finally {
             try {
