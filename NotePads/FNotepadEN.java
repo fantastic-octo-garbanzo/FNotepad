@@ -2,6 +2,7 @@ package NotePads;
 // Imports
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -284,6 +285,10 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         else if (cmdText.equals(changeLang)) {
             changeLanguage();
         }
+/////////////////////////////////////
+        else if (cmdText.equals(helpHelpTopic)){
+            loadHelp();
+        }
 ////////////////////////////////////
         else {
             statusBar.setText("This command is yet to be implemented");
@@ -413,6 +418,34 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         toMenu.add(temp);
 
         return temp;
+    }
+
+    void loadHelp(){
+
+
+        FileReader fr;
+
+        fr = null;
+
+        try {
+            String fileName = "C:/Users/Fynn/IdeaProjects/FNotepad/NotePads/Help.txt";
+            fr = new FileReader(fileName);
+            StringBuffer sb = new StringBuffer();
+            int ch;
+            while ((ch = fr.read()) != -1)
+                sb.append((char) ch);
+
+            System.out.println(sb.toString());
+        }
+        catch (IOException ex) {
+            System.out.println(ex);
+        } finally {
+            try {
+                if (fr != null) fr.close();
+            } catch (Exception ex) {
+
+            }
+        }
     }
 
     ////////////////////////////////////
