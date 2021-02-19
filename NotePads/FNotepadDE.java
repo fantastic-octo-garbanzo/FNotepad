@@ -1,11 +1,14 @@
 package NotePads;
 // Imports
+import java.io.StringReader;
 import java.net.URL;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
 
 import FileOperation.FileOperationDE;
@@ -17,6 +20,7 @@ import LookAndFeelMenu.LookAndFeelMenuDE;
 
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
+    private static Object FileReader;
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
@@ -542,7 +546,33 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
+
         new FNotepadDE(true);
+        String HelpText=
+    String FileReader = null;
+         FileReader fr;
+
+                
+        fr = null;
+
+        try {
+            String fileName = "Hilfe.txt";
+            fr = new FileReader(fileName);
+            StringBuffer sb = new StringBuffer();
+            int ch;
+            while ((ch = fr.read()) != -1)
+                sb.append((char) ch);
+
+            System.out.println(sb.toString());
+        }
+ catch (IOException ex) {
+            System.out.println(ex);
+        } finally {
+            try {
+                if (fr != null) fr.close();
+            } catch (Exception ex) {
+            }
+        }
     }
 }
 
@@ -599,4 +629,6 @@ interface MenuConstantsDE {
                     + "Bei Bugs und Ideen gerne ein Issue auf Github stellen<p align=center>";
 
     String changeLang = "English";
+    
+
 }
