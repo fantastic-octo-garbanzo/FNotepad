@@ -292,6 +292,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             changeLanguage();
         }
 ////////////////////////////////////
+        else if (cmdText.equals(helpHelpTopic)){
+            loadHelp();
+        }
+////////////////////////////////////
         else {
             statusBar.setText("Dieser Befehl wird gerade integriert");
         }
@@ -403,6 +407,36 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void newWindow() {
         new FNotepadDE(true);
     }
+
+
+    void loadHelp(){
+
+
+        FileReader fr;
+
+        fr = null;
+
+        try {
+            String fileName = "/bin/Hilfe.txt";
+            fr = new FileReader(fileName);
+            StringBuffer sb = new StringBuffer();
+            int ch;
+            while ((ch = fr.read()) != -1)
+                sb.append((char) ch);
+
+            System.out.println(sb.toString());
+        }
+        catch (IOException ex) {
+            System.out.println(ex);
+        } finally {
+            try {
+                if (fr != null) fr.close();
+            } catch (Exception ex) {
+
+            }
+        }
+    }
+
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -548,30 +582,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public static void main(String[] s) {
 
         new FNotepadDE(true);
-        String HelpText;
-        String FileReader = null;
-        FileReader fr;
-                
-        fr = null;
 
-        try {
-            String fileName = "Hilfe.txt";
-            fr = new FileReader(fileName);
-            StringBuffer sb = new StringBuffer();
-            int ch;
-            while ((ch = fr.read()) != -1)
-                sb.append((char) ch);
-
-            System.out.println(sb.toString());
-        }
-        catch (IOException ex) {
-            System.out.println(ex);
-        } finally {
-            try {
-                if (fr != null) fr.close();
-            } catch (Exception ex) {
-            }
-        }
     }
 }
 
