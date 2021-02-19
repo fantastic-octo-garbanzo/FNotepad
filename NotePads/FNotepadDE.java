@@ -86,12 +86,25 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                         int lineNumber = 0, column = 0, pos = 0, wordCount = 0, letterCount = 0;
 
                         try {
+                            String text = ta.getText();
+                            String textTabs = ta.getText();
+                            for(char c : textTabs.toCharArray()){
+                                System.out.println(c);
+                                if("\t".equals(""+c)){
+                                    letterCount = letterCount + tabSize;
+                                }
+                                else {
+                                    letterCount++;
+                                }
+                            }
                             pos = ta.getCaretPosition();
                             lineNumber = ta.getLineOfOffset(pos);
                             column = pos - ta.getLineStartOffset(lineNumber);
-                            String text = ta.getText();
-
-                            letterCount = text.length();
+                            /**
+                            if (text.length() == '9')
+                                column = column + tabSize;
+                            */
+                            //letterCount = text.length();
                             wordCount = text.split("\\s").length;
                             if (!FileOperationDE.isSave()){
                                 f.setTitle(FileOperationDE.getFileName() + "* - " + applicationName);
@@ -284,7 +297,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         tabulatorSize = new JDialog();
         tabulatorSize.setTitle(filePageSetup);
-        tabulatorSize.setBounds(50, 50, 100, 60);
+        tabulatorSize.setBounds(50, 50, 400, 100);
         tabulatorSize.setVisible(true);
         tabulatorSize.setAlwaysOnTop(true);
 
@@ -483,8 +496,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 /************For Look and Feel, May not work properly on different operating environment***/
         LookAndFeelMenuDE.createLookAndFeelMenuItem(viewMenu, this.f);
 
-        temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
-        temp.setEnabled(false);
+        createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
