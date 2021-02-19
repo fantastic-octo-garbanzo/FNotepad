@@ -297,7 +297,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         tabulatorSize = new JDialog();
         tabulatorSize.setTitle(filePageSetup);
-        tabulatorSize.setBounds(50, 50, 100, 60);
+        tabulatorSize.setBounds(50, 50, 400, 100);
         tabulatorSize.setVisible(true);
         tabulatorSize.setAlwaysOnTop(true);
 
@@ -496,8 +496,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 /************For Look and Feel, May not work properly on different operating environment***/
         LookAndFeelMenuDE.createLookAndFeelMenuItem(viewMenu, this.f);
 
-        temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
-        temp.setEnabled(false);
+        createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);

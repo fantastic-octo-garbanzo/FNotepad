@@ -494,8 +494,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         LookAndFeelMenuEN.createLookAndFeelMenuItem(viewMenu, this.f);
 
 
-        temp = createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
-        temp.setEnabled(false);
+        createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
