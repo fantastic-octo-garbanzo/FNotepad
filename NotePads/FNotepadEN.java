@@ -2,11 +2,13 @@ package NotePads;
 // Imports
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -393,6 +395,52 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         }
     }
 
+    void loadHelp(){
+        FileReader fr;
+        fr = null;
+        JDialog helpPage = new JDialog();
+        helpPage.setTitle(helpText);
+        helpPage.setBounds(50, 50, 700, 300);
+        helpPage.setVisible(true);
+        helpPage.setAlwaysOnTop(true);
+        helpPage.setResizable(false);
+        JTextArea helptxtArea = new JTextArea();
+        helptxtArea.setEditable(false);
+        URL fileURL = getClass().getResource("/bin/Help.txt");
+        try {
+            File file = new File(fileURL.toURI());
+            fr = new FileReader(file);
+            StringBuffer sb = new StringBuffer();
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = br.readLine();
+            ArrayList<String> listOfStrings = new ArrayList<>();
+            listOfStrings.add(line);
+            while(line != null) {
+                line = br.readLine();
+                listOfStrings.add(line);
+            }
+            for(int i = 0; i < listOfStrings.size(); i++) {
+                sb.append(listOfStrings.get(i)+"\n");
+            }
+            sb.delete(sb.length()-5, sb.length());
+            helptxtArea.setText(sb.toString());
+        }
+        catch (IOException | URISyntaxException ex) { System.out.println(ex);
+        }
+        finally {
+
+            try {
+                if (fr != null) fr.close();
+            }
+            catch (Exception ex) {
+
+            }
+        }
+        helpPage.add(helptxtArea);
+        helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        helptxtArea.setVisible(true);
+    }
+
     ///////////////////////////////////
     void changeLanguage() {
         if (!FileOperationEN.saved) return;
@@ -422,42 +470,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         return temp;
     }
 
-    void loadHelp(){
 
-
-        FileReader fr;
-
-        fr = null;
-
-
-        URL fileURL = getClass().getResource("/bin/Help.txt");
-
-        try {
-
-            File file = new File(fileURL.toURI());
-
-            fr = new FileReader(file);
-            StringBuffer sb = new StringBuffer();
-            int ch;
-            while ((ch = fr.read()) != -1)
-                sb.append((char) ch);
-            System.out.println(sb.toString());
-        }
-        catch (IOException | URISyntaxException ex) { System.out.println(ex);
-        }
-        finally {
-
-            try {
-                if (fr != null) fr.close();
-            }
-            catch (Exception ex) {
-
-            }
-        }
-
-
-
-    }
 
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
