@@ -1,12 +1,14 @@
 package NotePads;
 // Imports
+import java.io.*;
 import java.net.URL;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import java.io.IOException;
+import javax.swing.text.Document;
+import javax.swing.text.*;
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
@@ -182,6 +184,17 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 ////////////////////////////////////
         else if (cmdText.equals(fileSaveAs))
             fileHandler.saveAsFile();
+////////////////////////////////////
+        else if (cmdText.equals(fileExportasPDF)) {
+            try {
+                fileHandler.exportPDF();
+            } catch (Exception e) {
+            }
+        }
+////////////////////////////////////
+        else if (cmdText.equals(fileExportasHTML)) {
+            fileHandler.exportHTML();
+        }
 ////////////////////////////////////
         else if (cmdText.equals(fileExit)) {
             if (fileHandler.confirmSave()) System.exit(0);
@@ -457,8 +470,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
         fileMenu.addSeparator();
-        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
+        createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
         temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
         temp.setEnabled(false);
         fileMenu.addSeparator();
