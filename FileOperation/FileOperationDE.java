@@ -207,14 +207,27 @@ public class FileOperationDE {
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
 
-        PDDocument document = new PDDocument();
+        do {
+            /*if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
+                return false;*/
+            PDDocument document = new PDDocument();
+            try {
+                PDPage page = new PDPage();
+                document.addPage(page);
 
-        try {
-            document = PDDocument.load(new File(fileName));
-            document.save(fileName + ".pdf");
-        } finally {
-            document.close();
-        }
+                PDFont font = PDType1Font.TIMES_BOLD;
+                PDPageContentStream contentStream = new PDPageContentStream(document, page);
+                contentStream.beginText();
+                contentStream.setFont(font, 30);
+                contentStream.showText(npd.ta.getText());
+                contentStream.endText();
+                contentStream.close();
+
+                document.save(fileName + ".pdf");
+            } finally {
+                document.close();
+            }
+        } while (true);
     }
     ///////////////////////
     public void exportHTML() {
