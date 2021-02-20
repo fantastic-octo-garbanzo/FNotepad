@@ -53,7 +53,7 @@ public class LookAndFeelMenuDE {
 			rbm[i].addActionListener(new LookAndFeelMenuListenerDE(infos[i].getClassName(),cmp));
 		}
 
-		rbm[0].setSelected(true);
+		rbm[3].setSelected(true);
 		jmenu.add(tmp);
 
 	}
