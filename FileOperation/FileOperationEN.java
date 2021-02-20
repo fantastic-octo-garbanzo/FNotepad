@@ -64,6 +64,11 @@ public class FileOperationEN {
     File fileRef;
     JFileChooser chooser;
 
+    File temp = null;
+    FileWriter fout = null;
+    FileInputStream fin = null;
+    BufferedReader din = null;
+
     /////////////////////////////
     public static boolean isSave() {
         return saved;
@@ -112,7 +117,6 @@ public class FileOperationEN {
 //////////////////////////////////////
 
     boolean saveFile(File temp) {
-        FileWriter fout = null;
         try {
             fout = new FileWriter(temp);
             fout.write(npd.ta.getText());
@@ -141,7 +145,6 @@ public class FileOperationEN {
 
     ////////////////////////////////////
     public boolean saveAsFile() {
-        File temp = null;
         chooser.setDialogTitle("Save As...");
         chooser.setApproveButtonText("Save Now");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
@@ -165,8 +168,6 @@ public class FileOperationEN {
 
     ////////////////////////
     boolean openFile(File temp) {
-        FileInputStream fin = null;
-        BufferedReader din = null;
 
         try {
             fin = new FileInputStream(temp);
