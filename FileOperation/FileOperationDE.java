@@ -4,12 +4,16 @@ import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
+import org.apache.pdfbox.pdmodel.*;
+
 import FileFilter.*;
 import FindDialog.*;
 import FontChooser.*;
 import LookAndFeelMenu.*;
 import NotePads.FNotepadDE;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 
 class FileOperationExampleDE extends JFrame {
@@ -196,7 +200,32 @@ public class FileOperationDE {
         this.npd.ta.setCaretPosition(0);
         return true;
     }
+    ///////////////////////
+    public void exportPDF() throws IOException {
+        chooser.setDialogTitle("Exportiere PDF ...");
+        chooser.setApproveButtonText("Exportieren");
+        chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
+        chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
 
+        PDDocument document = new PDDocument();
+
+        try {
+            document = PDDocument.load(new File(fileName));
+            document.save(fileName + ".pdf");
+        } finally {
+            document.close();
+        }
+    }
+    ///////////////////////
+    public void exportHTML() {
+        chooser.setDialogTitle("Exportiere HTML ...");
+        chooser.setApproveButtonText("Exportieren");
+        chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
+        chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
+
+        PDDocument document = new PDDocument();
+
+    }
     ///////////////////////
     public void openFile() {
         if (!confirmSave()) return;
