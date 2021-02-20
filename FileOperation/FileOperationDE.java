@@ -4,16 +4,24 @@ import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import org.apache.pdfbox.pdmodel.*;
+import javax.swing.text.StyleConstants;
 
 import FileFilter.*;
 import FindDialog.*;
 import FontChooser.*;
 import LookAndFeelMenu.*;
 import NotePads.FNotepadDE;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.apache.pdfbox.text.PDFTextStripper;
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Text;
+import com.itextpdf.layout.property.TextAlignment;
+
+import static com.itextpdf.html2pdf.html.AttributeConstants.SRC;
 
 
 class FileOperationExampleDE extends JFrame {
@@ -202,32 +210,37 @@ public class FileOperationDE {
     }
     ///////////////////////
     public void exportPDF() throws IOException {
+        File temp = null;
         chooser.setDialogTitle("Exportiere PDF ...");
+        chooser.setDialogType(JFileChooser.SAVE_DIALOG);
         chooser.setApproveButtonText("Exportieren");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
 
-        do {
-            /*if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
-                return false;*/
-            PDDocument document = new PDDocument();
-            try {
-                PDPage page = new PDPage();
-                document.addPage(page);
+        temp = chooser.getSelectedFile();
+        String fileName = temp.getName();
+        String newName = temp.getName().replace(".txt", ".pdf");
 
-                PDFont font = PDType1Font.TIMES_BOLD;
-                PDPageContentStream contentStream = new PDPageContentStream(document, page);
-                contentStream.beginText();
-                contentStream.setFont(font, 30);
-                contentStream.showText(npd.ta.getText());
-                contentStream.endText();
-                contentStream.close();
+        File file = new File(fileName);
+        File dest = new File(newName);
+        dest.getParentFile().mkdirs();
 
-                document.save(fileName + ".pdf");
-            } finally {
-                document.close();
-            }
-        } while (true);
+        PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+        //PdfWriter writer = new PdfWriter(pdfDocument, new FileOutputStream(fileName + ".pdf"));
+        Document document = new Document(pdfDocument);
+        document.setTextAlignment(TextAlignment.LEFT);
+        document.setFontSize((float) 8.0);
+        document.setLeftMargin((float) 40.0);
+        document.setRightMargin((float) 40.0);
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(temp), "UTF8"));
+        String line;
+        PdfFont normal = PdfFontFactory.createFont(FontConstants.COURIER);
+        while ((line = br.readLine()) != null) {
+            document.add(new Paragraph(line).setFont(normal));
+        }
+        pdfDocument.close();
+        br.close();
     }
     ///////////////////////
     public void exportHTML() {
@@ -235,8 +248,6 @@ public class FileOperationDE {
         chooser.setApproveButtonText("Exportieren");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
-
-        PDDocument document = new PDDocument();
 
     }
     ///////////////////////
