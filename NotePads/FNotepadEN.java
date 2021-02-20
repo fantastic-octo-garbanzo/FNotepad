@@ -2,8 +2,10 @@ package NotePads;
 // Imports
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 import javax.swing.*;
@@ -427,25 +429,34 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 
         fr = null;
 
+
+        URL fileURL = getClass().getResource("/bin/Help.txt");
+
         try {
-            String fileName = "C:/Users/Fynn/IdeaProjects/FNotepad/NotePads/Help.txt";
-            fr = new FileReader(fileName);
+
+            File file = new File(fileURL.toURI());
+
+            fr = new FileReader(file);
             StringBuffer sb = new StringBuffer();
             int ch;
             while ((ch = fr.read()) != -1)
                 sb.append((char) ch);
-
             System.out.println(sb.toString());
         }
-        catch (IOException ex) {
-            System.out.println(ex);
-        } finally {
+        catch (IOException | URISyntaxException ex) { System.out.println(ex);
+        }
+        finally {
+
             try {
                 if (fr != null) fr.close();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
 
             }
         }
+
+
+
     }
 
     ////////////////////////////////////
