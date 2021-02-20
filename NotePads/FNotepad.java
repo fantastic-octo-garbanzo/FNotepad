@@ -1,8 +1,11 @@
+package NotePads;
 // Imports
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
+import java.net.URL;
 /**********/
 
 // Beginn der Klasse FNotepad
@@ -23,33 +26,40 @@ public class FNotepad extends JFrame{
         JLabel l = new JLabel("Welcome to FNotepad"); // Text über Auswahlmenü
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
-        
-		// Button zur Auswahlbestätigung
+
+
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
+
+        // Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
-        b.setBounds(200,250, 200,50);
-     
-		// Button zum Abbrechen
-		JButton a=new JButton("Cancel");
-		a.setBounds(200, 350, 200, 50);
-		
-		// Auswahlmenü
-        Choice c = new Choice();
+        b.setBounds(200,300, 200,50);
+
+        // Button zum Abbrechen
+        JButton a = new JButton("Cancel");
+        a.setBounds(200, 375, 200, 50);
+
+        // Auswahlmenü
+        String[] languagesList = {"English", "Deutsch"};
+        String[] windowList = {"fullscreen", "windowed"};
+
+
+        JComboBox c = new JComboBox(languagesList);
         c.setBounds(250,150, 100,50);
-        c.add("English");
-        c.add("Deutsch");
 
+        JComboBox ch = new JComboBox(windowList);
+        ch.setBounds(250,225, 100,50);
 
-
-        Choice ch = new Choice();
-        ch.setBounds(250,200, 100,50);
+        /*Choice ch = new Choice();
+        ch.setBounds(250,225, 100,50);
         ch.add("fullscreen");
-        ch.add("windowed");
-
-
+        ch.add("windowed");*/
 
         add(l);
-		add(a);
-		add(b);
+        add(a);
+        add(b);
         add(c);
         add(ch);
 
@@ -60,7 +70,7 @@ public class FNotepad extends JFrame{
         setLayout(null);
         setVisible(true);
 
-        
+
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Öffnet Fenster im Vollbild
 
         c.addItemListener(ie -> {
@@ -69,46 +79,42 @@ public class FNotepad extends JFrame{
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
                 b.setText("Sprache ausw\u00E4hlen");
-				a.setText("Abbrechen");
-				ch.removeAll();
-                ch.add("Vollbild");
-                ch.add("Fenstermodus");
+                a.setText("Abbrechen");
+                ch.removeAllItems();
+                ch.addItem("Vollbild");
+                ch.addItem("Fenstermodus");
             }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
                 b.setText("Choose Language");
-				a.setText("Cancel");
-				ch.removeAll();
-                ch.add("fullscreen");
-                ch.add("windowed");
+                a.setText("Cancel");
+                ch.removeAllItems();
+                ch.addItem("fullscreen");
+                ch.addItem("windowed");
             }
         });
 
         // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
-
+            if(c.getSelectedItem().equals("Deutsch")){
+                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
+                if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
+            }
+            if(c.getSelectedItem().equals("English")){
+                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
+                if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
+            }
             dispose();
-            if(c.getItem(c.getSelectedIndex()).equals("Deutsch")){
-                if ( ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
-                if ( ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
-
-            }
-            if(c.getItem(c.getSelectedIndex()).equals("English")){
-                if ( ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
-                if ( ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
-
-            }
         });
-		a.addActionListener((ActionEvent actionEvent) ->
-		{
-			System.exit(0);
-			setVisible(false);
-		});
-		
-	}
-	
+        a.addActionListener((ActionEvent actionEvent) ->
+        {
+            System.exit(0);
+            setVisible(false);
+        });
+
+    }
 
     public static void main(String[] args) {
         new FNotepad();

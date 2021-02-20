@@ -1,27 +1,28 @@
+package FileFilter;
+
 import java.io.File;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 
 /***************************************************/
-class FileFilterDemo extends JFrame {
+class FileFilterDemoEN extends JFrame {
 	JLabel myLabel;
 	JButton myButton;
 
 	JFileChooser chooser;
 
-	FileFilterDemo() {
+	FileFilterDemoEN() {
 		super("File Filter Demo");
 		myLabel = new JLabel("No file is choosed yet");
 		myButton = new JButton("Choose file");
 
 		ActionListener listener = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if (FileFilterDemo.this.chooser == null) chooser = new JFileChooser();
-				chooser.addChoosableFileFilter(new MyFileFilter(".java","Java Source Files(*.java)"));
-				chooser.addChoosableFileFilter(new MyFileFilter(".txt","Text Files(*.txt)"));
-				//filter=new MyFilter();	then filter is equivalent to select all files
-				if(chooser.showDialog(FileFilterDemo.this, "Select this") == JFileChooser.APPROVE_OPTION) FileFilterDemo.this.myLabel.setText(chooser.getSelectedFile().getPath());
+				if (FileFilterDemoEN.this.chooser == null) chooser = new JFileChooser();
+				chooser.addChoosableFileFilter(new FileFilterEN(".java","Java Source Files(*.java)"));
+				chooser.addChoosableFileFilter(new FileFilterEN(".txt","Text Files(*.txt)"));
+				if(chooser.showDialog(FileFilterDemoEN.this, "Select this") == JFileChooser.APPROVE_OPTION) FileFilterDemoEN.this.myLabel.setText(chooser.getSelectedFile().getPath());
 			}
 		};
 
@@ -35,21 +36,21 @@ class FileFilterDemo extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		FileFilterDemo ffd = new FileFilterDemo();
+		FileFilterDemoEN ffd = new FileFilterDemoEN();
 		ffd.setVisible(true);
 	}
 }
 /***************************************************/
-public class MyFileFilter extends FileFilter {
+public class FileFilterEN extends FileFilter {
 	private String extension;
 	private String description;
 	////////////////
-	public MyFileFilter() {
+	public FileFilterEN() {
 		setExtension(null);
 		setDescription(null);
 	}
 	////////////////
-	public MyFileFilter(final String ext, final String desc) {
+	public FileFilterEN(final String ext, final String desc) {
 		setExtension(ext);
 		setDescription(desc);
 	}

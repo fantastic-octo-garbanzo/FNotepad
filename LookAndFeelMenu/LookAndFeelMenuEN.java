@@ -1,15 +1,17 @@
+package LookAndFeelMenu;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 /***************************************************/
-class LookAndFeelDemo extends JFrame
+class LookAndFeelDemoEN extends JFrame
 {
 	JLabel label;
 	JMenuBar jmb;
 	JMenu fileMenu;
 
-	LookAndFeelDemo() {
+	LookAndFeelDemoEN() {
 		super("Look and Feel Demo");
 		add(label = new JLabel("This is a Label"));
 		add(new JButton("Button")); 
@@ -22,19 +24,19 @@ class LookAndFeelDemo extends JFrame
 		setJMenuBar(jmb);
 		fileMenu = new JMenu("Look and Feel");
 		jmb.add(fileMenu);
-		LookAndFeelMenu.createLookAndFeelMenuItem(fileMenu, this);
+		LookAndFeelMenuEN.createLookAndFeelMenuItem(fileMenu, this);
 		setVisible(true);
 	}
 	////////////////////////
 
 	///////////////////////
 	public static void main(String[] args) {
-		new LookAndFeelDemo();
+		new LookAndFeelDemoEN();
 	}
 	////////////////////////
 }
 /************************/
-public class LookAndFeelMenu {
+public class LookAndFeelMenuEN {
 
 	public static void createLookAndFeelMenuItem(JMenu jmenu, Component cmp) {
 		final UIManager.LookAndFeelInfo[] infos = UIManager.getInstalledLookAndFeels();
@@ -48,7 +50,7 @@ public class LookAndFeelMenu {
 			rbm[i].setMnemonic(infos[i].getName().charAt(0));
 			tmp.add(rbm[i]);
 			bg.add(rbm[i]);
-			rbm[i].addActionListener(new LookAndFeelMenuListener(infos[i].getClassName(),cmp));
+			rbm[i].addActionListener(new LookAndFeelMenuListenerEN(infos[i].getClassName(),cmp));
 		}
 
 		rbm[0].setSelected(true);
@@ -58,11 +60,11 @@ public class LookAndFeelMenu {
 
 }
 /**************************/
-class LookAndFeelMenuListener implements ActionListener {
+class LookAndFeelMenuListenerEN implements ActionListener {
 	String classname;
 	Component jf;
 	/////////////////////
-	LookAndFeelMenuListener(String cln, Component jf) {
+	LookAndFeelMenuListenerEN(String cln, Component jf) {
 		this.jf = jf;
 		classname = new String(cln);
 	}

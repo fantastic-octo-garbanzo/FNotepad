@@ -1,9 +1,16 @@
+package FileOperation;
 // Imports
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import FileFilter.*;
+import FindDialog.*;
+import FontChooser.*;
+import LookAndFeelMenu.*;
+import NotePads.FNotepadDE;
+
 
 class FileOperationExampleDE extends JFrame {
 	JMenuBar mb;
@@ -52,16 +59,16 @@ class FileOperationExampleDE extends JFrame {
 public class FileOperationDE {
     FNotepadDE npd;
 
-    boolean saved;
+    public static boolean saved;
     boolean newFileFlag;
-    String fileName;
+    static String fileName;
     String applicationTitle = "FNotepad";
 
     File fileRef;
     JFileChooser chooser;
 
     /////////////////////////////
-    boolean isSave() {
+    public static boolean isSave() {
         return saved;
     }
 
@@ -69,7 +76,7 @@ public class FileOperationDE {
         this.saved = saved;
     }
 
-    String getFileName() {
+    public static String getFileName() {
         return new String(fileName);
     }
 
@@ -78,7 +85,7 @@ public class FileOperationDE {
     }
 
     /////////////////////////
-    FileOperationDE(FNotepadDE npd) {
+    public FileOperationDE(FNotepadDE npd) {
         this.npd = npd;
 
         saved = true;
@@ -89,6 +96,8 @@ public class FileOperationDE {
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
+        chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
@@ -97,12 +106,10 @@ public class FileOperationDE {
 		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(.d)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".bat", "Batch File(*.bat)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".rtf", "Rich Text Format(*.rtf)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".html", "Hyper Text Markup Language(*.html)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".asm", "Assembler(*.asm)"));
-		chooser.addChoosableFileFilter(new FileFilterDE("*", "Alle Dateien"));
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
@@ -126,7 +133,7 @@ public class FileOperationDE {
     }
 
     ////////////////////////
-    boolean saveThisFile() {
+    public boolean saveThisFile() {
 
         if (!newFileFlag) {
             return saveFile(fileRef);
@@ -136,7 +143,7 @@ public class FileOperationDE {
     }
 
     ////////////////////////////////////
-    boolean saveAsFile() {
+    public boolean saveAsFile() {
         File temp = null;
         chooser.setDialogTitle("Speichern als...");
         chooser.setApproveButtonText("Jetzt speichern");
@@ -191,7 +198,7 @@ public class FileOperationDE {
     }
 
     ///////////////////////
-    void openFile() {
+    public void openFile() {
         if (!confirmSave()) return;
         chooser.setDialogTitle("\u00D6ffne Datei...");
         chooser.setApproveButtonText("\u00D6ffnen");
@@ -244,8 +251,8 @@ public class FileOperationDE {
     }
 
     ///////////////////////
-    boolean confirmSave() {
-        String strMsg = "<html>Der Inhalt der Datei " + fileName + " wurde ge\u00E4ndert.<br>" +
+    public boolean confirmSave() {
+        String strMsg = "<html>Der Inhalt der Datei \"" + fileName + "\" wurde ge\u00E4ndert.<br>" +
                 "Wollen Sie die \u00C4nderungen speichern?<html>";
         if (!saved) {
             int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);
@@ -257,11 +264,8 @@ public class FileOperationDE {
     }
 
     ///////////////////////////////////////
-    void newFile() {
+    public void newFile() {
         if (!confirmSave()) return;
-        
-        new FNotepadDE(true);
-
         this.npd.ta.setText("");
         fileName = new String("Unbenannt");
         fileRef = new File(fileName);

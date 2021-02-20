@@ -1,15 +1,17 @@
+package FontChooser;
+
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 /******************************************************/
-class FontDemo extends JFrame {
+class FontDemoDE extends JFrame {
 	FontChooserDE dialog = null; 
 	JTextArea ta;
 	JButton fontButton;
 
-	FontDemo() {
+	FontDemoDE() {
 		super("Schrift");
 
 		ta = new JTextArea(7,20);
@@ -19,8 +21,8 @@ class FontDemo extends JFrame {
 		{
 			public void actionPerformed(ActionEvent ev) {
 				if(dialog == null) dialog = new FontChooserDE(ta.getFont());
-				if(dialog.showDialog(FontDemo.this, "W\u00E4hle eine Schrift")) {
-					FontDemo.this.ta.setFont(dialog.createFont());
+				if(dialog.showDialog(FontDemoDE.this, "W\u00E4hle eine Schrift")) {
+					FontDemoDE.this.ta.setFont(dialog.createFont());
 				}
 			}
 		};
@@ -36,7 +38,7 @@ class FontDemo extends JFrame {
 	////////////////////////////////
 	public static void main(String[] args)
 	{
-		new FontDemo();
+		new FontDemoDE();
 	}
 
 }

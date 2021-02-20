@@ -1,4 +1,3 @@
----
 name: "pre-release"
 
 on:
@@ -16,7 +15,6 @@ jobs:
       - name: "Build & test"
         run: |
           echo "done!"
-
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -24,6 +22,4 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            FNotepad/*.zip
-            FNotepad/*.exe
-            FNotepad/out/artifacts/*.jar
+        
