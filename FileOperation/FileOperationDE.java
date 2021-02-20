@@ -67,6 +67,11 @@ public class FileOperationDE {
     File fileRef;
     JFileChooser chooser;
 
+    File temp = null;
+    FileWriter fout = null;
+    FileInputStream fin = null;
+    BufferedReader din = null;
+
     /////////////////////////////
     public static boolean isSave() {
         return saved;
@@ -94,6 +99,7 @@ public class FileOperationDE {
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
 
+
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
         chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
@@ -115,7 +121,6 @@ public class FileOperationDE {
 //////////////////////////////////////
 
     boolean saveFile(File temp) {
-        FileWriter fout = null;
         try {
             fout = new FileWriter(temp);
             fout.write(npd.ta.getText());
@@ -144,7 +149,6 @@ public class FileOperationDE {
 
     ////////////////////////////////////
     public boolean saveAsFile() {
-        File temp = null;
         chooser.setDialogTitle("Speichern als...");
         chooser.setApproveButtonText("Jetzt speichern");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
@@ -168,8 +172,6 @@ public class FileOperationDE {
 
     ////////////////////////
     boolean openFile(File temp) {
-        FileInputStream fin = null;
-        BufferedReader din = null;
 
         try {
             fin = new FileInputStream(temp);
@@ -205,7 +207,6 @@ public class FileOperationDE {
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei \u00F6ffnen.");
 
-        File temp = null;
         do {
             if (chooser.showOpenDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return;
