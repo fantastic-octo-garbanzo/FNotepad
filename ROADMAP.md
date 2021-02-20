@@ -2,19 +2,22 @@
 
 ## FNotepad v1.4.0
 
-### Added
-
 - rpm package
 - deb package
-- This roadmap
-
-### Changed
-
-- Project struckture (again)
+- Automated Language selection
+- Fix big count bug
 
 
 ## FNotepad v1.5.0
 
-### Added
-
 - Multiple tabs
+- Export PDF files (maybe earlier)
+- Export HTML files
+- Finish FNotepad Logo
+- File tree
+- Syntax highlighting
+
+
+## FNotepad v2.0.0
+
+- Big code changes and new language support
