@@ -209,7 +209,7 @@ public class FileOperationDE {
         return true;
     }
     ///////////////////////
-    public void exportPDF() throws IOException {
+    /*public void exportPDF() throws IOException {
         File temp = null;
         chooser.setDialogTitle("Exportiere PDF ...");
         chooser.setDialogType(JFileChooser.SAVE_DIALOG);
@@ -224,16 +224,25 @@ public class FileOperationDE {
                 chooser.cancelSelection();
 
             temp = chooser.getSelectedFile();
-            String fileName = temp.getName();
             String newName = temp.getName().replace(".txt", ".pdf");
 
-            File file = new File(fileName);
             File dest = new File(newName);
             dest.getParentFile().mkdirs();
 
-            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
-            //PdfWriter writer = new PdfWriter(pdfDocument, new FileOutputStream(fileName + ".pdf"));
+            PdfWriter pdfWriter = new PdfWriter(newName);
+            PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+            pdfDocument.addNewPage();
             Document document = new Document(pdfDocument);
+            document.close();
+            } catch (FileNotFoundException | Exception e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();*/
+            //}
+
+            /*PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+            PdfWriter writer = new PdfWriter(pdfDocument, new FileOutputStream(fileName + ".pdf"));
+
             document.setTextAlignment(TextAlignment.LEFT);
             document.setFontSize((float) 8.0);
             document.setLeftMargin((float) 40.0);
@@ -256,7 +265,7 @@ public class FileOperationDE {
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
 
-    }
+    }*/
     ///////////////////////
     public void openFile() {
         if (!confirmSave()) return;

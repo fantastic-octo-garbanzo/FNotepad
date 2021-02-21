@@ -14,6 +14,7 @@ import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
+import Exports.SaveToPdf;
 
 /************************************/
 
@@ -32,6 +33,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     int lastSearchIndex;
 
     FileOperationDE fileHandler;
+    SaveToPdf exportPdf;
     FontChooserDE fontDialog = null;
     FindDialogDE findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
@@ -187,14 +189,15 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 ////////////////////////////////////
         else if (cmdText.equals(fileExportasPDF)) {
             try {
-                fileHandler.exportPDF();
+                exportPdf.SaveToPdf();
+                statusBar.setText("Export done!");
             } catch (Exception e) {
             }
         }
 ////////////////////////////////////
-        else if (cmdText.equals(fileExportasHTML)) {
+        /*else if (cmdText.equals(fileExportasHTML)) {
             fileHandler.exportHTML();
-        }
+        }*/
 ////////////////////////////////////
         else if (cmdText.equals(fileExit)) {
             if (fileHandler.confirmSave()) System.exit(0);
