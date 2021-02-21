@@ -216,31 +216,38 @@ public class FileOperationDE {
         chooser.setApproveButtonText("Exportieren");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
+        chooser.resetChoosableFileFilters();
+        chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
 
-        temp = chooser.getSelectedFile();
-        String fileName = temp.getName();
-        String newName = temp.getName().replace(".txt", ".pdf");
+        do {
+            if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
+                chooser.cancelSelection();
 
-        File file = new File(fileName);
-        File dest = new File(newName);
-        dest.getParentFile().mkdirs();
+            temp = chooser.getSelectedFile();
+            String fileName = temp.getName();
+            String newName = temp.getName().replace(".txt", ".pdf");
 
-        PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
-        //PdfWriter writer = new PdfWriter(pdfDocument, new FileOutputStream(fileName + ".pdf"));
-        Document document = new Document(pdfDocument);
-        document.setTextAlignment(TextAlignment.LEFT);
-        document.setFontSize((float) 8.0);
-        document.setLeftMargin((float) 40.0);
-        document.setRightMargin((float) 40.0);
+            File file = new File(fileName);
+            File dest = new File(newName);
+            dest.getParentFile().mkdirs();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(temp), "UTF8"));
-        String line;
-        PdfFont normal = PdfFontFactory.createFont(FontConstants.COURIER);
-        while ((line = br.readLine()) != null) {
-            document.add(new Paragraph(line).setFont(normal));
-        }
-        pdfDocument.close();
-        br.close();
+            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+            //PdfWriter writer = new PdfWriter(pdfDocument, new FileOutputStream(fileName + ".pdf"));
+            Document document = new Document(pdfDocument);
+            document.setTextAlignment(TextAlignment.LEFT);
+            document.setFontSize((float) 8.0);
+            document.setLeftMargin((float) 40.0);
+            document.setRightMargin((float) 40.0);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(temp), "UTF8"));
+            String line;
+            PdfFont normal = PdfFontFactory.createFont(FontConstants.COURIER);
+            while ((line = br.readLine()) != null) {
+                document.add(new Paragraph(line).setFont(normal));
+            }
+            pdfDocument.close();
+            br.close();
+        } while (true);
     }
     ///////////////////////
     public void exportHTML() {
