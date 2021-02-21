@@ -4,7 +4,6 @@ import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.StyleConstants;
 
 import FileFilter.*;
 import FindDialog.*;
@@ -18,11 +17,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.property.TextAlignment;
-
-import static com.itextpdf.html2pdf.html.AttributeConstants.SRC;
-
 
 class FileOperationExampleDE extends JFrame {
 	JMenuBar mb;
@@ -209,54 +204,27 @@ public class FileOperationDE {
         return true;
     }
     ///////////////////////
-    /*public void exportPDF() throws IOException {
-        File temp = null;
-        chooser.setDialogTitle("Exportiere PDF ...");
-        chooser.setDialogType(JFileChooser.SAVE_DIALOG);
-        chooser.setApproveButtonText("Exportieren");
-        chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
-        chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
-        chooser.resetChoosableFileFilters();
-        chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
+    public void exportTxtToPDF() throws IOException {
+        File sourceFile = chooser.getSelectedFile();
+        String dest = sourceFile.getName() + ".pdf";
+        PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
 
-        do {
-            if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
-                chooser.cancelSelection();
+        Document document = new Document(pdfDocument);
+        document.setTextAlignment(TextAlignment.LEFT);
+        document.setFontSize((float) 8.0);
+        document.setLeftMargin((float) 40.0);
+        document.setRightMargin((float) 40.0);
 
-            temp = chooser.getSelectedFile();
-            String newName = temp.getName().replace(".txt", ".pdf");
-
-            File dest = new File(newName);
-            dest.getParentFile().mkdirs();
-
-            PdfWriter pdfWriter = new PdfWriter(newName);
-            PdfDocument pdfDocument = new PdfDocument(pdfWriter);
-            pdfDocument.addNewPage();
-            Document document = new Document(pdfDocument);
-            document.close();
-            } catch (FileNotFoundException | Exception e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();*/
-            //}
-
-            /*PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
-            PdfWriter writer = new PdfWriter(pdfDocument, new FileOutputStream(fileName + ".pdf"));
-
-            document.setTextAlignment(TextAlignment.LEFT);
-            document.setFontSize((float) 8.0);
-            document.setLeftMargin((float) 40.0);
-            document.setRightMargin((float) 40.0);
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(temp), "UTF8"));
-            String line;
-            PdfFont normal = PdfFontFactory.createFont(FontConstants.COURIER);
-            while ((line = br.readLine()) != null) {
-                document.add(new Paragraph(line).setFont(normal));
-            }
-            pdfDocument.close();
-            br.close();
-        } while (true);
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFile), "UTF8"));
+        String line;
+        PdfFont normal = PdfFontFactory.createFont(FontConstants.COURIER);
+        Paragraph paragraph = new Paragraph();
+        paragraph.setFont(normal);
+        while ((line = br.readLine()) != null) {
+            document.add(new Paragraph(line).setFont(normal));
+        }
+        document.close();
+        br.close();
     }
     ///////////////////////
     public void exportHTML() {
@@ -265,7 +233,7 @@ public class FileOperationDE {
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
 
-    }*/
+    }
     ///////////////////////
     public void openFile() {
         if (!confirmSave()) return;
