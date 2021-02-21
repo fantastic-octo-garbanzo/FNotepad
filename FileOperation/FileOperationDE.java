@@ -206,7 +206,7 @@ public class FileOperationDE {
     ///////////////////////
     public void exportTxtToPDF() throws IOException {
         File sourceFile = chooser.getSelectedFile();
-        String dest = sourceFile.getName() + ".pdf";
+        String dest = sourceFile.getPath().replace(".txt", ".pdf");
         PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
 
         Document document = new Document(pdfDocument);
