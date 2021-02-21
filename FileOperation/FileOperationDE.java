@@ -205,26 +205,35 @@ public class FileOperationDE {
     }
     ///////////////////////
     public void exportTxtToPDF() throws IOException {
-        File sourceFile = chooser.getSelectedFile();
-        String dest = sourceFile.getPath().replace(".txt", ".pdf");
-        PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+        chooser.setDialogTitle("Datei als PDF exportieren");
+        chooser.setApproveButtonText("Exportieren");
+        chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
+        chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei exportieren.");
 
-        Document document = new Document(pdfDocument);
-        document.setTextAlignment(TextAlignment.LEFT);
-        document.setFontSize((float) 8.0);
-        document.setLeftMargin((float) 40.0);
-        document.setRightMargin((float) 40.0);
+        do {
+            if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
+                return;
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(sourceFile), "UTF8"));
-        String line;
-        PdfFont normal = PdfFontFactory.createFont(FontConstants.COURIER);
-        Paragraph paragraph = new Paragraph();
-        paragraph.setFont(normal);
-        while ((line = br.readLine()) != null) {
-            document.add(new Paragraph(line).setFont(normal));
-        }
-        document.close();
-        br.close();
+            File sourceFile = chooser.getSelectedFile();
+            String dest = sourceFile.getPath().replace(".txt", ".pdf");
+            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(dest));
+
+            Document document = new Document(pdfDocument);
+            document.setTextAlignment(TextAlignment.LEFT);
+            document.setFontSize((float) 8.0);
+            document.setLeftMargin((float) 40.0);
+            document.setRightMargin((float) 40.0);
+
+            FileReader input = new FileReader(sourceFile);
+            BufferedReader br = new BufferedReader(input);
+            String line;
+            //Paragraph paragraph = new Paragraph();
+            while ((line = br.readLine()) != null) {
+                document.add(new Paragraph(line));
+            }
+            document.close();
+            br.close();
+        } while (true);
     }
     ///////////////////////
     public void exportHTML() {
