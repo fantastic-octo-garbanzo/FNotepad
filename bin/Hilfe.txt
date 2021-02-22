@@ -14,3 +14,14 @@ Klicken Sie auf Datei und dann auf Speichern oder Speichern als..., oder drücke
 
 4. Wie erstelle ich eine neue Datei?
 Klicken Sie auf Datei und dann auf neue Datei, oder drücken Sie die Tastenkombination Strg + N.
+
+5. Wie exportiere ich eine Datei als PDF?
+Klicken Sie auf Datei und dann auf Datei als PDF exportieren, oder drücken Sie die Tastenkombination Strg +  Y.
+
+6. Wie exportiere ich eine Datei als HTML?
+Klicken Sie auf Datei und dann auf Datei als HTML exportieren, oder drücken Sie die Tastenkombination Strg +  Y.
+
+7. Wie erstelle ich ein neues Fenster?
+Klicken Sie auf Datei und dann auf Neues Fenster, oder drücken Sie die Tastenkombination Strg + G.
+
+
