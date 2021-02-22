@@ -1,12 +1,14 @@
 package NotePads;
 // Imports
+import java.io.*;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import java.io.IOException;
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
@@ -17,6 +19,7 @@ import LookAndFeelMenu.LookAndFeelMenuDE;
 
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
+    private static Object FileReader;
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
@@ -288,6 +291,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             changeLanguage();
         }
 ////////////////////////////////////
+        else if (cmdText.equals(helpHelpTopic)){
+            loadHelp();
+        }
+////////////////////////////////////
         else {
             statusBar.setText("Dieser Befehl wird gerade integriert");
         }
@@ -399,6 +406,54 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void newWindow() {
         new FNotepadDE(true);
     }
+
+
+    void loadHelp(){
+        FileReader fr;
+        fr = null;
+        JDialog helpPage = new JDialog();
+        helpPage.setTitle(helpText);
+        helpPage.setBounds(50, 50, 700, 300);
+        helpPage.setVisible(true);
+        helpPage.setAlwaysOnTop(true);
+        helpPage.setResizable(false);
+        JTextArea helptxtArea = new JTextArea();
+        helptxtArea.setEditable(false);
+        URL fileURL = getClass().getResource("/bin/Hilfe.txt");
+        try {
+            File file = new File(fileURL.toURI());
+            fr = new FileReader(file);
+            StringBuffer sb = new StringBuffer();
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = br.readLine();
+            ArrayList<String> listOfStrings = new ArrayList<>();
+            listOfStrings.add(line);
+            while(line != null) {
+                line = br.readLine();
+                listOfStrings.add(line);
+            }
+            for(int i = 0; i < listOfStrings.size(); i++) {
+                sb.append(listOfStrings.get(i)+"\n");
+            }
+            sb.delete(sb.length()-5, sb.length());
+            helptxtArea.setText(sb.toString());
+        }
+        catch (IOException | URISyntaxException ex) { System.out.println(ex);
+        }
+        finally {
+
+            try {
+                if (fr != null) fr.close();
+            }
+            catch (Exception ex) {
+
+            }
+        }
+        helpPage.add(helptxtArea);
+        helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        helptxtArea.setVisible(true);
+    }
+
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -542,7 +597,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
+
         new FNotepadDE(true);
+
     }
 }
 
@@ -599,4 +656,6 @@ interface MenuConstantsDE {
                     + "Bei Bugs und Ideen gerne ein Issue auf Github stellen<p align=center>";
 
     String changeLang = "English";
+    
+
 }

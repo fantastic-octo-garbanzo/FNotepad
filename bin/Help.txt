@@ -1,0 +1,16 @@
+HELP
+=========
+1. Which file formats can I open?
+With FNotepad, you can first open all file formats, but not all file formats are displayed legibly.
+
+2. Is FNotepad free?
+Yes FNotepad is free.
+
+3. How do I open files?
+Click File, then click Open, or press Ctrl + O.
+
+3. How do I save files?
+Click File, then click Save or Save As ..., or press Ctrl + S on the keyboard.
+
+4. How do I create a new file?
+Click File, then click New File, or press Ctrl + N.

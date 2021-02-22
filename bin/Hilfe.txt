@@ -1,0 +1,16 @@
+H I L F E
+=========
+1. Welche Dateiformate kann ich öffnen?
+Mit FNotepad, können Sie  erstmal alle Dateiformate öffnen, aber es werden nicht alle Dateiformate lesbar dargestellt.
+
+2. Ist FNotepad kostenlos?
+Ja FNotepad ist kostenlos.
+
+3. Wie öffne ich Dateien?
+Klicken Sie auf Datei und dann auf Öffnen, oder drücken Sie die Tastenkombination Strg + O.
+
+3. Wie Speichere ich Dateien?
+Klicken Sie auf Datei und dann auf Speichern oder Speichern als..., oder drücken Sie die Tastenkombination Strg + S.
+
+4. Wie erstelle ich eine neue Datei?
+Klicken Sie auf Datei und dann auf neue Datei, oder drücken Sie die Tastenkombination Strg + N.
