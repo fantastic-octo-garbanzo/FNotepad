@@ -24,4 +24,7 @@ Klicken Sie auf Datei und dann auf Datei als HTML exportieren, oder drücken Sie
 7. Wie erstelle ich ein neues Fenster?
 Klicken Sie auf Datei und dann auf Neues Fenster, oder drücken Sie die Tastenkombination Strg + G.
 
+8. Wie drucke ich eine Datei aus?
+Klicken Sie auf Datei und dann auf Drucken, oder drücken Sie die  Tastenkombination Strg + P.
+
 
