@@ -1,5 +1,7 @@
-HELP
-=========
+|   |   |----   |       |----|
+|---|   |----   |       |____|
+|   |   |----   |____   |
+==============================
 1. Which file formats can I open?
 With FNotepad, you can first open all file formats, but not all file formats are displayed legibly.
 
