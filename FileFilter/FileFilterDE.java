@@ -4,7 +4,6 @@ import java.io.File;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-
 /***************************************************/
 class FileFilterDemoDE extends JFrame {
 	JLabel myLabel;
@@ -78,4 +77,3 @@ public class FileFilterDE extends FileFilter {
 	}
 	////////////////
 }
-/***************************************************/

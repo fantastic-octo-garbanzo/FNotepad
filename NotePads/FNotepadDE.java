@@ -12,9 +12,7 @@ import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
-
 /************************************/
-
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
     public JFrame f;
@@ -25,9 +23,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     private String fileName = "Unbenannt";
     private boolean saved = true;
     String applicationName = "FNotepad";
-
-    String searchString, replaceString;
-    int lastSearchIndex;
 
     FileOperationDE fileHandler;
     FontChooserDE fontDialog = null;
@@ -67,7 +62,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
 
-
         f.pack();
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -79,7 +73,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         fileHandler = new FileOperationDE(this);
 
 /////////////////////
-
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {

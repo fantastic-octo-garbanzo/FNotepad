@@ -1,14 +1,9 @@
 package FileOperation;
 // Imports
 import java.io.*;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import FileFilter.*;
-import FindDialog.*;
-import FontChooser.*;
-import LookAndFeelMenu.*;
 import NotePads.FNotepadDE;
 
 
@@ -119,7 +114,6 @@ public class FileOperationDE {
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
-
     boolean saveFile(File temp) {
         try {
             fout = new FileWriter(temp);
@@ -136,8 +130,7 @@ public class FileOperationDE {
         updateStatus(temp, true);
         return true;
     }
-
-    ////////////////////////
+//////////////////////////////////////
     public boolean saveThisFile() {
 
         if (!newFileFlag) {
@@ -146,8 +139,7 @@ public class FileOperationDE {
 
         return saveAsFile();
     }
-
-    ////////////////////////////////////
+//////////////////////////////////////
     public boolean saveAsFile() {
         chooser.setDialogTitle("Speichern als...");
         chooser.setApproveButtonText("Jetzt speichern");
@@ -166,11 +158,9 @@ public class FileOperationDE {
                 break;
         } while (true);
 
-
         return saveFile(temp);
     }
-
-    ////////////////////////
+//////////////////////////////////////
     boolean openFile(File temp) {
 
         try {
@@ -198,8 +188,7 @@ public class FileOperationDE {
         this.npd.ta.setCaretPosition(0);
         return true;
     }
-
-    ///////////////////////
+//////////////////////////////////////
     public void openFile() {
         if (!confirmSave()) return;
         chooser.setDialogTitle("\u00D6ffne Datei...");
@@ -232,8 +221,7 @@ public class FileOperationDE {
             newFileFlag = true;
 
     }
-
-    ////////////////////////
+//////////////////////////////////////
     void updateStatus(File temp, boolean saved) {
         if (saved) {
             this.saved = true;
@@ -250,8 +238,7 @@ public class FileOperationDE {
             npd.statusBar.setText("Fehler beim \u00D6ffnen/Speichern : " + temp.getPath());
         }
     }
-
-    ///////////////////////
+//////////////////////////////////////
     public boolean confirmSave() {
         String strMsg = "<html>Der Inhalt der Datei \"" + fileName + "\" wurde ge\u00E4ndert.<br>" +
                 "Wollen Sie die \u00C4nderungen speichern?<html>";
@@ -263,8 +250,7 @@ public class FileOperationDE {
         }
         return true;
     }
-
-    ///////////////////////////////////////
+//////////////////////////////////////
     public void newFile() {
         if (!confirmSave()) return;
         this.npd.ta.setText("");
