@@ -1,5 +1,5 @@
 package FindDialog;
-
+// Imports
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -47,7 +47,6 @@ class FindReplaceDemoDE extends JFrame {
 	public static void main(String[] args) {
 		new FindReplaceDemoDE();
 	}
-
 }
 /******************************************************/
 public class FindDialogDE extends JPanel implements ActionListener {

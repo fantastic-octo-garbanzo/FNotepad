@@ -1,10 +1,9 @@
 package FileFilter;
-
+// Imports
 import java.io.File;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-
 /***************************************************/
 class FileFilterDemoEN extends JFrame {
 	JLabel myLabel;
