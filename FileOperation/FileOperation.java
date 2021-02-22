@@ -264,7 +264,7 @@ public class FileOperation {
     public void newFile() {
         if (!confirmSave()) return;
         
-        new FNP(true);
+
 
         this.npd.ta.setText("");
         fileName = new String("Untitled");

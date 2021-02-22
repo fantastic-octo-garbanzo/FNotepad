@@ -14,7 +14,79 @@ import FontChooser.FontChooser;
 
 import LookAndFeelMenu.LookAndFeelMenu;
 
-public class FNP implements ActionListener, MenuConstants {
+public class FNP implements ActionListener {
+
+    String th_is;
+    String command = " command is yet to be implemented";
+    String aboutText2 = "About FNotepad!";
+    String fontChoose = "Choose a font";
+    String searchText = "Nothing to search for, use Find option of Edit Menu first !!!!";
+    String searchLine = "Enter Line Number:";
+    String letters = "Letters ";
+    String words = ", Words ";
+    String line = "       ||       Line ";
+    String column = ", Column ";
+    String countInit;
+    String defaultFileName = "Untitled";
+    String defaultApplicationName = "FNotepad";
+    String claf = "Change Look and Feel";
+    String matchCaseVar = "Match case";
+    String up = "Up";
+    String down = "Down";
+    String direction = "Direction";
+    String findText = "Find Next";
+    String replaceText = "Replace";
+    String replaceAllText = "Replace All";
+    String cancelText = "Cancel";
+
+
+
+    String fileText = "File";
+    String editText = "Edit";
+    String formatText = "Format";
+    String viewText = "View";
+    String helpText = "Help";
+
+    String fileNew = "New";
+    String fileOpen = "Open...";
+    String fileSave = "Save";
+    String fileSaveAs = "Save As...";
+    String filePageSetup = "Page Setup...";
+    String filePrint = "Print";
+    String fileExit = "Exit";
+
+    String editUndo = "Undo";
+    String editCut = "Cut";
+    String editCopy = "Copy";
+    String editPaste = "Paste";
+    String editDelete = "Delete";
+    String editFind = "Find...";
+    String editFindNext = "Find Next";
+    String editReplace = "Replace";
+    String editGoTo = "Go To...";
+    String editSelectAll = "Select All";
+    String editTimeDate = "Time/Date";
+
+    String formatWordWrap = "Word Wrap";
+    String formatFont = "Font...";
+    String formatForeground = "Set Text color...";
+    String formatBackground = "Set Pad color...";
+
+    String viewStatusBar = "Status Bar";
+
+    String helpHelpTopic = "Help Topic";
+    String helpAboutFNotepad = "About FNotepad";
+
+    String aboutText =
+            "<html><big>FNotepad</big><hr><hr>"
+                    + "<p align=right>From fantastic-octo-garbanzo!"
+                    + "<hr><p align=left>Compiled by OpenJDK15.<br><br>"
+                    + "<strong>Thank you for using FNotepad!</strong><br>"
+                    + "Please make an issue on<p align=center>"
+                    + "<hr><em><big>https://github.com/fantastic-octo-garbanzo/FNotepad</big></em><hr><html>";
+
+
+
 
     public JFrame f;
     public JTextArea ta;
@@ -37,15 +109,153 @@ public class FNP implements ActionListener, MenuConstants {
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
 
-    public static Dimension getScreenDimensionWithoutTaskbarEN(Frame frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
-        int taskBarSize = screenInsets.bottom;
-        return new Dimension(width, height - taskBarSize);
+
+
+    public FNP(String th_is, String command, String aboutText2, String fontChoose, String searchText, String searchLine,
+               String letters, String words, String line, String column, String countInit, String defaultFileName,
+               String defaultApplicationName, String claf, String matchCaseVar, String up, String down, String direction,
+               String findText, String replaceText, String replaceAllText, String cancelText, String fileText, String editText,
+               String formatText, String viewText, String helpText, String fileNew, String fileOpen, String fileSave,
+               String fileSaveAs, String filePageSetup, String filePrint, String fileExit, String editUndo, String editCut,
+               String editCopy, String editPaste, String editDelete, String editFind, String editFindNext, String editReplace,
+               String editGoTo, String editSelectAll, String editTimeDate, String formatWordWrap, String formatFont,
+               String formatForeground, String formatBackground, String viewStatusBar, String helpHelpTopic, String helpAboutFNotepad, String aboutText) {
+        System.out.println("Here");
+        this.th_is = th_is;
+        this.command = command;
+        this.aboutText2 = aboutText2;
+        this.fontChoose = fontChoose;
+        this.searchText = searchText;
+        this.searchLine = searchLine;
+        this.letters = letters;
+        this.words = words;
+        this.line = line;
+        this.column = column;
+        this.countInit = countInit;
+        this.defaultFileName = defaultFileName;
+        this.defaultApplicationName = defaultApplicationName;
+        this.claf = claf;
+        this.matchCaseVar = matchCaseVar;
+        this.up = up;
+        this.down = down;
+        this.direction = direction;
+        this.findText = findText;
+        this.replaceText = replaceText;
+        this.replaceAllText = replaceAllText;
+        this.cancelText = cancelText;
+        this.fileText = fileText;
+        this.editText = editText;
+        this.formatText = formatText;
+        this.viewText = viewText;
+        this.helpText = helpText;
+        this.fileNew = fileNew;
+        this.fileOpen = fileOpen;
+        this.fileSave = fileSave;
+        this.fileSaveAs = fileSaveAs;
+        this.filePageSetup = filePageSetup;
+        this.filePrint = filePrint;
+        this.fileExit = fileExit;
+        this.editUndo = editUndo;
+        this.editCut = editCut;
+        this.editCopy = editCopy;
+        this.editPaste = editPaste;
+        this.editDelete = editDelete;
+        this.editFind = editFind;
+        this.editFindNext = editFindNext;
+        this.editReplace = editReplace;
+        this.editGoTo = editGoTo;
+        this.editSelectAll = editSelectAll;
+        this.editTimeDate = editTimeDate;
+        this.formatWordWrap = formatWordWrap;
+        this.formatFont = formatFont;
+        this.formatForeground = formatForeground;
+        this.formatBackground = formatBackground;
+        this.viewStatusBar = viewStatusBar;
+        this.helpHelpTopic = helpHelpTopic;
+        this.helpAboutFNotepad = helpAboutFNotepad;
+        this.aboutText = aboutText;
+
+        System.out.println("Here2");
+        f = new JFrame(fileName + " - " + applicationName);
+        ta = new JTextArea(30, 60);
+        statusBar = new JLabel(countInit, JLabel.RIGHT);
+        f.add(new JScrollPane(ta), BorderLayout.CENTER);
+        f.add(statusBar, BorderLayout.SOUTH);
+        f.add(new JLabel("  "), BorderLayout.EAST);
+        f.add(new JLabel("  "), BorderLayout.WEST);
+        createMenuBar(f);
+
+
+
+        f.pack();
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        if(!true){f.setSize(650, 600);}
+
+        fileHandler = new FileOperation(this);
+
+/////////////////////
+
+        ta.addCaretListener(
+                new CaretListener() {
+                    public void caretUpdate(CaretEvent e) {
+                        int lineNumber = 0, columnNumber = 0, pos = 0, wordCount = 0, letterCount = 0;
+
+                        try {
+                            pos = ta.getCaretPosition();
+                            lineNumber = ta.getLineOfOffset(pos);
+                            columnNumber = pos - ta.getLineStartOffset(lineNumber);
+                            String text = ta.getText();
+
+                            letterCount = text.length();
+                            wordCount = text.split("\\s").length;
+                            if (!FileOperation.isSave()){
+                                f.setTitle(FileOperation.getFileName() + "* - " + applicationName);
+                            } else {
+                                f.setTitle(FileOperation.getFileName() + " - " + applicationName);
+                            }
+                            //System.out.println(wordCount+ " " +letterCount);
+
+
+
+                        } catch (Exception excp) {
+                        }
+                        if (ta.getText().length() == 0) {
+                            lineNumber = 0;
+                            columnNumber = 0;
+                            wordCount = 0;
+                            letterCount = 0;
+                        }
+                        statusBar.setText(letters + letterCount + words + wordCount + line + (lineNumber + 1) + column + (columnNumber + 1));
+                    }
+                });
+//////////////////
+        DocumentListener myListener = new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                fileHandler.saved = false;
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                fileHandler.saved = false;
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                fileHandler.saved = false;
+            }
+        };
+        ta.getDocument().addDocumentListener(myListener);
+/////////
+        WindowListener frameClose = new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                if (fileHandler.confirmSave()) f.dispose();
+            }
+        };
+        f.addWindowListener(frameClose);
+
     }
-    /****************************/
+
+    /**
     public FNP(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
         ta = new JTextArea(30, 60);
@@ -126,9 +336,9 @@ public class FNP implements ActionListener, MenuConstants {
 //////////////////
 
     }
-
+*/
     ////////////////////////////////////
-    void goTo() {
+    public void goTo() {
         int lineNumber = 0;
         try {
             lineNumber = ta.getLineOfOffset(ta.getCaretPosition()) + 1;
@@ -246,7 +456,7 @@ public class FNP implements ActionListener, MenuConstants {
     }//action Performed
 
     ////////////////////////////////////
-    void showBackgroundColorDialog() {
+    public void showBackgroundColorDialog() {
         if (bcolorChooser == null)
             bcolorChooser = new JColorChooser();
         if (backgroundDialog == null)
@@ -266,7 +476,7 @@ public class FNP implements ActionListener, MenuConstants {
     }
 
     ////////////////////////////////////
-    void showForegroundColorDialog() {
+    public void showForegroundColorDialog() {
         if (fcolorChooser == null)
             fcolorChooser = new JColorChooser();
         if (foregroundDialog == null)
@@ -324,7 +534,7 @@ public class FNP implements ActionListener, MenuConstants {
     }
 
     /*********************************/
-    void createMenuBar(JFrame f) {
+    public void createMenuBar(JFrame f) {
         JMenuBar mb = new JMenuBar();
         JMenuItem temp;
 
@@ -419,7 +629,7 @@ public class FNP implements ActionListener, MenuConstants {
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
-        new FNP(true);
+
     }
 }
 
