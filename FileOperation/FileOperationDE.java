@@ -6,7 +6,6 @@ import javax.swing.*;
 import FileFilter.*;
 import NotePads.FNotepadDE;
 
-
 class FileOperationExampleDE extends JFrame {
 	JMenuBar mb;
 	JMenu file;
@@ -66,7 +65,6 @@ public class FileOperationDE {
     FileWriter fout = null;
     FileInputStream fin = null;
     BufferedReader din = null;
-
     /////////////////////////////
     public static boolean isSave() {
         return saved;
@@ -83,7 +81,6 @@ public class FileOperationDE {
     void setFileName(String fileName) {
         this.fileName = new String(fileName);
     }
-
     /////////////////////////
     public FileOperationDE(FNotepadDE npd) {
         this.npd = npd;
@@ -93,7 +90,6 @@ public class FileOperationDE {
         fileName = new String("Unbenannt");
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
-
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
@@ -132,11 +128,9 @@ public class FileOperationDE {
     }
 //////////////////////////////////////
     public boolean saveThisFile() {
-
         if (!newFileFlag) {
             return saveFile(fileRef);
         }
-
         return saveAsFile();
     }
 //////////////////////////////////////
@@ -145,7 +139,6 @@ public class FileOperationDE {
         chooser.setApproveButtonText("Jetzt speichern");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
         chooser.setApproveButtonToolTipText("Hier speichern!");
-
         do {
             if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return false;
@@ -157,12 +150,10 @@ public class FileOperationDE {
             ) == JOptionPane.YES_OPTION)
                 break;
         } while (true);
-
         return saveFile(temp);
     }
 //////////////////////////////////////
     boolean openFile(File temp) {
-
         try {
             fin = new FileInputStream(temp);
             din = new BufferedReader(new InputStreamReader(fin));

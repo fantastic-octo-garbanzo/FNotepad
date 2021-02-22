@@ -8,7 +8,6 @@ import javax.swing.filechooser.FileFilter;
 class FileFilterDemoEN extends JFrame {
 	JLabel myLabel;
 	JButton myButton;
-
 	JFileChooser chooser;
 
 	FileFilterDemoEN() {

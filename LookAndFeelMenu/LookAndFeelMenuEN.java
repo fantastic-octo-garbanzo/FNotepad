@@ -1,5 +1,5 @@
 package LookAndFeelMenu;
-
+// Import
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -28,8 +28,6 @@ class LookAndFeelDemoEN extends JFrame
 		setVisible(true);
 	}
 	////////////////////////
-
-	///////////////////////
 	public static void main(String[] args) {
 		new LookAndFeelDemoEN();
 	}
@@ -37,7 +35,6 @@ class LookAndFeelDemoEN extends JFrame
 }
 /************************/
 public class LookAndFeelMenuEN {
-
 	public static void createLookAndFeelMenuItem(JMenu jmenu, Component cmp) {
 		final UIManager.LookAndFeelInfo[] infos = UIManager.getInstalledLookAndFeels();
 
@@ -52,12 +49,9 @@ public class LookAndFeelMenuEN {
 			bg.add(rbm[i]);
 			rbm[i].addActionListener(new LookAndFeelMenuListenerEN(infos[i].getClassName(),cmp));
 		}
-
 		rbm[3].setSelected(true);
 		jmenu.add(tmp);
-
 	}
-
 }
 /**************************/
 class LookAndFeelMenuListenerEN implements ActionListener {
