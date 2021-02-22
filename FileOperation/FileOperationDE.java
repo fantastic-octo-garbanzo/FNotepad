@@ -205,6 +205,8 @@ public class FileOperationDE {
     }
     ///////////////////////
     public void exportTxtToPDF() throws IOException {
+        chooser.resetChoosableFileFilters();
+        chooser.addChoosableFileFilter(new FileFilterDE(".pdf", "Portable Document Files(*.pdf)"));
         chooser.setDialogTitle("Datei als PDF exportieren");
         chooser.setApproveButtonText("Exportieren");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_E);
@@ -226,11 +228,9 @@ public class FileOperationDE {
 
             FileReader input = new FileReader(sourceFile);
             BufferedReader br = new BufferedReader(input);
-            String line;
+            //String line;
             //Paragraph paragraph = new Paragraph();
-            while ((line = br.readLine()) != null) {
-                document.add(new Paragraph(line));
-            }
+            document.add(br);
             document.close();
             br.close();
         } while (true);
