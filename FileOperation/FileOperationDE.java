@@ -1,16 +1,10 @@
 package FileOperation;
 // Imports
 import java.io.*;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import FileFilter.*;
-import FindDialog.*;
-import FontChooser.*;
-import LookAndFeelMenu.*;
 import NotePads.FNotepadDE;
-
 
 class FileOperationExampleDE extends JFrame {
 	JMenuBar mb;
@@ -71,7 +65,6 @@ public class FileOperationDE {
     FileWriter fout = null;
     FileInputStream fin = null;
     BufferedReader din = null;
-
     /////////////////////////////
     public static boolean isSave() {
         return saved;
@@ -88,7 +81,6 @@ public class FileOperationDE {
     void setFileName(String fileName) {
         this.fileName = new String(fileName);
     }
-
     /////////////////////////
     public FileOperationDE(FNotepadDE npd) {
         this.npd = npd;
@@ -98,7 +90,6 @@ public class FileOperationDE {
         fileName = new String("Unbenannt");
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
-
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
@@ -119,7 +110,6 @@ public class FileOperationDE {
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
-
     boolean saveFile(File temp) {
         try {
             fout = new FileWriter(temp);
@@ -136,24 +126,19 @@ public class FileOperationDE {
         updateStatus(temp, true);
         return true;
     }
-
-    ////////////////////////
+//////////////////////////////////////
     public boolean saveThisFile() {
-
         if (!newFileFlag) {
             return saveFile(fileRef);
         }
-
         return saveAsFile();
     }
-
-    ////////////////////////////////////
+//////////////////////////////////////
     public boolean saveAsFile() {
         chooser.setDialogTitle("Speichern als...");
         chooser.setApproveButtonText("Jetzt speichern");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
         chooser.setApproveButtonToolTipText("Hier speichern!");
-
         do {
             if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return false;
@@ -165,14 +150,10 @@ public class FileOperationDE {
             ) == JOptionPane.YES_OPTION)
                 break;
         } while (true);
-
-
         return saveFile(temp);
     }
-
-    ////////////////////////
+//////////////////////////////////////
     boolean openFile(File temp) {
-
         try {
             fin = new FileInputStream(temp);
             din = new BufferedReader(new InputStreamReader(fin));
@@ -198,8 +179,7 @@ public class FileOperationDE {
         this.npd.ta.setCaretPosition(0);
         return true;
     }
-
-    ///////////////////////
+//////////////////////////////////////
     public void openFile() {
         if (!confirmSave()) return;
         chooser.setDialogTitle("\u00D6ffne Datei...");
@@ -232,8 +212,7 @@ public class FileOperationDE {
             newFileFlag = true;
 
     }
-
-    ////////////////////////
+//////////////////////////////////////
     void updateStatus(File temp, boolean saved) {
         if (saved) {
             this.saved = true;
@@ -250,8 +229,7 @@ public class FileOperationDE {
             npd.statusBar.setText("Fehler beim \u00D6ffnen/Speichern : " + temp.getPath());
         }
     }
-
-    ///////////////////////
+//////////////////////////////////////
     public boolean confirmSave() {
         String strMsg = "<html>Der Inhalt der Datei \"" + fileName + "\" wurde ge\u00E4ndert.<br>" +
                 "Wollen Sie die \u00C4nderungen speichern?<html>";
@@ -263,8 +241,7 @@ public class FileOperationDE {
         }
         return true;
     }
-
-    ///////////////////////////////////////
+//////////////////////////////////////
     public void newFile() {
         if (!confirmSave()) return;
         this.npd.ta.setText("");

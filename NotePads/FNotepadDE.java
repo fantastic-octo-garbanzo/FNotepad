@@ -14,9 +14,7 @@ import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
-
 /************************************/
-
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
     private static Object FileReader;
@@ -28,9 +26,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     private String fileName = "Unbenannt";
     private boolean saved = true;
     String applicationName = "FNotepad";
-
-    String searchString, replaceString;
-    int lastSearchIndex;
 
     FileOperationDE fileHandler;
     FontChooserDE fontDialog = null;
@@ -70,7 +65,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
 
-
         f.pack();
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -82,7 +76,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         fileHandler = new FileOperationDE(this);
 
 /////////////////////
-
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
@@ -114,7 +107,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                             } else {
                                 f.setTitle(FileOperationDE.getFileName() + " - " + applicationName);
                             }
-                            //System.out.println(wordCount+ " " +letterCount);
 
                         } catch (Exception excp) {
                         }
@@ -150,7 +142,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         };
         f.addWindowListener(frameClose);
 ////////////////////////////////////
-
     }
     ////////////////////////////////////
     void goTo() {
@@ -301,7 +292,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     }
     ////////////////////////////////////
     void showTabulatorDialog(){
-
         tabulatorSize = new JDialog();
         tabulatorSize.setTitle(filePageSetup);
         tabulatorSize.setBounds(50, 50, 400, 100);
@@ -351,7 +341,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         backgroundDialog.setVisible(true);
     }
-
     ////////////////////////////////////
     void showForegroundColorDialog() {
         if (fcolorChooser == null)
@@ -371,7 +360,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         foregroundDialog.setVisible(true);
     }
-
     ///////////////////////////////////
     void openGithub() throws IOException {
         Runtime rt = Runtime.getRuntime();
@@ -395,7 +383,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             rt.exec(new String[] {"sh", "-c", cmd.toString() });
         }
     }
-
     ///////////////////////////////////
     void changeLanguage() {
         if (!FileOperationDE.saved) return;
@@ -462,7 +449,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         return temp;
     }
-
     ////////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, int aclKey, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -472,7 +458,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         return temp;
     }
-
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JCheckBoxMenuItem temp = new JCheckBoxMenuItem(s);
@@ -483,7 +468,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         return temp;
     }
-
     ////////////////////////////////////
     JMenu createMenu(String s, int key, JMenuBar toMenuBar) {
         JMenu temp = new JMenu(s);
@@ -491,7 +475,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         toMenuBar.add(temp);
         return temp;
     }
-
     /*********************************/
     void createMenuBar(JFrame f) {
         JMenuBar mb = new JMenuBar(); // Menü-Leiste
@@ -593,7 +576,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         editMenu.addMenuListener(editMenuListener);
         f.setJMenuBar(mb);
     }
-
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
@@ -602,7 +584,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
     }
 }
-
 /**************************************/
 // Menü-Leiste
 interface MenuConstantsDE {

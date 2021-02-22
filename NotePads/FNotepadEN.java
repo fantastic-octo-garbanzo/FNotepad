@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
-
-import FileOperation.FileOperationDE;
 import FileOperation.FileOperationEN;
 import FindDialog.FindDialogEN;
 import FontChooser.FontChooserEN;
