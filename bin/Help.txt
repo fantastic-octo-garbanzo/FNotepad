@@ -14,3 +14,15 @@ Click File, then click Save or Save As ..., or press Ctrl + S on the keyboard.
 
 4. How do I create a new file?
 Click File, then click New File, or press Ctrl + N.
+
+5. How do I export a file as PDF?
+Click File, then click Export File as PDF, or press Ctrl + Y.
+
+6. How do I export a file as HTML?
+Click File, then click Export File As HTML, or press Ctrl + Y.
+
+7. How do I create a new window?
+Click File, then New Window, or press Ctrl + G.
+
+8. How do I print a file?
+Click File, then click Print, or press Ctrl + P.
