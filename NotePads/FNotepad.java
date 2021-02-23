@@ -8,9 +8,7 @@ import java.net.URL;
 /**********/
 // Beginn der Klasse FNotepad
 public class FNotepad extends JFrame{
-    private static void showSplash() {
-        showSplash();
-    }
+
     // Holt die Bildschrimgröße ohne Taskbar
     public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -22,6 +20,7 @@ public class FNotepad extends JFrame{
     }
 
     public FNotepad(){
+
         setTitle("Language - FNotepad"); // Titel
         JLabel l = new JLabel("Welcome to FNotepad"); // Text über Auswahlmenü
         l.setBounds(225,50, 100,50);
@@ -108,6 +107,8 @@ public class FNotepad extends JFrame{
             setVisible(false);
         });
 
+    }private static void showSplash() {
+        showSplash();
     }
     public static void main(String[] args) {
         new FNotepad();

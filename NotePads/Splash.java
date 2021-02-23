@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
-    public class Splash extends JWindow//class is based on swing so it has to extend JWindow
+    public class Splash extends JWindow
     {
         //some private variables
         private Container container;
@@ -24,8 +24,8 @@ import javax.swing.JWindow;
         public Splash()
         {
             infoLabel = new JLabel("Ladebildschirm");
-            URL logourl = getClass().getResource("/bin/FNotepad.jpg");
-            ImageIcon logo = new ImageIcon(logourl);
+            URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
+            ImageIcon logo = new ImageIcon(iconurl);
             container = this.getContentPane();
             container.setLayout(new BorderLayout());
 
@@ -44,12 +44,11 @@ import javax.swing.JWindow;
             pack();
 
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-//gets the screen size of the screnn of the machine the programm is displayed on
             int w = getSize().width;
             int h = getSize().height;
             int x = (dim.width-w)/2;
             int y = (dim.height-h)/2;
-            setBounds(x, y, w, h); //sets the Splash screen in the middle of the display
+            setBounds(30, 80, 200, 300);
 
         }
 
