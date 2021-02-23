@@ -59,13 +59,18 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
         JTabbedPane tabbedPane = new JTabbedPane();
+        JToolBar toolBar = new JToolBar();
 
         ta = new JTextArea(30, 60);
         tabbedPane.add("Tab 1", p1);
         tabbedPane.add("Tab 2", p2);
         statusBar = new JLabel("Tabulatorbreite: "+tabSize+"     ||      Zeichen: 0, W\u00F6rter: 0       ||       Zeile: 1, Spalte: 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);
-        f.add(tabbedPane, BorderLayout.BEFORE_FIRST_LINE);
+        JButton button = new JButton("Neuer Tab");
+        toolBar.add(button);
+        toolBar.addSeparator();
+        toolBar.add(tabbedPane, BorderLayout.NORTH);
+        f.add(toolBar, BorderLayout.NORTH);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
 
