@@ -1,6 +1,4 @@
-|   |   |   |       |----  |----
-|---|   |   |       |----  |----
-|   |   |   |____   |      |----
+H I L F E
 =================================
 1. Welche Dateiformate kann ich öffnen?
 Mit FNotepad, können Sie  erstmal alle Dateiformate öffnen, aber es werden nicht alle Dateiformate lesbar dargestellt.
