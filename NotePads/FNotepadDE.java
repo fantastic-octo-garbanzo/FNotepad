@@ -434,10 +434,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         helpPage.add(helptxtArea);
         helpPage.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-200), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-150));
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
         helpPage.setVisible(true);
-        helpPage.toFront();
         helpPage.setResizable(true);
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
