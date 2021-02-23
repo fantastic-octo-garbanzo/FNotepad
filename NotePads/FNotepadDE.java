@@ -10,6 +10,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
@@ -459,7 +460,19 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
+        JPanel panel = new JPanel();
+
+        //JScrollBar wird erzeugt
+        JScrollBar scrollbar = new JScrollBar
+                (JScrollBar.VERTICAL, 30, 10, 0, 100);
+        //...und dem JPanel hinzugefügt
+        panel.add(scrollbar);
+
+        helpPage.add(panel);
+        helpPage.setVisible(true);
     }
+
+
 
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
