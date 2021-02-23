@@ -51,15 +51,21 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     /****************************/
     public FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
 
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
+        JTabbedPane tabbedPane = new JTabbedPane();
 
         ta = new JTextArea(30, 60);
+        tabbedPane.add("Tab 1", p1);
+        tabbedPane.add("Tab 2", p2);
         statusBar = new JLabel("Tabulatorbreite: "+tabSize+"     ||      Zeichen: 0, W\u00F6rter: 0       ||       Zeile: 1, Spalte: 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);
+        f.add(tabbedPane, BorderLayout.BEFORE_FIRST_LINE);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
 
