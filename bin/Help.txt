@@ -1,5 +1,7 @@
-HELP
-=========
+|   |   |----   |       |----|
+|---|   |----   |       |____|
+|   |   |----   |____   |
+==============================
 1. Which file formats can I open?
 With FNotepad, you can first open all file formats, but not all file formats are displayed legibly.
 
@@ -14,3 +16,30 @@ Click File, then click Save or Save As ..., or press Ctrl + S on the keyboard.
 
 4. How do I create a new file?
 Click File, then click New File, or press Ctrl + N.
+
+5. How do I export a file as PDF?
+Click File, then click Export File as PDF, or press Ctrl + Y.
+
+6. How do I export a file as HTML?
+Click File, then click Export File As HTML, or press Ctrl + Y.
+
+7. How do I create a new window?
+Click File, then New Window, or press Ctrl + G.
+
+8. How do I undo an unwanted change?
+Click Edit, then click Undo, or press Ctrl + Z.
+
+9. How do I cut something?
+Click Edit, then click Cut, or press Ctrl + X.
+
+10. How do I add something?
+Click Edit, then click Paste, or press Ctrl + V.
+
+11. How do I copy something?
+Click Edit, then click Copy, or press Ctrl + C.
+
+12. How do I delete something?
+Click Edit, then click Paste, or press the Delete key.
+
+13. How do I search for something?
+Click Edit, then Find ..., or press Ctrl + F.
