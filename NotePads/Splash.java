@@ -15,22 +15,22 @@ import javax.swing.JWindow;
 
     public class Splash extends JWindow
     {
-        //some private variables
-        private Container container;
-        private JLabel label;
-        private JLabel infoLabel ;
-        private JPanel panel;
+
+        public Container container;
+        public JLabel label;
+        public JLabel infoLabel ;
+        public JPanel panel;
 
         public Splash()
         {
             infoLabel = new JLabel("Ladebildschirm");
-            URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
+            URL iconurl = getClass().getResource("/bin/FNotepad2.jpg");
             ImageIcon logo = new ImageIcon(iconurl);
             container = this.getContentPane();
             container.setLayout(new BorderLayout());
 
 
-            label = new JLabel(logo); //this label includes the Splash screen picture
+            label = new JLabel(logo);
 
             panel = new JPanel(new BorderLayout());
 
@@ -63,5 +63,5 @@ import javax.swing.JWindow;
         }
 
 
-    }//end of class Splash.java
+    }
 

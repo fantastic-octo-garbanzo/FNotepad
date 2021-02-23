@@ -107,11 +107,13 @@ public class FNotepad extends JFrame{
             setVisible(false);
         });
 
-    }private static void showSplash() {
-        showSplash();
+    }
+    private static void showSplash() {
+
     }
     public static void main(String[] args) {
         new FNotepad();
+        showSplash();
     }
 
 
