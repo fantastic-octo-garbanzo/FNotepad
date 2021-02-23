@@ -437,7 +437,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
-        // iconURL is null when not found
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
     }
