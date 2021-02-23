@@ -290,7 +290,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             statusBar.setText("Dieser Befehl wird gerade integriert");
         }
     }
-    ////////////////////////////////////
+////////////////////////////////////
     void showTabulatorDialog(){
         tabulatorSize = new JDialog();
         tabulatorSize.setTitle(filePageSetup);
@@ -336,9 +336,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                                 public void actionPerformed(ActionEvent evvv) {
                                     FNotepadDE.this.ta.setBackground(bcolorChooser.getColor());
                                 }
-                            },
-                            null);
-
+                            }, null);
         backgroundDialog.setVisible(true);
     }
     ////////////////////////////////////
@@ -393,11 +391,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void newWindow() {
         new FNotepadDE(true);
     }
-
-
+    ///////////////////////////////////
     void loadHelp(){
-        FileReader fr;
-        fr = null;
+        FileReader fr = null;
         JDialog helpPage = new JDialog();
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
@@ -424,29 +420,24 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             }
             sb.delete(sb.length()-5, sb.length());
             helptxtArea.setText(sb.toString());
-        }
-        catch (IOException | URISyntaxException ex) { System.out.println(ex);
+        } catch (IOException | URISyntaxException ex) { System.out.println(ex);
         }
         finally {
 
             try {
                 if (fr != null) fr.close();
-            }
-            catch (Exception ex) {
-
+            } catch (Exception ex) {
             }
         }
         helpPage.add(helptxtArea);
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
     }
-
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         toMenu.add(temp);
-
         return temp;
     }
     ////////////////////////////////////
@@ -455,7 +446,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         temp.addActionListener(al);
         temp.setAccelerator(KeyStroke.getKeyStroke(aclKey, ActionEvent.CTRL_MASK));
         toMenu.add(temp);
-
         return temp;
     }
     ////////////////////////////////////
@@ -465,7 +455,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         temp.addActionListener(al);
         temp.setSelected(false);
         toMenu.add(temp);
-
         return temp;
     }
     ////////////////////////////////////
@@ -494,11 +483,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        fileMenu.addSeparator();
-        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
-        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
         fileMenu.addSeparator();
         temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         temp.setEnabled(false);
