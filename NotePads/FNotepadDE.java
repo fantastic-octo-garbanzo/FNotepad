@@ -9,8 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import javax.swing.JScrollBar;
-import javax.swing.JPanel;
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
@@ -438,6 +436,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         helpPage.toFront();
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        // iconURL is null when not found
+        ImageIcon helpicon = new ImageIcon(iconURL);
+        helpPage.setIconImage(helpicon.getImage());
     }
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
