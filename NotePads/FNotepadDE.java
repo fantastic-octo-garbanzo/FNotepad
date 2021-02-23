@@ -460,16 +460,18 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
+
+        helpPage.setVisible(true);
         JPanel panel = new JPanel();
 
         //JScrollBar wird erzeugt
         JScrollBar scrollbar = new JScrollBar
                 (JScrollBar.VERTICAL, 30, 10, 0, 100);
         //...und dem JPanel hinzugefügt
+        helpPage.add(panel);
         panel.add(scrollbar);
 
-        helpPage.add(panel);
-        helpPage.setVisible(true);
+
     }
 
 
