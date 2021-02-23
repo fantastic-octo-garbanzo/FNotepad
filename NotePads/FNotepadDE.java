@@ -450,8 +450,15 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             }
         }
         helpPage.add(helptxtArea);
+        helpPage.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-1200), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-150));
+        helpPage.setVisible(true);
+        helpPage.setResizable(true);
+        helpPage.toFront();
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        ImageIcon helpicon = new ImageIcon(iconURL);
+        helpPage.setIconImage(helpicon.getImage());
     }
 
     ///////////////////////////////////
