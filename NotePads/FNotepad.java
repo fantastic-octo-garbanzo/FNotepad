@@ -8,7 +8,9 @@ import java.net.URL;
 /**********/
 // Beginn der Klasse FNotepad
 public class FNotepad extends JFrame{
-
+    private static void showSplash() {
+        showSplash();
+    }
     // Holt die Bildschrimgröße ohne Taskbar
     public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -109,10 +111,7 @@ public class FNotepad extends JFrame{
     }
     public static void main(String[] args) {
         new FNotepad();
-        showSplash();
-        
     }
 
-    private static void showSplash() {
-    }
+
 }

@@ -20,15 +20,11 @@ import javax.swing.JWindow;
         private JLabel label;
         private JLabel infoLabel ;
         private JPanel panel;
-        /** constructor of an new Splash object
-         * @ param ImageIcon logo
-         * shows the logo at the startup of the program
-         */
 
         public Splash()
         {
-            infoLabel = new JLabel("Eine Tolle Meldung");
-            URL logourl = getClass().getResource("Pfad/zu/bild.png");
+            infoLabel = new JLabel("Ladebildschirm");
+            URL logourl = getClass().getResource("/bin/FNotepad.jpg");
             ImageIcon logo = new ImageIcon(logourl);
             container = this.getContentPane();
             container.setLayout(new BorderLayout());
