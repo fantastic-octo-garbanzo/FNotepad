@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-
+import java.awt.Color;
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
@@ -413,11 +413,13 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         FileReader fr;
         fr = null;
         JFrame helpPage = new JFrame();
+
+        helpPage.getContentPane().setBackground(new Color(0xF80000));
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
         helpPage.setVisible(true);
         helpPage.setAlwaysOnTop(true);
-        helpPage.setResizable(false);
+        helpPage.setResizable(true);
         JTextArea helptxtArea = new JTextArea();
         helptxtArea.setEditable(false);
         URL fileURL = getClass().getResource("/bin/Hilfe.txt");
@@ -461,6 +463,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
         helpPage.setVisible(true);
+
     }
 
 
