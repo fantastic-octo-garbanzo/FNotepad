@@ -26,5 +26,20 @@ Click File, then click Export File As HTML, or press Ctrl + Y.
 7. How do I create a new window?
 Click File, then New Window, or press Ctrl + G.
 
-8. How do I print a file?
-Click File, then click Print, or press Ctrl + P.
+8. How do I undo an unwanted change?
+Click Edit, then click Undo, or press Ctrl + Z.
+
+9. How do I cut something?
+Click Edit, then click Cut, or press Ctrl + X.
+
+10. How do I add something?
+Click Edit, then click Paste, or press Ctrl + V.
+
+11. How do I copy something?
+Click Edit, then click Copy, or press Ctrl + C.
+
+12. How do I delete something?
+Click Edit, then click Paste, or press the Delete key.
+
+13. How do I search for something?
+Click Edit, then Find ..., or press Ctrl + F.
