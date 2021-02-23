@@ -1,5 +1,7 @@
-H I L F E
-=========
+|   |   |   |       |----  |----
+|---|   |   |       |----  |----
+|   |   |   |____   |      |----
+=================================
 1. Welche Dateiformate kann ich öffnen?
 Mit FNotepad, können Sie  erstmal alle Dateiformate öffnen, aber es werden nicht alle Dateiformate lesbar dargestellt.
 
@@ -14,3 +16,30 @@ Klicken Sie auf Datei und dann auf Speichern oder Speichern als..., oder drücke
 
 4. Wie erstelle ich eine neue Datei?
 Klicken Sie auf Datei und dann auf neue Datei, oder drücken Sie die Tastenkombination Strg + N.
+
+5. Wie exportiere ich eine Datei als PDF?
+Klicken Sie auf Datei und dann auf Datei als PDF exportieren, oder drücken Sie die Tastenkombination Strg +  Y.
+
+6. Wie exportiere ich eine Datei als HTML?
+Klicken Sie auf Datei und dann auf Datei als HTML exportieren, oder drücken Sie die Tastenkombination Strg +  Y.
+
+7. Wie erstelle ich ein neues Fenster?
+Klicken Sie auf Datei und dann auf Neues Fenster, oder drücken Sie die Tastenkombination Strg + G.
+
+8. Wie mache ich eine ungewollte Veränderung rückgängig?
+Klicken Sie auf Bearbeiten und dann auf Rückgängig, oder drücken Sie die Tastenkombination Strg + Z.
+
+9. Wie schneide ich etwas aus?
+Klicken Sie auf Bearbeiten und dann auf Ausschneiden, oder drücken Sie die Tastenkombination Strg + X.
+
+10. Wie füge ich etwas ein?
+Klicken Sie auf Bearbeiten und dann auf Einfügen, oder drücken Sie die Tastenkombination Strg + V.
+
+11. Wie kopiere ich etwas?
+Klicken Sie auf Bearbeiten und dann auf kopieren, oder drücken Sie die Tastenkombination Strg + C.
+
+12. Wie lösche ich etwas?
+Klicken Sie auf Bearbeiten und dann auf Einfügen, oder drücken Sie die Taste Entf.
+
+13. Wie suche ich etwas?
+Klicken Sie auf Bearbeiten und dann auf Suchen..., oder drücken Sie die Tastenkombination Strg + F.
