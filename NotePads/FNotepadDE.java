@@ -414,7 +414,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         fr = null;
         JFrame helpPage = new JFrame();
 
-        helpPage.getContentPane().setBackground(new Color(0xF80000));
+
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
         helpPage.setVisible(true);
