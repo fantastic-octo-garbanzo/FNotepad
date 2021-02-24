@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
-import java.awt.Color;
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
@@ -20,7 +19,7 @@ import LookAndFeelMenu.LookAndFeelMenuDE;
 
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
-    private static Object FileReader;
+
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
