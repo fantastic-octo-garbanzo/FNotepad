@@ -398,7 +398,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     void loadHelp(){
         FileReader fr;
         fr = null;
-        JDialog helpPage = new JDialog();
+        JFrame helpPage = new JFrame();
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
         helpPage.setVisible(true);
@@ -437,8 +437,16 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             }
         }
         helpPage.add(helptxtArea);
+        helpPage.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-1200), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-120));
+        helpPage.setVisible(true);
+        helpPage.setResizable(true);
+        helpPage.toFront();
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        ImageIcon helpicon = new ImageIcon(iconURL);
+        helpPage.setIconImage(helpicon.getImage());
+        helpPage.setVisible(true);
     }
 
     ///////////////////////////////////
