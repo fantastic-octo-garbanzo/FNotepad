@@ -296,7 +296,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 /////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
 
-            ProcessBuilder pb = new ProcessBuilder( "bash", "/k", "start");
+            ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start");
             try {
                 pb.start();
             } catch (IOException e) {
