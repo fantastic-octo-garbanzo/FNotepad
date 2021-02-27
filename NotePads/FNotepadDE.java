@@ -298,8 +298,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         else if (cmdText.equals(commandoopen)) {
 
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
+            ProcessBuilder lt = new ProcessBuilder("bash", "/k", "start");
             try {
                 pb.start();
+                lt.start();
             } catch (IOException e) {
                 e.printStackTrace();
             }
