@@ -294,6 +294,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         else if (cmdText.equals(helpHelpTopic)){
             loadHelp();
         }
+
 ////////////////////////////////////
         else {
             statusBar.setText("Dieser Befehl wird gerade integriert");
