@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Locale;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -299,9 +300,13 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
             ProcessBuilder lt = new ProcessBuilder("bash", "/k", "start");
+            String os = System.getProperty("os.name").toLowerCase();
             try {
-                pb.start();
-                lt.start();
+                if (os.indexOf("win") >= 0) {
+                    pb.start();
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    lt.start();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -393,7 +398,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             rt.exec("rundll32 url.dll, FileProtocolHandler "+url);
         } else if (os.indexOf("mac") >= 0) { // Wenn das Betriebssystem MacOS ist
             rt.exec("open "+url);
-        } else if (os.indexOf("nix") >=0 || os.indexOf("nux") >=0) { // Wenn das Betriebssystem Linux ist
+        } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) { // Wenn das Betriebssystem Linux ist
             String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
 
             StringBuffer cmd = new StringBuffer();
