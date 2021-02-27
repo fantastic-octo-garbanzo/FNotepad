@@ -581,7 +581,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         editMenu.addSeparator();
         selectAllItem = createMenuItem(editSelectAll, KeyEvent.VK_A, editMenu, KeyEvent.VK_A, this);
         createMenuItem(editTimeDate, KeyEvent.VK_D, editMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
-        createMenuItem(commandoopen, KeyEvent.VK_E, editMenu, this);
+        createMenuItem(commandoopen, KeyEvent.VK_E, editMenu, KeyEvent.VK_T, this);
 
         createCheckBoxMenuItem(formatWordWrap, KeyEvent.VK_W, formatMenu, this);
 
