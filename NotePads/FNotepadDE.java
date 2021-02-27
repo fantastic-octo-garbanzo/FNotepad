@@ -294,7 +294,16 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         else if (cmdText.equals(helpHelpTopic)){
             loadHelp();
         }
+/////////////////////////////////////
+        else if (cmdText.equals(commandoopen)) {
 
+            ProcessBuilder pb = new ProcessBuilder( "cmd", "/c", "start" );
+            try {
+                pb.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 ////////////////////////////////////
         else {
             statusBar.setText("Dieser Befehl wird gerade integriert");
@@ -408,6 +417,20 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         new FNotepadDE(true);
     }
 
+    void commandoopen() {
+         JFrame commando = new JFrame();
+         commando.setTitle(commandoopen);
+         commando.setBounds(50, 50, 700, 300);
+         commando.setVisible(true);
+         commando.setResizable(true);
+         commando.setAlwaysOnTop(true);
+         commando.setSize(500, 500);
+         commando.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        ImageIcon helpicon = new ImageIcon(iconURL);
+        commando.setIconImage(helpicon.getImage());
+        commando.setVisible(true);
+    }
 
     void loadHelp(){
         FileReader fr;
@@ -551,6 +574,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         editMenu.addSeparator();
         selectAllItem = createMenuItem(editSelectAll, KeyEvent.VK_A, editMenu, KeyEvent.VK_A, this);
         createMenuItem(editTimeDate, KeyEvent.VK_D, editMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+        createMenuItem(commandoopen, KeyEvent.VK_E, editMenu, this);
 
         createCheckBoxMenuItem(formatWordWrap, KeyEvent.VK_W, formatMenu, this);
 
@@ -647,6 +671,7 @@ interface MenuConstantsDE {
     String editGoTo = "Gehe zu...";
     String editSelectAll = "Alles ausw\u00E4hlen";
     String editTimeDate = "Zeit/Datum";
+    String commandoopen = "Terminal \u00F6ffnen";
 
     String formatWordWrap = "Zeilenumbruch";
     String formatFont = "Schrift...";
