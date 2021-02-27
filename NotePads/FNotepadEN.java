@@ -293,6 +293,16 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         else if (cmdText.equals(helpHelpTopic)){
             loadHelp();
         }
+/////////////////////////////////////
+        else if (cmdText.equals(commandoopen)) {
+
+            ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
+            try {
+                pb.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 ////////////////////////////////////
         else {
             statusBar.setText("This command is yet to be implemented");
@@ -546,6 +556,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         editMenu.addSeparator();
         selectAllItem = createMenuItem(editSelectAll, KeyEvent.VK_A, editMenu, KeyEvent.VK_A, this);
         createMenuItem(editTimeDate, KeyEvent.VK_D, editMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+        createMenuItem(commandoopen, KeyEvent.VK_E, editMenu, this);
 
         createCheckBoxMenuItem(formatWordWrap, KeyEvent.VK_W, formatMenu, this);
 
@@ -641,6 +652,7 @@ interface MenuConstantsEN {
     String editGoTo = "Go To...";
     String editSelectAll = "Select All";
     String editTimeDate = "Time/Date";
+    String commandoopen = "Terminal open";
 
     String formatWordWrap = "Word Wrap";
     String formatFont = "Font...";
