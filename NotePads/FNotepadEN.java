@@ -295,12 +295,15 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         }
 /////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
-
-            ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start");
-            ProcessBuilder lt = new ProcessBuilder("bash", "/k", "start");
+            ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
+            ProcessBuilder lt = new ProcessBuilder("konsole", "/k", "start");
+            String os = System.getProperty("os.name").toLowerCase();
             try {
-                pb.start();
-                lt.start();
+                if (os.indexOf("win") >= 0) {
+                    pb.start();
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    lt.start();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
