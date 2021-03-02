@@ -640,7 +640,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 ////////////////////////////////////
     public static void main(String[] s) {
 
-        new FNotepadDE(true);
+        new FNotepadIT(true);
 
     }
 }
