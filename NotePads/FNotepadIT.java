@@ -415,7 +415,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     ///////////////////////////////////
     void changeLanguage() {
         if (!FileOperationIT.saved) return;
-        new FNotepadIT(true);
+        new FNotepadEN(true);
         f.dispose();
     }
     ///////////////////////////////////
