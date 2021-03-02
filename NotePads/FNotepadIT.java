@@ -415,12 +415,12 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     ///////////////////////////////////
     void changeLanguage() {
         if (!FileOperationIT.saved) return;
-        new FNotepadEN(true);
+        new FNotepadIT(true);
         f.dispose();
     }
     ///////////////////////////////////
     void newWindow() {
-        new FNotepadDE(true);
+        new FNotepadIT(true);
     }
 
     void commandoopen() {
