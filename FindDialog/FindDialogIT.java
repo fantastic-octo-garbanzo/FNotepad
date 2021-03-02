@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 /******************************************************/
 class FindReplaceDemoIT extends JFrame {
-    FindDialogDE dialog = null;
+    FindDialogIT dialog = null;
     JTextArea ta;
     JButton findButton, replaceButton;
 
@@ -19,7 +19,7 @@ class FindReplaceDemoIT extends JFrame {
 
         ActionListener ac1 = new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                if(dialog == null) dialog = new FindDialogDE(FindReplaceDemoIT.this.ta);
+                if(dialog == null) dialog = new FindDialogIT(FindReplaceDemoIT.this.ta);
                 dialog.showDialog(FindReplaceDemoIT.this, true);// find
             }
         };
@@ -29,7 +29,7 @@ class FindReplaceDemoIT extends JFrame {
 
         ActionListener ac2 = new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
-                if(dialog == null) dialog = new FindDialogDE(FindReplaceDemoIT.this.ta);
+                if(dialog == null) dialog = new FindDialogIT(FindReplaceDemoIT.this.ta);
                 dialog.showDialog(FindReplaceDemoIT.this,false);// find
             }
         };

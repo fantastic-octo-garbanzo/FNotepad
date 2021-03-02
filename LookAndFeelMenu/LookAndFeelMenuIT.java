@@ -24,14 +24,14 @@ class LookAndFeelDemoIT extends JFrame
         setJMenuBar(jmb);
         fileMenu = new JMenu("Aussehen \u00E4ndern");
         jmb.add(fileMenu);
-        LookAndFeelMenuDE.createLookAndFeelMenuItem(fileMenu, this);
+        LookAndFeelMenuIT.createLookAndFeelMenuItem(fileMenu, this);
         setVisible(true);
     }
     ////////////////////////
 
     ///////////////////////
     public static void main(String[] args) {
-        new LookAndFeelDemoDE();
+        new LookAndFeelDemoIT();
     }
     ////////////////////////
 }
@@ -50,7 +50,7 @@ public class LookAndFeelMenuIT {
             rbm[i].setMnemonic(infos[i].getName().charAt(0));
             tmp.add(rbm[i]);
             bg.add(rbm[i]);
-            rbm[i].addActionListener(new LookAndFeelMenuListenerDE(infos[i].getClassName(),cmp));
+            rbm[i].addActionListener(new LookAndFeelMenuListenerIT(infos[i].getClassName(),cmp));
         }
 
         rbm[0].setSelected(true);
