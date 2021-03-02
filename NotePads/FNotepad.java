@@ -42,8 +42,8 @@ public class FNotepad extends JFrame{
         a.setBounds(200, 375, 200, 50);
 
         // Auswahlmenü
-        String[] languagesList = {"English", "Deutsch"};
-        String[] windowList = {"fullscreen", "windowed"};
+        String[] languagesList = {"English", "Deutsch", "Italiano"};
+        String[] windowList = {"fullscreen", "windowed", "a schermo intero"};
 
 
         JComboBox c = new JComboBox(languagesList);
@@ -94,7 +94,17 @@ public class FNotepad extends JFrame{
                 ch.addItem("fullscreen");
                 ch.addItem("windowed");
             }
-        });
+            //Wenn Italienisch ausgewählt ist, wird alles auf Italienisch gesetzt
+            if(c.getSelectedItem().equals("Italiano")) {
+                l.setText("Benvenuto in FNotepad!");
+                setTitle("FNotepad - Lingua");
+                b.setText("seleziona la tua lingua");
+                a.setText("Interrompi");
+                ch.removeAllItems();
+                ch.addItem("a schermo intero");
+                ch.addItem("finestrato");
+            }});
+
 
         // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
@@ -105,6 +115,10 @@ public class FNotepad extends JFrame{
             if(c.getSelectedItem().equals("English")){
                 if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
                 if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
+            }
+            if(c.getSelectedItem().equals("Italiano")){
+                if (ch.getSelectedItem().equals("a schermo interno")) {new FNotepadIT(true);}
+                if (ch.getSelectedItem().equals("finestrato")) {new FNotepadIT(false);}
             }
             dispose();
         });
