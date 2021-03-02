@@ -97,10 +97,10 @@ public class FileOperationDE {
         chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".cpp", "C++(.cpp)"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".cs", "C#"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(.d)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(*.c)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".cpp", "C++(*.cpp)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".cs", "C#(*.cs)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(*.d)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".bat", "Batch File(*.bat)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".rtf", "Rich Text Format(*.rtf)"));
