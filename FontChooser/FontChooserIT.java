@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 /******************************************************/
 class FontDemoIT extends JFrame {
-    FontChooserDE dialog = null;
+    FontChooserIT dialog = null;
     JTextArea ta;
     JButton fontButton;
 
@@ -20,7 +20,7 @@ class FontDemoIT extends JFrame {
         ActionListener ac = new ActionListener()
         {
             public void actionPerformed(ActionEvent ev) {
-                if(dialog == null) dialog = new FontChooserDE(ta.getFont());
+                if(dialog == null) dialog = new FontChooserIT(ta.getFont());
                 if(dialog.showDialog(FontDemoIT.this, "W\u00E4hle eine Schrift")) {
                     FontDemoIT.this.ta.setFont(dialog.createFont());
                 }
