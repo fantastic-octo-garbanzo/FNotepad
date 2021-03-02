@@ -93,7 +93,7 @@ public class FileOperationDE {
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
+        chooser.addChoosableFileFilter(new FileFilterDE("*", "Alle Dateien"));
         chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));

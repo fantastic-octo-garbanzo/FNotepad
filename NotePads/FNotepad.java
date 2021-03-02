@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.Objects;
+
 /**********/
 // Beginn der Klasse FNotepad
 public class FNotepad extends JFrame{
@@ -90,12 +92,12 @@ public class FNotepad extends JFrame{
 
         // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
-            if(c.getSelectedItem().equals("Deutsch")){
-                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
+            if(Objects.equals(c.getSelectedItem(), "Deutsch")){
+                if (Objects.equals(ch.getSelectedItem(), "Vollbild")) {new FNotepadDE(true);}
                 if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
             }
-            if(c.getSelectedItem().equals("English")){
-                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
+            if(Objects.equals(c.getSelectedItem(), "English")){
+                if (Objects.equals(ch.getSelectedItem(), "fullscreen")) {new FNotepadEN(true);}
                 if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
             }
             dispose();
