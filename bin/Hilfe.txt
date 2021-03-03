@@ -41,3 +41,28 @@ Klicken Sie auf Bearbeiten und dann auf Einfügen, oder drücken Sie die Taste E
 
 13. Wie suche ich etwas?
 Klicken Sie auf Bearbeiten und dann auf Suchen..., oder drücken Sie die Tastenkombination Strg + F.
+
+14. Wie wähle ich den kompletten Text aus?
+Klicken Sie auf Bearbeiten und dann auf Alles auswählen, oder drücken Sie die Tastenkombination Strg + A.
+
+15. Wie füge ich das Datum und die Zeit ein?
+Klicken Sie auf Bearbeiten und dann auf Zeit/Datum, oder drücken Sie die Taste F5.
+
+16. Wie öffne ich das Terminal?
+Klicken Sie auf Bearbeiten und dann auf Terminal öffnen, oder drücken Sie die Tastenkombination Strg + T.
+
+17. Wie ändere ich die Schrift?
+Klicken Sie auf Format und dann auf Schrift...
+
+18. Wie aktiviere ich den Zeilenumbruch?
+Klicken Sie auf Format und dann auf Zeilenumbruch.
+
+19. Wie ändere ich die Textfarbe?
+Klicken Sie auf Format und dann auf Textfarbe...
+
+20. Wie ändere ich die Hintergrundfarbe?
+Klicken Sie auf Format und dann auf Hintergrundfarbe...
+
+21. Wie wechsle ich auf Englisch?
+Klicken Sie auf Sprache und auf English.
+
