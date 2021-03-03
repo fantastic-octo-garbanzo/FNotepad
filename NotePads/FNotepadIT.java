@@ -26,7 +26,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     public JLabel statusBar;
     int tabSize = 4;
 
-    private String fileName = "Unbenannt";
+    private String fileName = "Senza nome";
     private boolean saved = true;
     String applicationName = "FNotepad";
 
@@ -62,7 +62,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         f.setIconImage(icon.getImage());
 
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Tabulatorbreite: "+tabSize+"     ||      Zeichen: 0, W\u00F6rter: 0       ||       Zeile: 1, Spalte: 1  ", JLabel.RIGHT);
+        statusBar = new JLabel("Larghezza tab: "+tabSize+"     ||      personaggio: 0, parole: 0       ||       riga: 1, colonna: 1  ", JLabel.RIGHT);
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
@@ -125,7 +125,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Tabulatorbreite: "+tabSize+"     ||      Zeichen "+letterCount+", W\u00F6rter "+wordCount+"       ||       Zeile "+(lineNumber + 1)+", Spalte "+(column + 1));
+                        statusBar.setText("Larghezza tab: "+tabSize+"     ||      personaggio "+letterCount+", parole "+wordCount+"       ||       personaggio "+(lineNumber + 1)+", colonna "+(column + 1));
                     }
                 });
 //////////////////
@@ -158,7 +158,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         int lineNumber = 0;
         try {
             lineNumber = ta.getLineOfOffset(ta.getCaretPosition()) + 1;
-            String tempStr = JOptionPane.showInputDialog(f, "Zeile eingeben:", "" + lineNumber);
+            String tempStr = JOptionPane.showInputDialog(f, "Immettere la riga:", "" + lineNumber);
             if (tempStr == null) {
                 return;
             }
@@ -194,8 +194,8 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         else if (cmdText.equals(filePrint))
             JOptionPane.showMessageDialog(
                     FNotepadIT.this.f,
-                    "Es wurde kein Drucker gefunden, bitte schlie\u00DF einen Drucker an!!",
-                    "Falscher Drucker!!",
+                    "Nessuna stampante è stata trovata, collega una stampante !!",
+                    "Stampante sbagliata !!",
                     JOptionPane.INFORMATION_MESSAGE
             );
 ////////////////////////////////////
@@ -224,7 +224,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                statusBar.setText("Nichts zu suchen, bitte Finden im Bearbeiten-Men\u00FC zuerst probieren !!!!");
+                statusBar.setText("Niente da cercare, prova prima a trovarlo nel menu di modifica !!!!");
             else
                 findReplaceDialog.findNextWithSelection();
         }
@@ -259,7 +259,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             if (fontDialog == null)
                 fontDialog = new FontChooserIT(ta.getFont());
 
-            if (fontDialog.showDialog(FNotepadIT.this.f, "Schrift ausw\u00E4hlen"))
+            if (fontDialog.showDialog(FNotepadIT.this.f, "Seleziona il carattere"))
                 FNotepadIT.this.ta.setFont(fontDialog.createFont());
         }
 ////////////////////////////////////
@@ -281,7 +281,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             }
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepad)) {
-            JOptionPane.showMessageDialog(FNotepadIT.this.f, aboutText, "\u00DCber FNotepad", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(FNotepadIT.this.f, aboutText, "Tramite FNotepad", JOptionPane.INFORMATION_MESSAGE);
         }
 ////////////////////////////////////
         else if (cmdText.equals(filePageSetup)) {
@@ -312,7 +312,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         }
 ////////////////////////////////////
         else {
-            statusBar.setText("Dieser Befehl wird gerade integriert");
+            statusBar.setText("Questo comando è attualmente in fase di integrazione");
         }
     }
     ////////////////////////////////////
@@ -450,7 +450,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         helpPage.setResizable(true);
         JTextArea helptxtArea = new JTextArea();
         helptxtArea.setEditable(false);
-        URL fileURL = getClass().getResource("/bin/Hilfe.txt");
+        URL fileURL = getClass().getResource("/bin/Aiuto.txt");
         try {
             File file = new File(fileURL.toURI());
             fr = new FileReader(file);
@@ -648,55 +648,55 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 /**************************************/
 // Menü-Leiste
 interface MenuConstantsIT {
-    String fileText = "Datei";
-    String editText = "Bearbeiten";
-    String formatText = "Format";
-    String viewText = "Ansicht";
-    String helpText = "Hilfe";
-    String changeText = "Sprache";
+    String fileText = "file";
+    String editText = "Modificare";
+    String formatText = "formato";
+    String viewText = "Visualizza";
+    String helpText = "Aiuto";
+    String changeText = "lingua";
 
-    String windowNew = "Neues Fenster";
-    String fileNew = "Neue Datei";
-    String fileOpen = "Datei \u00D6ffnen...";
-    String fileSave = "Datei speichern";
-    String fileSaveAs = "Datei speichern als...";
-    String filePageSetup = "Seiteneinstellungen...";
-    String fileExportasPDF = "Datei als PDF exportieren";
-    String fileExportasHTML = "Datei als HTML exportieren";
-    String filePrint = "Drucken";
-    String fileExit = "Beenden";
+    String windowNew = "Nuova finestra";
+    String fileNew = "nuovo file";
+    String fileOpen = "Apri il file...";
+    String fileSave = "salvare il file";
+    String fileSaveAs = "Salva file con nome...";
+    String filePageSetup = "Impostazioni della pagina...";
+    String fileExportasPDF = "Esporta file come PDF";
+    String fileExportasHTML = "Esporta file come HTML";
+    String filePrint = "Pressare";
+    String fileExit = "rottura";
 
-    String editUndo = "R\u00FCckg\u00E4ngig";
-    String editCut = "Ausschneiden";
-    String editCopy = "Kopieren";
-    String editPaste = "Einf\u00FCgen";
-    String editDelete = "L\u00F6schen";
-    String editFind = "Suchen...";
-    String editFindNext = "N\u00E4chstes finden";
-    String editReplace = "Ersetzen";
-    String editGoTo = "Gehe zu...";
-    String editSelectAll = "Alles ausw\u00E4hlen";
-    String editTimeDate = "Zeit/Datum";
-    String commandoopen = "Terminal \u00F6ffnen";
+    String editUndo = "Annullato";
+    String editCut = "ritagliare";
+    String editCopy = "copia";
+    String editPaste = "Inserire";
+    String editDelete = "Chiaro";
+    String editFind = "Ricerca...";
+    String editFindNext = "Trova il prossimo";
+    String editReplace = "Sostituire";
+    String editGoTo = "Vai a...";
+    String editSelectAll = "Seleziona tutto";
+    String editTimeDate = "Ora dell'appuntamento";
+    String commandoopen = "Apri terminale";
 
-    String formatWordWrap = "Zeilenumbruch";
-    String formatFont = "Schrift...";
-    String formatForeground = "Textfarbe...";
-    String formatBackground = "Hintergrundfarbe...";
+    String formatWordWrap = "nuova linea";
+    String formatFont = "font...";
+    String formatForeground = "Colore del testo...";
+    String formatBackground = "Colore di sfondo...";
 
-    String viewStatusBar = "Statusleiste";
+    String viewStatusBar = "Barra di stato";
 
-    String helpHelpTopic = "Hilfe";
-    String helpHelpOnline = "Github-Hilfe";
-    String helpAboutFNotepad = "\u00DCber FNotepad";
+    String helpHelpTopic = "Aiuto";
+    String helpHelpOnline = "Guida di Github";
+    String helpAboutFNotepad = "Tramite FNotepad";
 
     String aboutText =
 
             "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=center>Von fantastic-octo-garbanzo!"
-                    + "<hr><p align=center>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
-                    + "Bei Bugs und Ideen gerne ein Issue auf Github stellen<p align=center>";
+                    + "<p align=center>Da fantastico-octo-garbanzo!"
+                    + "<hr><p align=center>Compilato con OpenJDK15.<br><br>"
+                    + "<strong>Grazie per aver utilizzato FNotepad!</strong><br>"
+                    + "Se hai bug e idee, pubblica un problema su Github<p align=center>";
 
     String changeLang = "English";
 
