@@ -1,6 +1,6 @@
 # FNotepad
 
-## Über / About
+## Über / About / Via
 
 ### Deutsch
 
@@ -31,7 +31,7 @@ OR
 
 From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on there will be .deb and .rpm packages for every release. We also provide a windows installer.
 
-###Italiano
+### Italiano
 
 Un editor di testo scritto in Java, disponibile in inglese e tedesco.
 
