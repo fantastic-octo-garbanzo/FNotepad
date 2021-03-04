@@ -14,22 +14,22 @@ class FileFilterDemoIT extends JFrame {
 
     FileFilterDemoIT() {
         super("File Filter Demo");
-        myLabel = new JLabel("Keine Datei ausgew\u00E4hlt");
-        myButton = new JButton("Datei w\u00E4hlen");
+        myLabel = new JLabel("Nessun file selezionato");
+        myButton = new JButton("Selezionare il file");
 
         ActionListener listener = new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
                 if (FileFilterDemoIT.this.chooser == null) chooser = new JFileChooser();
                 chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
                 chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
-                if(chooser.showDialog(FileFilterDemoIT.this, "Diese Datei ausw\u00E4hlen") == JFileChooser.APPROVE_OPTION) FileFilterDemoIT.this.myLabel.setText(chooser.getSelectedFile().getPath());
+                if(chooser.showDialog(FileFilterDemoIT.this, "Seleziona questo file") == JFileChooser.APPROVE_OPTION) FileFilterDemoIT.this.myLabel.setText(chooser.getSelectedFile().getPath());
             }
         };
 
         myButton.addActionListener(listener);
 
-        add(myLabel, "Mitte");
-        add(myButton, "Süden");
+        add(myLabel, "Medio");
+        add(myButton, "Sud");
 
         setSize(300,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -67,7 +67,7 @@ public class FileFilterIT extends FileFilter {
     }
     ////////////////
     public void setDescription(String desc) {
-        if(desc == null) description = new String("Alle Dateien(*.*)");
+        if(desc == null) description = new String("Tutti i file(*.*)");
         else description = new String(desc);
     }
     ////////////////

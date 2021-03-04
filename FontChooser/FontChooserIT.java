@@ -66,7 +66,7 @@ public class FontChooserIT extends JPanel /*implements ActionListener*/ {
         jFace.addListSelectionListener(new ListSelectionListener()
         {public void valueChanged(ListSelectionEvent ev){tf.setFont(createFont());}});
 
-        String[] fontStyles = {"Normal","Kursiv","Fett","Fett Kursiv"};
+        String[] fontStyles = {"Normale","Corsivo","Grasso","Grassetto italico"};
         jStyle = new JList(fontStyles);
         jStyle.setSelectedIndex(0);
 
@@ -84,9 +84,9 @@ public class FontChooserIT extends JPanel /*implements ActionListener*/ {
         JPanel jpLabel = new JPanel();
         jpLabel.setLayout(new GridLayout(1,3));
 
-        jpLabel.add(new JLabel("Schrift", JLabel.CENTER));
-        jpLabel.add(new JLabel("Schriftart", JLabel.CENTER));
-        jpLabel.add(new JLabel("Gr\u00F6\u00DFe", JLabel.CENTER));
+        jpLabel.add(new JLabel("Scrittura", JLabel.CENTER));
+        jpLabel.add(new JLabel("Font", JLabel.CENTER));
+        jpLabel.add(new JLabel("Dimensione", JLabel.CENTER));
 
         JPanel jpList = new JPanel();
         jpList.setLayout(new GridLayout(1,3));
@@ -95,8 +95,8 @@ public class FontChooserIT extends JPanel /*implements ActionListener*/ {
         jpList.add(new JScrollPane(jStyle));
         jpList.add(new JScrollPane(jSize));
 
-        okButton = new JButton("Best\u00E4tigen");
-        JButton cancelButton = new JButton("Abbrechen");
+        okButton = new JButton("Confermare");
+        JButton cancelButton = new JButton("Cancella");
 
         okButton.addActionListener(
                 new ActionListener() {

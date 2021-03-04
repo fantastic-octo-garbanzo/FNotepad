@@ -12,10 +12,10 @@ class FindReplaceDemoIT extends JFrame {
     JButton findButton, replaceButton;
 
     FindReplaceDemoIT() {
-        super("Suchen");
+        super("Cerca");
 
         ta = new JTextArea(7, 20);
-        findButton = new JButton("Text suchen");
+        findButton = new JButton("Testo cerca");
 
         ActionListener ac1 = new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
@@ -25,7 +25,7 @@ class FindReplaceDemoIT extends JFrame {
         };
         findButton.addActionListener(ac1);
 
-        replaceButton = new JButton("Text ersetzen");
+        replaceButton = new JButton("Sostituire il testo");
 
         ActionListener ac2 = new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
@@ -77,10 +77,10 @@ public class FindDialogIT extends JPanel implements ActionListener {
         findWhat = new TextField(20);
         replaceWith = new JTextField(20);
 
-        matchCase = new JCheckBox("Gro\u00DF/Kleinschreibung");
+        matchCase = new JCheckBox("Maiuscolo/minuscolo");
 
-        up = new JRadioButton("Hoch");
-        down = new JRadioButton("Runter");
+        up = new JRadioButton("Alto");
+        down = new JRadioButton("Scendi");
 
         down.setSelected(true);
         ButtonGroup bg = new ButtonGroup();
@@ -89,7 +89,7 @@ public class FindDialogIT extends JPanel implements ActionListener {
 
         direction = new JPanel();
         Border etched = BorderFactory.createEtchedBorder();
-        Border titled = BorderFactory.createTitledBorder(etched,"Richtung");
+        Border titled = BorderFactory.createTitledBorder(etched,"Direzione");
         direction.setBorder(titled);
         direction.setLayout(new GridLayout(1, 2));
         direction.add(up);
@@ -101,10 +101,10 @@ public class FindDialogIT extends JPanel implements ActionListener {
         southPanel.add(direction);
 
 
-        findNextButton = new JButton("N\u00E4chstes suchen");
-        replaceButton = new JButton("Ersetzen");
-        replaceAllButton = new JButton("Alles ersetzen");
-        cancelButton = new JButton("Abbrechen");
+        findNextButton = new JButton("Ricerca successiva");
+        replaceButton = new JButton("Sostituire");
+        replaceAllButton = new JButton("Sostituire tutti");
+        cancelButton = new JButton("Cancella");
 
 		/*
 		findButtonPanel = new JPanel();
@@ -134,9 +134,9 @@ public class FindDialogIT extends JPanel implements ActionListener {
 
         JPanel textPanel = new JPanel();
         textPanel.setLayout(new GridLayout(3, 2));
-        textPanel.add(new JLabel("Was suchen "));
+        textPanel.add(new JLabel("Cosa cercare "));
         textPanel.add(findWhat);
-        textPanel.add(replaceLabel = new JLabel("Ersetzen mit "));
+        textPanel.add(replaceLabel = new JLabel("Sostituire con "));
         textPanel.add(replaceWith);
         textPanel.add(new JLabel(" ")); //dummy Lable
         textPanel.add(new JLabel(" ")); //dummy Lable
@@ -221,7 +221,7 @@ public class FindDialogIT extends JPanel implements ActionListener {
             jta.setSelectionStart(idx);
             jta.setSelectionEnd(idx + findWhat.getText().length());
         }
-        else JOptionPane.showMessageDialog(this, "Konnte nicht gefunden werden" + " \"" +findWhat.getText()+ "\"", "Suchen", JOptionPane.INFORMATION_MESSAGE);
+        else JOptionPane.showMessageDialog(this, "Non può essere trovato" + " \"" +findWhat.getText()+ "\"", "Cerca", JOptionPane.INFORMATION_MESSAGE);
     }
     //////////////////////////////////////////////
     void replaceNext() {
@@ -276,7 +276,7 @@ public class FindDialogIT extends JPanel implements ActionListener {
         if(isFind) {
             // card.show(buttonPanel, "find");
             dialog.setSize(460, 180);
-            dialog.setTitle("Suchen");
+            dialog.setTitle("Cerca");
         }
         else {
             replaceButton.setVisible(true);
@@ -286,7 +286,7 @@ public class FindDialogIT extends JPanel implements ActionListener {
 
             // card.show(buttonPanel, "replace");
             dialog.setSize(450, 200);
-            dialog.setTitle("Ersetzen");
+            dialog.setTitle("Sostituire");
         }
 
         dialog.setVisible(true);

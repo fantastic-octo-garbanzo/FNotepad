@@ -12,9 +12,9 @@ class LookAndFeelDemoIT extends JFrame
     JMenu fileMenu;
 
     LookAndFeelDemoIT() {
-        super("Aussehen \u00E4ndern");
-        add(label = new JLabel("Das ist ein Text"));
-        add(new JButton("Button"));
+        super("Cambiare aspetto");
+        add(label = new JLabel("Questo è un testo"));
+        add(new JButton("Pulsante"));
         add(new JCheckBox("CheckBox"));
         add(new JRadioButton("RadioButton"));
         setLayout(new FlowLayout());
@@ -22,7 +22,7 @@ class LookAndFeelDemoIT extends JFrame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jmb = new JMenuBar();
         setJMenuBar(jmb);
-        fileMenu = new JMenu("Aussehen \u00E4ndern");
+        fileMenu = new JMenu("Cambiare aspetto");
         jmb.add(fileMenu);
         LookAndFeelMenuIT.createLookAndFeelMenuItem(fileMenu, this);
         setVisible(true);
@@ -43,7 +43,7 @@ public class LookAndFeelMenuIT {
 
         JRadioButtonMenuItem rbm[] = new JRadioButtonMenuItem[infos.length];
         ButtonGroup bg = new ButtonGroup();
-        JMenu tmp = new JMenu("Aussehen \u00E4ndern");
+        JMenu tmp = new JMenu("Cambiare aspetto");
         tmp.setMnemonic('C');
         for(int i = 0; i < infos.length; i++) {
             rbm[i] = new JRadioButtonMenuItem(infos[i].getName());

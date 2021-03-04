@@ -15,8 +15,8 @@ class FileOperationExampleIT extends JFrame {
     JMenuItem open;
     JTextArea ta;
     FileOperationExampleIT(){
-        open = new JMenuItem("Open File");
-        file = new JMenu("File");
+        open = new JMenuItem("Aprire il file");
+        file = new JMenu("file");
         file.add(open);
         mb = new JMenuBar();
         mb.setBounds(0,0,800,20);
@@ -87,7 +87,7 @@ public class FileOperationIT {
 
         saved = true;
         newFileFlag = true;
-        fileName = new String("Untitled");
+        fileName = new String("Senza titolo");
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
 
@@ -142,10 +142,10 @@ public class FileOperationIT {
     ////////////////////////////////////
     public boolean saveAsFile() {
         File temp = null;
-        chooser.setDialogTitle("Save As...");
-        chooser.setApproveButtonText("Save Now");
+        chooser.setDialogTitle("Salva con nome...");
+        chooser.setApproveButtonText("Salva ora");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
-        chooser.setApproveButtonToolTipText("Click me to save!");
+        chooser.setApproveButtonToolTipText("Clicca su di me per salvare!");
 
         do {
             if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
@@ -153,8 +153,8 @@ public class FileOperationIT {
             temp = chooser.getSelectedFile();
             if (!temp.exists()) break;
             if (JOptionPane.showConfirmDialog(
-                    this.npd.f, "<html>" + temp.getPath() + " already exists.<br>Do you want to replace it?<html>",
-                    "Save As", JOptionPane.YES_NO_OPTION
+                    this.npd.f, "<html>" + temp.getPath() + " esiste già.<br>Vuoi sostituirlo?<html>",
+                    "Salva con nome", JOptionPane.YES_NO_OPTION
             ) == JOptionPane.YES_OPTION)
                 break;
         } while (true);
@@ -197,10 +197,10 @@ public class FileOperationIT {
     ///////////////////////
     public void openFile() {
         if (!confirmSave()) return;
-        chooser.setDialogTitle("Open File...");
-        chooser.setApproveButtonText("Open this");
+        chooser.setDialogTitle("Aprire il file...");
+        chooser.setApproveButtonText("Aprire questo");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
-        chooser.setApproveButtonToolTipText("Click me to open the selected file.!");
+        chooser.setApproveButtonToolTipText("Clicca su me per aprire il file selezionato.!");
 
         File temp = null;
         do {
@@ -211,16 +211,16 @@ public class FileOperationIT {
             if (temp.exists()) break;
 
             JOptionPane.showMessageDialog(this.npd.f,
-                    "<html>" + temp.getName() + "<br>file not found.<br>" +
-                            "Please verify the correct file name was given.<html>",
-                    "Open", JOptionPane.INFORMATION_MESSAGE);
+                    "<html>" + temp.getName() + "<br>file non trovato.<br>" +
+                            "Si prega di verificare che il nome del file sia corretto.<html>",
+                    "Aprire", JOptionPane.INFORMATION_MESSAGE);
 
         } while (true);
 
         this.npd.ta.setText("");
 
         if (!openFile(temp)) {
-            fileName = "Untitled";
+            fileName = "Senza titolo";
             saved = true;
             this.npd.f.setTitle(fileName + " - " + applicationTitle);
         }
@@ -235,22 +235,22 @@ public class FileOperationIT {
             this.saved = true;
             fileName = new String(temp.getName());
             if (!temp.canWrite()) {
-                fileName += "(Read only)";
+                fileName += "(Leggere solo)";
                 newFileFlag = true;
             }
             fileRef = temp;
             npd.f.setTitle(fileName + " - " + applicationTitle);
-            npd.statusBar.setText("File : " + temp.getPath() + " saved/opened successfully.");
+            npd.statusBar.setText("file : " + temp.getPath() + " salvato/aperto con successo.");
             newFileFlag = false;
         } else {
-            npd.statusBar.setText("Failed to save/open : " + temp.getPath());
+            npd.statusBar.setText("Impossibile salvare/aprire : " + temp.getPath());
         }
     }
 
     ///////////////////////
     public boolean confirmSave() {
-        String strMsg = "<html>The text in the " + fileName + " file has been changed.<br>" +
-                "Do you want to save the changes?<html>";
+        String strMsg = "<html>Il testo nel " + fileName + " è stato cambiato.<br>" +
+                "Vuoi salvare le modifiche?<html>";
         if (!saved) {
             int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);
 
@@ -264,7 +264,7 @@ public class FileOperationIT {
     public void newFile() {
         if (!confirmSave()) return;
         this.npd.ta.setText("");
-        fileName = new String("Untitled");
+        fileName = new String("Senza titolo");
         fileRef = new File(fileName);
         saved = true;
         newFileFlag = true;
