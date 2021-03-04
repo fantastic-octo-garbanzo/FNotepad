@@ -31,6 +31,20 @@ OR
 
 From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on there will be .deb and .rpm packages for every release. We also provide a windows installer.
 
+###Italiano
+
+Un editor di testo scritto in Java, disponibile in inglese e tedesco.
+
+Scarica l'ultima versione ed esegui il JAR con $ java -jar FNotepad_x.x.x.jar.
+
+O
+
+Clonare il repository con Git: $ git clone https://github.com/fantastic-octo-garbanzo/FNotepad.git ed eseguire il JAR.
+
+O
+
+A partire dalla versione 1.3.5 ci sarà un pacchetto RPM beta, poi a partire dalla versione 2.0.0 ci saranno pacchetti .deb e .rpm per ogni versione. C'è anche un installatore per Windows.
+
 
 
 ## [Contributers][2]
