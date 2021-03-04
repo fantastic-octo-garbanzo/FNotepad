@@ -1,10 +1,10 @@
-# FNotepad
+#FNotepad
 
 ## Über / About / Via
 
 ### Deutsch
 
-Ein Texteditor in Java geschrieben, verfügbar in Deutsch und Englisch.
+Ein Texteditor in Java geschrieben, verfügbar in Deutsch, Englisch und Italienisch.
 
 Das [neuste Release][1] downloaden und das JAR mit `$ java -jar FNotepad_x.x.x.jar` ausführen.
 
@@ -19,7 +19,7 @@ Außerdem gibt es einen Windows-Installer.
 
 ### English
 
-A texteditor written in Java, availible in German and English.
+A texteditor written in Java, availible in German, English and Italian.
 
 Download the [latest release][1] and run the JAR file with `$ java -jar FNotepad_x.x.x.jar`.
 
@@ -33,7 +33,7 @@ From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on th
 
 ### Italiano
 
-Un editor di testo scritto in Java, disponibile in inglese e tedesco.
+Un editor di testo scritto in Java, disponibile in inglese, tedesco e italiano.
 
 Scarica l'ultima versione ed esegui il JAR con $ java -jar FNotepad_x.x.x.jar.
 
