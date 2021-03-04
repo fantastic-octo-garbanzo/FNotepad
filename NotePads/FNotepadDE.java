@@ -288,8 +288,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             showTabulatorDialog();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(changeLang)) {
-            changeLanguage();
+        else if (cmdText.equals(LangEN)) {
+            changeLanguageEN();
+        }
+////////////////////////////////////
+        else if (cmdText.equals(LangIT)) {
+            changeLanguageIT();
         }
 ////////////////////////////////////
         else if (cmdText.equals(helpHelpTopic)){
@@ -413,9 +417,15 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     }
 
     ///////////////////////////////////
-    void changeLanguage() {
+    void changeLanguageEN() {
         if (!FileOperationDE.saved) return;
         new FNotepadEN(true);
+        f.dispose();
+    }
+    ///////////////////////////////////
+    void changeLanguageIT() {
+        if (!FileOperationDE.saved) return;
+        new FNotepadIT(true);
         f.dispose();
     }
     ///////////////////////////////////
@@ -493,8 +503,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         helpPage.setVisible(true);
     }
 
-
-
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -513,7 +521,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         return temp;
     }
-
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JCheckBoxMenuItem temp = new JCheckBoxMenuItem(s);
@@ -524,7 +531,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         return temp;
     }
-
     ////////////////////////////////////
     JMenu createMenu(String s, int key, JMenuBar toMenuBar) {
         JMenu temp = new JMenu(s);
@@ -532,7 +538,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         toMenuBar.add(temp);
         return temp;
     }
-
     /*********************************/
     void createMenuBar(JFrame f) {
         JMenuBar mb = new JMenuBar(); // Menü-Leiste
@@ -598,7 +603,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(changeLang, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangEN, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangIT, KeyEvent.VK_Y, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -639,12 +645,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
-
         new FNotepadDE(true);
-
     }
 }
-
 /**************************************/
 // Menü-Leiste
 interface MenuConstantsDE {
@@ -691,14 +694,13 @@ interface MenuConstantsDE {
     String helpAboutFNotepad = "\u00DCber FNotepad";
 
     String aboutText =
-
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=center>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=center>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
                     + "Bei Bugs und Ideen gerne ein Issue auf Github stellen<p align=center>";
 
-    String changeLang = "English";
-    
+    String LangEN = "English";
+    String LangIT = "Italiano";
 
 }

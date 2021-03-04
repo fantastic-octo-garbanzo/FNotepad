@@ -288,8 +288,12 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             showTabulatorDialog();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(changeLang)) {
-            changeLanguage();
+        else if (cmdText.equals(LangEN)) {
+            changeLanguageEN();
+        }
+////////////////////////////////////
+        else if (cmdText.equals(LangDE)) {
+            changeLanguageDE();
         }
 ////////////////////////////////////
         else if (cmdText.equals(helpHelpTopic)){
@@ -413,9 +417,15 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     }
 
     ///////////////////////////////////
-    void changeLanguage() {
+    void changeLanguageEN() {
         if (!FileOperationIT.saved) return;
         new FNotepadEN(true);
+        f.dispose();
+    }
+    ///////////////////////////////////
+    void changeLanguageDE() {
+        if (!FileOperationIT.saved) return;
+        new FNotepadDE(true);
         f.dispose();
     }
     ///////////////////////////////////
@@ -598,7 +608,8 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(changeLang, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangEN, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangDE, KeyEvent.VK_Y, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -691,14 +702,12 @@ interface MenuConstantsIT {
     String helpAboutFNotepad = "Tramite FNotepad";
 
     String aboutText =
-
             "<html><big>FNotepad</big><hr><hr>"
                     + "<p align=center>Da fantastico-octo-garbanzo!"
                     + "<hr><p align=center>Compilato con OpenJDK15.<br><br>"
                     + "<strong>Grazie per aver utilizzato FNotepad!</strong><br>"
                     + "Se hai bug e idee, pubblica un problema su Github<p align=center>";
 
-    String changeLang = "English";
-
-
+    String LangEN = "English";
+    String LangDE = "Deutsch";
 }
