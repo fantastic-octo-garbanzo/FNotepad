@@ -286,8 +286,12 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             showTabulatorDialog();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(changeLang)) {
-            changeLanguage();
+        else if (cmdText.equals(LangDE)) {
+            changeLanguageDE();
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(LangIT)) {
+            changeLanguageIT();
         }
 /////////////////////////////////////
         else if (cmdText.equals(helpHelpTopic)){
@@ -465,9 +469,15 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     }
 
     ///////////////////////////////////
-    void changeLanguage() {
+    void changeLanguageDE() {
         if (!FileOperationEN.saved) return;
         new FNotepadDE(true);
+        f.dispose();
+    }
+    ///////////////////////////////////
+    void changeLanguageIT() {
+        if (!FileOperationEN.saved) return;
+        new FNotepadIT(true);
         f.dispose();
     }
     ///////////////////////////////////
@@ -580,7 +590,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(changeLang, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangDE, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangIT, KeyEvent.VK_Y, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -677,5 +688,6 @@ interface MenuConstantsEN {
                     + "<strong>Thank you for using FNotepad!</strong><br>"
                     + "For ideas and bug reports<br>"
                     + "feel free to create a issue on Github!<p align=center>";
-    String changeLang = "Deutsch";
+    String LangDE = "Deutsch";
+    String LangIT = "Italiano";
 }
