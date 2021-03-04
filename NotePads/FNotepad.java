@@ -114,7 +114,7 @@ public class FNotepad extends JFrame{
                 if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
             }
             if(c.getSelectedItem().equals("Italiano")){
-                if (ch.getSelectedItem().equals("a schermo interno")) {new FNotepadIT(true);}
+                if (ch.getSelectedItem().equals("a schermo intero")) {new FNotepadIT(true);}
                 if (ch.getSelectedItem().equals("finestrato")) {new FNotepadIT(false);}
             }
             if(c.getSelectedItem().equals("English")){
