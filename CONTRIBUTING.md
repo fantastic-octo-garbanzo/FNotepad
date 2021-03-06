@@ -26,6 +26,8 @@ submitting.
 
 Please strive to write good commit messages. Here's some guidelines to follow:
 
+#### Commit messages must always be written in English
+
 The first line should be limited to 50 characters and should be a sentence that
 completes the thought [When applied, this commit will...] *"Implement
 cmd_move"* or *"Fix #742"* or *"Improve performance of arrange_windows on ARM"*
@@ -75,7 +77,7 @@ process is:
 
 Brackets always go on the same line, including in functions.
 Always include brackets for if/while/for, even if it's a single statement.
-```java
+```c
 void function(void) {
 	if (condition1) {
 		do_thing1();
@@ -98,7 +100,7 @@ with an additional tab.
 If the line being broken is opening a new block (functions, if, while, etc.),
 the continuation line should be indented with two tabs, so they can't be
 misread as being part of the block.
-```java
+```c
 really_long_function(argument1, argument2, ...,
 	argument3, argument4);
 
