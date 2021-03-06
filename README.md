@@ -3,9 +3,6 @@
 ## About
 
 
-
-### English
-
 A texteditor written in Java, availible in German, English and Italian.
 
 Download the [latest release][1] and run the JAR file with `$ java -jar FNotepad_x.x.x.jar`.
