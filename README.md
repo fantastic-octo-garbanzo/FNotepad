@@ -35,11 +35,11 @@ From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on th
 
 Un editor di testo scritto in Java, disponibile in inglese, tedesco e italiano.
 
-Scarica l'ultima versione ed esegui il JAR con $ java -jar FNotepad_x.x.x.jar.
+Scarica l'ultima versione ed esegui il JAR con `$ java -jar FNotepad_x.x.x.jar`.
 
 O
 
-Clonare il repository con Git: $ git clone https://github.com/fantastic-octo-garbanzo/FNotepad.git ed eseguire il JAR.
+Clonare il repository con Git: `$ git clone https://github.com/fantastic-octo-garbanzo/FNotepad.git` ed eseguire il JAR.
 
 O
 
