@@ -39,9 +39,12 @@ From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on th
 
 
 #### If you want to help us or you have a bug report, you can open a Issue. Thank you!
+## Contributing
+[Contributing][5]
 
 
 [1]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
 [2]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/CONTRIBUTERS.md
 [3]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/CHANGELOG.md
 [4]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/ROADMAP.md
+[5]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/CONTRIBUTING.md
