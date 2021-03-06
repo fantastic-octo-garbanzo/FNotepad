@@ -21,12 +21,16 @@ From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on th
 
 
 
-## [Contributers][2]
-## [Changelog][3]
-## [Roadmap][4]
-
+## Contributers
+[Contributers][2]
+## Changelog
+[Changelog][3]
+## Roadmap
+[Roadmap][4]
 
 #### If you want to help us or you have a bug report, you can open a Issue. Thank you!
+
+
 ## Contributing
 [Contributing][5]
 
