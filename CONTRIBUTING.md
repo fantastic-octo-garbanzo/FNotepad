@@ -75,7 +75,7 @@ process is:
 
 Brackets always go on the same line, including in functions.
 Always include brackets for if/while/for, even if it's a single statement.
-```
+```java
 void function(void) {
 	if (condition1) {
 		do_thing1();
@@ -98,7 +98,7 @@ with an additional tab.
 If the line being broken is opening a new block (functions, if, while, etc.),
 the continuation line should be indented with two tabs, so they can't be
 misread as being part of the block.
-```
+```java
 really_long_function(argument1, argument2, ...,
 	argument3, argument4);
 
