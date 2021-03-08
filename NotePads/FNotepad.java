@@ -109,8 +109,9 @@ public class FNotepad extends JFrame{
 
     }
     private static void showSplash() {
-        showSplash();
-    }
+            showSplash();
+        }
+
     public static void main(String[] args) {
         new FNotepad();
     }
