@@ -10,7 +10,7 @@ import FindDialog.*;
 import FontChooser.*;
 import LookAndFeelMenu.*;
 import NotePads.FNotepadDE;
-import NotePads.FNotepadIT;
+
 
 
 class FileOperationExampleDE extends JFrame {
@@ -68,8 +68,7 @@ public class FileOperationDE {
     File fileRef;
     JFileChooser chooser;
 
-    public FileOperationDE(FNotepadIT fNotepadIT) {
-    }
+
 
     /////////////////////////////
     public static boolean isSave() {

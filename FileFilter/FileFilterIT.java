@@ -36,8 +36,8 @@ class FileFilterDemoIT extends JFrame {
     }
 
     public static void main(String[] args) {
-        FileFilterDemoDE ffd = new FileFilterDemoDE();
-        ffd.setVisible(true);
+        FileFilterDemoIT ffi = new FileFilterDemoIT();
+        ffi.setVisible(true);
     }
 }
 /***************************************************/
