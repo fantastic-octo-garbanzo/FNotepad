@@ -1,7 +1,17 @@
 # FNotepad Changelog 
 #### (not completed jet)
 
-## FNotepad [v1.3.4][0] (2021-02-23)
+## FNotepad [v1.3.5][0] (2021-03-13)
+
+### Added
+- Italian FNotepad
+- Help files in all languages
+- Open shell from FNotepad
+
+### Changed
+- README
+
+## FNotepad [v1.3.4][10] (2021-02-23)
 
 ### Added
 - Help file
@@ -81,6 +91,7 @@
 
 
 [0]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
+[10]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.4
 [9]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.3
 [8]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.2
 [7]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.1
