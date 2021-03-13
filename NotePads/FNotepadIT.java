@@ -20,7 +20,6 @@ import LookAndFeelMenu.LookAndFeelMenuIT;
 
 public class FNotepadIT implements ActionListener, MenuConstantsIT {
 
-
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
@@ -29,9 +28,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     private String fileName = "Senza nome";
     private boolean saved = true;
     String applicationName = "FNotepad";
-
-    String searchString, replaceString;
-    int lastSearchIndex;
 
     FileOperationIT fileHandler;
     FontChooserIT fontDialog = null;
@@ -71,19 +67,15 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
 
-
         f.pack();
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         if(!fullscreen){f.setSize(800, 600);}
-
         f.setVisible(true);
 
         fileHandler = new FileOperationIT(this);
-
 /////////////////////
-
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
@@ -151,7 +143,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         };
         f.addWindowListener(frameClose);
 ////////////////////////////////////
-
     }
     ////////////////////////////////////
     void goTo() {
@@ -167,7 +158,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         } catch (Exception e) {
         }
     }
-
     ///////////////////////////////////
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
@@ -371,7 +361,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 
         backgroundDialog.setVisible(true);
     }
-
     ////////////////////////////////////
     void showForegroundColorDialog() {
         if (fcolorChooser == null)
@@ -391,7 +380,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 
         foregroundDialog.setVisible(true);
     }
-
     ///////////////////////////////////
     void openGithub() throws IOException {
         Runtime rt = Runtime.getRuntime();
@@ -415,7 +403,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             rt.exec(new String[] {"sh", "-c", cmd.toString() });
         }
     }
-
     ///////////////////////////////////
     void changeLanguageEN() {
         if (!FileOperationIT.saved) return;
@@ -432,25 +419,9 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     void newWindow() {
         new FNotepadIT(true);
     }
-
-    void commandoopen() {
-        JFrame commando = new JFrame();
-        commando.setTitle(commandoopen);
-        commando.setBounds(50, 50, 700, 300);
-        commando.setVisible(true);
-        commando.setResizable(true);
-        commando.setAlwaysOnTop(true);
-        commando.setSize(500, 500);
-        commando.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
-        ImageIcon helpicon = new ImageIcon(iconURL);
-        commando.setIconImage(helpicon.getImage());
-        commando.setVisible(true);
-    }
-
+    ///////////////////////////////////
     void loadHelp(){
-        FileReader fr;
-        fr = null;
+        FileReader fr = null;
         JFrame helpPage = new JFrame();
 
         helpPage.setTitle(helpText);
@@ -487,7 +458,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                 if (fr != null) fr.close();
             }
             catch (Exception ex) {
-
             }
         }
         helpPage.add(helptxtArea);
@@ -502,28 +472,21 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         helpPage.setIconImage(helpicon.getImage());
         helpPage.setVisible(true);
     }
-
-
-
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, int aclKey, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         temp.setAccelerator(KeyStroke.getKeyStroke(aclKey, ActionEvent.CTRL_MASK));
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JCheckBoxMenuItem temp = new JCheckBoxMenuItem(s);
@@ -531,10 +494,8 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         temp.addActionListener(al);
         temp.setSelected(false);
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JMenu createMenu(String s, int key, JMenuBar toMenuBar) {
         JMenu temp = new JMenu(s);
@@ -542,7 +503,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         toMenuBar.add(temp);
         return temp;
     }
-
     /*********************************/
     void createMenuBar(JFrame f) {
         JMenuBar mb = new JMenuBar(); // Menü-Leiste
@@ -562,11 +522,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        fileMenu.addSeparator();
-        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
-        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
         fileMenu.addSeparator();
         temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         temp.setEnabled(false);
@@ -636,7 +591,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                     deleteItem.setEnabled(true);
                 }
             }
-
             public void menuDeselected(MenuEvent evvvv) {
             }
 
@@ -650,12 +604,9 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
-
         new FNotepadIT(true);
-
     }
 }
-
 /**************************************/
 // Menü-Leiste
 interface MenuConstantsIT {
@@ -672,8 +623,6 @@ interface MenuConstantsIT {
     String fileSave = "salvare il file";
     String fileSaveAs = "Salva file con nome...";
     String filePageSetup = "Impostazioni della pagina...";
-    String fileExportasPDF = "Esporta file come PDF";
-    String fileExportasHTML = "Esporta file come HTML";
     String filePrint = "Pressare";
     String fileExit = "rottura";
 

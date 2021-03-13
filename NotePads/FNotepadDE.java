@@ -18,7 +18,6 @@ import LookAndFeelMenu.LookAndFeelMenuDE;
 /************************************/
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
-
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
@@ -37,7 +36,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
-
     /****************************/
     public static Dimension getScreenDimensionWithoutTaskbarDE(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,7 +59,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
-
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
@@ -71,11 +68,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         if(!fullscreen){f.setSize(800, 600);}
-
         f.setVisible(true);
 
         fileHandler = new FileOperationDE(this);
-
 /////////////////////
         ta.addCaretListener(
                 new CaretListener() {
@@ -616,8 +611,6 @@ interface MenuConstantsDE {
     String fileSave = "Datei speichern";
     String fileSaveAs = "Datei speichern als...";
     String filePageSetup = "Seiteneinstellungen...";
-    String fileExportasPDF = "Datei als PDF exportieren";
-    String fileExportasHTML = "Datei als HTML exportieren";
     String filePrint = "Drucken";
     String fileExit = "Beenden";
 

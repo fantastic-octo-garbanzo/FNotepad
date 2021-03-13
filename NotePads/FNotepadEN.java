@@ -30,9 +30,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     private boolean saved = true;
     String applicationName = "FNotepad";
 
-    String searchString, replaceString;
-    int lastSearchIndex;
-
     FileOperationEN fileHandler;
     FontChooserEN fontDialog = null;
     FindDialogEN findReplaceDialog = null;
@@ -42,7 +39,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
-
     /****************************/
     public static Dimension getScreenDimensionWithoutTaskbarEN(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -68,9 +64,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-
-
-
         f.pack();
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -78,9 +71,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         if(!fullscreen){f.setSize(650, 600);}
 
         fileHandler = new FileOperationEN(this);
-
 /////////////////////
-
         ta.addCaretListener(
                 new CaretListener() {
                     public void caretUpdate(CaretEvent e) {
@@ -146,9 +137,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         };
         f.addWindowListener(frameClose);
 //////////////////
-
     }
-
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
@@ -163,7 +152,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         } catch (Exception e) {
         }
     }
-
     ///////////////////////////////////
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
@@ -315,7 +303,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             statusBar.setText("This command is yet to be implemented");
         }
     }//action Performed
-
     ////////////////////////////////////
     void showTabulatorDialog(){
 
@@ -411,10 +398,9 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             rt.exec(new String[] {"sh", "-c", cmd.toString() });
         }
     }
-
+    ////////////////////////////////////
     void loadHelp(){
-        FileReader fr;
-        fr = null;
+        FileReader fr = null;
         JFrame helpPage = new JFrame();
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
@@ -509,7 +495,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         toMenuBar.add(temp);
         return temp;
     }
-
     /*********************************/
     void createMenuBar(JFrame f) {
         JMenuBar mb = new JMenuBar();
@@ -529,11 +514,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
-        fileMenu.addSeparator();
-        temp = createMenuItem(fileExportasPDF, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
-        temp = createMenuItem(fileExportasHTML, KeyEvent.VK_Y, fileMenu, KeyEvent.VK_Y, this);
-        temp.setEnabled(false);
         fileMenu.addSeparator();
         temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         temp.setEnabled(false);
@@ -604,7 +584,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
                     deleteItem.setEnabled(true);
                 }
             }
-
             public void menuDeselected(MenuEvent evvvv) {
             }
 
@@ -637,8 +616,6 @@ interface MenuConstantsEN {
     String fileSave = "Save File";
     String fileSaveAs = "Save File As...";
     String filePageSetup = "Page Setup...";
-    String fileExportasPDF = "Export File as PDF";
-    String fileExportasHTML = "Export File as HTML";
     String filePrint = "Print";
     String fileExit = "Exit";
 
