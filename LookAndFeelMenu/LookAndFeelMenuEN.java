@@ -49,7 +49,7 @@ public class LookAndFeelMenuEN {
 			bg.add(rbm[i]);
 			rbm[i].addActionListener(new LookAndFeelMenuListenerEN(infos[i].getClassName(),cmp));
 		}
-		rbm[3].setSelected(true);
+		rbm[0].setSelected(true);
 		jmenu.add(tmp);
 	}
 }
