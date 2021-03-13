@@ -2,16 +2,14 @@ package NotePads;
 // Imports
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
+
 import FileOperation.FileOperationEN;
 import FindDialog.FindDialogEN;
 import FontChooser.FontChooserEN;
@@ -39,15 +37,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
-    /****************************/
-    public static Dimension getScreenDimensionWithoutTaskbarEN(Frame frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
-        int taskBarSize = screenInsets.bottom;
-        return new Dimension(width, height - taskBarSize);
-    }
     /****************************/
     public FNotepadEN(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);

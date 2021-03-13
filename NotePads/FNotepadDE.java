@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Locale;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -15,7 +14,9 @@ import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
+
 /************************************/
+
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
     public JFrame f;
@@ -36,15 +37,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
-    /****************************/
-    public static Dimension getScreenDimensionWithoutTaskbarDE(Frame frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
-        int taskBarSize = screenInsets.bottom;
-        return new Dimension(width, height - taskBarSize);
-    }
     /****************************/
     public FNotepadDE(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);

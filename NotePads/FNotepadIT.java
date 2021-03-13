@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Locale;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -38,16 +37,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
-
-    /****************************/
-    public static Dimension getScreenDimensionWithoutTaskbarIT(Frame frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
-        int taskBarSize = screenInsets.bottom;
-        return new Dimension(width, height - taskBarSize);
-    }
     /****************************/
     public FNotepadIT(boolean fullscreen) {
         f = new JFrame(fileName + " - " + applicationName);
