@@ -461,9 +461,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
-        // iconURL is null when not found
-        ImageIcon helpicon = new ImageIcon(iconURL);
-        helpPage.setIconImage(helpicon.getImage());
     }
     ///////////////////////////////////
     void changeLanguageDE() {
