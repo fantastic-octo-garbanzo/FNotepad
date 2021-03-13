@@ -13,10 +13,7 @@ Clone the repository with Git: `$ git clone https://github.com/fantastic-octo-ga
 
 OR
 
-From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on there will be .deb and .rpm packages for every release. We also provide a windows installer.
-
-
-
+There is Linux packages (.deb and .rpm at the moment). There is also a Windows installer. A MacOS version is not planned yet.
 
 ## Contributers
 [Contributers][2]
