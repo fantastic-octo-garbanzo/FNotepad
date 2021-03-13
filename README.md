@@ -24,10 +24,6 @@ From version 1.3.5 on there will be a beta rpm package, from version 2.0.0 on th
 [Changelog][3]
 ## Roadmap
 [Roadmap][4]
-
-
-
-
 ## Contributing
 [Contributing][5]
 

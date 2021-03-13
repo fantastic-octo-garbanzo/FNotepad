@@ -2,7 +2,7 @@
 
 ## FNotepad v1.4.0
 
-- rpm package (beta is just now availible)
+- rpm package
 - deb package
 - File tree
 

@@ -7,6 +7,7 @@
 - Italian FNotepad
 - Help files in all languages
 - Open shell from FNotepad
+- Add CONTRIBUTING file
 
 ### Changed
 - README
@@ -74,6 +75,8 @@
 
 ## FNotepad [v1.2.1][5]
 
+### Changed
+- Small bug fixes
 
 ## FNotepad [v1.2.0][4] (2021-02-09)
 
@@ -86,8 +89,21 @@
 
 
 ## FNotepad [v1.1.1][3]
+
+### Changed
+- Small bug fixes
+
+
 ## FNotepad [v1.1.0][2]
+
+### Changed
+- Bug fixes
+
+
 ## FNotepad [v1.0.0][1]
+
+### Added
+- First release of FNotepad
 
 
 [0]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
