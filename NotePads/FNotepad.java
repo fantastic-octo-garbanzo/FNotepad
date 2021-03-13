@@ -1,6 +1,6 @@
 package NotePads;
 // Imports
-
+import java.awt.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -52,11 +52,6 @@ public class FNotepad extends JFrame{
         JComboBox ch = new JComboBox(windowList);
         ch.setBounds(250,225, 100,50);
 
-        /*Choice ch = new Choice();
-        ch.setBounds(250,225, 100,50);
-        ch.add("fullscreen");
-        ch.add("windowed");*/
-
         add(l);
         add(a);
         add(b);
@@ -69,7 +64,6 @@ public class FNotepad extends JFrame{
 
         setLayout(null);
         setVisible(true);
-
 
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Öffnet Fenster im Vollbild
 
@@ -131,7 +125,6 @@ public class FNotepad extends JFrame{
         });
 
     }
-
     public static void main(String[] args) {
         new FNotepad();
     }

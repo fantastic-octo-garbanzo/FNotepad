@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.event.*;
-
-import FileOperation.FileOperationDE;
 import FileOperation.FileOperationEN;
 import FindDialog.FindDialogEN;
 import FontChooser.FontChooserEN;
@@ -447,12 +445,10 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         catch (IOException | URISyntaxException ex) { System.out.println(ex);
         }
         finally {
-
             try {
                 if (fr != null) fr.close();
             }
             catch (Exception ex) {
-
             }
         }
         helpPage.add(helptxtArea);
@@ -465,9 +461,10 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
-        helpPage.setVisible(true);
+        // iconURL is null when not found
+        ImageIcon helpicon = new ImageIcon(iconURL);
+        helpPage.setIconImage(helpicon.getImage());
     }
-
     ///////////////////////////////////
     void changeLanguageDE() {
         if (!FileOperationEN.saved) return;
@@ -489,22 +486,16 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, int aclKey, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         temp.setAccelerator(KeyStroke.getKeyStroke(aclKey, ActionEvent.CTRL_MASK));
         toMenu.add(temp);
-
         return temp;
     }
-
-
-
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JCheckBoxMenuItem temp = new JCheckBoxMenuItem(s);
@@ -512,10 +503,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         temp.addActionListener(al);
         temp.setSelected(false);
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JMenu createMenu(String s, int key, JMenuBar toMenuBar) {
         JMenu temp = new JMenu(s);
@@ -635,7 +624,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         new FNotepadEN(true);
     }
 }
-
 /**************************************/
 // Menu
 interface MenuConstantsEN {
@@ -668,7 +656,7 @@ interface MenuConstantsEN {
     String editGoTo = "Go To...";
     String editSelectAll = "Select All";
     String editTimeDate = "Time/Date";
-    String commandoopen = "Terminal open";
+    String commandoopen = "Open Terminal";
 
     String formatWordWrap = "Word Wrap";
     String formatFont = "Font...";

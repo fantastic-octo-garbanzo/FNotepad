@@ -1,7 +1,23 @@
 # FNotepad Changelog 
 #### (not completed jet)
 
-## FNotepad [v1.3.3][0] (2021-02-18)
+## FNotepad [v1.3.4][0] (2021-02-23)
+
+### Added
+- Help file
+- New Menu buttons
+- Added test rpm
+- Added windows installer
+- Logo
+
+### Changed
+- Fixed big counting bug
+- Menu
+- License, from MIT to GNU GPLv3
+- Removed unnecessary code
+
+
+## FNotepad [v1.3.3][9] (2021-02-18)
 
 ### Added
 - Setting for tabulator size in page settings (beta)
@@ -65,9 +81,10 @@
 
 
 [0]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
-[8]:https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.2
+[9]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.3
+[8]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.2
 [7]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.1
-[6]:  https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.2
+[6]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.2
 [5]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.1
 [4]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.0
 [3]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.1

@@ -1,20 +1,13 @@
 package FileOperation;
 // Imports
 import java.io.*;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 import FileFilter.*;
-import FindDialog.*;
-import FontChooser.*;
-import LookAndFeelMenu.*;
 import NotePads.FNotepadDE;
 
-
-
 class FileOperationExampleDE extends JFrame {
-	JMenuBar mb;
+    JMenuBar mb;
 	JMenu file;
 	JMenuItem open;
 	JTextArea ta;
@@ -67,26 +60,26 @@ public class FileOperationDE {
 
     File fileRef;
     JFileChooser chooser;
-
-
-
+    File temp = null;
+    FileWriter fout = null;
+    FileInputStream fin = null;
+    BufferedReader din = null;
     /////////////////////////////
     public static boolean isSave() {
         return saved;
     }
-
+    /////////////////////////////
     void setSave(boolean saved) {
         this.saved = saved;
     }
-
+    /////////////////////////////
     public static String getFileName() {
         return new String(fileName);
     }
-
+    /////////////////////////////
     void setFileName(String fileName) {
         this.fileName = new String(fileName);
     }
-
     /////////////////////////
     public FileOperationDE(FNotepadDE npd) {
         this.npd = npd;
@@ -99,14 +92,14 @@ public class FileOperationDE {
 
 		// Verschiedene Dateiendungen
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new FileFilterEN("*", "Alle Dateien"));
+        chooser.addChoosableFileFilter(new FileFilterDE("*", "Alle Dateien"));
         chooser.addChoosableFileFilter(new FileFilterDE(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new FileFilterDE(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(.c)"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".cpp", "C++(.cpp)"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".cs", "C#"));
-		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(.d)"));
+        chooser.addChoosableFileFilter(new FileFilterDE(".c", "C Programming Language(*.c)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".cpp", "C++(*.cpp)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".cs", "C#(*.cs)"));
+		chooser.addChoosableFileFilter(new FileFilterDE(".d", "D Programming Language(*.d)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".sh", "Shell Script File(*.sh)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".bat", "Batch File(*.bat)"));
 		chooser.addChoosableFileFilter(new FileFilterDE(".rtf", "Rich Text Format(*.rtf)"));
@@ -116,9 +109,7 @@ public class FileOperationDE {
         chooser.setCurrentDirectory(new File("."));
     }
 //////////////////////////////////////
-
     boolean saveFile(File temp) {
-        FileWriter fout = null;
         try {
             fout = new FileWriter(temp);
             fout.write(npd.ta.getText());
@@ -134,25 +125,19 @@ public class FileOperationDE {
         updateStatus(temp, true);
         return true;
     }
-
-    ////////////////////////
+//////////////////////////////////////
     public boolean saveThisFile() {
-
         if (!newFileFlag) {
             return saveFile(fileRef);
         }
-
         return saveAsFile();
     }
-
-    ////////////////////////////////////
+//////////////////////////////////////
     public boolean saveAsFile() {
-        File temp = null;
         chooser.setDialogTitle("Speichern als...");
         chooser.setApproveButtonText("Jetzt speichern");
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
         chooser.setApproveButtonToolTipText("Hier speichern!");
-
         do {
             if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return false;
@@ -164,16 +149,10 @@ public class FileOperationDE {
             ) == JOptionPane.YES_OPTION)
                 break;
         } while (true);
-
-
         return saveFile(temp);
     }
-
-    ////////////////////////
+//////////////////////////////////////
     boolean openFile(File temp) {
-        FileInputStream fin = null;
-        BufferedReader din = null;
-
         try {
             fin = new FileInputStream(temp);
             din = new BufferedReader(new InputStreamReader(fin));
@@ -199,8 +178,7 @@ public class FileOperationDE {
         this.npd.ta.setCaretPosition(0);
         return true;
     }
-
-    ///////////////////////
+//////////////////////////////////////
     public void openFile() {
         if (!confirmSave()) return;
         chooser.setDialogTitle("\u00D6ffne Datei...");
@@ -208,7 +186,6 @@ public class FileOperationDE {
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
         chooser.setApproveButtonToolTipText("Ausgew\u00E4hlte Datei \u00F6ffnen.");
 
-        File temp = null;
         do {
             if (chooser.showOpenDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return;
@@ -234,8 +211,7 @@ public class FileOperationDE {
             newFileFlag = true;
 
     }
-
-    ////////////////////////
+//////////////////////////////////////
     void updateStatus(File temp, boolean saved) {
         if (saved) {
             this.saved = true;
@@ -252,8 +228,7 @@ public class FileOperationDE {
             npd.statusBar.setText("Fehler beim \u00D6ffnen/Speichern : " + temp.getPath());
         }
     }
-
-    ///////////////////////
+//////////////////////////////////////
     public boolean confirmSave() {
         String strMsg = "<html>Der Inhalt der Datei \"" + fileName + "\" wurde ge\u00E4ndert.<br>" +
                 "Wollen Sie die \u00C4nderungen speichern?<html>";
@@ -265,8 +240,7 @@ public class FileOperationDE {
         }
         return true;
     }
-
-    ///////////////////////////////////////
+//////////////////////////////////////
     public void newFile() {
         if (!confirmSave()) return;
         this.npd.ta.setText("");

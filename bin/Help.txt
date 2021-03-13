@@ -1,10 +1,13 @@
-HELP
-==================================
+|   |   |----   |       |----|
+|---|   |----   |       |____|
+|   |   |----   |____   |
+==============================
+
 1. Which file formats can I open?
-With FNotepad, you can first open all file formats, but not all file formats are displayed legibly.
+With FNotepad you can open all file formats, but not all file formats are displayed legibly.
 
 2. Is FNotepad free?
-Yes FNotepad is free.
+Yes, FNotepad is free.
 
 3. How do I open files?
 Click File, then click Open, or press Ctrl + O.
@@ -15,53 +18,50 @@ Click File, then click Save or Save As ..., or press Ctrl + S on the keyboard.
 4. How do I create a new file?
 Click File, then click New File, or press Ctrl + N.
 
-5. How do I export a file as a PDF?
-Click File, then click Export File as PDF, or press Ctrl + Y.
-
-6. How do I export a file as HTML?
-Click File, then click Export File As HTML, or press Ctrl + Y.
-
-7. How do I create a new window?
+5. How do I create a new window?
 Click File, then click New Window, or press Ctrl + G.
 
-8. How do I undo an unwanted change?
+6. How do I undo an unwanted change?
 Click Edit, then click Undo, or press Ctrl + Z.
 
-9. How do I cut something?
+7. How do I cut something?
 Click Edit, then click Cut, or press Ctrl + X.
 
-10. How do I add something?
-Click Edit, then click Paste, or press Ctrl + V on the keyboard.
+8. How do I add something?
+Click Edit, then click Paste, or press Ctrl + V.
 
-11. How do I copy something?
+9. How do I copy something?
 Click Edit, then click Copy, or press Ctrl + C.
 
-12. How do I delete something?
+10. How do I delete something?
 Click Edit, then click Paste, or press the Delete key.
 
-13. How do I search for something?
+11. How do I search for something?
 Click Edit, then Find ..., or press Ctrl + F.
 
-14. How do I select the complete text?
+12. How do I select the complete text?
 Click Edit, then click Select All, or press Ctrl + A.
 
-15. How do I insert the date and time?
+13. How do I insert the date and time?
 Click Edit, then click Time / Date, or press the F5 key.
 
-16. How do I open the terminal?
+14. How do I open the terminal?
 Click Edit, then click Open Terminal, or press Ctrl + T.
 
-17. How do I change the font?
+15. How do I change the font?
 Click Format, then click Font ...
 
-18. How do I activate the line break?
+16. How do I activate the line break?
 Click Format, and then click Word Wrap.
 
-19. How do I change the text color?
+17. How do I change the text color?
 Click Format and then Text Color ...
 
-20. How do I change the background color?
+18. How do I change the background color?
 Click Format and then Background Color ...
 
-21. How do I switch to English?
-Click Language and English.
+19. How do I switch to English?
+Click Language and then Deutsch.
+
+20. How do I switch to Italian?
+Click Language and than Italiano.

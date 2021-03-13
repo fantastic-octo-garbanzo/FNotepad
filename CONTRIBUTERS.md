@@ -4,6 +4,9 @@
 
 - Releases: lm41
 - RPM packages: EFibo
+- DEB packages: EFibo 
+- License: EFibo
+- Windows installer: FF03de
 
 ## Members
 
