@@ -2,11 +2,12 @@
 |---|   |   |       |----  |----
 |   |   |   |____   |      |----
 =================================
+
 1. Welche Dateiformate kann ich öffnen?
-Mit FNotepad, können Sie  erstmal alle Dateiformate öffnen, aber es werden nicht alle Dateiformate lesbar dargestellt.
+Mit FNotepad können Sie grundsätzlich alle Dateiformate öffnen, aber es werden nicht alle Dateiformate lesbar dargestellt.
 
 2. Ist FNotepad kostenlos?
-Ja FNotepad ist kostenlos.
+Ja, FNotepad ist kostenlos.
 
 3. Wie öffne ich Dateien?
 Klicken Sie auf Datei und dann auf Öffnen, oder drücken Sie die Tastenkombination Strg + O.
@@ -17,29 +18,50 @@ Klicken Sie auf Datei und dann auf Speichern oder Speichern als..., oder drücke
 4. Wie erstelle ich eine neue Datei?
 Klicken Sie auf Datei und dann auf neue Datei, oder drücken Sie die Tastenkombination Strg + N.
 
-5. Wie exportiere ich eine Datei als PDF?
-Klicken Sie auf Datei und dann auf Datei als PDF exportieren, oder drücken Sie die Tastenkombination Strg +  Y.
-
-6. Wie exportiere ich eine Datei als HTML?
-Klicken Sie auf Datei und dann auf Datei als HTML exportieren, oder drücken Sie die Tastenkombination Strg +  Y.
-
-7. Wie erstelle ich ein neues Fenster?
+5. Wie erstelle ich ein neues Fenster?
 Klicken Sie auf Datei und dann auf Neues Fenster, oder drücken Sie die Tastenkombination Strg + G.
 
-8. Wie mache ich eine ungewollte Veränderung rückgängig?
+6. Wie mache ich eine ungewollte Veränderung rückgängig?
 Klicken Sie auf Bearbeiten und dann auf Rückgängig, oder drücken Sie die Tastenkombination Strg + Z.
 
-9. Wie schneide ich etwas aus?
+7. Wie schneide ich etwas aus?
 Klicken Sie auf Bearbeiten und dann auf Ausschneiden, oder drücken Sie die Tastenkombination Strg + X.
 
-10. Wie füge ich etwas ein?
+8. Wie füge ich etwas ein?
 Klicken Sie auf Bearbeiten und dann auf Einfügen, oder drücken Sie die Tastenkombination Strg + V.
 
-11. Wie kopiere ich etwas?
+9. Wie kopiere ich etwas?
 Klicken Sie auf Bearbeiten und dann auf kopieren, oder drücken Sie die Tastenkombination Strg + C.
 
-12. Wie lösche ich etwas?
+10. Wie lösche ich etwas?
 Klicken Sie auf Bearbeiten und dann auf Einfügen, oder drücken Sie die Taste Entf.
 
-13. Wie suche ich etwas?
+11. Wie suche ich etwas?
 Klicken Sie auf Bearbeiten und dann auf Suchen..., oder drücken Sie die Tastenkombination Strg + F.
+
+12. Wie wähle ich den kompletten Text aus?
+Klicken Sie auf Bearbeiten und dann auf Alles auswählen, oder drücken Sie die Tastenkombination Strg + A.
+
+13. Wie füge ich das Datum und die Zeit ein?
+Klicken Sie auf Bearbeiten und dann auf Zeit/Datum, oder drücken Sie die Taste F5.
+
+14. Wie öffne ich das Terminal?
+Klicken Sie auf Bearbeiten und dann auf Terminal öffnen, oder drücken Sie die Tastenkombination Strg + T.
+
+15. Wie ändere ich die Schrift?
+Klicken Sie auf Format und dann auf Schrift...
+
+16. Wie aktiviere ich den Zeilenumbruch?
+Klicken Sie auf Format und dann auf Zeilenumbruch.
+
+17. Wie ändere ich die Textfarbe?
+Klicken Sie auf Format und dann auf Textfarbe...
+
+18. Wie ändere ich die Hintergrundfarbe?
+Klicken Sie auf Format und dann auf Hintergrundfarbe...
+
+19. Wie wechsle ich auf Englisch?
+Klicken Sie auf Sprache und auf English.
+
+20. Wie wechsle ich auf Italienisch?
+Klicken Sie auf Sprache und auf Italiano.

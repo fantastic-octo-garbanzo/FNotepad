@@ -284,12 +284,31 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             showTabulatorDialog();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(changeLang)) {
-            changeLanguage();
+        else if (cmdText.equals(LangDE)) {
+            changeLanguageDE();
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(LangIT)) {
+            changeLanguageIT();
         }
 /////////////////////////////////////
         else if (cmdText.equals(helpHelpTopic)){
             loadHelp();
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(commandoopen)) {
+            ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
+            ProcessBuilder lt = new ProcessBuilder("konsole", "/k", "start");
+            String os = System.getProperty("os.name").toLowerCase();
+            try {
+                if (os.indexOf("win") >= 0) {
+                    pb.start();
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    lt.start();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 ////////////////////////////////////
         else {
@@ -396,7 +415,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     void loadHelp(){
         FileReader fr;
         fr = null;
-        JDialog helpPage = new JDialog();
+        JFrame helpPage = new JFrame();
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
         helpPage.setVisible(true);
@@ -426,31 +445,36 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         catch (IOException | URISyntaxException ex) { System.out.println(ex);
         }
         finally {
-
             try {
                 if (fr != null) fr.close();
             }
             catch (Exception ex) {
-
             }
         }
         helpPage.add(helptxtArea);
-        helpPage.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-1200), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-150));
+        helpPage.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-1200), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-120));
         helpPage.setVisible(true);
         helpPage.setResizable(true);
         helpPage.toFront();
         helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helptxtArea.setVisible(true);
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
+        ImageIcon helpicon = new ImageIcon(iconURL);
+        helpPage.setIconImage(helpicon.getImage());
         // iconURL is null when not found
         ImageIcon helpicon = new ImageIcon(iconURL);
         helpPage.setIconImage(helpicon.getImage());
     }
-
     ///////////////////////////////////
-    void changeLanguage() {
+    void changeLanguageDE() {
         if (!FileOperationEN.saved) return;
         new FNotepadDE(true);
+        f.dispose();
+    }
+    ///////////////////////////////////
+    void changeLanguageIT() {
+        if (!FileOperationEN.saved) return;
+        new FNotepadIT(true);
         f.dispose();
     }
     ///////////////////////////////////
@@ -462,22 +486,16 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, int aclKey, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
         temp.setAccelerator(KeyStroke.getKeyStroke(aclKey, ActionEvent.CTRL_MASK));
         toMenu.add(temp);
-
         return temp;
     }
-
-
-
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JCheckBoxMenuItem temp = new JCheckBoxMenuItem(s);
@@ -485,10 +503,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         temp.addActionListener(al);
         temp.setSelected(false);
         toMenu.add(temp);
-
         return temp;
     }
-
     ////////////////////////////////////
     JMenu createMenu(String s, int key, JMenuBar toMenuBar) {
         JMenu temp = new JMenu(s);
@@ -544,6 +560,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         editMenu.addSeparator();
         selectAllItem = createMenuItem(editSelectAll, KeyEvent.VK_A, editMenu, KeyEvent.VK_A, this);
         createMenuItem(editTimeDate, KeyEvent.VK_D, editMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+        createMenuItem(commandoopen, KeyEvent.VK_E, editMenu, KeyEvent.VK_T, this);
 
         createCheckBoxMenuItem(formatWordWrap, KeyEvent.VK_W, formatMenu, this);
 
@@ -562,7 +579,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(changeLang, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangDE, KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(LangIT, KeyEvent.VK_Y, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
@@ -606,7 +624,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         new FNotepadEN(true);
     }
 }
-
 /**************************************/
 // Menu
 interface MenuConstantsEN {
@@ -639,6 +656,7 @@ interface MenuConstantsEN {
     String editGoTo = "Go To...";
     String editSelectAll = "Select All";
     String editTimeDate = "Time/Date";
+    String commandoopen = "Open Terminal";
 
     String formatWordWrap = "Word Wrap";
     String formatFont = "Font...";
@@ -658,5 +676,6 @@ interface MenuConstantsEN {
                     + "<strong>Thank you for using FNotepad!</strong><br>"
                     + "For ideas and bug reports<br>"
                     + "feel free to create a issue on Github!<p align=center>";
-    String changeLang = "Deutsch";
+    String LangDE = "Deutsch";
+    String LangIT = "Italiano";
 }

@@ -2,12 +2,12 @@ package NotePads;
 // Imports
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.JFrame;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URL;
-import java.util.Objects;
 
 /**********/
+
 // Beginn der Klasse FNotepad
 public class FNotepad extends JFrame{
 
@@ -42,7 +42,7 @@ public class FNotepad extends JFrame{
         a.setBounds(200, 375, 200, 50);
 
         // Auswahlmenü
-        String[] languagesList = {"English", "Deutsch"};
+        String[] languagesList = {"English", "Deutsch", "Italiano"};
         String[] windowList = {"fullscreen", "windowed"};
 
 
@@ -78,6 +78,16 @@ public class FNotepad extends JFrame{
                 ch.addItem("Vollbild");
                 ch.addItem("Fenstermodus");
             }
+            //Wenn Italienisch ausgewählt ist, wird alles auf Italienisch gesetzt
+            if(c.getSelectedItem().equals("Italiano")) {
+                l.setText("Benvenuto in FNotepad!");
+                setTitle("FNotepad - Lingua");
+                b.setText("seleziona la tua lingua");
+                a.setText("Interrompi");
+                ch.removeAllItems();
+                ch.addItem("a schermo intero");
+                ch.addItem("finestrato");
+            }
             // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
@@ -88,18 +98,24 @@ public class FNotepad extends JFrame{
                 ch.addItem("fullscreen");
                 ch.addItem("windowed");
             }
-        });
+            });
+
 
         // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
-            if(Objects.equals(c.getSelectedItem(), "Deutsch")){
-                if (Objects.equals(ch.getSelectedItem(), "Vollbild")) {new FNotepadDE(true);}
+            if(c.getSelectedItem().equals("Deutsch")){
+                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
                 if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
             }
-            if(Objects.equals(c.getSelectedItem(), "English")){
-                if (Objects.equals(ch.getSelectedItem(), "fullscreen")) {new FNotepadEN(true);}
+            if(c.getSelectedItem().equals("Italiano")){
+                if (ch.getSelectedItem().equals("a schermo intero")) {new FNotepadIT(true);}
+                if (ch.getSelectedItem().equals("finestrato")) {new FNotepadIT(false);}
+            }
+            if(c.getSelectedItem().equals("English")){
+                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
                 if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
             }
+
             dispose();
         });
         a.addActionListener((ActionEvent actionEvent) ->
