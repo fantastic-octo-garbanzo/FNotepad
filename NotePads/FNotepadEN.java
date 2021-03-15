@@ -395,7 +395,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         }
     }
 
-    void loadHelp(){
+    public void loadHelp(){
         FileReader fr;
         fr = null;
         JFrame helpPage = new JFrame();

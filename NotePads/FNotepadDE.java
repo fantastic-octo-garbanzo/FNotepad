@@ -408,7 +408,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     }
 
 
-    void loadHelp(){
+    public void loadHelp(){
         FileReader fr;
         fr = null;
         JFrame helpPage = new JFrame();
