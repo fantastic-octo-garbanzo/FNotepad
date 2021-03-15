@@ -403,10 +403,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void newWindow() {
         new FNotepadDE(true);
     }
-    ///////////////////////////////////
+
     void loadHelp(){
         FileReader fr = null;
-        JDialog helpPage = new JDialog();
+        JFrame helpPage = new JFrame();
         helpPage.setTitle(helpText);
         helpPage.setBounds(50, 50, 700, 300);
         helpPage.setVisible(true);
