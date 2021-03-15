@@ -5,10 +5,9 @@
 - If you want to clone the repository make sure to have git installed.
 
 ## Run without installation
-###(1)
 - Download the [latest][0] JAR
 - Run it with `$ java -jar FNotepad_x.x.x.jar`
-###(2)
+### OR
 - Clone the Github-Repository with `$ git clone https://github.com/fantastic-octo-garbanzo/FNotepad.git` to your device.
 - Go to `FNotepad/release/latest` folder and run the JAR with `$ java -jar FNotepad_x.x.x.jar`.
 
