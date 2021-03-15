@@ -43,12 +43,7 @@ class FileFilterDemoIT extends JFrame {
 /***************************************************/
 public class FileFilterIT extends FileFilter {
     private String extension;
-    private String description;
-    ////////////////
-    public FileFilterIT() {
-        setExtension(null);
-        setDescription(null);
-    }
+    private String description;s
     ////////////////
     public FileFilterIT(final String ext, final String desc) {
         setExtension(ext);
