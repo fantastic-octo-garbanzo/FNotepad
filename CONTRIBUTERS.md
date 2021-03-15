@@ -2,8 +2,10 @@
 
 ## Roles
 
-- Releases: lm41
-- RPM packages: EFibo
+- Releases: lm41 and EFibo
+- Linux packages: EFibo 
+- License: EFibo
+- Windows installer: FF03de
 
 ## Members
 
@@ -11,4 +13,3 @@
 - EFibo
 - FF03de
 - rendeiwave
-

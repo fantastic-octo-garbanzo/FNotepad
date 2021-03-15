@@ -40,7 +40,6 @@ class FontDemoDE extends JFrame {
 	{
 		new FontDemoDE();
 	}
-
 }
 /******************************************************/
 public class FontChooserDE extends JPanel /*implements ActionListener*/ {

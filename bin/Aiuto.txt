@@ -1,0 +1,67 @@
+A I U T O
+=========
+1. Quali formati di file posso aprire?
+Con FNotepad, puoi prima aprire tutti i formati di file, ma non tutti i formati di file vengono visualizzati in modo leggibile.
+
+2. FNotepad è gratuito?
+Sì FNotepad è gratuito.
+
+3. Come apro i file?
+Fare clic su File, quindi su Apri o premere Ctrl + O.
+
+3. Come si salvano i file?
+Fare clic su File, quindi su Salva o Salva con nome ... oppure premere Ctrl + S sulla tastiera.
+
+4. Come creo un nuovo file?
+Fare clic su File, quindi su Nuovo file o premere Ctrl + N.
+
+5. Come esporto un file come PDF?
+Fare clic su File, quindi su Esporta file come PDF o premere Ctrl + Y.
+
+6. Come esporto un file come HTML?
+Fare clic su File, quindi su Esporta file come HTML o premere Ctrl + Y.
+
+7. Come creo una nuova finestra?
+Fare clic su File, quindi su Nuova finestra o premere Ctrl + G.
+
+8. Come si annulla una modifica indesiderata?
+Fai clic su Modifica, quindi su Annulla o premi Ctrl + Z.
+
+9. Come faccio a ritagliare qualcosa?
+Fai clic su Modifica, quindi su Taglia o premi Ctrl + X.
+
+10. Come aggiungo qualcosa?
+Fai clic su Modifica, quindi su Incolla o premi Ctrl + V sulla tastiera.
+
+11. Come copio qualcosa?
+Fare clic su Modifica, quindi su Copia o premere Ctrl + C.
+
+12. Come cancello qualcosa?
+Fare clic su Modifica, quindi su Incolla o premere il tasto Canc.
+
+13. Come cerco qualcosa?
+Fai clic su Modifica, quindi Trova ... oppure premi Ctrl + F.
+
+14. Come seleziono il testo completo?
+Fare clic su Modifica, quindi su Seleziona tutto o premere Ctrl + A.
+
+15. Come si inseriscono la data e l'ora?
+Fare clic su Modifica, quindi su Ora / Data o premere il tasto F5.
+
+16. Come si apre il terminale?
+Fare clic su Modifica, quindi su Apri terminale o premere Ctrl + T.
+
+17. Come cambio il carattere?
+Fare clic su Formato, quindi su Carattere ...
+
+18. Come si attivano le interruzioni di riga?
+Fare clic su Formato, quindi su A capo automatico.
+
+19. Come cambio il colore del testo?
+Fare clic su Formato, quindi su Colore testo ...
+
+20. Come cambio il colore di sfondo?
+Fare clic su Formato, quindi su Colore di sfondo ...
+
+21. Come si passa all'inglese?
+Fare clic su Lingua e inglese.
