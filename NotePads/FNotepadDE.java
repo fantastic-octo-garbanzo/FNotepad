@@ -23,6 +23,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public JTextArea ta;
     public JLabel statusBar;
     int tabSize = 4;
+    int tabCount;
 
     private String fileName = "Unbenannt";
     private boolean saved = true;
@@ -36,6 +37,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
+    JTabbedPane tabbedPane;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
     /****************************/
     public FNotepadDE(boolean fullscreen) {
@@ -54,6 +56,12 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
+
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabbedPane.add(createPanel(), "Tab " + String.valueOf(tabCount), tabCount++);
+        tabbedPane.setTabComponentAt(0);
+        tabbedPane.add(new JPanel(), "+", tabCount++);
+        tabbedPane.addChangeListener(changeListener);
 
         f.pack();
         f.setVisible(true);
@@ -132,6 +140,19 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 ////////////////////////////////////
     }
     ////////////////////////////////////
+    ChangeListener changeListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            newTab();
+        }
+    };
+    ////////////////////////////////////
+    private JPanel createPanel() {
+        JPanel panel = new JPanel(new GridLayout(1, 1));
+        panel.add(new JScrollPane(ta));
+        return panel;
+    }
+    ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
         try {
@@ -151,6 +172,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 ////////////////////////////////////
         if (cmdText.equals(windowNew))
             newWindow();
+////////////////////////////////////
+        else if (cmdText.equals(tabNew))
+            newTab();
 ////////////////////////////////////
         else if (cmdText.equals(fileNew))
             fileHandler.newFile();
@@ -403,7 +427,19 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void newWindow() {
         new FNotepadDE(true);
     }
-
+    ///////////////////////////////////
+    void newTab() {
+        int index = tabCount - 1;
+        if (tabbedPane.getSelectedIndex() == index) {
+            tabbedPane.add(createPanel(), "Tab " + String.valueOf(index), index);
+            tabbedPane.setTabComponentAt(index);
+            tabbedPane.removeChangeListener(changeListener);
+            tabbedPane.setSelectedIndex(index);
+            tabbedPane.addChangeListener(changeListener);
+            tabCount++;
+        }
+    }
+    ///////////////////////////////////
     void loadHelp(){
         FileReader fr = null;
         JFrame helpPage = new JFrame();
@@ -582,7 +618,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.setJMenuBar(mb);
     }
     /*************Constructor**************/
-////////////////////////////////////
+////////////////////////////////////void
     public static void main(String[] s) {
         new FNotepadDE(true);
     }
@@ -598,6 +634,7 @@ interface MenuConstantsDE {
     String changeText = "Sprache";
 
     String windowNew = "Neues Fenster";
+    String tabNew = "Neuer Tab";
     String fileNew = "Neue Datei";
     String fileOpen = "Datei \u00D6ffnen...";
     String fileSave = "Datei speichern";
