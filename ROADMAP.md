@@ -2,8 +2,7 @@
 
 ## FNotepad v1.4.0
 
-- rpm package
-- deb package
+- Multiple tabs
 - File tree
 
 
@@ -11,4 +10,4 @@
 
 - Big code changes and new language support
 - Syntax highlighting
-- Multiple tabs
+- Markdown editor
