@@ -19,6 +19,8 @@ import LookAndFeelMenu.LookAndFeelMenuDE;
 
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
+
+
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
@@ -259,7 +261,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 ////////////////////////////////////
         else if (cmdText.equals(helpHelpoffline))
             try {
-                openGithub();
+                loadHelpoffline();
             } catch (Exception e) {
             }
 ////////////////////////////////////
@@ -286,12 +288,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             }
         }
 //////////////////////////////////////
-        else if (cmdText.equals(helpHelpoffline)){
-            try {
-                loadHelpoffline();
-            } catch (Exception e) {
-            }
-        }
+
 /////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start");
@@ -385,9 +382,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         Runtime rt = Runtime.getRuntime();
         String url = "https://github.com/fantastic-octo-garbanzo/FNotepad";
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.indexOf("win") >= 0) { // Wenn das Betriebsystem Windows ist
+        if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
             rt.exec("rundll32 url.dll, FileProtocolHandler "+url);
-        } else if (os.indexOf("mac") >= 0) { // Wenn das Betriebssystem MacOS ist
+        } else if (os.contains("mac")) { // Wenn das Betriebssystem MacOS ist
             rt.exec("open "+url);
         } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) { // Wenn das Betriebssystem Linux ist
             String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
@@ -447,13 +444,14 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
-        String url = "/bin/Hilfe.html";
+        URL url = getClass().getResource("/bin/Hilfe.html");
+
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.indexOf("win") >= 0) { // Wenn das Betriebsystem Windows ist
+        if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
             rt.exec("rundll32 url.dll, FileProtocolHandler " + url);
-        } else if (os.indexOf("mac") >= 0) { // Wenn das Betriebssystem MacOS ist
+        } else if (os.contains("mac")) { // Wenn das Betriebssystem MacOS ist
             rt.exec("open " + url);
-        } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) { // Wenn das Betriebssystem Linux ist
+        } else if (os.contains("nix") || os.contains("nux")) { // Wenn das Betriebssystem Linux ist
             String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
 
             StringBuffer cmd = new StringBuffer();
