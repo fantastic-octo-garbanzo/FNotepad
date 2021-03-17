@@ -253,9 +253,9 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpHelpOnline))
+        else if (cmdText.equals(helpHelpTopic))
             try {
-                openGithub();
+                loadHelp();
             } catch (Exception e) {
             }
 ////////////////////////////////////
@@ -376,29 +376,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
                             null);
 
         foregroundDialog.setVisible(true);
-    }
-    ///////////////////////////////////
-    void openGithub() throws IOException {
-        Runtime rt = Runtime.getRuntime();
-        String url = "https://github.com/fantastic-octo-garbanzo/FNotepad";
-        String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
-            rt.exec("rundll32 url.dll, FileProtocolHandler "+url);
-        } else if (os.contains("mac")) { // Wenn das Betriebssystem MacOS ist
-            rt.exec("open "+url);
-        } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) { // Wenn das Betriebssystem Linux ist
-            String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
-
-            StringBuffer cmd = new StringBuffer();
-            for (int i = 0; i < browsers.length; i++) {
-                if (i == 0)
-                    cmd.append(String.format("%s \"%s\"", browsers[i], url));
-                else
-                    cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
-                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
-            }
-            rt.exec(new String[] {"sh", "-c", cmd.toString() });
-        }
     }
     ///////////////////////////////////
     void changeLanguageEN() {
@@ -553,7 +530,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
-        createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
@@ -642,7 +618,6 @@ interface MenuConstantsDE {
 
     String helpHelpTopic = "OnlineHilfe";
     String helpHelpoffline = "OfflineHilfe";
-    String helpHelpOnline = "Github-Hilfe";
     String helpAboutFNotepad = "\u00DCber FNotepad";
 
     String aboutText =
