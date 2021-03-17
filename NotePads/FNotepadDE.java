@@ -274,7 +274,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         }
 ////////////////////////////////////
         else if (cmdText.equals(helpHelpTopic)){
-            loadHelp();
+            try {
+                loadHelp();
+            } catch (Exception e) {
+            }
         }
 /////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
@@ -403,54 +406,29 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void newWindow() {
         new FNotepadDE(true);
     }
+    ////////////////////////////////////
+    void loadHelp() throws IOException {
 
-    void loadHelp(){
-        FileReader fr = null;
-        JFrame helpPage = new JFrame();
-        helpPage.setTitle(helpText);
-        helpPage.setBounds(50, 50, 700, 300);
-        helpPage.setVisible(true);
-        helpPage.setAlwaysOnTop(true);
-        helpPage.setResizable(true);
-        JTextArea helptxtArea = new JTextArea();
-        helptxtArea.setEditable(false);
-        URL fileURL = getClass().getResource("/bin/Hilfe.txt");
-        try {
-            File file = new File(fileURL.toURI());
-            fr = new FileReader(file);
-            StringBuffer sb = new StringBuffer();
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line = br.readLine();
-            ArrayList<String> listOfStrings = new ArrayList<>();
-            listOfStrings.add(line);
-            while(line != null) {
-                line = br.readLine();
-                listOfStrings.add(line);
-            }
-            for(int i = 0; i < listOfStrings.size(); i++) {
-                sb.append(listOfStrings.get(i)+"\n");
-            }
-            sb.delete(sb.length()-5, sb.length());
-            helptxtArea.setText(sb.toString());
-        } catch (IOException | URISyntaxException ex) { System.out.println(ex);
-        }
-        finally {
+        Runtime rt = Runtime.getRuntime();
+        String url = "https://github.com/fantastic-octo-garbanzo/FNotepad/wiki/Hilfe";
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.indexOf("win") >= 0) { // Wenn das Betriebsystem Windows ist
+            rt.exec("rundll32 url.dll, FileProtocolHandler " + url);
+        } else if (os.indexOf("mac") >= 0) { // Wenn das Betriebssystem MacOS ist
+            rt.exec("open " + url);
+        } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) { // Wenn das Betriebssystem Linux ist
+            String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
 
-            try {
-                if (fr != null) fr.close();
-            } catch (Exception ex) {
+            StringBuffer cmd = new StringBuffer();
+            for (int i = 0; i < browsers.length; i++) {
+                if (i == 0)
+                    cmd.append(String.format("%s \"%s\"", browsers[i], url));
+                else
+                    cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
+                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
             }
+            rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
-        helpPage.add(helptxtArea);
-        helpPage.setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-1200), (int)(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-120));
-        helpPage.setVisible(true);
-        helpPage.setResizable(true);
-        helpPage.toFront();
-        helpPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        helptxtArea.setVisible(true);
-        URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
-        ImageIcon helpicon = new ImageIcon(iconURL);
-        helpPage.setIconImage(helpicon.getImage());
     }
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
