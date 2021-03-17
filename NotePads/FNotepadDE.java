@@ -37,7 +37,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
-    JTabbedPane tabbedPane;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
     /****************************/
     public FNotepadDE(boolean fullscreen) {
@@ -56,12 +55,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-
-        tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
-        tabbedPane.add(createPanel(), "Tab " + String.valueOf(tabCount), tabCount++);
-        tabbedPane.setTabComponentAt(0);
-        tabbedPane.add(new JPanel(), "+", tabCount++);
-        tabbedPane.addChangeListener(changeListener);
 
         f.pack();
         f.setVisible(true);
@@ -146,12 +139,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             newTab();
         }
     };
-    ////////////////////////////////////
-    private JPanel createPanel() {
-        JPanel panel = new JPanel(new GridLayout(1, 1));
-        panel.add(new JScrollPane(ta));
-        return panel;
-    }
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
@@ -429,15 +416,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     }
     ///////////////////////////////////
     void newTab() {
-        int index = tabCount - 1;
-        if (tabbedPane.getSelectedIndex() == index) {
-            tabbedPane.add(createPanel(), "Tab " + String.valueOf(index), index);
-            tabbedPane.setTabComponentAt(index);
-            tabbedPane.removeChangeListener(changeListener);
-            tabbedPane.setSelectedIndex(index);
-            tabbedPane.addChangeListener(changeListener);
-            tabCount++;
-        }
     }
     ///////////////////////////////////
     void loadHelp(){
@@ -532,6 +510,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
         createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
+        createMenuItem(tabNew, KeyEvent.VK_0, fileMenu, this);
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
