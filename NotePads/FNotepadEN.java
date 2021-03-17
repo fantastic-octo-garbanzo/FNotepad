@@ -14,6 +14,7 @@ import FileOperation.FileOperationEN;
 import FindDialog.FindDialogEN;
 import FontChooser.FontChooserEN;
 import LookAndFeelMenu.LookAndFeelMenuEN;
+import Tabs.TabsEN;
 
 /************************************/
 
@@ -126,7 +127,15 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         };
         f.addWindowListener(frameClose);
 //////////////////
+
     }
+    ////////////////////////////////////
+    ChangeListener changeListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            newTab();
+        }
+    };
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
@@ -147,6 +156,9 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 ////////////////////////////////////
         if (cmdText.equals(windowNew))
             newWindow();
+////////////////////////////////////
+        else if (cmdText.equals(tabNew))
+            newTab();
 ////////////////////////////////////
         else if (cmdText.equals(fileNew))
             fileHandler.newFile();
@@ -454,6 +466,10 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         new FNotepadEN(true);
     }
     ///////////////////////////////////
+    void newTab() {
+        new TabsEN();
+    }
+    ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
         temp.addActionListener(al);
@@ -497,6 +513,7 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
         createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
+        createMenuItem(tabNew, KeyEvent.VK_0, fileMenu, this);
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
@@ -600,6 +617,7 @@ interface MenuConstantsEN {
     String changeText = "Language";
 
     String windowNew = "New Window";
+    String tabNew = "New Tab";
     String fileNew = "New File";
     String fileOpen = "Open File...";
     String fileSave = "Save File";

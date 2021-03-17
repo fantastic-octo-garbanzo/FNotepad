@@ -14,6 +14,7 @@ import FileOperation.FileOperationIT;
 import FindDialog.FindDialogIT;
 import FontChooser.FontChooserIT;
 import LookAndFeelMenu.LookAndFeelMenuIT;
+import Tabs.TabsIT;
 
 /************************************/
 
@@ -134,6 +135,13 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 ////////////////////////////////////
     }
     ////////////////////////////////////
+    ChangeListener changeListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            newTab();
+        }
+    };
+    ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
         try {
@@ -153,6 +161,9 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 ////////////////////////////////////
         if (cmdText.equals(windowNew))
             newWindow();
+////////////////////////////////////
+        else if (cmdText.equals(tabNew))
+            newTab();
 ////////////////////////////////////
         else if (cmdText.equals(fileNew))
             fileHandler.newFile();
@@ -409,6 +420,10 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         new FNotepadIT(true);
     }
     ///////////////////////////////////
+    void newTab() {
+        new TabsIT();
+    }
+    ///////////////////////////////////
     void loadHelp(){
         FileReader fr = null;
         JFrame helpPage = new JFrame();
@@ -505,6 +520,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
 
         createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
+        createMenuItem(tabNew, KeyEvent.VK_0, fileMenu, this);
         createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
@@ -606,7 +622,8 @@ interface MenuConstantsIT {
     String helpText = "Aiuto";
     String changeText = "lingua";
 
-    String windowNew = "Nuova finestra";
+    String windowNew = "nuova finestra";
+    String tabNew = "nuovo tab";
     String fileNew = "nuovo file";
     String fileOpen = "Apri il file...";
     String fileSave = "salvare il file";

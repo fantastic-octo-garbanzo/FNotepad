@@ -14,6 +14,7 @@ import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
+import Tabs.TabsDE;
 
 /************************************/
 
@@ -23,7 +24,6 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public JTextArea ta;
     public JLabel statusBar;
     int tabSize = 4;
-    int tabCount;
 
     private String fileName = "Unbenannt";
     private boolean saved = true;
@@ -52,6 +52,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
+
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
@@ -416,6 +417,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     }
     ///////////////////////////////////
     void newTab() {
+        new TabsDE();
     }
     ///////////////////////////////////
     void loadHelp(){

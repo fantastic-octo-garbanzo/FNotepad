@@ -23,16 +23,14 @@ public class TabsDE extends JFrame {
     }
 
     private void createGUI() {
-        setTitle("Demo custum JTabbedPane");
         createJTabbedPane();
         add(tabbedPane);
     }
 
     private void createJTabbedPane() {
-        /* create JTabbedPane */
         tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.add(createJPanel(), "Tab " + String.valueOf(tabCount), tabCount++);
-        tabbedPane.setTabComponentAt(0, new CustomTab(this));
+        tabbedPane.setTabComponentAt(0, new CustomTabDE(this));
         tabbedPane.add(new JPanel(), "+", tabCount++);
         tabbedPane.addChangeListener(changeListener);
     }
@@ -47,7 +45,6 @@ public class TabsDE extends JFrame {
         JTextArea ta = new JTextArea(row, col);
         ta.setWrapStyleWord(true);
         ta.setLineWrap(true);
-        ta.setForeground(Color.BLUE);
         return ta;
     }
 
@@ -62,7 +59,7 @@ public class TabsDE extends JFrame {
         int index = tabCount - 1;
         if (tabbedPane.getSelectedIndex() == index) {
             tabbedPane.add(createJPanel(), "Tab " + String.valueOf(index), index);
-            tabbedPane.setTabComponentAt(index, new CustomTab(this));
+            tabbedPane.setTabComponentAt(index, new CustomTabDE(this));
             tabbedPane.removeChangeListener(changeListener);
             tabbedPane.setSelectedIndex(index);
             tabbedPane.addChangeListener(changeListener);
@@ -90,23 +87,23 @@ public class TabsDE extends JFrame {
     }
 }
 /************************************/
-class CustomTab extends JPanel {
+class CustomTabDE extends JPanel {
 
     TabsDE customTabbedPaneDE;
 
-    public CustomTab(TabsDE customTabbedPaneDE) {
+    public CustomTabDE(TabsDE customTabbedPaneDE) {
         this.customTabbedPaneDE = customTabbedPaneDE;
         setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         setBorder(new EmptyBorder(5, 2, 2, 2));
         setOpaque(false);
         addLabel();
-        add(new CustomButton("x"));
+        add(new CustomButtonDE("x"));
     }
 
     private void addLabel() {
         JLabel label = new JLabel() {
             public String getText() {
-                int index = customTabbedPaneDE.tabbedPane.indexOfTabComponent(CustomTab.this);
+                int index = customTabbedPaneDE.tabbedPane.indexOfTabComponent(CustomTabDE.this);
                 if (index != -1)
                     return customTabbedPaneDE.tabbedPane.getTitleAt(index);
                 return null;
@@ -116,8 +113,8 @@ class CustomTab extends JPanel {
         add(label);
     }
 
-    class CustomButton extends JButton implements MouseListener {
-        public CustomButton(String text) {
+    class CustomButtonDE extends JButton implements MouseListener {
+        public CustomButtonDE(String text) {
             int size = 15;
             setText(text);
             setPreferredSize(new Dimension(size, size));
@@ -131,7 +128,7 @@ class CustomTab extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            int index = customTabbedPaneDE.tabbedPane.indexOfTabComponent(CustomTab.this);
+            int index = customTabbedPaneDE.tabbedPane.indexOfTabComponent(CustomTabDE.this);
             if (index != -1)
                 customTabbedPaneDE.removeTab(index);
         }
