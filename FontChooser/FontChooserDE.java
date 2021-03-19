@@ -1,6 +1,5 @@
 package FontChooser;
 
-import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

@@ -45,11 +45,6 @@ public class FileFilterIT extends FileFilter {
     private String extension;
     private String description;
     ////////////////
-    public FileFilterIT() {
-        setExtension(null);
-        setDescription(null);
-    }
-    ////////////////
     public FileFilterIT(final String ext, final String desc) {
         setExtension(ext);
         setDescription(desc);
