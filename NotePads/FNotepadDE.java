@@ -118,15 +118,15 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 //////////////////
         DocumentListener myListener = new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
-                FileOperationDE.saved = false;
+                fileHandler.saved = false;
             }
 
             public void removeUpdate(DocumentEvent e) {
-                FileOperationDE.saved = false;
+                fileHandler.saved = false;
             }
 
             public void insertUpdate(DocumentEvent e) {
-                FileOperationDE.saved = false;
+                fileHandler.saved = false;
             }
         };
         ta.getDocument().addDocumentListener(myListener);
