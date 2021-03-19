@@ -449,6 +449,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         //URL url = getClass().getResource("/bin/Hilfe.html");
         InputStream is = getClass().getResourceAsStream("/bin/Hilfe.html");
         File temp = File.createTempFile("Hilfe", ".html");
+        temp.deleteOnExit();
         assert is != null;
         try {
             Files.copy(is, Paths.get(temp.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
