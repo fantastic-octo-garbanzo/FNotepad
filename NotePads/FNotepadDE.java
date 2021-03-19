@@ -1,21 +1,25 @@
 package NotePads;
 // Imports
-import java.io.*;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.Date;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
+import MenuConstants.MenuConstantsDE;
+
+
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Date;
 
 /************************************/
 
@@ -28,8 +32,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public JLabel statusBar;
     int tabSize = 4;
 
-    private String fileName = "Unbenannt";
-    private boolean saved = true;
+    private  String fileName = "Unbenannt";
+    private  boolean saved = true;
     String applicationName = "FNotepad";
 
     FileOperationDE fileHandler;
@@ -114,15 +118,15 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
 //////////////////
         DocumentListener myListener = new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
-                fileHandler.saved = false;
+                FileOperationDE.saved = false;
             }
 
             public void removeUpdate(DocumentEvent e) {
-                fileHandler.saved = false;
+                FileOperationDE.saved = false;
             }
 
             public void insertUpdate(DocumentEvent e) {
-                fileHandler.saved = false;
+                FileOperationDE.saved = false;
             }
         };
         ta.getDocument().addDocumentListener(myListener);
@@ -612,58 +616,4 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public static void main(String[] s) {
         new FNotepadDE(true);
     }
-}
-/**************************************/
-// Menü-Leiste
-interface MenuConstantsDE {
-    String fileText = "Datei";
-    String editText = "Bearbeiten";
-    String formatText = "Format";
-    String viewText = "Ansicht";
-    String helpText = "Hilfe";
-    String changeText = "Sprache";
-
-    String windowNew = "Neues Fenster";
-    String fileNew = "Neue Datei";
-    String fileOpen = "Datei \u00D6ffnen...";
-    String fileSave = "Datei speichern";
-    String fileSaveAs = "Datei speichern als...";
-    String filePageSetup = "Seiteneinstellungen...";
-    String filePrint = "Drucken";
-    String fileExit = "Beenden";
-
-    String editUndo = "R\u00FCckg\u00E4ngig";
-    String editCut = "Ausschneiden";
-    String editCopy = "Kopieren";
-    String editPaste = "Einf\u00FCgen";
-    String editDelete = "L\u00F6schen";
-    String editFind = "Suchen...";
-    String editFindNext = "N\u00E4chstes finden";
-    String editReplace = "Ersetzen";
-    String editGoTo = "Gehe zu...";
-    String editSelectAll = "Alles ausw\u00E4hlen";
-    String editTimeDate = "Zeit/Datum";
-    String commandoopen = "Terminal \u00F6ffnen";
-
-    String formatWordWrap = "Zeilenumbruch";
-    String formatFont = "Schrift...";
-    String formatForeground = "Textfarbe...";
-    String formatBackground = "Hintergrundfarbe...";
-
-    String viewStatusBar = "Statusleiste";
-
-    String helpHelpTopic = "OnlineHilfe";
-    String helpHelpoffline = "OfflineHilfe";
-    String helpHelpOnline = "Github-Hilfe";
-    String helpAboutFNotepad = "\u00DCber FNotepad";
-
-    String aboutText =
-            "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=center>Von fantastic-octo-garbanzo!"
-                    + "<hr><p align=center>Mit OpenJDK15 compiliert.<br><br>"
-                    + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
-                    + "Bei Bugs und Ideen gerne ein Issue auf Github stellen<p align=center>";
-
-    String LangEN = "English";
-    String LangIT = "Italiano";
 }
