@@ -1,14 +1,16 @@
 package NotePads;
 // Imports
 import java.io.*;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
@@ -444,7 +446,16 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
-        URL url = getClass().getResource("/bin/Hilfe.html");
+        //URL url = getClass().getResource("/bin/Hilfe.html");
+        InputStream is = getClass().getResourceAsStream("/bin/Hilfe.html");
+        File temp = File.createTempFile("Hilfe", ".html");
+        assert is != null;
+        try {
+            Files.copy(is, Paths.get(temp.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+        }
+        URL url = Paths.get(temp.getPath()).toUri().toURL();
+
 
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
