@@ -3,6 +3,9 @@ package NotePads;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
@@ -259,6 +262,11 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                 openGithub();
             } catch (Exception e) {
             }
+        else if (cmdText.equals(helpHelpoffline))
+            try {
+                loadHelpoffline();
+            } catch (Exception e) {
+            }
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepad)) {
             JOptionPane.showMessageDialog(FNotepadIT.this.f, aboutText, "Tramite FNotepad", JOptionPane.INFORMATION_MESSAGE);
@@ -436,6 +444,42 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
+
+    void loadHelpoffline() throws IOException {
+
+        Runtime rt = Runtime.getRuntime();
+        //URL url = getClass().getResource("/bin/Hilfe.html");
+        InputStream is = getClass().getResourceAsStream("/bin/Aiuto.html");
+        File temp = File.createTempFile("Aiuto", ".html");
+        temp.deleteOnExit();
+        assert is != null;
+        try {
+            Files.copy(is, Paths.get(temp.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+        }
+        URL url = Paths.get(temp.getPath()).toUri().toURL();
+
+
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
+            rt.exec("rundll32 url.dll, FileProtocolHandler " + url);
+        } else if (os.contains("mac")) { // Wenn das Betriebssystem MacOS ist
+            rt.exec("open " + url);
+        } else if (os.contains("nix") || os.contains("nux")) { // Wenn das Betriebssystem Linux ist
+            String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
+
+            StringBuffer cmd = new StringBuffer();
+            for (int i = 0; i < browsers.length; i++) {
+                if (i == 0)
+                    cmd.append(String.format("%s \"%s\"", browsers[i], url));
+                else
+                    cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
+                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
+            }
+            rt.exec(new String[]{"sh", "-c", cmd.toString()});
+        }
+    }
+
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -523,6 +567,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         LookAndFeelMenuIT.createLookAndFeelMenuItem(viewMenu, this.f);
 
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
+        createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);

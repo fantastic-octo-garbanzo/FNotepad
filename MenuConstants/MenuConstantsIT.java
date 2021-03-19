@@ -37,8 +37,9 @@ public interface MenuConstantsIT {
 
     String viewStatusBar = "Barra di stato";
 
-    String helpHelpTopic = "Aiuto";
-    String helpHelpOnline = "Guida di Github";
+    String helpHelpTopic = "Aiuto online";
+    String helpHelpOnline = "Pagina del progetto Github";
+    String helpHelpoffline = "assistenza offline";
     String helpAboutFNotepad = "Tramite FNotepad";
 
     String aboutText =
