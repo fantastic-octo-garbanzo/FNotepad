@@ -257,6 +257,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
+
         else if (cmdText.equals(helpHelpOnline))
             try {
                 openGithub();
@@ -267,7 +268,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                 loadHelpoffline();
             } catch (Exception e) {
             }
-////////////////////////////////////
+
         else if (cmdText.equals(helpAboutFNotepad)) {
             JOptionPane.showMessageDialog(FNotepadIT.this.f, aboutText, "Tramite FNotepad", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -290,6 +291,12 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             } catch (Exception e) {
             }
         }
+        ////////////////////////////////////
+        else if (cmdText.equals(helpHelpoffline))
+            try {
+                loadHelpoffline();
+            } catch (Exception e) {
+            }
 /////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start");
@@ -382,29 +389,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         foregroundDialog.setVisible(true);
     }
     ///////////////////////////////////
-    void openGithub() throws IOException {
-        Runtime rt = Runtime.getRuntime();
-        String url = "https://github.com/fantastic-octo-garbanzo/FNotepad";
-        String os = System.getProperty("os.name").toLowerCase();
-        if (os.indexOf("win") >= 0) { // Wenn das Betriebsystem Windows ist
-            rt.exec("rundll32 url.dll, FileProtocolHandler "+url);
-        } else if (os.indexOf("mac") >= 0) { // Wenn das Betriebssystem MacOS ist
-            rt.exec("open "+url);
-        } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) { // Wenn das Betriebssystem Linux ist
-            String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
-
-            StringBuffer cmd = new StringBuffer();
-            for (int i = 0; i < browsers.length; i++) {
-                if (i == 0)
-                    cmd.append(String.format("%s \"%s\"", browsers[i], url));
-                else
-                    cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
-                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
-            }
-            rt.exec(new String[] {"sh", "-c", cmd.toString() });
-        }
-    }
-    ///////////////////////////////////
     void changeLanguageEN() {
         if (!FileOperationIT.saved) return;
         new FNotepadEN(true);
@@ -445,6 +429,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         }
     }
 
+
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
@@ -458,7 +443,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         } catch (IOException ex) {
         }
         URL url = Paths.get(temp.getPath()).toUri().toURL();
-
 
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
@@ -479,7 +463,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
-
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -569,6 +552,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
+
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 

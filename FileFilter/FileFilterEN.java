@@ -43,11 +43,6 @@ public class FileFilterEN extends FileFilter {
 	private String extension;
 	private String description;
 	////////////////
-	public FileFilterEN() {
-		setExtension(null);
-		setDescription(null);
-	}
-	////////////////
 	public FileFilterEN(final String ext, final String desc) {
 		setExtension(ext);
 		setDescription(desc);

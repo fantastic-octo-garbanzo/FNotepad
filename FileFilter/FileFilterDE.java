@@ -44,11 +44,6 @@ public class FileFilterDE extends FileFilter {
 	private String extension;
 	private String description;
 	////////////////
-	public FileFilterDE() {
-		setExtension(null);
-		setDescription(null);
-	}
-	////////////////
 	public FileFilterDE(final String ext, final String desc) {
 		setExtension(ext);
 		setDescription(desc);
