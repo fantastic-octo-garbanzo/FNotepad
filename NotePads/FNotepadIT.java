@@ -3,6 +3,9 @@ package NotePads;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
@@ -14,6 +17,7 @@ import FileOperation.FileOperationIT;
 import FindDialog.FindDialogIT;
 import FontChooser.FontChooserIT;
 import LookAndFeelMenu.LookAndFeelMenuIT;
+import MenuConstants.MenuConstantsIT;
 
 /************************************/
 
@@ -275,7 +279,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             } catch (Exception e) {
             }
         }
-        ////////////////////////////////////
+////////////////////////////////////
         else if (cmdText.equals(helpHelpoffline))
             try {
                 loadHelpoffline();
@@ -412,11 +416,21 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
-    ////////////////////////////////////
+
+
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
-        URL url = getClass().getResource("/bin/Aiuto.html");
+        //URL url = getClass().getResource("/bin/Hilfe.html");
+        InputStream is = getClass().getResourceAsStream("/bin/Aiuto.html");
+        File temp = File.createTempFile("Aiuto", ".html");
+        temp.deleteOnExit();
+        assert is != null;
+        try {
+            Files.copy(is, Paths.get(temp.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+        }
+        URL url = Paths.get(temp.getPath()).toUri().toURL();
 
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
@@ -571,57 +585,4 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     public static void main(String[] s) {
         new FNotepadIT(true);
     }
-}
-/**************************************/
-// Menü-Leiste
-interface MenuConstantsIT {
-    String fileText = "file";
-    String editText = "Modificare";
-    String formatText = "formato";
-    String viewText = "Visualizza";
-    String helpText = "Aiuto";
-    String changeText = "lingua";
-
-    String windowNew = "Nuova finestra";
-    String fileNew = "nuovo file";
-    String fileOpen = "Apri il file...";
-    String fileSave = "salvare il file";
-    String fileSaveAs = "Salva file con nome...";
-    String filePageSetup = "Impostazioni della pagina...";
-    String filePrint = "Pressare";
-    String fileExit = "rottura";
-
-    String editUndo = "Annullato";
-    String editCut = "ritagliare";
-    String editCopy = "copia";
-    String editPaste = "Inserire";
-    String editDelete = "Chiaro";
-    String editFind = "Ricerca...";
-    String editFindNext = "Trova il prossimo";
-    String editReplace = "Sostituire";
-    String editGoTo = "Vai a...";
-    String editSelectAll = "Seleziona tutto";
-    String editTimeDate = "Ora dell'appuntamento";
-    String commandoopen = "Apri terminale";
-
-    String formatWordWrap = "nuova linea";
-    String formatFont = "font...";
-    String formatForeground = "Colore del testo...";
-    String formatBackground = "Colore di sfondo...";
-
-    String viewStatusBar = "Barra di stato";
-
-    String helpHelpTopic = "Aiuto online";
-    String helpHelpoffline = "Aiuto offline";
-    String helpAboutFNotepad = "Tramite FNotepad";
-
-    String aboutText =
-            "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=center>Da fantastico-octo-garbanzo!"
-                    + "<hr><p align=center>Compilato con OpenJDK15.<br><br>"
-                    + "<strong>Grazie per aver utilizzato FNotepad!</strong><br>"
-                    + "Se hai bug e idee, pubblica un problema su Github<p align=center>";
-
-    String LangEN = "English";
-    String LangDE = "Deutsch";
 }

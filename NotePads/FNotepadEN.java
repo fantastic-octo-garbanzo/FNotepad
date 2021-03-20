@@ -5,6 +5,9 @@ import java.awt.event.*;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.*;
@@ -14,6 +17,7 @@ import FileOperation.FileOperationEN;
 import FindDialog.FindDialogEN;
 import FontChooser.FontChooserEN;
 import LookAndFeelMenu.LookAndFeelMenuEN;
+import MenuConstants.MenuConstantsEN;
 
 /************************************/
 
@@ -252,6 +256,12 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             try {
                 loadHelp();
             } catch (Exception e) {}
+
+        else if (cmdText.equals(helpHelpoffline))
+            try {
+                loadHelpoffline();
+            } catch (Exception e) {
+            }
 ////////////////////////////////////
         else if (cmdText.equals(helpAboutFNotepad)) {
             JOptionPane.showMessageDialog(FNotepadEN.this.f, aboutText, "About FNotepad", JOptionPane.INFORMATION_MESSAGE);
@@ -268,19 +278,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         else if (cmdText.equals(LangIT)) {
             changeLanguageIT();
         }
-/////////////////////////////////////
-        else if (cmdText.equals(helpHelpTopic)){
-            try {
-                loadHelp();
-            } catch (Exception e) {
-            }
-        }
-        ////////////////////////////////////
-        else if (cmdText.equals(helpHelpoffline))
-            try {
-                loadHelpoffline();
-            } catch (Exception e) {
-            }
 /////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
@@ -353,7 +350,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 
         backgroundDialog.setVisible(true);
     }
-
     ////////////////////////////////////
     void showForegroundColorDialog() {
         if (fcolorChooser == null)
@@ -398,11 +394,20 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         }
     }
     ////////////////////////////////////
-    ////////////////////////////////////
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
-        URL url = getClass().getResource("/bin/Help.html");
+        //URL url = getClass().getResource("/bin/Hilfe.html");
+        InputStream is = getClass().getResourceAsStream("/bin/Help.html");
+        File temp = File.createTempFile("Help", ".html");
+        temp.deleteOnExit();
+        assert is != null;
+        try {
+            Files.copy(is, Paths.get(temp.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+        }
+        URL url = Paths.get(temp.getPath()).toUri().toURL();
+
 
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
@@ -525,7 +530,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 /************For Look and Feel, May not work properly on different operating environment***/
         LookAndFeelMenuEN.createLookAndFeelMenuItem(viewMenu, this.f);
 
-
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
@@ -574,57 +578,4 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
     public static void main(String[] s) {
         new FNotepadEN(true);
     }
-}
-/**************************************/
-// Menu
-interface MenuConstantsEN {
-    String fileText = "File";
-    String editText = "Edit";
-    String formatText = "Format";
-    String viewText = "View";
-    String helpText = "Help";
-    String changeText = "Language";
-
-    String windowNew = "New Window";
-    String fileNew = "New File";
-    String fileOpen = "Open File...";
-    String fileSave = "Save File";
-    String fileSaveAs = "Save File As...";
-    String filePageSetup = "Page Setup...";
-    String filePrint = "Print";
-    String fileExit = "Exit";
-
-    String editUndo = "Undo";
-    String editCut = "Cut";
-    String editCopy = "Copy";
-    String editPaste = "Paste";
-    String editDelete = "Delete";
-    String editFind = "Find...";
-    String editFindNext = "Find Next";
-    String editReplace = "Replace";
-    String editGoTo = "Go To...";
-    String editSelectAll = "Select All";
-    String editTimeDate = "Time/Date";
-    String commandoopen = "Open Terminal";
-
-    String formatWordWrap = "Word Wrap";
-    String formatFont = "Font...";
-    String formatForeground = "Set Text color...";
-    String formatBackground = "Set Pad color...";
-
-    String viewStatusBar = "Status Bar";
-
-    String helpHelpTopic = "OnlineHelp";
-    String helpHelpoffline = "OfflineHelp";
-    String helpAboutFNotepad = "About FNotepad";
-
-    String aboutText =
-            "<html><big>FNotepad</big><hr><hr>"
-                    + "<p align=center>By fantastic-octo-garbanzo!"
-                    + "<hr><p align=left>Compiled with OpenJDK 15.<br><br>"
-                    + "<strong>Thank you for using FNotepad!</strong><br>"
-                    + "For ideas and bug reports<br>"
-                    + "feel free to create a issue on Github!<p align=center>";
-    String LangDE = "Deutsch";
-    String LangIT = "Italiano";
 }
