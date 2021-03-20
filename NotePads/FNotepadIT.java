@@ -539,8 +539,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
-        createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
-
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
@@ -588,5 +586,3 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         new FNotepadIT(true);
     }
 }
-/**************************************/
-// Menü-Leiste

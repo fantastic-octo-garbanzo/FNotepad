@@ -1,6 +1,5 @@
 package NotePads;
 // Imports
-
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
@@ -24,8 +23,6 @@ import java.util.Date;
 /************************************/
 
 public class FNotepadDE implements ActionListener, MenuConstantsDE {
-
-
 
     public JFrame f;
     public JTextArea ta;

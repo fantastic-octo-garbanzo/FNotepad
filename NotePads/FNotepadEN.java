@@ -350,7 +350,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 
         backgroundDialog.setVisible(true);
     }
-
     ////////////////////////////////////
     void showForegroundColorDialog() {
         if (fcolorChooser == null)
@@ -531,12 +530,8 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
 /************For Look and Feel, May not work properly on different operating environment***/
         LookAndFeelMenuEN.createLookAndFeelMenuItem(viewMenu, this.f);
 
-
         createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
         createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
-
-        createMenuItem(helpHelpOnline, KeyEvent.VK_H, helpMenu, this);
-
         helpMenu.addSeparator();
         createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
 
@@ -584,5 +579,3 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         new FNotepadEN(true);
     }
 }
-/**************************************/
-// Menu
