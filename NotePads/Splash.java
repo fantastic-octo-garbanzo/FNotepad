@@ -13,8 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
-    public class Splash extends JWindow
-    {
+public class Splash extends JWindow {
 
         public Container container;
         public JLabel label;
@@ -24,7 +23,7 @@ import javax.swing.JWindow;
         public Splash()
         {
             infoLabel = new JLabel("Ladebildschirm");
-            URL iconurl = getClass().getResource("/bin/FNotepad2.jpg");
+            URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
             ImageIcon logo = new ImageIcon(iconurl);
             container = this.getContentPane();
             container.setLayout(new BorderLayout());
@@ -49,7 +48,8 @@ import javax.swing.JWindow;
             int x = (dim.width-w)/2;
             int y = (dim.height-h)/2;
             setBounds(30, 80, 200, 300);
-
+            setEnabled(true);
+            setVisible(true);
         }
 
         public void showSplash()
@@ -62,6 +62,5 @@ import javax.swing.JWindow;
             infoLabel.setText(info);
         }
 
-
-    }
+}
 
