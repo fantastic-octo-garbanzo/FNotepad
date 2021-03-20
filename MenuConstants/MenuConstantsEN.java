@@ -39,7 +39,6 @@ public interface MenuConstantsEN {
 
     String helpHelpTopic = "Online Help";
     String helpHelpoffline = "Offline Help";
-    String helpHelpOnline = "Github-Projectpage";
     String helpAboutFNotepad = "About FNotepad";
 
     String aboutText =

@@ -257,18 +257,6 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-
-        else if (cmdText.equals(helpHelpOnline))
-            try {
-                loadHelp();
-            } catch (Exception e) {
-            }
-        else if (cmdText.equals(helpHelpoffline))
-            try {
-                loadHelpoffline();
-            } catch (Exception e) {
-            }
-
         else if (cmdText.equals(helpAboutFNotepad)) {
             JOptionPane.showMessageDialog(FNotepadIT.this.f, aboutText, "Tramite FNotepad", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -291,7 +279,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             } catch (Exception e) {
             }
         }
-        ////////////////////////////////////
+////////////////////////////////////
         else if (cmdText.equals(helpHelpoffline))
             try {
                 loadHelpoffline();
