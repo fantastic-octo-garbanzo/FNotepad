@@ -19,10 +19,12 @@ FNotepad is a notepad and texteditor written in Java, availible in German, Engli
 
 ## How to install
 In [this file][1] you can see the different options to run or install FNotepad.
+
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/fantastic-octo-garbanzo/FNotepad)
 
 ## Contributers
 [Contributers][2]
+
 ![GitHub contributors](https://img.shields.io/github/contributors/fantastic-octo-garbanzo/FNotepad)
 ## Changelog
 [Changelog][3]
@@ -32,6 +34,7 @@ In [this file][1] you can see the different options to run or install FNotepad.
 [Contributing][5]
 
 #### If you want to help us or you have a bug report, you can open a Issue. Thank you!
+
 ![GitHub issues](https://img.shields.io/github/issues/fantastic-octo-garbanzo/FNotepad)
 
 [1]: https://github.com/fantastic-octo-garbanzo/FNotepad/blob/main/INSTALL.md
