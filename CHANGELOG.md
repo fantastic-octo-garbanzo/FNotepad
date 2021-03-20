@@ -1,7 +1,23 @@
-# FNotepad Changelog 
-#### (not completed jet)
+# FNotepad Changelog
 
-## FNotepad [v1.3.5][0] (2021-03-13)
+## FNotepad [v1.4.0][0] (2021-03-20)
+
+### Added
+- Online and offline help in all languages
+- Complete Italian FNotepad
+- RPM package (Only for Fedora 33 at the moment)
+- DEB package
+- Windows installer
+- INSTALL file
+
+### Changed
+- README
+- Bug fixes
+- Help files
+- Removed unused code
+
+
+## FNotepad [v1.3.5][11] (2021-03-13)
 
 ### Added
 - Italian FNotepad
@@ -11,6 +27,7 @@
 
 ### Changed
 - README
+
 
 ## FNotepad [v1.3.4][10] (2021-02-23)
 
@@ -78,6 +95,7 @@
 ### Changed
 - Small bug fixes
 
+
 ## FNotepad [v1.2.0][4] (2021-02-09)
 
 ### Added
@@ -107,6 +125,7 @@
 
 
 [0]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
+[11]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.5
 [10]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.4
 [9]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.3
 [8]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.2
