@@ -260,7 +260,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
 
         else if (cmdText.equals(helpHelpOnline))
             try {
-                openGithub();
+                loadHelp();
             } catch (Exception e) {
             }
         else if (cmdText.equals(helpHelpoffline))

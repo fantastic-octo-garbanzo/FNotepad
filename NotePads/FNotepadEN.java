@@ -279,19 +279,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
             changeLanguageIT();
         }
 /////////////////////////////////////
-        else if (cmdText.equals(helpHelpTopic)){
-            try {
-                loadHelp();
-            } catch (Exception e) {
-            }
-        }
-        ////////////////////////////////////
-        else if (cmdText.equals(helpHelpoffline))
-            try {
-                loadHelpoffline();
-            } catch (Exception e) {
-            }
-/////////////////////////////////////
         else if (cmdText.equals(commandoopen)) {
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start" );
             ProcessBuilder lt = new ProcessBuilder("konsole", "/k", "start");
@@ -408,32 +395,6 @@ public class FNotepadEN implements ActionListener, MenuConstantsEN {
         }
     }
     ////////////////////////////////////
-    ////////////////////////////////////
-    void loadHelpoffline() throws IOException {
-
-        Runtime rt = Runtime.getRuntime();
-        URL url = getClass().getResource("/bin/Help.html");
-
-        String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
-            rt.exec("rundll32 url.dll, FileProtocolHandler " + url);
-        } else if (os.contains("mac")) { // Wenn das Betriebssystem MacOS ist
-            rt.exec("open " + url);
-        } else if (os.contains("nix") || os.contains("nux")) { // Wenn das Betriebssystem Linux ist
-            String[] browsers = {"firefox", "mozilla", "opera", "konqueror", "links", "lynx"};
-
-            StringBuffer cmd = new StringBuffer();
-            for (int i = 0; i < browsers.length; i++) {
-                if (i == 0)
-                    cmd.append(String.format("%s \"%s\"", browsers[i], url));
-                else
-                    cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
-                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
-            }
-            rt.exec(new String[]{"sh", "-c", cmd.toString()});
-        }
-    }
-
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
