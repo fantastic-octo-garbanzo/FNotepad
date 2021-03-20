@@ -4,6 +4,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fantastic-octo-garbanzo/FNotepad)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/fantastic-octo-garbanzo/FNotepad)
 ![GitHub contributors](https://img.shields.io/github/contributors/fantastic-octo-garbanzo/FNotepad)
+![GitHub](https://img.shields.io/github/license/fantastic-octo-garbanzo/FNotepad)
 
 ## About
 FNotepad is a notepad and texteditor written in Java, availible in German, English and Italian.
