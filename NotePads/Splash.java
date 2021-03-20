@@ -7,11 +7,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.net.URL;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JWindow;
+import javax.swing.*;
 
 public class Splash extends JWindow {
 
@@ -42,6 +38,7 @@ public class Splash extends JWindow {
 
             pack();
 
+
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
             int w = getSize().width;
             int h = getSize().height;
@@ -49,10 +46,12 @@ public class Splash extends JWindow {
             int y = (dim.height-h)/2;
             setBounds(30, 80, 200, 300);
             setEnabled(true);
-            setVisible(true);
+
         }
 
-        public void showSplash()
+
+
+    public void showSplash()
         {
             setVisible(true);
         }
