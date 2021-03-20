@@ -1,6 +1,6 @@
 # FNotepad
 
-[![GitHub issues](https://img.shields.io/github/issues/fantastic-octo-garbanzo/FNotepad?style=plastic)](https://github.com/fantastic-octo-garbanzo/FNotepad/issues)
+![GitHub issues](https://img.shields.io/github/issues/fantastic-octo-garbanzo/FNotepad)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fantastic-octo-garbanzo/FNotepad)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/fantastic-octo-garbanzo/FNotepad)
 ![GitHub contributors](https://img.shields.io/github/contributors/fantastic-octo-garbanzo/FNotepad)
