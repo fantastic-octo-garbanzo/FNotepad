@@ -1,12 +1,10 @@
 package NotePads;
 // Imports
 import java.io.*;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
