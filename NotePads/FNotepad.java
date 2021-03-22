@@ -31,6 +31,14 @@ public class FNotepad extends JFrame{
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
+        Image img = Toolkit.getDefaultToolkit().getImage("/bin/FNotepad.jpg");
+        this.setContentPane(new JPanel() {
+            @Override
+            public void paintComponent(Graphics graphics) {
+                super.paintComponent(graphics);
+                graphics.drawImage(img, 0, 0, null);
+            }
+        });
 
         // Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
