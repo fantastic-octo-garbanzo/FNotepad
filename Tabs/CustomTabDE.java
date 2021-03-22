@@ -1,12 +1,14 @@
 package Tabs;
 // Imports
+import NotePads.FNotepadDE;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 /************************************/
-public class TabsDE extends JFrame {
+/*public class TabsDE extends JFrame {
     JTabbedPane tabbedPane;
     int tabCount;
 
@@ -81,15 +83,11 @@ public class TabsDE extends JFrame {
             addNewTab();
         }
     }
-
-    public static void main(String[] args) {
-        new TabsDE();
-    }
-}
+}*/
 /************************************/
-class CustomTabDE extends JPanel {
+public class CustomTabDE extends JPanel {
 
-    TabsDE customTabbedPaneDE;
+    JTabbedPane tabbedPane = new JTabbedPane();
 
     public CustomTabDE(TabsDE customTabbedPaneDE) {
         this.customTabbedPaneDE = customTabbedPaneDE;
@@ -152,5 +150,8 @@ class CustomTabDE extends JPanel {
             setBorderPainted(false);
             setForeground(Color.BLACK);
         }
+    }
+    public static void main(String[] args) {
+        new CustomTabDE();
     }
 }

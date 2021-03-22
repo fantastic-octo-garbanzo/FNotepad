@@ -8,12 +8,14 @@ import java.util.Date;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import javax.swing.event.*;
 
 import FileOperation.FileOperationDE;
 import FindDialog.FindDialogDE;
 import FontChooser.FontChooserDE;
 import LookAndFeelMenu.LookAndFeelMenuDE;
+//import Tabs.CustomTabDE;
 import Tabs.TabsDE;
 
 /************************************/
@@ -24,6 +26,7 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     public JTextArea ta;
     public JLabel statusBar;
     int tabSize = 4;
+    int tabCount;
 
     private String fileName = "Unbenannt";
     private boolean saved = true;
@@ -37,6 +40,8 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
+    JButton button;
+    JTabbedPane tabbedPane;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
     /****************************/
     public FNotepadDE(boolean fullscreen) {
@@ -56,6 +61,10 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
+
+        createJTabbedPane();
+        f.add(tabbedPane);
+        button = new JButton();
 
         f.pack();
         f.setVisible(true);
@@ -140,6 +149,14 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
             newTab();
         }
     };
+    ////////////////////////////////////
+    private void createJTabbedPane() {
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabbedPane.add(createJPanel(), "Tab " + String.valueOf(tabCount), tabCount++);
+        //tabbedPane.setTabComponentAt(0);
+        tabbedPane.add(new JPanel(), "+", tabCount++);
+        tabbedPane.addChangeListener(changeListener);
+    }
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
@@ -416,9 +433,86 @@ public class FNotepadDE implements ActionListener, MenuConstantsDE {
         new FNotepadDE(true);
     }
     ///////////////////////////////////
-    void newTab() {
-        new TabsDE();
+    private JPanel createJPanel() {
+        JPanel panel = new JPanel(new GridLayout(1, 1));
+        panel.add(new JScrollPane(ta));
+        return panel;
     }
+    ///////////////////////////////////
+    ChangeListener changeListener1 = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            newTab();
+        }
+    };
+    ///////////////////////////////////
+    void newTab() {
+        int index = tabCount - 1;
+        if (tabbedPane.getSelectedIndex() == index) {
+            tabbedPane.add(createJPanel(), "Tab " + String.valueOf(index), index);
+            //tabbedPane.setTabComponentAt(index, new CustomTabDE(this));
+            tabbedPane.removeChangeListener(changeListener1);
+            tabbedPane.setSelectedIndex(index);
+            tabbedPane.addChangeListener(changeListener1);
+            tabCount++;
+        }
+    }
+    ///////////////////////////////////
+    public void removeTab(int index) {
+        tabbedPane.remove(index);
+        tabCount--;
+
+        if (index == tabCount - 1 && index > 0) {
+            tabbedPane.setSelectedIndex(tabCount - 2);
+        } else {
+            tabbedPane.setSelectedIndex(index);
+        }
+
+        if (tabCount == 1) {
+            newTab();
+        }
+    }
+    ///////////////////////////////////
+    public void CustomButtonDE(String text) {
+        int size = 15;
+        button.setText(text);
+        button.setPreferredSize(new Dimension(size, size));
+        button.setToolTipText("Tab schließen");
+        button.setContentAreaFilled(false);
+        button.setBorder(new EtchedBorder());
+        button.setBorderPainted(false);
+        button.setFocusable(false);
+        button.addMouseListener(addMouseListener);
+    }
+    ///////////////////////////////////
+    MouseListener addMouseListener = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int index = tabbedPane.getTabCount();
+            if (index != -1)
+                removeTab(index);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            button.setBorderPainted(true);
+            button.setForeground(Color.RED);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+            button.setBorderPainted(false);
+            button.setForeground(Color.BLACK);
+        }
+    };
     ///////////////////////////////////
     void loadHelp(){
         FileReader fr = null;
