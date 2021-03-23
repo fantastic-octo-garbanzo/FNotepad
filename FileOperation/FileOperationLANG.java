@@ -4,7 +4,7 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
 import FileFilter.*;
-import NotePads.FNotepadLANG;
+import NotePads.FNotepad;
 
 class FileOperationExampleLANG extends JFrame {
     JMenuBar mb;
@@ -51,7 +51,7 @@ class FileOperationExampleLANG extends JFrame {
 /*************************************/
 // Beginn der Klasse FileOperationDE
 public class FileOperationLANG {
-    FNotepadLANG npd;
+    FNotepad npd;
 
     public static boolean saved;
     boolean newFileFlag;
@@ -81,7 +81,7 @@ public class FileOperationLANG {
         this.fileName = new String(fileName);
     }
     /////////////////////////
-    public FileOperationLANG(FNotepadLANG npd) {
+    public FileOperationLANG(FNotepad npd) {
         this.npd = npd;
 
         saved = true;

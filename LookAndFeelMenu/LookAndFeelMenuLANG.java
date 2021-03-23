@@ -1,7 +1,7 @@
 package LookAndFeelMenu;
 // Imports
 
-import NotePads.FNotepadLANG;
+import NotePads.FNotepad;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -43,7 +43,7 @@ public class LookAndFeelMenuLANG {
 
 		JRadioButtonMenuItem rbm[] = new JRadioButtonMenuItem[infos.length];
 		ButtonGroup bg = new ButtonGroup();
-		JMenu tmp = new JMenu(FNotepadLANG.bundle.getString("LookandFeel"));
+		JMenu tmp = new JMenu(FNotepad.bundle.getString("LookandFeel"));
 		tmp.setMnemonic('C');
 		for(int i = 0; i < infos.length; i++) {
 			rbm[i] = new JRadioButtonMenuItem(infos[i].getName());

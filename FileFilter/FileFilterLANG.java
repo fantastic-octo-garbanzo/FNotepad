@@ -6,7 +6,7 @@ import javax.swing.filechooser.FileFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import NotePads.FNotepadLANG;
+import NotePads.FNotepad;
 
 /***************************************************/
 class FileFilterDemoLANG extends JFrame {
@@ -66,7 +66,7 @@ public class FileFilterLANG extends FileFilter {
 	}
 	////////////////
 	public void setDescription(String desc) {
-		if(desc == null) description = FNotepadLANG.bundle.getString("FileFilter.AllFiles");
+		if(desc == null) description = FNotepad.bundle.getString("FileFilter.AllFiles");
 		else description = new String(desc);
 	}
 	////////////////

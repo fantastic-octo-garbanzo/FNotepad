@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
-import NotePads.FNotepadLANG;
+import NotePads.FNotepad;
 
 /******************************************************/
 class FindReplaceDemoLANG extends JFrame {
@@ -79,10 +79,10 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 		findWhat = new TextField(20);
 		replaceWith = new JTextField(20);
 
-		matchCase = new JCheckBox(FNotepadLANG.bundle.getString("FindDialog.matchCase"));
+		matchCase = new JCheckBox(FNotepad.bundle.getString("FindDialog.matchCase"));
 
-		up = new JRadioButton(FNotepadLANG.bundle.getString("FindDialog.Up"));
-		down = new JRadioButton(FNotepadLANG.bundle.getString("FindDialog.Down"));
+		up = new JRadioButton(FNotepad.bundle.getString("FindDialog.Up"));
+		down = new JRadioButton(FNotepad.bundle.getString("FindDialog.Down"));
 
 		down.setSelected(true);
 		ButtonGroup bg = new ButtonGroup();
@@ -91,7 +91,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 
 		direction = new JPanel();
 		Border etched = BorderFactory.createEtchedBorder();
-		Border titled = BorderFactory.createTitledBorder(etched,FNotepadLANG.bundle.getString("FindDialog.Direction"));
+		Border titled = BorderFactory.createTitledBorder(etched, FNotepad.bundle.getString("FindDialog.Direction"));
 		direction.setBorder(titled);
 		direction.setLayout(new GridLayout(1, 2));
 		direction.add(up);
@@ -102,10 +102,10 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 		southPanel.add(matchCase);
 		southPanel.add(direction);
 
-		findNextButton = new JButton(FNotepadLANG.bundle.getString("FindDialog.Next"));
-		replaceButton = new JButton(FNotepadLANG.bundle.getString("FindDialog.Replace"));
-		replaceAllButton = new JButton(FNotepadLANG.bundle.getString("FindDialog.ReplaceA"));
-		cancelButton = new JButton(FNotepadLANG.bundle.getString("FontChooser.Cancel"));
+		findNextButton = new JButton(FNotepad.bundle.getString("FindDialog.Next"));
+		replaceButton = new JButton(FNotepad.bundle.getString("FindDialog.Replace"));
+		replaceAllButton = new JButton(FNotepad.bundle.getString("FindDialog.ReplaceA"));
+		cancelButton = new JButton(FNotepad.bundle.getString("FontChooser.Cancel"));
 		
 		replaceButtonPanel = new JPanel();
 		replaceButtonPanel.setLayout(new GridLayout(4, 1));
@@ -116,9 +116,9 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 
 		JPanel textPanel = new JPanel();
 		textPanel.setLayout(new GridLayout(3, 2));
-		textPanel.add(new JLabel(FNotepadLANG.bundle.getString("FindDialog.What")));
+		textPanel.add(new JLabel(FNotepad.bundle.getString("FindDialog.What")));
 		textPanel.add(findWhat);
-		textPanel.add(replaceLabel = new JLabel(FNotepadLANG.bundle.getString("FindDialog.ReplaceW")));
+		textPanel.add(replaceLabel = new JLabel(FNotepad.bundle.getString("FindDialog.ReplaceW")));
 		textPanel.add(replaceWith);
 		textPanel.add(new JLabel(" ")); //dummy Lable
 		textPanel.add(new JLabel(" ")); //dummy Lable
@@ -158,7 +158,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent ev) {
 		if(ev.getSource() == findNextButton) findNextWithSelection();
 		else if(ev.getSource() == replaceButton) replaceNext();
-		else if(ev.getSource() == replaceAllButton) JOptionPane.showMessageDialog(null, FNotepadLANG.bundle.getString("FindDialog.Total")+replaceAllNext());
+		else if(ev.getSource() == replaceAllButton) JOptionPane.showMessageDialog(null, FNotepad.bundle.getString("FindDialog.Total")+replaceAllNext());
 	}
 	/////////////////////////
 	int findNext() {
@@ -195,7 +195,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 			jta.setSelectionStart(idx);
 			jta.setSelectionEnd(idx + findWhat.getText().length());
 		}
-		else JOptionPane.showMessageDialog(this, FNotepadLANG.bundle.getString("FindDialog.Error1") +findWhat.getText()+ "\"", FNotepadLANG.bundle.getString("FindDialog.ErrorT"), JOptionPane.INFORMATION_MESSAGE);
+		else JOptionPane.showMessageDialog(this, FNotepad.bundle.getString("FindDialog.Error1") +findWhat.getText()+ "\"", FNotepad.bundle.getString("FindDialog.ErrorT"), JOptionPane.INFORMATION_MESSAGE);
 	}
 	//////////////////////////////////////////////
 	void replaceNext() {
@@ -248,7 +248,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 
 		if(isFind) {
 			dialog.setSize(460, 180);
-			dialog.setTitle(FNotepadLANG.bundle.getString("FindDialog.Search"));
+			dialog.setTitle(FNotepad.bundle.getString("FindDialog.Search"));
 		}
 		else {
 			replaceButton.setVisible(true);
@@ -257,7 +257,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 			replaceLabel.setVisible(true);
 
 			dialog.setSize(450, 200);
-			dialog.setTitle(FNotepadLANG.bundle.getString("FindDialog.Replace"));
+			dialog.setTitle(FNotepad.bundle.getString("FindDialog.Replace"));
 		}
 
 		dialog.setVisible(true);

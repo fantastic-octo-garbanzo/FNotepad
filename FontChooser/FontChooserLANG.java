@@ -6,7 +6,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import NotePads.FNotepadLANG;
+import NotePads.FNotepad;
 
 /******************************************************/
 class FontDemoLANG extends JFrame {
@@ -69,7 +69,7 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 		jFace.addListSelectionListener(new ListSelectionListener()
 		{public void valueChanged(ListSelectionEvent ev){tf.setFont(createFont());}});
 
-		String[] fontStyles = FNotepadLANG.bundle.getStringArray("FontChooser.fontStyles");
+		String[] fontStyles = FNotepad.bundle.getStringArray("FontChooser.fontStyles");
 		jStyle = new JList(fontStyles);
 		jStyle.setSelectedIndex(0); 
 
@@ -87,9 +87,9 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 		JPanel jpLabel = new JPanel();
 		jpLabel.setLayout(new GridLayout(1,3));
 
-		jpLabel.add(new JLabel(FNotepadLANG.bundle.getString("FontChooser.font"), JLabel.CENTER));
-		jpLabel.add(new JLabel(FNotepadLANG.bundle.getString("FontChooser.typeface"), JLabel.CENTER));
-		jpLabel.add(new JLabel(FNotepadLANG.bundle.getString("FontChooser.size"), JLabel.CENTER));
+		jpLabel.add(new JLabel(FNotepad.bundle.getString("FontChooser.font"), JLabel.CENTER));
+		jpLabel.add(new JLabel(FNotepad.bundle.getString("FontChooser.typeface"), JLabel.CENTER));
+		jpLabel.add(new JLabel(FNotepad.bundle.getString("FontChooser.size"), JLabel.CENTER));
 
 		JPanel jpList = new JPanel();
 		jpList.setLayout(new GridLayout(1,3));
@@ -98,8 +98,8 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 		jpList.add(new JScrollPane(jStyle));
 		jpList.add(new JScrollPane(jSize));
 
-		okButton = new JButton(FNotepadLANG.bundle.getString("FontChooser.Ok"));
-		JButton cancelButton = new JButton(FNotepadLANG.bundle.getString("FontChooser.Cancel"));
+		okButton = new JButton(FNotepad.bundle.getString("FontChooser.Ok"));
+		JButton cancelButton = new JButton(FNotepad.bundle.getString("FontChooser.Cancel"));
 
 		okButton.addActionListener(
 		new ActionListener() {
