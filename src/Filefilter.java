@@ -1,11 +1,12 @@
 package src;
 // Imports
+
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import src.FNotepad;
+
 
 /***************************************************/
 class FileFilterDemo extends JFrame {
@@ -65,7 +66,7 @@ public class Filefilter extends FileFilter {
 	}
 	////////////////
 	public void setDescription(String desc) {
-		if(desc == null) description = FNotepad.bundle.getString("Filefilter.AllFiles");
+		if(desc == null) description = FNotepad.bundle.getString("FileFilter.AllFiles");
 		else description = new String(desc);
 	}
 	////////////////

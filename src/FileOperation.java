@@ -91,7 +91,7 @@ public class FileOperation {
 
         // Verschiedene Dateiendungen
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new Filefilter("*", this.npd.bundle.getString("FileOperation.Filefilter")));
+        chooser.addChoosableFileFilter(new Filefilter("*", this.npd.bundle.getString("FileOperation.FileFilter")));
         chooser.addChoosableFileFilter(new Filefilter(".txt", "Text Files(*.txt)"));
         chooser.addChoosableFileFilter(new Filefilter(".java", "Java Source Files(*.java)"));
         chooser.addChoosableFileFilter(new Filefilter(".py", "Python Files(*.py)"));
