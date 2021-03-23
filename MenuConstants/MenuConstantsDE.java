@@ -43,7 +43,7 @@ public interface MenuConstantsDE {
     String helpAboutFNotepad = "\u00DCber FNotepad";
 
     String aboutText =
-            "<html><big>FNotepad</big><hr><hr>"
+            "<html><big>FNotepad v1.4.0</big><hr><hr>"
                     + "<p align=center>Von fantastic-octo-garbanzo!"
                     + "<hr><p align=center>Mit OpenJDK15 compiliert.<br><br>"
                     + "<strong>Danke f\u00FCr das Benutzen von FNotepad!</strong><br>"
