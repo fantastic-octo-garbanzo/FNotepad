@@ -36,17 +36,17 @@ public class FNotepad extends JFrame{
             @Override
             public void paintComponent(Graphics graphics) {
                 super.paintComponent(graphics);
-                graphics.drawImage(img, 0, 0, null);
+                graphics.drawImage(img, 400, 300, null);
             }
         });
 
         // Button zur Auswahlbestätigung
         JButton b = new JButton("Choose Language");
-        b.setBounds(200,300, 200,50);
+        b.setBounds(200,300, 200,40);
 
         // Button zum Abbrechen
         JButton a = new JButton("Cancel");
-        a.setBounds(200, 375, 200, 50);
+        a.setBounds(250, 365, 100, 40);
 
         // Auswahlmenü
         String[] languagesList = {"English", "Deutsch", "Italiano"};
@@ -54,10 +54,10 @@ public class FNotepad extends JFrame{
 
 
         JComboBox c = new JComboBox(languagesList);
-        c.setBounds(250,150, 100,50);
+        c.setBounds(250,150, 100,40);
 
         JComboBox ch = new JComboBox(windowList);
-        ch.setBounds(250,225, 100,50);
+        ch.setBounds(250,215, 100,40);
 
         add(l);
         add(a);
