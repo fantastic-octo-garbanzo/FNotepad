@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.Locale;
 
 /**********/
 
@@ -103,16 +104,16 @@ public class FNotepad extends JFrame{
         // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
             if(c.getSelectedItem().equals("Deutsch")){
-                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadDE(true);}
-                if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadDE(false);}
+                if (ch.getSelectedItem().equals("Vollbild")) {new FNotepadLANG(true, Locale.GERMAN);}
+                if (ch.getSelectedItem().equals("Fenstermodus")) {new FNotepadLANG(false, Locale.GERMAN);}
             }
             if(c.getSelectedItem().equals("Italiano")){
-                if (ch.getSelectedItem().equals("a schermo intero")) {new FNotepadIT(true);}
-                if (ch.getSelectedItem().equals("finestrato")) {new FNotepadIT(false);}
+                if (ch.getSelectedItem().equals("a schermo intero")) {new FNotepadLANG(true, Locale.ITALIAN);}
+                if (ch.getSelectedItem().equals("finestrato")) {new FNotepadLANG(false, Locale.ITALIAN);}
             }
             if(c.getSelectedItem().equals("English")){
-                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadEN(true);}
-                if (ch.getSelectedItem().equals("windowed")) {new FNotepadEN(false);}
+                if (ch.getSelectedItem().equals("fullscreen")) {new FNotepadLANG(true, Locale.ENGLISH);}
+                if (ch.getSelectedItem().equals("windowed")) {new FNotepadLANG(false, Locale.ENGLISH);}
             }
 
             dispose();
