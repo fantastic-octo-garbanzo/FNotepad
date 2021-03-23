@@ -65,7 +65,7 @@ public class FNotepad implements ActionListener {
 
         f.pack();
         f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         if(!fullscreen){f.setSize(800, 600);}
         f.setVisible(true);
@@ -404,14 +404,17 @@ public class FNotepad implements ActionListener {
         if (!FileOperation.saved) fileHandler.saveAsFile();
         if (locale == Locale.ENGLISH){
             new FNotepad(true, Locale.ITALIAN);
+            f.dispose();
         }
         if (locale == Locale.GERMAN){
             new FNotepad(true, Locale.ITALIAN);
+            f.dispose();
         }
         if (locale == Locale.ITALIAN){
             new FNotepad(true, Locale.GERMAN);
+            f.dispose();
         }
-        f.dispose();
+        //f.dispose();
     }
     ///////////////////////////////////
     void newWindow() {
