@@ -1,5 +1,6 @@
 # FNotepad Changelog
 
+
 ## FNotepad [v1.4.0][0] (2021-03-20)
 
 ### Added
