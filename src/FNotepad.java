@@ -1,12 +1,6 @@
-package NotePads;
+package src;
 // Imports
-
-import FileOperation.FileOperationLANG;
-import FindDialog.FindDialogLANG;
-import FontChooser.FontChooserLANG;
-import LookAndFeelMenu.LookAndFeelMenuLANG;
-
-
+import src.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -34,21 +28,19 @@ public class FNotepad implements ActionListener {
     public JLabel statusBar;
     int tabSize = 4;
 
-    private  String fileName;
-    private  boolean saved = true;
+    private String fileName;
+    private boolean saved = true;
     String applicationName = "FNotepad";
 
-    FileOperationLANG fileHandler;
-    FontChooserLANG fontDialog = null;
-    FindDialogLANG findReplaceDialog = null;
+    FileOperation fileHandler;
+    FontChooser fontDialog = null;
+    FindDialog findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
     JColorChooser fcolorChooser = null;
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
-
-
 
     /****************************/
     public FNotepad(boolean fullscreen, Locale startLanguage) {
@@ -78,7 +70,7 @@ public class FNotepad implements ActionListener {
         if(!fullscreen){f.setSize(800, 600);}
         f.setVisible(true);
 
-        fileHandler = new FileOperationLANG(this);
+        fileHandler = new FileOperation(this);
 /////////////////////
         ta.addCaretListener(
                 new CaretListener() {
@@ -89,7 +81,7 @@ public class FNotepad implements ActionListener {
                             String text = ta.getText();
                             String textTabs = ta.getText();
                             for(char c : textTabs.toCharArray()){
-
+                                System.out.println(c);
                                 if("\t".equals(""+c)){
                                     letterCount = letterCount + tabSize;
                                 }
@@ -106,10 +98,10 @@ public class FNotepad implements ActionListener {
                              */
                             //letterCount = text.length();
                             wordCount = text.split("\\s").length;
-                            if (!FileOperationLANG.isSave()){
-                                f.setTitle(FileOperationLANG.getFileName() + "* - " + applicationName);
+                            if (!FileOperation.isSave()){
+                                f.setTitle(FileOperation.getFileName() + "* - " + applicationName);
                             } else {
-                                f.setTitle(FileOperationLANG.getFileName() + " - " + applicationName);
+                                f.setTitle(FileOperation.getFileName() + " - " + applicationName);
                             }
 
                         } catch (Exception excp) {
@@ -208,13 +200,13 @@ public class FNotepad implements ActionListener {
             if (FNotepad.this.ta.getText().length() == 0)
                 return;    // text box have no text
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialogLANG(FNotepad.this.ta);
+                findReplaceDialog = new FindDialog(FNotepad.this.ta);
             findReplaceDialog.showDialog(FNotepad.this.f, true);//find
         }
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("editFindNext"))) {
             if (FNotepad.this.ta.getText().length() == 0)
-                return;    // text box have no text
+                return;
 
             if (findReplaceDialog == null)
                 statusBar.setText(bundle.getString("search.text1"));
@@ -227,13 +219,13 @@ public class FNotepad implements ActionListener {
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialogLANG(FNotepad.this.ta);
+                findReplaceDialog = new FindDialog(FNotepad.this.ta);
             findReplaceDialog.showDialog(FNotepad.this.f, false);//replace
         }
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("editGoTo"))) {
             if (FNotepad.this.ta.getText().length() == 0)
-                return;    // text box have no text
+                return;
             goTo();
         }
 ////////////////////////////////////
@@ -250,7 +242,7 @@ public class FNotepad implements ActionListener {
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("formatFont"))) {
             if (fontDialog == null)
-                fontDialog = new FontChooserLANG(ta.getFont());
+                fontDialog = new FontChooser(ta.getFont());
 
             if (fontDialog.showDialog(FNotepad.this.f, bundle.getString("font.text1")))
                 FNotepad.this.ta.setFont(fontDialog.createFont());
@@ -393,7 +385,7 @@ public class FNotepad implements ActionListener {
     }
     ///////////////////////////////////
     void changeLanguage1() {
-        if (!FileOperationLANG.saved) {
+        if (!FileOperation.saved) {
             fileHandler.saveAsFile();
         }
         if (locale == Locale.ENGLISH){
@@ -409,7 +401,7 @@ public class FNotepad implements ActionListener {
     }
     ///////////////////////////////////
     void changeLanguage2() {
-        if (!FileOperationLANG.saved) fileHandler.saveAsFile();
+        if (!FileOperation.saved) fileHandler.saveAsFile();
         if (locale == Locale.ENGLISH){
             new FNotepad(true, Locale.ITALIAN);
         }
@@ -569,7 +561,7 @@ public class FNotepad implements ActionListener {
 
         createCheckBoxMenuItem(bundle.getString("viewStatusBar"), KeyEvent.VK_S, viewMenu, this).setSelected(true);
 /************For Look and Feel, May not work properly on different operating environment***/
-        LookAndFeelMenuLANG.createLookAndFeelMenuItem(viewMenu, this.f);
+        LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
 
         createMenuItem(bundle.getString("helpHelpTopic"), KeyEvent.VK_H, helpMenu, this);
         createMenuItem(bundle.getString("helpHelpoffline"), KeyEvent.VK_H, helpMenu, this);
@@ -619,6 +611,4 @@ public class FNotepad implements ActionListener {
     public static void main(String[] s) {
         new FNotepad(true, Locale.GERMAN);
     }
-
-
 }

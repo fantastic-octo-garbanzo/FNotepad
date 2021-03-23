@@ -1,17 +1,16 @@
-package FileOperation;
+package src;
 // Imports
 import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
-import FileFilter.*;
-import NotePads.FNotepad;
+import src.*;
 
-class FileOperationExampleLANG extends JFrame {
+class FileOperationExample extends JFrame {
     JMenuBar mb;
     JMenu file;
     JMenuItem open;
     JTextArea ta;
-    FileOperationExampleLANG(){
+    FileOperationExample(){
         open = new JMenuItem("\u00D6ffne Datei");
         file = new JMenu("Datei");
         file.add(open);
@@ -45,12 +44,12 @@ class FileOperationExampleLANG extends JFrame {
     }
     ///////////////////////////////////////
     public static void main(String[] args) {
-        new FileOperationExampleLANG();
+        new FileOperationExample();
     }
 }
 /*************************************/
-// Beginn der Klasse FileOperationDE
-public class FileOperationLANG {
+// Beginn der Klasse FileOperation
+public class FileOperation {
     FNotepad npd;
 
     public static boolean saved;
@@ -81,7 +80,7 @@ public class FileOperationLANG {
         this.fileName = new String(fileName);
     }
     /////////////////////////
-    public FileOperationLANG(FNotepad npd) {
+    public FileOperation(FNotepad npd) {
         this.npd = npd;
 
         saved = true;
@@ -92,20 +91,20 @@ public class FileOperationLANG {
 
         // Verschiedene Dateiendungen
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new FileFilterLANG("*", this.npd.bundle.getString("FileOperation.FileFilter")));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".txt", "Text Files(*.txt)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".java", "Java Source Files(*.java)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".c", "C Programming Language(*.c)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".cpp", "C++(*.cpp)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".cs", "C#(*.cs)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".d", "D Programming Language(*.d)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".sh", "Shell Script File(*.sh)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".bat", "Batch File(*.bat)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".rtf", "Rich Text Format(*.rtf)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".pdf", "Portable Document Files(*.pdf)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".html", "Hyper Text Markup Language(*.html)"));
-        chooser.addChoosableFileFilter(new FileFilterLANG(".asm", "Assembler(*.asm)"));
+        chooser.addChoosableFileFilter(new Filefilter("*", this.npd.bundle.getString("FileOperation.Filefilter")));
+        chooser.addChoosableFileFilter(new Filefilter(".txt", "Text Files(*.txt)"));
+        chooser.addChoosableFileFilter(new Filefilter(".java", "Java Source Files(*.java)"));
+        chooser.addChoosableFileFilter(new Filefilter(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new Filefilter(".c", "C Programming Language(*.c)"));
+        chooser.addChoosableFileFilter(new Filefilter(".cpp", "C++(*.cpp)"));
+        chooser.addChoosableFileFilter(new Filefilter(".cs", "C#(*.cs)"));
+        chooser.addChoosableFileFilter(new Filefilter(".d", "D Programming Language(*.d)"));
+        chooser.addChoosableFileFilter(new Filefilter(".sh", "Shell Script File(*.sh)"));
+        chooser.addChoosableFileFilter(new Filefilter(".bat", "Batch File(*.bat)"));
+        chooser.addChoosableFileFilter(new Filefilter(".rtf", "Rich Text Format(*.rtf)"));
+        chooser.addChoosableFileFilter(new Filefilter(".pdf", "Portable Document Files(*.pdf)"));
+        chooser.addChoosableFileFilter(new Filefilter(".html", "Hyper Text Markup Language(*.html)"));
+        chooser.addChoosableFileFilter(new Filefilter(".asm", "Assembler(*.asm)"));
         chooser.setCurrentDirectory(new File("."));
     }
     //////////////////////////////////////
@@ -249,4 +248,4 @@ public class FileOperationLANG {
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-} // Ende der Klasse FileOperationDE
+} // Ende der Klasse FileOperation

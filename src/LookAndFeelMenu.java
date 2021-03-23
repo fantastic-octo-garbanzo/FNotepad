@@ -1,19 +1,18 @@
-package LookAndFeelMenu;
+package src;
 // Imports
-
-import NotePads.FNotepad;
+import src.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /***************************************************/
-class LookAndFeelDemoLANG extends JFrame {
+class LookAndFeelDemo extends JFrame {
 	JLabel label;
 	JMenuBar jmb;
 	JMenu fileMenu;
 
-	LookAndFeelDemoLANG() {
+	LookAndFeelDemo() {
 		super("Aussehen \u00E4ndern");
 		add(label = new JLabel("Das ist ein Text"));
 		add(new JButton("Button")); 
@@ -26,18 +25,18 @@ class LookAndFeelDemoLANG extends JFrame {
 		setJMenuBar(jmb);
 		fileMenu = new JMenu("Aussehen \u00E4ndern");
 		jmb.add(fileMenu);
-		LookAndFeelMenuLANG.createLookAndFeelMenuItem(fileMenu, this);
+		LookAndFeelMenu.createLookAndFeelMenuItem(fileMenu, this);
 		setVisible(true);
 	}
 	////////////////////////
 	public static void main(String[] args) {
-		new LookAndFeelDemoLANG();
+		new LookAndFeelDemo();
 	}
 	////////////////////////
 }
 
 /************************/
-public class LookAndFeelMenuLANG {
+public class LookAndFeelMenu {
 	public static void createLookAndFeelMenuItem(JMenu jmenu, Component cmp) {
 		final UIManager.LookAndFeelInfo[] infos = UIManager.getInstalledLookAndFeels();
 
@@ -50,7 +49,7 @@ public class LookAndFeelMenuLANG {
 			rbm[i].setMnemonic(infos[i].getName().charAt(0));
 			tmp.add(rbm[i]);
 			bg.add(rbm[i]);
-			rbm[i].addActionListener(new LookAndFeelMenuListenerLANG(infos[i].getClassName(),cmp));
+			rbm[i].addActionListener(new LookAndFeelMenuListener(infos[i].getClassName(),cmp));
 		}
 		rbm[0].setSelected(true);
 		jmenu.add(tmp);
@@ -58,11 +57,11 @@ public class LookAndFeelMenuLANG {
 }
 
 /**************************/
-class LookAndFeelMenuListenerLANG implements ActionListener {
+class LookAndFeelMenuListener implements ActionListener {
 	String classname;
 	Component jf;
 	/////////////////////
-	LookAndFeelMenuListenerLANG(String cln, Component jf) {
+	LookAndFeelMenuListener(String cln, Component jf) {
 		this.jf = jf;
 		classname = new String(cln);
 	}

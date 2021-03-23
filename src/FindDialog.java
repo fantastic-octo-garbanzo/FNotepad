@@ -1,19 +1,18 @@
-package FindDialog;
+package src;
 // Imports
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
-import NotePads.FNotepad;
-
+import src.*;
 /******************************************************/
-class FindReplaceDemoLANG extends JFrame {
-	FindDialogLANG dialog = null;
+class FindReplaceDemo extends JFrame {
+	FindDialog dialog = null;
 	JTextArea ta;
 	JButton findButton, replaceButton;
 
-	FindReplaceDemoLANG() {
+	FindReplaceDemo() {
 		super("Suchen");
 
 		ta = new JTextArea(7, 20);
@@ -21,8 +20,8 @@ class FindReplaceDemoLANG extends JFrame {
 
 		ActionListener ac1 = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FindDialogLANG(FindReplaceDemoLANG.this.ta);
-				dialog.showDialog(FindReplaceDemoLANG.this, true);// find
+				if(dialog == null) dialog = new FindDialog(FindReplaceDemo.this.ta);
+				dialog.showDialog(FindReplaceDemo.this, true);// find
 			}
 		};
 		findButton.addActionListener(ac1);
@@ -31,8 +30,8 @@ class FindReplaceDemoLANG extends JFrame {
 
 		ActionListener ac2 = new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FindDialogLANG(FindReplaceDemoLANG.this.ta);
-				dialog.showDialog(FindReplaceDemoLANG.this,false);// find
+				if(dialog == null) dialog = new FindDialog(FindReplaceDemo.this.ta);
+				dialog.showDialog(FindReplaceDemo.this,false);// find
 			}
 		};
 		replaceButton.addActionListener(ac2);
@@ -48,12 +47,12 @@ class FindReplaceDemoLANG extends JFrame {
 	}
 	////////////////////////////////
 	public static void main(String[] args) {
-		new FindReplaceDemoLANG();
+		new FindReplaceDemo();
 	}
 }
 
 /******************************************************/
-public class FindDialogLANG extends JPanel implements ActionListener {
+public class FindDialog extends JPanel implements ActionListener {
 	JTextArea jta;
 	public int lastIndex;
 	JLabel replaceLabel;
@@ -73,7 +72,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 	private boolean ok;
 	private JDialog dialog;
 	///////////////////////
-	public FindDialogLANG(JTextArea jta) {
+	public FindDialog(JTextArea jta) {
 
 		this.jta = jta;
 		findWhat = new TextField(20);
@@ -91,7 +90,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 
 		direction = new JPanel();
 		Border etched = BorderFactory.createEtchedBorder();
-		Border titled = BorderFactory.createTitledBorder(etched, FNotepad.bundle.getString("FindDialog.Direction"));
+		Border titled = BorderFactory.createTitledBorder(etched,FNotepad.bundle.getString("FindDialog.Direction"));
 		direction.setBorder(titled);
 		direction.setLayout(new GridLayout(1, 2));
 		direction.add(up);
@@ -120,12 +119,12 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 		textPanel.add(findWhat);
 		textPanel.add(replaceLabel = new JLabel(FNotepad.bundle.getString("FindDialog.ReplaceW")));
 		textPanel.add(replaceWith);
-		textPanel.add(new JLabel(" ")); //dummy Lable
-		textPanel.add(new JLabel(" ")); //dummy Lable
+		textPanel.add(new JLabel(" "));
+		textPanel.add(new JLabel(" "));
 
 		setLayout(new BorderLayout());
 
-		add(new JLabel("       "), BorderLayout.NORTH); //dummy label
+		add(new JLabel("       "), BorderLayout.NORTH);
 		add(textPanel, BorderLayout.CENTER);
 		add(replaceButtonPanel, BorderLayout.EAST);
 		add(southPanel, BorderLayout.SOUTH);
@@ -259,9 +258,7 @@ public class FindDialogLANG extends JPanel implements ActionListener {
 			dialog.setSize(450, 200);
 			dialog.setTitle(FNotepad.bundle.getString("FindDialog.Replace"));
 		}
-
 		dialog.setVisible(true);
-
 		return ok;
 	}
 	//////////////////////////////

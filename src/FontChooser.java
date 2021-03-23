@@ -1,4 +1,4 @@
-package FontChooser;
+package src;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -6,15 +6,15 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import NotePads.FNotepad;
+import src.*;
 
 /******************************************************/
-class FontDemoLANG extends JFrame {
-	FontChooserLANG dialog = null;
+class FontDemo extends JFrame {
+	FontChooser dialog = null;
 	JTextArea ta;
 	JButton fontButton;
 
-	FontDemoLANG() {
+	FontDemo() {
 		super("Schrift");
 
 		ta = new JTextArea(7,20);
@@ -23,9 +23,9 @@ class FontDemoLANG extends JFrame {
 		ActionListener ac = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent ev) {
-				if(dialog == null) dialog = new FontChooserLANG(ta.getFont());
-				if(dialog.showDialog(FontDemoLANG.this, "W\u00E4hle eine Schrift")) {
-					FontDemoLANG.this.ta.setFont(dialog.createFont());
+				if(dialog == null) dialog = new FontChooser(ta.getFont());
+				if(dialog.showDialog(FontDemo.this, "W\u00E4hle eine Schrift")) {
+					FontDemo.this.ta.setFont(dialog.createFont());
 				}
 			}
 		};
@@ -41,12 +41,12 @@ class FontDemoLANG extends JFrame {
 	////////////////////////////////
 	public static void main(String[] args)
 	{
-		new FontDemoLANG();
+		new FontDemo();
 	}
 }
 
 /******************************************************/
-public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
+public class FontChooser extends JPanel /*implements ActionListener*/ {
 	private Font thisFont;
 
 	private JList jFace, jStyle, jSize;
@@ -58,7 +58,7 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 
 	private boolean ok;
 
-	public FontChooserLANG(Font withFont) {
+	public FontChooser(Font withFont) {
 		thisFont=withFont;
 
 		////////////////////
@@ -105,7 +105,7 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 		new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				ok=true;
-				FontChooserLANG.this.thisFont=FontChooserLANG.this.createFont();
+				FontChooser.this.thisFont=FontChooser.this.createFont();
 				dialog.setVisible(false);
 			}
 		});
@@ -120,7 +120,7 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 		JPanel jpButton = new JPanel();
 		jpButton.setLayout(new FlowLayout());
 		jpButton.add(okButton);
-		jpButton.add(new JLabel("          "));//dummy Label
+		jpButton.add(new JLabel("          "));
 		jpButton.add(cancelButton);
 
 		tf = new JTextArea(5,30);
@@ -136,8 +136,8 @@ public class FontChooserLANG extends JPanel /*implements ActionListener*/ {
 		add(jpLabel,BorderLayout.NORTH);
 		add(centerPanel,BorderLayout.CENTER);
 		add(jpButton,BorderLayout.SOUTH);
-		add(new JLabel("  "),BorderLayout.EAST);//dummy label
-		add(new JLabel("  "),BorderLayout.WEST);//dummy label
+		add(new JLabel("  "),BorderLayout.EAST);
+		add(new JLabel("  "),BorderLayout.WEST);
 
 		tf.setFont(thisFont);
 	}
