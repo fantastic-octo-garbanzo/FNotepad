@@ -35,8 +35,7 @@ or similar.
 
 The subsequent lines should be separated from the subject line by a single
 blank line, and include optional details. In this you can give justification
-for the change, [reference Github
-issues](https://help.github.com/articles/closing-issues-via-commit-messages/),
+for the change, [reference Github issues](https://help.github.com/articles/closing-issues-via-commit-messages/),
 or explain some of the subtler details of your patch. This is important because
 when someone finds a line of code they don't understand later, they can use the
 `git blame` command to find out what the author was thinking when they wrote
@@ -69,9 +68,8 @@ process is:
 4. **Merge** the pull request when all reviewers approve.
 5. **File** follow-up tickets if appropriate.
 
+
 ## Style Reference
-
-
 
 ### Brackets
 

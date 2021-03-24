@@ -1,22 +1,18 @@
-package FileOperation;
+package src;
 // Imports
 import java.io.*;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import NotePads.FNotepadIT;
-import FileFilter.FileFilterIT;
+import src.*;
 
-
-class FileOperationExampleIT extends JFrame {
+class FileOperationExample extends JFrame {
     JMenuBar mb;
     JMenu file;
     JMenuItem open;
     JTextArea ta;
-    FileOperationExampleIT(){
-        open = new JMenuItem("Aprire il file");
-        file = new JMenu("file");
+    FileOperationExample(){
+        open = new JMenuItem("\u00D6ffne Datei");
+        file = new JMenu("Datei");
         file.add(open);
         mb = new JMenuBar();
         mb.setBounds(0,0,800,20);
@@ -48,71 +44,71 @@ class FileOperationExampleIT extends JFrame {
     }
     ///////////////////////////////////////
     public static void main(String[] args) {
-        new FileOperationExampleIT();
+        new FileOperationExample();
     }
 }
 /*************************************/
-// start of class FileOperationEN
-public class FileOperationIT {
-    FNotepadIT npd;
+// Beginn der Klasse FileOperation
+public class FileOperation {
+    FNotepad npd;
 
     public static boolean saved;
     boolean newFileFlag;
     static String fileName;
-    String applicationTitle = "FNotepad";
+    String applicationTitle = this.npd.bundle.getString("applicationName");
 
     File fileRef;
     JFileChooser chooser;
-
+    File temp = null;
+    FileWriter fout = null;
+    FileInputStream fin = null;
+    BufferedReader din = null;
     /////////////////////////////
     public static boolean isSave() {
         return saved;
     }
-
+    /////////////////////////////
     void setSave(boolean saved) {
         this.saved = saved;
     }
-
+    /////////////////////////////
     public static String getFileName() {
         return new String(fileName);
     }
-
+    /////////////////////////////
     void setFileName(String fileName) {
         this.fileName = new String(fileName);
     }
-
     /////////////////////////
-    public FileOperationIT(FNotepadIT npd) {
+    public FileOperation(FNotepad npd) {
         this.npd = npd;
 
         saved = true;
         newFileFlag = true;
-        fileName = new String("Senza titolo");
+        fileName = this.npd.bundle.getString("fileName");
         fileRef = new File(fileName);
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
 
-        // Different file extensions
+        // Verschiedene Dateiendungen
         chooser = new JFileChooser();
-        chooser.addChoosableFileFilter(new FileFilterIT("*", "All Files"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".txt", "Text Files(*.txt)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".java", "Java Source Files(*.java)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".py", "Python Files(*.py)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".c", "C Programming Language(.c)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".cpp", "C++(.cpp)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".cs", "C#"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".d", "D Programming Language(.d)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".sh", "Shell Script File(*.sh)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".bat", "Batch File(*.bat)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".rtf", "Rich Text Format(*.rtf)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".pdf", "Portable Document Files(*.pdf)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".html", "Hyper Text Markup Language(*.html)"));
-        chooser.addChoosableFileFilter(new FileFilterIT(".asm", "Assembler(*.asm)"));
+        chooser.addChoosableFileFilter(new Filefilter("*", this.npd.bundle.getString("FileOperation.FileFilter")));
+        chooser.addChoosableFileFilter(new Filefilter(".txt", "Text Files(*.txt)"));
+        chooser.addChoosableFileFilter(new Filefilter(".java", "Java Source Files(*.java)"));
+        chooser.addChoosableFileFilter(new Filefilter(".py", "Python Files(*.py)"));
+        chooser.addChoosableFileFilter(new Filefilter(".c", "C Programming Language(*.c)"));
+        chooser.addChoosableFileFilter(new Filefilter(".cpp", "C++(*.cpp)"));
+        chooser.addChoosableFileFilter(new Filefilter(".cs", "C#(*.cs)"));
+        chooser.addChoosableFileFilter(new Filefilter(".d", "D Programming Language(*.d)"));
+        chooser.addChoosableFileFilter(new Filefilter(".sh", "Shell Script File(*.sh)"));
+        chooser.addChoosableFileFilter(new Filefilter(".bat", "Batch File(*.bat)"));
+        chooser.addChoosableFileFilter(new Filefilter(".rtf", "Rich Text Format(*.rtf)"));
+        chooser.addChoosableFileFilter(new Filefilter(".pdf", "Portable Document Files(*.pdf)"));
+        chooser.addChoosableFileFilter(new Filefilter(".html", "Hyper Text Markup Language(*.html)"));
+        chooser.addChoosableFileFilter(new Filefilter(".asm", "Assembler(*.asm)"));
         chooser.setCurrentDirectory(new File("."));
     }
-//////////////////////////////////////
-
+    //////////////////////////////////////
     boolean saveFile(File temp) {
-        FileWriter fout = null;
         try {
             fout = new FileWriter(temp);
             fout.write(npd.ta.getText());
@@ -128,46 +124,34 @@ public class FileOperationIT {
         updateStatus(temp, true);
         return true;
     }
-
-    ////////////////////////
+    //////////////////////////////////////
     public boolean saveThisFile() {
-
         if (!newFileFlag) {
             return saveFile(fileRef);
         }
-
         return saveAsFile();
     }
-
-    ////////////////////////////////////
+    //////////////////////////////////////
     public boolean saveAsFile() {
-        File temp = null;
-        chooser.setDialogTitle("Salva con nome...");
-        chooser.setApproveButtonText("Salva ora");
+        chooser.setDialogTitle(this.npd.bundle.getString("FileOperation.save1"));
+        chooser.setApproveButtonText(this.npd.bundle.getString("FileOperation.save2"));
         chooser.setApproveButtonMnemonic(KeyEvent.VK_S);
-        chooser.setApproveButtonToolTipText("Clicca su di me per salvare!");
-
+        chooser.setApproveButtonToolTipText(this.npd.bundle.getString("FileOperation.save3"));
         do {
             if (chooser.showSaveDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return false;
             temp = chooser.getSelectedFile();
             if (!temp.exists()) break;
             if (JOptionPane.showConfirmDialog(
-                    this.npd.f, "<html>" + temp.getPath() + " esiste già.<br>Vuoi sostituirlo?<html>",
-                    "Salva con nome", JOptionPane.YES_NO_OPTION
+                    this.npd.f, "<html>" + temp.getPath() + this.npd.bundle.getString("FileOperation.save4"),
+                    this.npd.bundle.getString("FileOperation.save5"), JOptionPane.YES_NO_OPTION
             ) == JOptionPane.YES_OPTION)
                 break;
         } while (true);
-
-
         return saveFile(temp);
     }
-
-    ////////////////////////
+    //////////////////////////////////////
     boolean openFile(File temp) {
-        FileInputStream fin = null;
-        BufferedReader din = null;
-
         try {
             fin = new FileInputStream(temp);
             din = new BufferedReader(new InputStreamReader(fin));
@@ -193,16 +177,14 @@ public class FileOperationIT {
         this.npd.ta.setCaretPosition(0);
         return true;
     }
-
-    ///////////////////////
+    //////////////////////////////////////
     public void openFile() {
         if (!confirmSave()) return;
-        chooser.setDialogTitle("Aprire il file...");
-        chooser.setApproveButtonText("Aprire questo");
+        chooser.setDialogTitle(this.npd.bundle.getString("FileOperation.open1"));
+        chooser.setApproveButtonText(this.npd.bundle.getString("FileOperation.open2"));
         chooser.setApproveButtonMnemonic(KeyEvent.VK_O);
-        chooser.setApproveButtonToolTipText("Clicca su me per aprire il file selezionato.!");
+        chooser.setApproveButtonToolTipText(this.npd.bundle.getString("FileOperation.open3"));
 
-        File temp = null;
         do {
             if (chooser.showOpenDialog(this.npd.f) != JFileChooser.APPROVE_OPTION)
                 return;
@@ -211,16 +193,15 @@ public class FileOperationIT {
             if (temp.exists()) break;
 
             JOptionPane.showMessageDialog(this.npd.f,
-                    "<html>" + temp.getName() + "<br>file non trovato.<br>" +
-                            "Si prega di verificare che il nome del file sia corretto.<html>",
-                    "Aprire", JOptionPane.INFORMATION_MESSAGE);
+                    "<html>" + temp.getName() + this.npd.bundle.getString("FileOperation.open4"),
+                    this.npd.bundle.getString("FileOperation.open5"), JOptionPane.INFORMATION_MESSAGE);
 
         } while (true);
 
         this.npd.ta.setText("");
 
         if (!openFile(temp)) {
-            fileName = "Senza titolo";
+            fileName = this.npd.bundle.getString("fileName");
             saved = true;
             this.npd.f.setTitle(fileName + " - " + applicationTitle);
         }
@@ -228,29 +209,26 @@ public class FileOperationIT {
             newFileFlag = true;
 
     }
-
-    ////////////////////////
+    //////////////////////////////////////
     void updateStatus(File temp, boolean saved) {
         if (saved) {
             this.saved = true;
             fileName = new String(temp.getName());
             if (!temp.canWrite()) {
-                fileName += "(Leggere solo)";
+                fileName += this.npd.bundle.getString("FileOperation.readonly");
                 newFileFlag = true;
             }
             fileRef = temp;
             npd.f.setTitle(fileName + " - " + applicationTitle);
-            npd.statusBar.setText("file : " + temp.getPath() + " salvato/aperto con successo.");
+            npd.statusBar.setText(this.npd.bundle.getString("FileOperation.readonly1"));
             newFileFlag = false;
         } else {
-            npd.statusBar.setText("Impossibile salvare/aprire : " + temp.getPath());
+            npd.statusBar.setText(this.npd.bundle.getString("FileOperation.readonly2") + temp.getPath());
         }
     }
-
-    ///////////////////////
+    //////////////////////////////////////
     public boolean confirmSave() {
-        String strMsg = "<html>Il testo nel " + fileName + " è stato cambiato.<br>" +
-                "Vuoi salvare le modifiche?<html>";
+        String strMsg = this.npd.bundle.getString("FileOperation.confirmSave1") + fileName + this.npd.bundle.getString("FileOperation.confirmSave2");
         if (!saved) {
             int x = JOptionPane.showConfirmDialog(this.npd.f, strMsg, applicationTitle, JOptionPane.YES_NO_CANCEL_OPTION);
 
@@ -259,16 +237,15 @@ public class FileOperationIT {
         }
         return true;
     }
-
-    ///////////////////////////////////////
+    //////////////////////////////////////
     public void newFile() {
         if (!confirmSave()) return;
         this.npd.ta.setText("");
-        fileName = new String("Senza titolo");
+        fileName = this.npd.bundle.getString("fileName");
         fileRef = new File(fileName);
         saved = true;
         newFileFlag = true;
         this.npd.f.setTitle(fileName + " - " + applicationTitle);
     }
 //////////////////////////////////////
-} // end of class FileOperationEN
+} // Ende der Klasse FileOperation
