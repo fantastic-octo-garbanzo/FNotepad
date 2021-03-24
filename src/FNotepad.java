@@ -46,6 +46,7 @@ public class FNotepad implements ActionListener {
     public FNotepad(boolean fullscreen, Locale startLanguage) {
         this.locale = startLanguage;
         this.bundle = ResourceBundle.getBundle("Bundle_"+locale, locale);
+        System.out.println(locale);
         this.fileName = bundle.getString("fileName");
         f = new JFrame(fileName + " - " + applicationName);
 
