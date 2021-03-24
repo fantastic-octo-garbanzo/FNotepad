@@ -27,6 +27,7 @@ public class FNotepad implements ActionListener {
     public JTextArea ta;
     public JLabel statusBar;
     int tabSize = 4;
+    int tabCount;
 
     private String fileName;
     private boolean saved = true;
@@ -40,6 +41,7 @@ public class FNotepad implements ActionListener {
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
+    JTabbedPane tabbedPane;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
@@ -54,14 +56,18 @@ public class FNotepad implements ActionListener {
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
 
-        ta = new JTextArea(30, 60);
+        createJPanel();
         statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
-        f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
+
+        tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabbedPane.add(createJPanel(), fileName, tabCount++);
+        tabbedPane.addChangeListener(changeListener);
+        f.add(tabbedPane);
 
         f.pack();
         f.setVisible(true);
@@ -139,6 +145,31 @@ public class FNotepad implements ActionListener {
         f.addWindowListener(frameClose);
 ////////////////////////////////////
     }
+    ////////////////////////////////////
+    private JPanel createJPanel() {
+        JPanel panel = new JPanel(new GridLayout(1, 1));
+        panel.add(new JScrollPane(ta = new JTextArea(30, 60)));
+        return panel;
+    }
+    ////////////////////////////////////
+    ChangeListener changeListener = new ChangeListener() {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            //newTab();
+        }
+    };
+    ////////////////////////////////////
+    /*void newTab() {
+        int index = tabCount - 1;
+        if (tabbedPane.getSelectedIndex() == index) {
+            tabbedPane.add(createJPanel(), "Tab " + String.valueOf(index), index);
+            tabbedPane.setTabComponentAt(index, new CustomTab(this));
+            tabbedPane.removeChangeListener(changeListener);
+            tabbedPane.setSelectedIndex(index);
+            tabbedPane.addChangeListener(changeListener);
+            tabCount++;
+        }
+    }*/
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
