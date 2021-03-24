@@ -1,6 +1,5 @@
-package Tabs;
+package src;
 // Imports
-import NotePads.FNotepadDE;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -8,11 +7,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 /************************************/
-/*public class TabsDE extends JFrame {
+class Tabs extends JFrame {
     JTabbedPane tabbedPane;
     int tabCount;
 
-    public TabsDE() {
+    public Tabs() {
         createGUI();
         setDisplay();
     }
@@ -32,7 +31,7 @@ import javax.swing.border.*;
     private void createJTabbedPane() {
         tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.add(createJPanel(), "Tab " + String.valueOf(tabCount), tabCount++);
-        tabbedPane.setTabComponentAt(0, new CustomTabDE(this));
+        tabbedPane.setTabComponentAt(0, new CustomTab(this));
         tabbedPane.add(new JPanel(), "+", tabCount++);
         tabbedPane.addChangeListener(changeListener);
     }
@@ -61,7 +60,7 @@ import javax.swing.border.*;
         int index = tabCount - 1;
         if (tabbedPane.getSelectedIndex() == index) {
             tabbedPane.add(createJPanel(), "Tab " + String.valueOf(index), index);
-            tabbedPane.setTabComponentAt(index, new CustomTabDE(this));
+            tabbedPane.setTabComponentAt(index, new CustomTab(this));
             tabbedPane.removeChangeListener(changeListener);
             tabbedPane.setSelectedIndex(index);
             tabbedPane.addChangeListener(changeListener);
@@ -83,27 +82,28 @@ import javax.swing.border.*;
             addNewTab();
         }
     }
-}*/
+}
 /************************************/
-public class CustomTabDE extends JPanel {
+public class CustomTab extends JPanel {
 
     JTabbedPane tabbedPane = new JTabbedPane();
+    Tabs customTabbedPane;
 
-    public CustomTabDE(TabsDE customTabbedPaneDE) {
-        this.customTabbedPaneDE = customTabbedPaneDE;
+    public CustomTab(Tabs customTabbedPane) {
+        this.customTabbedPane = customTabbedPane;
         setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         setBorder(new EmptyBorder(5, 2, 2, 2));
         setOpaque(false);
         addLabel();
-        add(new CustomButtonDE("x"));
+        add(new CustomButton("x"));
     }
 
     private void addLabel() {
         JLabel label = new JLabel() {
             public String getText() {
-                int index = customTabbedPaneDE.tabbedPane.indexOfTabComponent(CustomTabDE.this);
+                int index = customTabbedPane.tabbedPane.indexOfTabComponent(CustomTab.this);
                 if (index != -1)
-                    return customTabbedPaneDE.tabbedPane.getTitleAt(index);
+                    return customTabbedPane.tabbedPane.getTitleAt(index);
                 return null;
             }
         };
@@ -111,8 +111,8 @@ public class CustomTabDE extends JPanel {
         add(label);
     }
 
-    class CustomButtonDE extends JButton implements MouseListener {
-        public CustomButtonDE(String text) {
+    class CustomButton extends JButton implements MouseListener {
+        public CustomButton(String text) {
             int size = 15;
             setText(text);
             setPreferredSize(new Dimension(size, size));
@@ -126,9 +126,9 @@ public class CustomTabDE extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            int index = customTabbedPaneDE.tabbedPane.indexOfTabComponent(CustomTabDE.this);
+            int index = customTabbedPane.tabbedPane.indexOfTabComponent(CustomTab.this);
             if (index != -1)
-                customTabbedPaneDE.removeTab(index);
+                customTabbedPane.removeTab(index);
         }
 
         @Override
@@ -152,6 +152,6 @@ public class CustomTabDE extends JPanel {
         }
     }
     public static void main(String[] args) {
-        new CustomTabDE();
+        new Tabs();
     }
 }
