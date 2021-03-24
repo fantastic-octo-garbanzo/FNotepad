@@ -2,6 +2,8 @@ package src;
 // Imports
 import src.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -148,28 +150,83 @@ public class FNotepad implements ActionListener {
     ////////////////////////////////////
     private JPanel createJPanel() {
         JPanel panel = new JPanel(new GridLayout(1, 1));
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        panel.setBorder(new EmptyBorder(5, 2, 2, 2));
+        panel.setOpaque(false);
         panel.add(new JScrollPane(ta = new JTextArea(30, 60)));
+        panel.add(new CustomButton("x"));
         return panel;
     }
     ////////////////////////////////////
     ChangeListener changeListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-            //newTab();
+            newTab();
         }
     };
     ////////////////////////////////////
-    /*void newTab() {
+    class CustomButton extends JButton implements MouseListener {
+        public CustomButton(String text) {
+            int size = 15;
+            setText(text);
+            setPreferredSize(new Dimension(size, size));
+            setToolTipText("Close tab");
+            setContentAreaFilled(false);
+            setBorder(new EtchedBorder());
+            setBorderPainted(false);
+            setFocusable(false);
+            addMouseListener(this);
+        }
+
+        @Override
+        public void mouseClicked (MouseEvent e){
+            int index = tabbedPane.indexOfComponent(createJPanel());
+            if (index != -1)
+                tabbedPane.removeTabAt(index);
+        }
+        @Override
+        public void mousePressed(MouseEvent e) {
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+        @Override
+        public void mouseEntered (MouseEvent e){
+            setBorderPainted(true);
+            setForeground(Color.RED);
+        }
+        @Override
+        public void mouseExited (MouseEvent e){
+            setBorderPainted(false);
+            setForeground(Color.BLACK);
+        }
+    }
+    ////////////////////////////////////
+    void newTab() {
         int index = tabCount - 1;
         if (tabbedPane.getSelectedIndex() == index) {
             tabbedPane.add(createJPanel(), "Tab " + String.valueOf(index), index);
-            tabbedPane.setTabComponentAt(index, new CustomTab(this));
+            tabbedPane.setTabComponentAt(index, createJPanel());
             tabbedPane.removeChangeListener(changeListener);
             tabbedPane.setSelectedIndex(index);
             tabbedPane.addChangeListener(changeListener);
             tabCount++;
         }
-    }*/
+    }
+    ////////////////////////////////////
+    void removeTab(int index) {
+        tabbedPane.remove(index);
+        tabCount--;
+        if (index == tabCount - 1 && index > 0) {
+            tabbedPane.setSelectedIndex(tabCount - 2);
+        } else {
+            tabbedPane.setSelectedIndex(index);
+        }
+
+        if (tabCount == 1) {
+            newTab();
+        }
+    }
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
@@ -192,7 +249,7 @@ public class FNotepad implements ActionListener {
             newWindow();
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("tabNew")))
-            new Tabs();
+            newTab();
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("fileNew")))
             fileHandler.newFile();
