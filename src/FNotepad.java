@@ -523,7 +523,8 @@ public class FNotepad implements ActionListener {
         JMenu helpMenu = createMenu(bundle.getString("helpText"), KeyEvent.VK_H, mb);
         JMenu changeMenu = createMenu(bundle.getString("changeText"), KeyEvent.VK_G, mb);
 
-        createMenuItem(bundle.getString("windowNew"), KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
+        createMenuItem(bundle.getString("windowNew"), KeyEvent.VK_G, fileMenu, this);
+        createMenuItem(bundle.getString("tabNew"), KeyEvent.VK_1, fileMenu, this);
         createMenuItem(bundle.getString("fileNew"), KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
         createMenuItem(bundle.getString("fileOpen"), KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(bundle.getString("fileSave"), KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
