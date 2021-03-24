@@ -81,8 +81,7 @@ public class FNotepad implements ActionListener {
                         try {
                             String text = ta.getText();
                             String textTabs = ta.getText();
-                            for(char c : textTabs.toCharArray()){
-                                System.out.println(c);
+                            for(char c : textTabs.toCharArray()) {
                                 if("\t".equals(""+c)){
                                     letterCount = letterCount + tabSize;
                                 }
