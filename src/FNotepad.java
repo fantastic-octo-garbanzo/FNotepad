@@ -1,46 +1,52 @@
-package NotePads;
+package src;
 // Imports
-import java.io.*;
+import src.*;
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-
-import FileOperation.FileOperationIT;
-import FindDialog.FindDialogIT;
-import FontChooser.FontChooserIT;
-import LookAndFeelMenu.LookAndFeelMenuIT;
-import MenuConstants.MenuConstantsIT;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /************************************/
 
-public class FNotepadIT implements ActionListener, MenuConstantsIT {
+public class FNotepad implements ActionListener {
+
+    public Locale locale;
+    public static ResourceBundle bundle;
 
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
     int tabSize = 4;
 
-    private String fileName = "Senza nome";
+    private String fileName;
     private boolean saved = true;
     String applicationName = "FNotepad";
 
-    FileOperationIT fileHandler;
-    FontChooserIT fontDialog = null;
-    FindDialogIT findReplaceDialog = null;
+    FileOperation fileHandler;
+    FontChooser fontDialog = null;
+    FindDialog findReplaceDialog = null;
     JColorChooser bcolorChooser = null;
     JColorChooser fcolorChooser = null;
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
+
     /****************************/
-    public FNotepadIT(boolean fullscreen) {
+    public FNotepad(boolean fullscreen, Locale startLanguage) {
+        this.locale = startLanguage;
+        this.bundle = ResourceBundle.getBundle("Bundle_"+locale, locale);
+        this.fileName = bundle.getString("fileName");
         f = new JFrame(fileName + " - " + applicationName);
 
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
@@ -49,23 +55,22 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         f.setIconImage(icon.getImage());
 
         ta = new JTextArea(30, 60);
-        statusBar = new JLabel("Larghezza tab: "+tabSize+"     ||      personaggio: 0, parole: 0       ||       riga: 1, colonna: 1  ", JLabel.RIGHT);
+        statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
-
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
 
         f.pack();
         f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         if(!fullscreen){f.setSize(800, 600);}
         f.setVisible(true);
 
-        fileHandler = new FileOperationIT(this);
+        fileHandler = new FileOperation(this);
 /////////////////////
         ta.addCaretListener(
                 new CaretListener() {
@@ -93,12 +98,11 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                              */
                             //letterCount = text.length();
                             wordCount = text.split("\\s").length;
-                            if (!FileOperationIT.isSave()){
-                                f.setTitle(FileOperationIT.getFileName() + "* - " + applicationName);
+                            if (!FileOperation.isSave()){
+                                f.setTitle(FileOperation.getFileName() + "* - " + applicationName);
                             } else {
-                                f.setTitle(FileOperationIT.getFileName() + " - " + applicationName);
+                                f.setTitle(FileOperation.getFileName() + " - " + applicationName);
                             }
-                            //System.out.println(wordCount+ " " +letterCount);
 
                         } catch (Exception excp) {
                         }
@@ -108,7 +112,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText("Larghezza tab: "+tabSize+"     ||      personaggio "+letterCount+", parole "+wordCount+"       ||       personaggio "+(lineNumber + 1)+", colonna "+(column + 1));
+                        statusBar.setText(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.work1")+letterCount+bundle.getString("statusbar.work2")+wordCount+bundle.getString("statusbar.work3")+(lineNumber + 1)+bundle.getString("statusbar.work4")+(column + 1));
                     }
                 });
 //////////////////
@@ -140,7 +144,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         int lineNumber = 0;
         try {
             lineNumber = ta.getLineOfOffset(ta.getCaretPosition()) + 1;
-            String tempStr = JOptionPane.showInputDialog(f, "Immettere la riga:", "" + lineNumber);
+            String tempStr = JOptionPane.showInputDialog(f, bundle.getString("goto"), "" + lineNumber);
             if (tempStr == null) {
                 return;
             }
@@ -153,138 +157,146 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
 ////////////////////////////////////
-        if (cmdText.equals(windowNew))
+        if (cmdText.equals(bundle.getString("windowNew")))
             newWindow();
 ////////////////////////////////////
-        else if (cmdText.equals(fileNew))
+        else if (cmdText.equals(bundle.getString("fileNew")))
             fileHandler.newFile();
 ////////////////////////////////////
-        else if (cmdText.equals(fileOpen))
+        else if (cmdText.equals(bundle.getString("fileOpen")))
             fileHandler.openFile();
 ////////////////////////////////////
-        else if (cmdText.equals(fileSave))
+        else if (cmdText.equals(bundle.getString("fileSave")))
             fileHandler.saveThisFile();
 ////////////////////////////////////
-        else if (cmdText.equals(fileSaveAs))
+        else if (cmdText.equals(bundle.getString("fileSaveAs")))
             fileHandler.saveAsFile();
 ////////////////////////////////////
-        else if (cmdText.equals(fileExit)) {
+        else if (cmdText.equals(bundle.getString("fileExit"))) {
             if (fileHandler.confirmSave()) System.exit(0);
         }
 ////////////////////////////////////
-        else if (cmdText.equals(filePrint))
+        else if (cmdText.equals(bundle.getString("filePrint")))
             JOptionPane.showMessageDialog(
-                    FNotepadIT.this.f,
-                    "Nessuna stampante è stata trovata, collega una stampante !!",
-                    "Stampante sbagliata !!",
+                    FNotepad.this.f,
+                    "Es wurde kein Drucker gefunden, bitte schlie\u00DF einen Drucker an!!",
+                    "Falscher Drucker!!",
                     JOptionPane.INFORMATION_MESSAGE
             );
 ////////////////////////////////////
-        else if (cmdText.equals(editCut))
+        else if (cmdText.equals(bundle.getString("editCut")))
             ta.cut();
 ////////////////////////////////////
-        else if (cmdText.equals(editCopy))
+        else if (cmdText.equals(bundle.getString("editCopy")))
             ta.copy();
 ////////////////////////////////////
-        else if (cmdText.equals(editPaste))
+        else if (cmdText.equals(bundle.getString("editPaste")))
             ta.paste();
 ////////////////////////////////////
-        else if (cmdText.equals(editDelete))
+        else if (cmdText.equals(bundle.getString("editDelete")))
             ta.replaceSelection("");
 ////////////////////////////////////
-        else if (cmdText.equals(editFind)) {
-            if (FNotepadIT.this.ta.getText().length() == 0)
+        else if (cmdText.equals(bundle.getString("editFind"))) {
+            if (FNotepad.this.ta.getText().length() == 0)
                 return;    // text box have no text
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialogIT(FNotepadIT.this.ta);
-            findReplaceDialog.showDialog(FNotepadIT.this.f, true);//find
+                findReplaceDialog = new FindDialog(FNotepad.this.ta);
+            findReplaceDialog.showDialog(FNotepad.this.f, true);//find
         }
 ////////////////////////////////////
-        else if (cmdText.equals(editFindNext)) {
-            if (FNotepadIT.this.ta.getText().length() == 0)
-                return;    // text box have no text
+        else if (cmdText.equals(bundle.getString("editFindNext"))) {
+            if (FNotepad.this.ta.getText().length() == 0)
+                return;
 
             if (findReplaceDialog == null)
-                statusBar.setText("Niente da cercare, prova prima a trovarlo nel menu di modifica !!!!");
+                statusBar.setText(bundle.getString("search.text1"));
             else
                 findReplaceDialog.findNextWithSelection();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(editReplace)) {
-            if (FNotepadIT.this.ta.getText().length() == 0)
+        else if (cmdText.equals(bundle.getString("editReplace"))) {
+            if (FNotepad.this.ta.getText().length() == 0)
                 return;    // text box have no text
 
             if (findReplaceDialog == null)
-                findReplaceDialog = new FindDialogIT(FNotepadIT.this.ta);
-            findReplaceDialog.showDialog(FNotepadIT.this.f, false);//replace
+                findReplaceDialog = new FindDialog(FNotepad.this.ta);
+            findReplaceDialog.showDialog(FNotepad.this.f, false);//replace
         }
 ////////////////////////////////////
-        else if (cmdText.equals(editGoTo)) {
-            if (FNotepadIT.this.ta.getText().length() == 0)
-                return;    // text box have no text
+        else if (cmdText.equals(bundle.getString("editGoTo"))) {
+            if (FNotepad.this.ta.getText().length() == 0)
+                return;
             goTo();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(editSelectAll))
+        else if (cmdText.equals(bundle.getString("editSelectAll")))
             ta.selectAll();
 ////////////////////////////////////
-        else if (cmdText.equals(editTimeDate))
+        else if (cmdText.equals(bundle.getString("editTimeDate")))
             ta.insert(new Date().toString(), ta.getSelectionStart());
 ////////////////////////////////////
-        else if (cmdText.equals(formatWordWrap)) {
+        else if (cmdText.equals(bundle.getString("formatWordWrap"))) {
             JCheckBoxMenuItem temp = (JCheckBoxMenuItem) ev.getSource();
             ta.setLineWrap(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(formatFont)) {
+        else if (cmdText.equals(bundle.getString("formatFont"))) {
             if (fontDialog == null)
-                fontDialog = new FontChooserIT(ta.getFont());
+                fontDialog = new FontChooser(ta.getFont());
 
-            if (fontDialog.showDialog(FNotepadIT.this.f, "Seleziona il carattere"))
-                FNotepadIT.this.ta.setFont(fontDialog.createFont());
+            if (fontDialog.showDialog(FNotepad.this.f, bundle.getString("font.text1")))
+                FNotepad.this.ta.setFont(fontDialog.createFont());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(formatForeground))
+        else if (cmdText.equals(bundle.getString("formatForeground")))
             showForegroundColorDialog();
 ////////////////////////////////////
-        else if (cmdText.equals(formatBackground))
+        else if (cmdText.equals(bundle.getString("formatBackground")))
             showBackgroundColorDialog();
 ////////////////////////////////////
-        else if (cmdText.equals(viewStatusBar)) {
+        else if (cmdText.equals(bundle.getString("viewStatusBar"))) {
             JCheckBoxMenuItem temp = (JCheckBoxMenuItem) ev.getSource();
             statusBar.setVisible(temp.isSelected());
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpAboutFNotepad)) {
-            JOptionPane.showMessageDialog(FNotepadIT.this.f, aboutText, "Tramite FNotepad", JOptionPane.INFORMATION_MESSAGE);
+        else if (cmdText.equals(bundle.getString("helpHelpTopic")))
+            try {
+                loadHelp();
+            } catch (Exception e) {
+            }
+////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("helpHelpoffline")))
+            try {
+                loadHelpoffline();
+            } catch (Exception e) {
+            }
+////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("helpAboutFNotepad"))) {
+            JOptionPane.showMessageDialog(FNotepad.this.f, bundle.getString("aboutText"), bundle.getString("about.text1"), JOptionPane.INFORMATION_MESSAGE);
         }
 ////////////////////////////////////
-        else if (cmdText.equals(filePageSetup)) {
+        else if (cmdText.equals(bundle.getString("filePageSetup"))) {
             showTabulatorDialog();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(LangEN)) {
-            changeLanguageEN();
+        else if (cmdText.equals(bundle.getString("Lang1"))) {
+            changeLanguage1();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(LangDE)) {
-            changeLanguageDE();
+        else if (cmdText.equals(bundle.getString("Lang2"))) {
+            changeLanguage2();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(helpHelpTopic)){
+        else if (cmdText.equals(bundle.getString("helpHelpTopic"))){
             try {
                 loadHelp();
             } catch (Exception e) {
             }
         }
-////////////////////////////////////
-        else if (cmdText.equals(helpHelpoffline))
-            try {
-                loadHelpoffline();
-            } catch (Exception e) {
-            }
+//////////////////////////////////////
+
 /////////////////////////////////////
-        else if (cmdText.equals(commandoopen)) {
+        else if (cmdText.equals(bundle.getString("commandoopen"))) {
             ProcessBuilder pb = new ProcessBuilder( "cmd", "/k", "start");
             ProcessBuilder lt = new ProcessBuilder("konsole", "/k", "start");
             String os = System.getProperty("os.name").toLowerCase();
@@ -300,14 +312,13 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         }
 ////////////////////////////////////
         else {
-            statusBar.setText("Questo comando è attualmente in fase di integrazione");
+            statusBar.setText(bundle.getString("implement.text1"));
         }
     }
     ////////////////////////////////////
     void showTabulatorDialog(){
-
         tabulatorSize = new JDialog();
-        tabulatorSize.setTitle(filePageSetup);
+        tabulatorSize.setTitle(bundle.getString("filePageSetup"));
         tabulatorSize.setBounds(50, 50, 400, 100);
         tabulatorSize.setVisible(true);
         tabulatorSize.setAlwaysOnTop(true);
@@ -342,17 +353,15 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             bcolorChooser = new JColorChooser();
         if (backgroundDialog == null)
             backgroundDialog = JColorChooser.createDialog
-                    (FNotepadIT.this.f,
-                            formatBackground,
+                    (FNotepad.this.f,
+                            bundle.getString("formatBackground"),
                             false,
                             bcolorChooser,
                             new ActionListener() {
                                 public void actionPerformed(ActionEvent evvv) {
-                                    FNotepadIT.this.ta.setBackground(bcolorChooser.getColor());
+                                    FNotepad.this.ta.setBackground(bcolorChooser.getColor());
                                 }
-                            },
-                            null);
-
+                            }, null);
         backgroundDialog.setVisible(true);
     }
     ////////////////////////////////////
@@ -361,13 +370,13 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             fcolorChooser = new JColorChooser();
         if (foregroundDialog == null)
             foregroundDialog = JColorChooser.createDialog
-                    (FNotepadIT.this.f,
-                            formatForeground,
+                    (FNotepad.this.f,
+                            bundle.getString("formatForeground"),
                             false,
                             fcolorChooser,
                             new ActionListener() {
                                 public void actionPerformed(ActionEvent evvv) {
-                                    FNotepadIT.this.ta.setForeground(fcolorChooser.getColor());
+                                    FNotepad.this.ta.setForeground(fcolorChooser.getColor());
                                 }
                             },
                             null);
@@ -375,26 +384,47 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         foregroundDialog.setVisible(true);
     }
     ///////////////////////////////////
-    void changeLanguageEN() {
-        if (!FileOperationIT.saved) return;
-        new FNotepadEN(true);
+    void changeLanguage1() {
+        if (!FileOperation.saved) {
+            fileHandler.saveAsFile();
+        }
+        if (locale == Locale.ENGLISH){
+            new FNotepad(true, Locale.GERMAN);
+        }
+        if (locale == Locale.GERMAN){
+            new FNotepad(true, Locale.ENGLISH);
+        }
+        if (locale == Locale.ITALIAN){
+            new FNotepad(true, Locale.ENGLISH);
+        }
         f.dispose();
     }
     ///////////////////////////////////
-    void changeLanguageDE() {
-        if (!FileOperationIT.saved) return;
-        new FNotepadDE(true);
-        f.dispose();
+    void changeLanguage2() {
+        if (!FileOperation.saved) fileHandler.saveAsFile();
+        if (locale == Locale.ENGLISH){
+            new FNotepad(true, Locale.ITALIAN);
+            f.dispose();
+        }
+        if (locale == Locale.GERMAN){
+            new FNotepad(true, Locale.ITALIAN);
+            f.dispose();
+        }
+        if (locale == Locale.ITALIAN){
+            new FNotepad(true, Locale.GERMAN);
+            f.dispose();
+        }
+        //f.dispose();
     }
     ///////////////////////////////////
     void newWindow() {
-        new FNotepadIT(true);
+        new FNotepad(true, locale);
     }
     ////////////////////////////////////
     void loadHelp() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
-        String url = "https://github.com/fantastic-octo-garbanzo/FNotepad/wiki/Aiuto";
+        String url = bundle.getString("help.URL");
         String os = System.getProperty("os.name").toLowerCase();
         if (os.indexOf("win") >= 0) { // Wenn das Betriebsystem Windows ist
             rt.exec("rundll32 url.dll, FileProtocolHandler " + url);
@@ -414,14 +444,13 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
-
-
+    ////////////////////////////////////
     void loadHelpoffline() throws IOException {
 
         Runtime rt = Runtime.getRuntime();
         //URL url = getClass().getResource("/bin/Hilfe.html");
-        InputStream is = getClass().getResourceAsStream("/bin/Aiuto.html");
-        File temp = File.createTempFile("Aiuto", ".html");
+        InputStream is = getClass().getResourceAsStream(bundle.getString("help.File"));
+        File temp = File.createTempFile(bundle.getString("help.Temp"), ".html");
         temp.deleteOnExit();
         assert is != null;
         try {
@@ -429,6 +458,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         } catch (IOException ex) {
         }
         URL url = Paths.get(temp.getPath()).toUri().toURL();
+
 
         String os = System.getProperty("os.name").toLowerCase();
         if (os.contains("win")) { // Wenn das Betriebsystem Windows ist
@@ -482,70 +512,71 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
     }
     /*********************************/
     void createMenuBar(JFrame f) {
+
         JMenuBar mb = new JMenuBar(); // Menü-Leiste
         JMenuItem temp;
 
-        JMenu fileMenu = createMenu(fileText, KeyEvent.VK_F, mb);
-        JMenu editMenu = createMenu(editText, KeyEvent.VK_E, mb);
-        JMenu formatMenu = createMenu(formatText, KeyEvent.VK_O, mb);
-        JMenu viewMenu = createMenu(viewText, KeyEvent.VK_V, mb);
-        JMenu helpMenu = createMenu(helpText, KeyEvent.VK_H, mb);
-        JMenu changeMenu = createMenu(changeText, KeyEvent.VK_G, mb);
+        JMenu fileMenu = createMenu(bundle.getString("fileText"), KeyEvent.VK_F, mb);
+        JMenu editMenu = createMenu(bundle.getString("editText"), KeyEvent.VK_E, mb);
+        JMenu formatMenu = createMenu(bundle.getString("formatText"), KeyEvent.VK_O, mb);
+        JMenu viewMenu = createMenu(bundle.getString("viewText"), KeyEvent.VK_V, mb);
+        JMenu helpMenu = createMenu(bundle.getString("helpText"), KeyEvent.VK_H, mb);
+        JMenu changeMenu = createMenu(bundle.getString("changeText"), KeyEvent.VK_G, mb);
 
-        createMenuItem(windowNew, KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
-        createMenuItem(fileNew, KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
-        createMenuItem(fileOpen, KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
-        createMenuItem(fileSave, KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
-        createMenuItem(fileSaveAs, KeyEvent.VK_A, fileMenu, this);
+        createMenuItem(bundle.getString("windowNew"), KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
+        createMenuItem(bundle.getString("fileNew"), KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
+        createMenuItem(bundle.getString("fileOpen"), KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
+        createMenuItem(bundle.getString("fileSave"), KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
+        createMenuItem(bundle.getString("fileSaveAs"), KeyEvent.VK_A, fileMenu, this);
         fileMenu.addSeparator();
-        createMenuItem(filePageSetup, KeyEvent.VK_U, fileMenu, this);
+        createMenuItem(bundle.getString("filePageSetup"), KeyEvent.VK_U, fileMenu, this);
         fileMenu.addSeparator();
-        temp = createMenuItem(filePrint, KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp = createMenuItem(bundle.getString("filePrint"), KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         temp.setEnabled(false);
         fileMenu.addSeparator();
-        createMenuItem(fileExit, KeyEvent.VK_X, fileMenu, this);
+        createMenuItem(bundle.getString("fileExit"), KeyEvent.VK_X, fileMenu, this);
 
-        temp = createMenuItem(editUndo, KeyEvent.VK_U, editMenu, KeyEvent.VK_Z, this);
+        temp = createMenuItem(bundle.getString("editUndo"), KeyEvent.VK_U, editMenu, KeyEvent.VK_Z, this);
         temp.setEnabled(false);
         editMenu.addSeparator();
-        cutItem = createMenuItem(editCut, KeyEvent 	.VK_T, editMenu, KeyEvent.VK_X, this);
-        copyItem = createMenuItem(editCopy, KeyEvent.VK_C, editMenu, KeyEvent.VK_C, this);
-        createMenuItem(editPaste, KeyEvent.VK_P, editMenu, KeyEvent.VK_V, this);
-        deleteItem = createMenuItem(editDelete, KeyEvent.VK_L, editMenu, this);
+        cutItem = createMenuItem(bundle.getString("editCut"), KeyEvent 	.VK_T, editMenu, KeyEvent.VK_X, this);
+        copyItem = createMenuItem(bundle.getString("editCopy"), KeyEvent.VK_C, editMenu, KeyEvent.VK_C, this);
+        createMenuItem(bundle.getString("editPaste"), KeyEvent.VK_P, editMenu, KeyEvent.VK_V, this);
+        deleteItem = createMenuItem(bundle.getString("editDelete"), KeyEvent.VK_L, editMenu, this);
         deleteItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));
         editMenu.addSeparator();
-        findItem = createMenuItem(editFind, KeyEvent.VK_F, editMenu, KeyEvent.VK_F, this);
-        findNextItem = createMenuItem(editFindNext, KeyEvent.VK_N, editMenu, this);
+        findItem = createMenuItem(bundle.getString("editFind"), KeyEvent.VK_F, editMenu, KeyEvent.VK_F, this);
+        findNextItem = createMenuItem(bundle.getString("editFindNext"), KeyEvent.VK_N, editMenu, this);
         findNextItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
-        replaceItem = createMenuItem(editReplace, KeyEvent.VK_R, editMenu, KeyEvent.VK_H, this);
-        gotoItem = createMenuItem(editGoTo, KeyEvent.VK_G, editMenu, KeyEvent.VK_G, this);
+        replaceItem = createMenuItem(bundle.getString("editReplace"), KeyEvent.VK_R, editMenu, KeyEvent.VK_H, this);
+        gotoItem = createMenuItem(bundle.getString("editGoTo"), KeyEvent.VK_G, editMenu, KeyEvent.VK_G, this);
         editMenu.addSeparator();
-        selectAllItem = createMenuItem(editSelectAll, KeyEvent.VK_A, editMenu, KeyEvent.VK_A, this);
-        createMenuItem(editTimeDate, KeyEvent.VK_D, editMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
-        createMenuItem(commandoopen, KeyEvent.VK_E, editMenu, KeyEvent.VK_T, this);
+        selectAllItem = createMenuItem(bundle.getString("editSelectAll"), KeyEvent.VK_A, editMenu, KeyEvent.VK_A, this);
+        createMenuItem(bundle.getString("editTimeDate"), KeyEvent.VK_D, editMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+        createMenuItem(bundle.getString("commandoopen"), KeyEvent.VK_E, editMenu, KeyEvent.VK_T, this);
 
-        createCheckBoxMenuItem(formatWordWrap, KeyEvent.VK_W, formatMenu, this);
+        createCheckBoxMenuItem(bundle.getString("formatWordWrap"), KeyEvent.VK_W, formatMenu, this);
 
-        createMenuItem(formatFont, KeyEvent.VK_F, formatMenu, this);
+        createMenuItem(bundle.getString("formatFont"), KeyEvent.VK_F, formatMenu, this);
         formatMenu.addSeparator();
-        createMenuItem(formatForeground, KeyEvent.VK_T, formatMenu, this);
-        createMenuItem(formatBackground, KeyEvent.VK_P, formatMenu, this);
+        createMenuItem(bundle.getString("formatForeground"), KeyEvent.VK_T, formatMenu, this);
+        createMenuItem(bundle.getString("formatBackground"), KeyEvent.VK_P, formatMenu, this);
 
-        createCheckBoxMenuItem(viewStatusBar, KeyEvent.VK_S, viewMenu, this).setSelected(true);
+        createCheckBoxMenuItem(bundle.getString("viewStatusBar"), KeyEvent.VK_S, viewMenu, this).setSelected(true);
 /************For Look and Feel, May not work properly on different operating environment***/
-        LookAndFeelMenuIT.createLookAndFeelMenuItem(viewMenu, this.f);
+        LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
 
-        createMenuItem(helpHelpTopic, KeyEvent.VK_H, helpMenu, this);
-        createMenuItem(helpHelpoffline, KeyEvent.VK_H, helpMenu, this);
+        createMenuItem(bundle.getString("helpHelpTopic"), KeyEvent.VK_H, helpMenu, this);
+        createMenuItem(bundle.getString("helpHelpoffline"), KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
-        createMenuItem(helpAboutFNotepad, KeyEvent.VK_A, helpMenu, this);
+        createMenuItem(bundle.getString("helpAboutFNotepad"), KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(LangEN, KeyEvent.VK_G, changeMenu, this);
-        createMenuItem(LangDE, KeyEvent.VK_Y, changeMenu, this);
+        createMenuItem(bundle.getString("Lang1"), KeyEvent.VK_G, changeMenu, this);
+        createMenuItem(bundle.getString("Lang2"), KeyEvent.VK_Y, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
-                if (FNotepadIT.this.ta.getText().length() == 0) {
+                if (FNotepad.this.ta.getText().length() == 0) {
                     findItem.setEnabled(false);
                     findNextItem.setEnabled(false);
                     replaceItem.setEnabled(false);
@@ -558,7 +589,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                     selectAllItem.setEnabled(true);
                     gotoItem.setEnabled(true);
                 }
-                if (FNotepadIT.this.ta.getSelectionStart() == ta.getSelectionEnd()) {
+                if (FNotepad.this.ta.getSelectionStart() == ta.getSelectionEnd()) {
                     cutItem.setEnabled(false);
                     copyItem.setEnabled(false);
                     deleteItem.setEnabled(false);
@@ -568,6 +599,7 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
                     deleteItem.setEnabled(true);
                 }
             }
+
             public void menuDeselected(MenuEvent evvvv) {
             }
 
@@ -577,10 +609,9 @@ public class FNotepadIT implements ActionListener, MenuConstantsIT {
         editMenu.addMenuListener(editMenuListener);
         f.setJMenuBar(mb);
     }
-
     /*************Constructor**************/
 ////////////////////////////////////
     public static void main(String[] s) {
-        new FNotepadIT(true);
+        new FNotepad(true, Locale.GERMAN);
     }
 }
