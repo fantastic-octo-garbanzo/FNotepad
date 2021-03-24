@@ -160,6 +160,9 @@ public class FNotepad implements ActionListener {
         if (cmdText.equals(bundle.getString("windowNew")))
             newWindow();
 ////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("tabNew")))
+            new Tabs();
+////////////////////////////////////
         else if (cmdText.equals(bundle.getString("fileNew")))
             fileHandler.newFile();
 ////////////////////////////////////
