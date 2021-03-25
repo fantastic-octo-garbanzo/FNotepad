@@ -2,21 +2,14 @@ package src;
 // Imports
 import src.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
+import javax.swing.border.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.nio.file.*;
+import java.util.*;
 
 /************************************/
 
@@ -44,6 +37,7 @@ public class FNotepad implements ActionListener {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JTabbedPane tabbedPane;
+    Tabs tabs;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
@@ -58,6 +52,7 @@ public class FNotepad implements ActionListener {
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
 
+        ta = new JTextArea(65, 150);
         createJPanel();
         statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
@@ -69,7 +64,7 @@ public class FNotepad implements ActionListener {
         tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPane.add(createJPanel(), fileName, tabCount++);
         tabbedPane.addChangeListener(changeListener);
-        f.add(tabbedPane);
+        f.add(tabbedPane, BorderLayout.CENTER);
 
         f.pack();
         f.setVisible(true);
@@ -89,7 +84,6 @@ public class FNotepad implements ActionListener {
                             String text = ta.getText();
                             String textTabs = ta.getText();
                             for(char c : textTabs.toCharArray()){
-                                System.out.println(c);
                                 if("\t".equals(""+c)){
                                     letterCount = letterCount + tabSize;
                                 }
@@ -151,9 +145,14 @@ public class FNotepad implements ActionListener {
     private JPanel createJPanel() {
         JPanel panel = new JPanel(new GridLayout(1, 1));
         panel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        panel.setBorder(new EmptyBorder(5, 2, 2, 2));
+        panel.setBorder(new EmptyBorder(2, 2, 2, 2));
         panel.setOpaque(false);
-        panel.add(new JScrollPane(ta = new JTextArea(30, 60)));
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth() / 10 - 20;
+        double height = screenSize.getHeight() / 10 - 40;
+        //System.out.println("width" + width + ", height" + height);
+        panel.setSize(width, height);
+        panel.add(new JScrollPane(ta), BorderLayout.CENTER);
         panel.add(new CustomButton("x"));
         return panel;
     }
@@ -249,7 +248,7 @@ public class FNotepad implements ActionListener {
             newWindow();
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("tabNew")))
-            newTab();
+            tabs.addNewTab();
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("fileNew")))
             fileHandler.newFile();

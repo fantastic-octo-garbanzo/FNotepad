@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 /************************************/
-class Tabs extends JFrame {
+public class Tabs extends JFrame {
     JTabbedPane tabbedPane;
     int tabCount;
 
@@ -55,7 +55,7 @@ class Tabs extends JFrame {
         }
     };
 
-    private void addNewTab() {
+    public void addNewTab() {
         int index = tabCount - 1;
         if (tabbedPane.getSelectedIndex() == index) {
             tabbedPane.add(createJPanel(), "Tab " + String.valueOf(index), index);
@@ -83,7 +83,7 @@ class Tabs extends JFrame {
     }
 }
 /************************************/
-public class CustomTab extends JPanel {
+class CustomTab extends JPanel {
 
     JTabbedPane tabbedPane = new JTabbedPane();
     Tabs customTabbedPane;
