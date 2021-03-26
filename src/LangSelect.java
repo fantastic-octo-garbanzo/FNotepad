@@ -8,7 +8,7 @@ import java.util.Locale;
 
 /**********/
 
-// Beginn der Klasse FNotepad
+// Beginn der Klasse LangSelect
 public class LangSelect extends JFrame{
 
     // Holt die Bildschrimgröße ohne Taskbar

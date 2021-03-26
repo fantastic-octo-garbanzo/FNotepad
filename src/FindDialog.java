@@ -1,11 +1,9 @@
 package src;
 // Imports
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
-import src.*;
 /******************************************************/
 class FindReplaceDemo extends JFrame {
 	FindDialog dialog = null;

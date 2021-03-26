@@ -3,7 +3,6 @@ package src;
 import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
-import src.*;
 
 class FileOperationExample extends JFrame {
     JMenuBar mb;
