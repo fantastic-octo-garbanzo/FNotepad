@@ -403,6 +403,9 @@ public class FNotepad implements ActionListener {
         if (locale == Locale.ITALIAN){
             new FNotepad(true, Locale.ENGLISH);
         }
+        if (locale == Locale.FRANCE){
+            new FNotepad(true, Locale.ENGLISH);
+        }
         f.dispose();
     }
     ///////////////////////////////////
@@ -418,6 +421,10 @@ public class FNotepad implements ActionListener {
         }
         if (locale == Locale.ITALIAN){
             new FNotepad(true, Locale.GERMAN);
+            f.dispose();
+        }
+        if (locale == Locale.FRANCE){
+            new FNotepad(true, Locale.ITALIAN);
             f.dispose();
         }
         //f.dispose();
