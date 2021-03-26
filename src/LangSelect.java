@@ -121,9 +121,9 @@ public class LangSelect extends JFrame{
                 if (ch.getSelectedItem().equals("a schermo intero")) {new FNotepad(true, Locale.ITALIAN);}
                 if (ch.getSelectedItem().equals("finestrato")) {new FNotepad(false, Locale.ITALIAN);}
             }
-            if(c.getSelectedItem().equals("Franz\u00F6sisch")){
-                if (ch.getSelectedItem().equals("Plein écran")) {new FNotepad(true, Locale.FRANCE);}
-                if (ch.getSelectedItem().equals("Mode fenêtre")) {new FNotepad(false, Locale.FRANCE);}
+            if(c.getSelectedItem().equals("Fran\u00E7ais")){
+                if (ch.getSelectedItem().equals("Plein écran")) {new FNotepad(true, Locale.FRENCH);}
+                if (ch.getSelectedItem().equals("Mode fenêtre")) {new FNotepad(false, Locale.FRENCH);}
             }
             if(c.getSelectedItem().equals("English")){
                 if (ch.getSelectedItem().equals("fullscreen")) {new FNotepad(true, Locale.ENGLISH);}
