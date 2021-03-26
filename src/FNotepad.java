@@ -293,6 +293,10 @@ public class FNotepad implements ActionListener {
             changeLanguage2();
         }
 ////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("Lang3"))) {
+            changeLanguage3();
+        }
+////////////////////////////////////
         else if (cmdText.equals(bundle.getString("helpHelpTopic"))){
             try {
                 loadHelp();
@@ -394,16 +398,16 @@ public class FNotepad implements ActionListener {
         if (!FileOperation.saved) {
             fileHandler.saveAsFile();
         }
-        if (locale == Locale.ENGLISH){
+        if (locale == Locale.ENGLISH) {
             new FNotepad(true, Locale.GERMAN);
         }
-        if (locale == Locale.GERMAN){
+        if (locale == Locale.GERMAN) {
             new FNotepad(true, Locale.ENGLISH);
         }
-        if (locale == Locale.ITALIAN){
+        if (locale == Locale.ITALIAN) {
             new FNotepad(true, Locale.ENGLISH);
         }
-        if (locale == Locale.FRANCE){
+        if (locale == Locale.FRANCE) {
             new FNotepad(true, Locale.ENGLISH);
         }
         f.dispose();
@@ -411,23 +415,36 @@ public class FNotepad implements ActionListener {
     ///////////////////////////////////
     void changeLanguage2() {
         if (!FileOperation.saved) fileHandler.saveAsFile();
-        if (locale == Locale.ENGLISH){
+        if (locale == Locale.ENGLISH) {
             new FNotepad(true, Locale.ITALIAN);
-            f.dispose();
         }
-        if (locale == Locale.GERMAN){
+        if (locale == Locale.GERMAN) {
             new FNotepad(true, Locale.ITALIAN);
-            f.dispose();
         }
-        if (locale == Locale.ITALIAN){
+        if (locale == Locale.ITALIAN) {
             new FNotepad(true, Locale.GERMAN);
-            f.dispose();
         }
-        if (locale == Locale.FRANCE){
+        if (locale == Locale.FRENCH) {
+            new FNotepad(true, Locale.GERMAN);
+        }
+        f.dispose();
+    }
+    ///////////////////////////////////
+    void changeLanguage3() {
+        if (!FileOperation.saved) fileHandler.saveAsFile();
+        if (locale == locale.ENGLISH) {
+            new FNotepad(true, Locale.FRENCH);
+        }
+        if (locale == Locale.GERMAN) {
+            new FNotepad(true, Locale.FRENCH);
+        }
+        if (locale == Locale.ITALIAN) {
+            new FNotepad(true, Locale.FRENCH);
+        }
+        if (locale == Locale.FRENCH) {
             new FNotepad(true, Locale.ITALIAN);
-            f.dispose();
         }
-        //f.dispose();
+        f.dispose();
     }
     ///////////////////////////////////
     void newWindow() {
@@ -611,6 +628,7 @@ public class FNotepad implements ActionListener {
 
         createMenuItem(bundle.getString("Lang1"), KeyEvent.VK_G, changeMenu, this);
         createMenuItem(bundle.getString("Lang2"), KeyEvent.VK_Y, changeMenu, this);
+        createMenuItem(bundle.getString("Lang3"), KeyEvent.VK_F, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
