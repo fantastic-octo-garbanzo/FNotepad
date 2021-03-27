@@ -621,7 +621,6 @@ public class FNotepad implements ActionListener {
         createMenuItem(bundle.getString("Lang1"), KeyEvent.VK_G, changeMenu, this);
         createMenuItem(bundle.getString("Lang2"), KeyEvent.VK_Y, changeMenu, this);
         createMenuItem(bundle.getString("Lang3"), KeyEvent.VK_F, changeMenu, this);
-        createMenuItem(bundle.getString("Lang4"), KeyEvent.VK_F, changeMenu, this);
 
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
