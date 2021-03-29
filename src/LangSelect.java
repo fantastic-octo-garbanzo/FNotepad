@@ -8,10 +8,8 @@ import java.util.Locale;
 
 /**********/
 
-// Beginn der Klasse LangSelect
-public class LangSelect extends JFrame{
-
-    // Holt die Bildschrimgröße ohne Taskbar
+// Begin of class LangSelect
+public class LangSelect extends JFrame {
     public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = screenSize.width;
@@ -22,26 +20,24 @@ public class LangSelect extends JFrame{
     }
 
     public LangSelect(){
-        setTitle("Language - FNotepad"); // Titel
-        JLabel l = new JLabel("Welcome to FNotepad"); // Text über Auswahlmenü
+        setTitle("Language - FNotepad");
+        JLabel l = new JLabel("Welcome to FNotepad");
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
 
-
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
-        // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
 
-        // Button zur Auswahlbestätigung
+        // choose language button
         JButton b = new JButton("Choose Language");
         b.setBounds(200,300, 200,50);
 
-        // Button zum Abbrechen
+        // cancel button
         JButton a = new JButton("Cancel");
         a.setBounds(200, 375, 200, 50);
 
-        // Auswahlmenü
+        // Menu
         String[] languagesList = {"English", "Deutsch", "Italiano", "Fran\u00E7ais"};
         String[] windowList = {"fullscreen", "windowed"};
 
@@ -65,10 +61,9 @@ public class LangSelect extends JFrame{
         setLayout(null);
         setVisible(true);
 
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Öffnet Fenster im Vollbild
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         c.addItemListener(ie -> {
-            // Wenn Deutsch ausgewählt ist, wird alles auf Deutsch gesetzt
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
                 setTitle("FNotepad - Sprache");
@@ -78,7 +73,6 @@ public class LangSelect extends JFrame{
                 ch.addItem("Vollbild");
                 ch.addItem("Fenstermodus");
             }
-            //Wenn Italienisch ausgewählt ist, wird alles auf Italienisch gesetzt
             if(c.getSelectedItem().equals("Italiano")) {
                 l.setText("Benvenuto in FNotepad!");
                 setTitle("FNotepad - Lingua");
@@ -88,7 +82,6 @@ public class LangSelect extends JFrame{
                 ch.addItem("a schermo intero");
                 ch.addItem("finestrato");
             }
-            //Wenn Französisch ausgewählt ist, wird alles auf Französisch gesetzt
             if(c.getSelectedItem().equals("Fran\u00E7ais")) {
                 l.setText("Benvenuto in FNotepad!");
                 setTitle("FNotepad - Langue");
@@ -98,7 +91,6 @@ public class LangSelect extends JFrame{
                 ch.addItem("Plein écran");
                 ch.addItem("Mode fenêtre");
             }
-            // Wenn Englisch ausgewählt ist, wird alles auf Englisch gesetzt
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
                 setTitle("FNotepad - Language");
@@ -110,8 +102,6 @@ public class LangSelect extends JFrame{
             }
             });
 
-
-        // Wenn der Auswahl-Button gedrückt wurde
         b.addActionListener(e -> {
             if(c.getSelectedItem().equals("Deutsch")){
                 if (ch.getSelectedItem().equals("Vollbild")) {new FNotepad(true, Locale.GERMAN);}
@@ -129,17 +119,13 @@ public class LangSelect extends JFrame{
                 if (ch.getSelectedItem().equals("fullscreen")) {new FNotepad(true, Locale.ENGLISH);}
                 if (ch.getSelectedItem().equals("windowed")) {new FNotepad(false, Locale.ENGLISH);}
             }
-
             dispose();
         });
-        a.addActionListener((ActionEvent actionEvent) ->
-        {
+        a.addActionListener((ActionEvent actionEvent) -> {
             System.exit(0);
             setVisible(false);
         });
-
     }
-
     public static void main(String[] args) {
         new LangSelect();
     }
