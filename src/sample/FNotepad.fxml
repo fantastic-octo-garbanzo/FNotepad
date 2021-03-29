@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="%fileText">
+          <items>
+            <MenuItem mnemonicParsing="false" text="%fileNew" fx:id="fileNew" onAction="#newTab"/>
+            <MenuItem mnemonicParsing="false" text="%fileOpen" fx:id="fileOpen"/>
+            <MenuItem mnemonicParsing="false" text="%fileSave" fx:id="fileSave"/>
+            <MenuItem mnemonicParsing="false" text="%fileSaveAs" fx:id="fileSaveAs"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="%filePageSetup" fx:id="filepageSetup"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="%filePrint" fx:id="filePrint"/>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="%fileExit" fx:id="fileExit" onAction="#exit"/>
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="%editText">
+          <items>
+            <MenuItem mnemonicParsing="false" text="%editUndo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="%editCut" />
+            <MenuItem mnemonicParsing="false" text="%editCopy" />
+            <MenuItem mnemonicParsing="false" text="%editPaste" />
+            <MenuItem mnemonicParsing="false" text="%editDelete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="%editFind" />
+                  <MenuItem mnemonicParsing="false" text="%editFindNext" />
+                  <MenuItem mnemonicParsing="false" text="%editReplace" />
+            <MenuItem mnemonicParsing="false" text="%editGoTo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="%editSelectAll" />
+                  <MenuItem mnemonicParsing="false" text="%editTimeDate" />
+                  <MenuItem mnemonicParsing="false" text="%commandoopen" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="%formatText" >
+          <items>
+                  <CheckMenuItem mnemonicParsing="false" text="%formatWordWrap" />
+            <MenuItem mnemonicParsing="false" text="%formatFont" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="%formatText" />
+                  <MenuItem mnemonicParsing="false" text="%formatBackground" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="%viewText">
+               <items>
+                  <CheckMenuItem mnemonicParsing="false" text="%viewStatusBar" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%helpText">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="%website" fx:id="helpWebsite" onAction="#loadwebsite"/>
+                  <MenuItem mnemonicParsing="false" text="%helpHelpoffline" fx:id="helpHelpOffline" onAction="#loadHelpoffline"/>
+                  <MenuItem mnemonicParsing="false" text="%helpHelpTopic" fx:id="helpHelpTopic" onAction="#loadHelp"/>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="%helpAboutFNotepad" fx:id="helpAboutFNotepad" onAction="#loadHelpAboutFNotepad"/>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%changeText" >
+               <items>
+                  <MenuItem mnemonicParsing="false" text="%Lang1" fx:id="lang1" onAction="#changeLang1"/>
+                  <MenuItem mnemonicParsing="false" text="%Lang2" fx:id="lang2" onAction="#changeLang2"/>
+                  <MenuItem mnemonicParsing="false" text="%Lang3" fx:id="lang3" onAction="#changeLang3"/>
+               </items>
+            </Menu>
+      </menus>
+    </MenuBar>
+      <TabPane prefHeight="1020.0" prefWidth="1920.0" fx:id="tabPane" >
+        <tabs>
+          <Tab text="%fileName" onSelectionChanged="#updateTitle">
+               <content>
+                  <TextArea prefHeight="910.0" prefWidth="1920.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label alignment="BASELINE_RIGHT" prefHeight="41.0" prefWidth="1913.0" text="%statusbar.init2" />
+  </children>
+</VBox>
