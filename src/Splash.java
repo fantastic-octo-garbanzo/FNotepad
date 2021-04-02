@@ -7,11 +7,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.net.URL;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JWindow;
+import javax.swing.*;
 
 public class Splash extends JWindow {
 
@@ -22,7 +18,7 @@ public class Splash extends JWindow {
 
     public Splash()
     {
-        infoLabel = new JLabel("Ladebildschirm");
+        infoLabel = new JLabel("FNotepad");
         URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon logo = new ImageIcon(iconurl);
         container = this.getContentPane();
@@ -48,8 +44,40 @@ public class Splash extends JWindow {
         int x = (dim.width-w)/2;
         int y = (dim.height-h)/2;
         setBounds(30, 80, 800, 600);
+        setLocationRelativeTo(null);
         setEnabled(true);
         setVisible(true);
+
+        // JProgressBar-Objekt wird erzeugt
+        JProgressBar meinLadebalken = new JProgressBar(0, 100);
+
+        // Wert für den Ladebalken wird gesetzt
+        meinLadebalken.setValue(0);
+
+        // Der aktuelle Wert wird als
+        // Text in Prozent angezeigt
+        meinLadebalken.setStringPainted(true);
+
+        // JProgressBar wird Panel hinzugefügt
+        panel.add(meinLadebalken);
+
+        container.add(panel);
+        container.setVisible(true);
+
+        // Wert des Ladebalkens wird in der Schleife
+        // bei jedem Durchgang um 1 erhöht bis der
+        // maximale Wert erreicht ist
+        for(int i=0; i<=meinLadebalken.getMaximum(); i++){
+            meinLadebalken.setValue(i);
+            try {
+                // aktueller Thread pausiert
+                // für 50 Millisekunden
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     public void showSplash()
