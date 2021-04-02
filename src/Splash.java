@@ -6,7 +6,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.net.URL;
-import java.awt.GridBagLayout;
 import javax.swing.*;
 
 public class Splash extends JWindow {
