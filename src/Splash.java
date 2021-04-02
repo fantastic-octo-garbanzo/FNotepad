@@ -51,6 +51,10 @@ public class Splash extends JWindow {
         // JProgressBar-Objekt wird erzeugt
         JProgressBar meinLadebalken = new JProgressBar(0, 100);
 
+        //Größe für JProgressBar wird festgelegt
+        meinLadebalken.setSize(800, 20);
+
+
         // Wert für den Ladebalken wird gesetzt
         meinLadebalken.setValue(0);
 
