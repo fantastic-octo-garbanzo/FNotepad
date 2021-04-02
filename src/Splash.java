@@ -6,7 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.net.URL;
-
+import java.awt.GridBagLayout;
 import javax.swing.*;
 
 public class Splash extends JWindow {
@@ -49,29 +49,28 @@ public class Splash extends JWindow {
         setVisible(true);
 
         // JProgressBar-Objekt wird erzeugt
-        JProgressBar meinLadebalken = new JProgressBar(0, 100);
+        JProgressBar progress = new JProgressBar(0, 100);
 
         //Größe für JProgressBar wird festgelegt
-        meinLadebalken.setSize(800, 20);
-
+        progress.setSize(800, 20);
 
         // Wert für den Ladebalken wird gesetzt
-        meinLadebalken.setValue(0);
+        progress.setValue(0);
 
         // Der aktuelle Wert wird als
         // Text in Prozent angezeigt
-        meinLadebalken.setStringPainted(true);
+        progress.setStringPainted(true);
 
         // JProgressBar wird Panel hinzugefügt
-        panel.add(meinLadebalken);
+        panel.add(progress);
 
         container.add(panel);
 
         // Wert des Ladebalkens wird in der Schleife
         // bei jedem Durchgang um 1 erhöht bis der
         // maximale Wert erreicht ist
-        for(int i=0; i<=meinLadebalken.getMaximum(); i++){
-            meinLadebalken.setValue(i);
+        for(int i=0; i<=progress.getMaximum(); i++){
+            progress.setValue(i);
             try {
                 // aktueller Thread pausiert
                 // für 50 Millisekunden
