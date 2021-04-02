@@ -62,7 +62,6 @@ public class Splash extends JWindow {
         panel.add(meinLadebalken);
 
         container.add(panel);
-        container.setVisible(true);
 
         // Wert des Ladebalkens wird in der Schleife
         // bei jedem Durchgang um 1 erhöht bis der
