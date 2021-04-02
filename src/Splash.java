@@ -55,6 +55,7 @@ public class Splash extends JWindow {
     public void showSplash()
     {
         setVisible(true);
+        dispose();
     }
 
     public void updateInfoLabel(String info)
