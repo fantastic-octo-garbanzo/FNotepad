@@ -14,6 +14,7 @@ public class Splash extends JWindow {
     public JLabel label;
     public JLabel infoLabel ;
     public JPanel panel;
+    public JProgressBar progress;
 
     public Splash()
     {
@@ -44,7 +45,6 @@ public class Splash extends JWindow {
         int y = (dim.height-h)/2;
         setBounds(30, 80, 800, 600);
         setLocationRelativeTo(null);
-        setEnabled(true);
         setVisible(true);
 
         // JProgressBar-Objekt wird erzeugt
