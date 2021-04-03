@@ -14,7 +14,6 @@ public class Splash extends JWindow {
     public JLabel label;
     public JLabel infoLabel ;
     public JPanel panel;
-    public JProgressBar progress;
 
     public Splash()
     {
