@@ -8,9 +8,7 @@ import java.awt.Toolkit;
 import java.net.URL;
 import javax.swing.*;
 
-public class Splash extends JWindow {
-
-    public Container container;
+public class Splash extends JWindow {public Container container;
     public JLabel label;
     public JLabel infoLabel ;
     public JPanel panel;
