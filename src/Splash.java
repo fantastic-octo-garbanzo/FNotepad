@@ -49,7 +49,7 @@ public class Splash extends JWindow {
         setVisible(true);
 
         // JProgressBar-Objekt wird erzeugt
-        JProgressBar progress = new JProgressBar(0, 100);
+        JProgressBar progress = new JProgressBar(0, 30);
 
         //Größe für JProgressBar wird festgelegt
         progress.setSize(800, 20);
