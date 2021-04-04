@@ -1,4 +1,4 @@
-package src.sample;
+package sample;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sample.ConfirmBox;
 
 import java.io.IOException;
 import java.util.Locale;
