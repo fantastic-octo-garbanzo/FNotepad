@@ -10,14 +10,6 @@ import java.util.Locale;
 
 // Begin of class LangSelect
 public class LangSelect extends JFrame {
-    public static Dimension getScreenDimensionWithoutTaskbar(Frame frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = screenSize.width;
-        int height = screenSize.height;
-        Insets screenInsets = Toolkit.getDefaultToolkit().getScreenInsets(frame.getGraphicsConfiguration());
-        int taskBarSize = screenInsets.bottom;
-        return new Dimension(width, height - taskBarSize);
-    }
 
     public LangSelect(){
         setTitle("Language - FNotepad");
@@ -125,6 +117,7 @@ public class LangSelect extends JFrame {
             System.exit(0);
             setVisible(false);
         });
+
     }
     public static void main(String[] args) {
         new Splash().showSplash();
