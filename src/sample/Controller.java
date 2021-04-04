@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,8 +22,9 @@ import static sample.Main.loader;
 import static sample.Main.window;
 
 
-public class Controller {
+public class Controller extends BaseView{
     public static Locale currentLocale;
+
 
     public MenuItem lang1, lang2, lang3;
 
@@ -61,8 +60,7 @@ public class Controller {
         if(getLang1().getText().equals("Fran\u00E7ais")){
             currentLocale = new Locale("fr");
         }
-        loader = new FXMLLoader(getClass().getResource("FNotepad.fxml"), ResourceBundle.getBundle("sample.Main", currentLocale));
-        window.setScene(new Scene(loader.load()));
+        this.langProperty().changeLocale(currentLocale);
     }
     public void changeLang2() throws IOException {
         if(getLang2().getText().equals("Deutsch")){
@@ -199,6 +197,6 @@ public class Controller {
 
     public void updateTitle(Event event) {
         event.consume();
-        window.setTitle(tabPane.getSelectionModel().getSelectedItem().getText() + " - Fnotepad");
+        window.setTitle(tabPane.getSelectionModel().getSelectedItem().getText() + " - FNotepad");
     }
 }

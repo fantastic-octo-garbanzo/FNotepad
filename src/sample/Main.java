@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -34,6 +35,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+
+
+
         window = stage;
 
 
@@ -103,7 +107,10 @@ public class Main extends Application {
         window.setTitle("Language - FNotepad");
         window.setMaximized(true);
         window.show();
-        window.setOnCloseRequest(e -> close());
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            close();
+        });
 
     }
 
