@@ -18,6 +18,7 @@ public class Splash extends JWindow {
 
     public Splash()
     {
+        infoLabel = new JLabel("FNotepad");
         URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon logo = new ImageIcon(iconurl);
         container = this.getContentPane();
@@ -25,11 +26,12 @@ public class Splash extends JWindow {
 
         label = new JLabel(logo);
 
-        panel = new JPanel();
+        panel = new JPanel(new BorderLayout());
 
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
 
         panel.add(label, BorderLayout.CENTER);
+        panel.add(infoLabel, BorderLayout.SOUTH) ;
 
         container.add(panel);
 
