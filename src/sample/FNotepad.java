@@ -116,7 +116,7 @@ public class FNotepad extends BaseView {
                 return new Scene(loader.load());
             }
 
-            public static void close() {
+            public  void close() {
                 if (ConfirmBox.display("Close?", "Are you sure, you want to close this application??")) window.close();
             }
         };
