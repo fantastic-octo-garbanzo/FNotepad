@@ -1,4 +1,4 @@
-package sample;
+package src.sample;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;

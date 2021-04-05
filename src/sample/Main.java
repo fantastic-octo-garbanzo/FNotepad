@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sample.ConfirmBox;
+import src.sample.ConfirmBox;
 
 import java.io.IOException;
 import java.util.Locale;
