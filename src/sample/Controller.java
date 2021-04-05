@@ -1,4 +1,4 @@
-package sample;
+package src.sample;
 
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +18,8 @@ import java.nio.file.StandardCopyOption;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static sample.Main.loader;
-import static sample.Main.window;
+import static src.sample.Main.loader;
+import static src.sample.Main.window;
 
 
 public class Controller extends BaseView{

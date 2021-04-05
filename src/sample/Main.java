@@ -1,4 +1,4 @@
-package sample;
+package src.sample;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static sample.Controller.currentLocale;
+import static src.sample.Controller.currentLocale;
 
 
 public class Main extends Application {
