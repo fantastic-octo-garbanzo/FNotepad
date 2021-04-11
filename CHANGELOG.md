@@ -1,6 +1,5 @@
 # FNotepad Changelog
 
-
 ## FNotepad [v1.4.0][0] (2021-03-20)
 
 ### Added
@@ -137,9 +136,3 @@
 [3]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.1
 [2]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.0
 [1]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.0.0
-
-
-
-
-
-
