@@ -613,7 +613,7 @@ public class FNotepad implements ActionListener {
         LookAndFeelMenu.createLookAndFeelMenuItem(viewMenu, this.f);
 
         createMenuItem(bundle.getString("website"), KeyEvent.VK_H, helpMenu, this);
-        createMenuItem(bundle.getString("helpHelpTopic"), KeyEvent.VK_H, helpMenu, this);
+        createMenuItem(bundle.getString("helpHelpTopic"), KeyEvent.VK_H, helpMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
         createMenuItem(bundle.getString("helpHelpoffline"), KeyEvent.VK_H, helpMenu, this);
         helpMenu.addSeparator();
         createMenuItem(bundle.getString("helpAboutFNotepad"), KeyEvent.VK_A, helpMenu, this);
