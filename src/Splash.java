@@ -18,18 +18,20 @@ public class Splash extends JWindow {
 
     public Splash()
     {
-        URL iconurl = getClass().getResource("/bin/FNotepad(It is a copie).jpg");
+        infoLabel = new JLabel("FNotepad 1.4.1");
+        URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon logo = new ImageIcon(iconurl);
         container = this.getContentPane();
         container.setLayout(new BorderLayout());
 
         label = new JLabel(logo);
 
-        panel = new JPanel();
+        panel = new JPanel(new BorderLayout());
 
         panel.setBorder(BorderFactory.createLineBorder(Color.black));
 
         panel.add(label, BorderLayout.CENTER);
+        panel.add(infoLabel, BorderLayout.SOUTH) ;
 
         container.add(panel);
 
@@ -40,16 +42,16 @@ public class Splash extends JWindow {
         int h = getSize().height;
         int x = (dim.width-w)/2;
         int y = (dim.height-h)/2;
-        setBounds(30, 80, 800, 600);
+        setBounds(30, 80, 486, 486);
         setLocationRelativeTo(null);
         setEnabled(true);
         setVisible(true);
 
         // JProgressBar-Objekt wird erzeugt
-        JProgressBar progress = new JProgressBar(0, 30);
+        JProgressBar progress = new JProgressBar(0, 50);
 
         //Größe für JProgressBar wird festgelegt
-        progress.setSize(800, 20);
+        progress.setSize(486, 20);
 
         // Wert für den Ladebalken wird gesetzt
         progress.setValue(0);
