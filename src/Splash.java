@@ -35,6 +35,7 @@ public class Splash extends JWindow {
 
         container.add(panel);
 
+        pack();
 
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
