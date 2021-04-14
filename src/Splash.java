@@ -47,32 +47,27 @@ public class Splash extends JWindow {
         setEnabled(true);
         setVisible(true);
 
-        // JProgressBar-Objekt wird erzeugt
+
         JProgressBar progress = new JProgressBar(0, 50);
 
-        //Größe für JProgressBar wird festgelegt
+
         progress.setSize(486, 20);
 
-        // Wert für den Ladebalken wird gesetzt
+
         progress.setValue(0);
 
-        // Der aktuelle Wert wird als
-        // Text in Prozent angezeigt
+
         progress.setStringPainted(true);
 
-        // JProgressBar wird Panel hinzugefügt
+
         panel.add(progress);
 
         container.add(panel);
 
-        // Wert des Ladebalkens wird in der Schleife
-        // bei jedem Durchgang um 1 erhöht bis der
-        // maximale Wert erreicht ist
+
         for(int i=0; i<=progress.getMaximum(); i++){
             progress.setValue(i);
             try {
-                // aktueller Thread pausiert
-                // für 50 Millisekunden
                 Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
