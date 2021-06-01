@@ -6,7 +6,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.net.URL;
-import java.awt.GridBagLayout;
 import javax.swing.*;
 
 public class Splash extends JWindow {
@@ -68,7 +67,7 @@ public class Splash extends JWindow {
         for(int i=0; i<=progress.getMaximum(); i++){
             progress.setValue(i);
             try {
-                Thread.sleep(50);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

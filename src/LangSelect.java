@@ -1,6 +1,5 @@
 package src;
 // Imports
-import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.net.URL;
@@ -46,7 +45,7 @@ public class LangSelect extends JFrame {
         add(c);
         add(ch);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         setSize(650, 600);
 
