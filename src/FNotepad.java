@@ -300,7 +300,7 @@ public class FNotepad implements ActionListener {
 /////////////////////////////////////
         else if (cmdText.equals(bundle.getString("commandoopen"))) {
             ProcessBuilder pb = new ProcessBuilder( "C:/WINDOWS/system32/cmd.exe", "/c", "start");
-            ProcessBuilder lt = new ProcessBuilder("bash", "/c", "start");
+            ProcessBuilder lt = new ProcessBuilder("x-terminal-emulator", "/c", "start");
             String os = System.getProperty("os.name").toLowerCase();
             try {
                 if (os.indexOf("win") >= 0) {
