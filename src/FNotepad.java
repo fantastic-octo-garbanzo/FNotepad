@@ -17,7 +17,7 @@ public class FNotepad implements ActionListener {
     public static ResourceBundle bundle;
 
     public JFrame f;
-    public JTextArea ta;
+    public JTextArea ta, tb;
     public JLabel statusBar;
     int tabSize = 4;
 
@@ -42,14 +42,26 @@ public class FNotepad implements ActionListener {
         this.fileName = bundle.getString("fileName");
         f = new JFrame(fileName + " - " + applicationName);
 
+        JPanel p1 = new JPanel();
+        JPanel p2 = new JPanel();
+
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
 
+        JTabbedPane tabbedPane = new JTabbedPane();
+        JToolBar toolBar = new JToolBar();
+
         ta = new JTextArea(30, 60);
+        tabbedPane.add("Tab", p1);
         statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
+        JButton button = new JButton("Neuer Tab");
+        toolBar.add(button);
+        toolBar.addSeparator();
+        toolBar.add(tabbedPane, BorderLayout.NORTH);
+        f.add(toolBar, BorderLayout.NORTH);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
