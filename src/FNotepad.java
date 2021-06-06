@@ -59,7 +59,7 @@ public class FNotepad implements ActionListener {
         f.pack();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        if(!fullscreen){f.setExtendedState(JFrame.NORMAL)}
+        if(!fullscreen){f.setExtendedState(JFrame.NORMAL);}
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
