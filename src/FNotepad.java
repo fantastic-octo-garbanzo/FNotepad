@@ -57,10 +57,9 @@ public class FNotepad implements ActionListener {
         createMenuBar(f);
 
         f.pack();
-        f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        if(!fullscreen){f.setSize(800, 600);}
+        if(!fullscreen){f.setExtendedState(JFrame.NORMAL);}
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
