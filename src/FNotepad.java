@@ -54,15 +54,19 @@ public class FNotepad implements ActionListener {
         JToolBar toolBar = new JToolBar();
 
         ta = new JTextArea(30, 60);
+        tb = new JTextArea(30, 60);
         tabbedPane.add("Tab", p1);
+        p1.add(ta);
         statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
+        tb.setTabSize(tabSize);
         JButton button = new JButton("Neuer Tab");
         toolBar.add(button);
         toolBar.addSeparator();
         toolBar.add(tabbedPane, BorderLayout.NORTH);
         f.add(toolBar, BorderLayout.NORTH);
         f.add(new JScrollPane(ta), BorderLayout.CENTER);
+        f.add(new JScrollPane(tb), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
@@ -75,6 +79,9 @@ public class FNotepad implements ActionListener {
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
+/////////////////////
+        button.addActionListener(a -> tabbedPane.addTab("Tab", p2));
+        p2.add(tb);
 /////////////////////
         ta.addCaretListener(
                 new CaretListener() {
@@ -110,6 +117,49 @@ public class FNotepad implements ActionListener {
                         } catch (Exception excp) {
                         }
                         if (ta.getText().length() == 0) {
+                            lineNumber = 0;
+                            column = 0;
+                            wordCount = 0;
+                            letterCount = 0;
+                        }
+                        statusBar.setText(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.work1")+letterCount+bundle.getString("statusbar.work2")+wordCount+bundle.getString("statusbar.work3")+(lineNumber + 1)+bundle.getString("statusbar.work4")+(column + 1));
+                    }
+                });
+//////////////////
+        tb.addCaretListener(
+                new CaretListener() {
+                    public void caretUpdate(CaretEvent e) {
+                        int lineNumber = 0, column = 0, pos = 0, wordCount = 0, letterCount = 0;
+
+                        try {
+                            String text = tb.getText();
+                            String textTabs = tb.getText();
+                            for(char c : textTabs.toCharArray()){
+                                if("\t".equals(""+c)){
+                                    letterCount = letterCount + tabSize;
+                                }
+                                else {
+                                    letterCount++;
+                                }
+                            }
+                            pos = tb.getCaretPosition();
+                            lineNumber = tb.getLineOfOffset(pos);
+                            column = pos - tb.getLineStartOffset(lineNumber);
+                            /**
+                             if (text.length() == '9')
+                             column = column + tabSize;
+                             */
+                            //letterCount = text.length();
+                            wordCount = text.split("\\s").length;
+                            if (!FileOperation.isSave()){
+                                f.setTitle(FileOperation.getFileName() + "* - " + applicationName);
+                            } else {
+                                f.setTitle(FileOperation.getFileName() + " - " + applicationName);
+                            }
+
+                        } catch (Exception excp) {
+                        }
+                        if (tb.getText().length() == 0) {
                             lineNumber = 0;
                             column = 0;
                             wordCount = 0;
