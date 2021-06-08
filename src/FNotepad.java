@@ -1,5 +1,6 @@
 package src;
 // Imports
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -19,6 +20,8 @@ public class FNotepad implements ActionListener {
     public JFrame f;
     public JTextArea ta, tb;
     public JLabel statusBar;
+    public JTabbedPane tab;
+    public JPanel p1, p2;
     int tabSize = 4;
 
     private String fileName;
@@ -42,36 +45,29 @@ public class FNotepad implements ActionListener {
         this.fileName = bundle.getString("fileName");
         f = new JFrame(fileName + " - " + applicationName);
 
-        JPanel p1 = new JPanel();
-        JPanel p2 = new JPanel();
+        p1 = new JPanel();
+        p2 = new JPanel();
 
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
 
-        JTabbedPane tabbedPane = new JTabbedPane();
-        JToolBar toolBar = new JToolBar();
 
-        ta = new JTextArea(30, 60);
-        tb = new JTextArea(30, 60);
-        tabbedPane.add("Tab", p1);
-        p1.add(ta);
+        ta = new JTextArea(150, 172);
+        tb = new JTextArea(150, 172);
+
         statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
         tb.setTabSize(tabSize);
-        JButton button = new JButton("Neuer Tab");
-        toolBar.add(button);
-        toolBar.addSeparator();
-        toolBar.add(tabbedPane, BorderLayout.NORTH);
-        f.add(toolBar, BorderLayout.NORTH);
-        f.add(new JScrollPane(ta), BorderLayout.CENTER);
-        f.add(new JScrollPane(tb), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-
+        tab = new JTabbedPane();
+        tab.addTab("Tab", new JScrollPane(p1));
+        p1.add(ta);
+        f.add(tab);
         f.pack();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -79,9 +75,6 @@ public class FNotepad implements ActionListener {
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
-/////////////////////
-        button.addActionListener(a -> tabbedPane.addTab("Tab", p2));
-        p2.add(tb);
 /////////////////////
         ta.addCaretListener(
                 new CaretListener() {
@@ -227,6 +220,24 @@ public class FNotepad implements ActionListener {
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("fileExit"))) {
             if (fileHandler.confirmSave()) System.exit(0);
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("Tab"))) {
+            tab.addTab("Tab", new JScrollPane(p2));
+            p2.add(tb);
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("Tab"))) {
+            tab.addTab("Tab", new JScrollPane(p2));
+            p2.add(tb);
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("rTab"))) {
+            tab.removeTabAt(0);
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("raTab"))) {
+            tab.removeAll();
         }
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("filePrint")))
@@ -390,6 +401,7 @@ public class FNotepad implements ActionListener {
         c.add("2");
         c.add("4");
         c.add("8");
+        c.add("12");
 
         tabulatorSize.add(c);
         c.select(String.valueOf(tabSize));
@@ -405,6 +417,10 @@ public class FNotepad implements ActionListener {
             }
             if(c.getSelectedItem().equals("8")) {
                 tabSize = 8;
+                ta.setTabSize(tabSize);
+            }
+            if(c.getSelectedItem().equals("12")) {
+                tabSize = 12;
                 ta.setTabSize(tabSize);
             }
         });
@@ -638,6 +654,9 @@ public class FNotepad implements ActionListener {
         fileMenu.addSeparator();
         createMenuItem(bundle.getString("filePageSetup"), KeyEvent.VK_U, fileMenu, this);
         fileMenu.addSeparator();
+        createMenuItem(bundle.getString("Tab"), KeyEvent.VK_D, fileMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, 0));
+        createMenuItem(bundle.getString("rTab"), KeyEvent.VK_D, fileMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, 0));
+        createMenuItem(bundle.getString("raTab"), KeyEvent.VK_D, fileMenu, this).setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
         temp = createMenuItem(bundle.getString("filePrint"), KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
         temp.setEnabled(false);
         fileMenu.addSeparator();
