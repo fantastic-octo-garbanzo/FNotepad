@@ -41,7 +41,7 @@ public class FNotepad implements ActionListener {
     /****************************/
     public FNotepad(boolean fullscreen, Locale startLanguage) {
         this.locale = startLanguage;
-        this.bundle = ResourceBundle.getBundle("Bundle_"+locale, locale);
+        this.bundle = ResourceBundle.getBundle("Bundle_" + locale, locale);
         this.fileName = bundle.getString("fileName");
         f = new JFrame(fileName + " - " + applicationName);
 
@@ -57,7 +57,7 @@ public class FNotepad implements ActionListener {
         ta = new JTextArea(150, 172);
         tb = new JTextArea(150, 172);
 
-        statusBar = new JLabel(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.init2"), JLabel.RIGHT);
+        statusBar = new JLabel(bundle.getString("statusbar.init1") + tabSize + bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
         tb.setTabSize(tabSize);
         f.add(statusBar, BorderLayout.SOUTH);
@@ -71,7 +71,9 @@ public class FNotepad implements ActionListener {
         f.pack();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        if(!fullscreen){f.setExtendedState(JFrame.NORMAL);}
+        if (!fullscreen) {
+            f.setExtendedState(JFrame.NORMAL);
+        }
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
@@ -84,11 +86,10 @@ public class FNotepad implements ActionListener {
                         try {
                             String text = ta.getText();
                             String textTabs = ta.getText();
-                            for(char c : textTabs.toCharArray()){
-                                if("\t".equals(""+c)){
+                            for (char c : textTabs.toCharArray()) {
+                                if ("\t".equals("" + c)) {
                                     letterCount = letterCount + tabSize;
-                                }
-                                else {
+                                } else {
                                     letterCount++;
                                 }
                             }
@@ -101,7 +102,7 @@ public class FNotepad implements ActionListener {
                              */
                             //letterCount = text.length();
                             wordCount = text.split("\\s").length;
-                            if (!FileOperation.isSave()){
+                            if (!FileOperation.isSave()) {
                                 f.setTitle(FileOperation.getFileName() + "* - " + applicationName);
                             } else {
                                 f.setTitle(FileOperation.getFileName() + " - " + applicationName);
@@ -115,7 +116,7 @@ public class FNotepad implements ActionListener {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.work1")+letterCount+bundle.getString("statusbar.work2")+wordCount+bundle.getString("statusbar.work3")+(lineNumber + 1)+bundle.getString("statusbar.work4")+(column + 1));
+                        statusBar.setText(bundle.getString("statusbar.init1") + tabSize + bundle.getString("statusbar.work1") + letterCount + bundle.getString("statusbar.work2") + wordCount + bundle.getString("statusbar.work3") + (lineNumber + 1) + bundle.getString("statusbar.work4") + (column + 1));
                     }
                 });
 //////////////////
@@ -127,11 +128,10 @@ public class FNotepad implements ActionListener {
                         try {
                             String text = tb.getText();
                             String textTabs = tb.getText();
-                            for(char c : textTabs.toCharArray()){
-                                if("\t".equals(""+c)){
+                            for (char c : textTabs.toCharArray()) {
+                                if ("\t".equals("" + c)) {
                                     letterCount = letterCount + tabSize;
-                                }
-                                else {
+                                } else {
                                     letterCount++;
                                 }
                             }
@@ -144,7 +144,7 @@ public class FNotepad implements ActionListener {
                              */
                             //letterCount = text.length();
                             wordCount = text.split("\\s").length;
-                            if (!FileOperation.isSave()){
+                            if (!FileOperation.isSave()) {
                                 f.setTitle(FileOperation.getFileName() + "* - " + applicationName);
                             } else {
                                 f.setTitle(FileOperation.getFileName() + " - " + applicationName);
@@ -158,7 +158,7 @@ public class FNotepad implements ActionListener {
                             wordCount = 0;
                             letterCount = 0;
                         }
-                        statusBar.setText(bundle.getString("statusbar.init1")+tabSize+bundle.getString("statusbar.work1")+letterCount+bundle.getString("statusbar.work2")+wordCount+bundle.getString("statusbar.work3")+(lineNumber + 1)+bundle.getString("statusbar.work4")+(column + 1));
+                        statusBar.setText(bundle.getString("statusbar.init1") + tabSize + bundle.getString("statusbar.work1") + letterCount + bundle.getString("statusbar.work2") + wordCount + bundle.getString("statusbar.work3") + (lineNumber + 1) + bundle.getString("statusbar.work4") + (column + 1));
                     }
                 });
 //////////////////
@@ -185,6 +185,7 @@ public class FNotepad implements ActionListener {
         f.addWindowListener(frameClose);
 ////////////////////////////////////
     }
+
     ////////////////////////////////////
     void goTo() {
         int lineNumber = 0;
@@ -199,6 +200,7 @@ public class FNotepad implements ActionListener {
         } catch (Exception e) {
         }
     }
+
     ///////////////////////////////////
     public void actionPerformed(ActionEvent ev) {
         String cmdText = ev.getActionCommand();
@@ -331,7 +333,7 @@ public class FNotepad implements ActionListener {
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("website")))
             try {
-               loadwebsite();
+                loadwebsite();
             } catch (Exception e) {
             }
 ////////////////////////////////////
@@ -361,7 +363,7 @@ public class FNotepad implements ActionListener {
             changeLanguage3();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(bundle.getString("helpHelpTopic"))){
+        else if (cmdText.equals(bundle.getString("helpHelpTopic"))) {
             try {
                 loadHelp();
             } catch (Exception e) {
@@ -371,7 +373,7 @@ public class FNotepad implements ActionListener {
 
 /////////////////////////////////////
         else if (cmdText.equals(bundle.getString("commandoopen"))) {
-            ProcessBuilder pb = new ProcessBuilder( "C:/WINDOWS/system32/cmd.exe", "/c", "start");
+            ProcessBuilder pb = new ProcessBuilder("C:/WINDOWS/system32/cmd.exe", "/c", "start");
             ProcessBuilder lt = new ProcessBuilder("x-terminal-emulator", "/c", "start");
             String os = System.getProperty("os.name").toLowerCase();
             try {
@@ -389,8 +391,9 @@ public class FNotepad implements ActionListener {
             statusBar.setText(bundle.getString("implement.text1"));
         }
     }
+
     ////////////////////////////////////
-    void showTabulatorDialog(){
+    void showTabulatorDialog() {
         tabulatorSize = new JDialog();
         tabulatorSize.setTitle(bundle.getString("filePageSetup"));
         tabulatorSize.setBounds(50, 50, 400, 100);
@@ -407,25 +410,26 @@ public class FNotepad implements ActionListener {
         c.select(String.valueOf(tabSize));
         ta.setTabSize(tabSize);
         c.addItemListener(ie -> {
-            if(c.getSelectedItem().equals("2")) {
+            if (c.getSelectedItem().equals("2")) {
                 tabSize = 2;
                 ta.setTabSize(tabSize);
             }
-            if(c.getSelectedItem().equals("4")) {
+            if (c.getSelectedItem().equals("4")) {
                 tabSize = 4;
                 ta.setTabSize(tabSize);
             }
-            if(c.getSelectedItem().equals("8")) {
+            if (c.getSelectedItem().equals("8")) {
                 tabSize = 8;
                 ta.setTabSize(tabSize);
             }
-            if(c.getSelectedItem().equals("12")) {
+            if (c.getSelectedItem().equals("12")) {
                 tabSize = 12;
                 ta.setTabSize(tabSize);
             }
         });
         tabulatorSize.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+
     ////////////////////////////////////
     void showBackgroundColorDialog() {
         if (bcolorChooser == null)
@@ -443,6 +447,7 @@ public class FNotepad implements ActionListener {
                             }, null);
         backgroundDialog.setVisible(true);
     }
+
     ////////////////////////////////////
     void showForegroundColorDialog() {
         if (fcolorChooser == null)
@@ -462,6 +467,7 @@ public class FNotepad implements ActionListener {
 
         foregroundDialog.setVisible(true);
     }
+
     ///////////////////////////////////
     void changeLanguage1() {
         if (!FileOperation.saved) {
@@ -481,6 +487,7 @@ public class FNotepad implements ActionListener {
         }
         f.dispose();
     }
+
     ///////////////////////////////////
     void changeLanguage2() {
         if (!FileOperation.saved) fileHandler.saveAsFile();
@@ -498,6 +505,7 @@ public class FNotepad implements ActionListener {
         }
         f.dispose();
     }
+
     ///////////////////////////////////
     void changeLanguage3() {
         if (!FileOperation.saved) fileHandler.saveAsFile();
@@ -515,10 +523,12 @@ public class FNotepad implements ActionListener {
         }
         f.dispose();
     }
+
     ///////////////////////////////////
     void newWindow() {
         new FNotepad(true, locale);
     }
+
     ////////////////////////////////////
     void loadHelp() throws IOException {
 
@@ -543,6 +553,7 @@ public class FNotepad implements ActionListener {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
+
     ////////////////////////////////////
     void loadwebsite() throws IOException {
 
@@ -567,6 +578,7 @@ public class FNotepad implements ActionListener {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
+
     ////////////////////////////////////
     void loadHelpoffline() throws IOException {
 
@@ -602,6 +614,7 @@ public class FNotepad implements ActionListener {
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
     }
+
     ///////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -609,6 +622,7 @@ public class FNotepad implements ActionListener {
         toMenu.add(temp);
         return temp;
     }
+
     ////////////////////////////////////
     JMenuItem createMenuItem(String s, int key, JMenu toMenu, int aclKey, ActionListener al) {
         JMenuItem temp = new JMenuItem(s, key);
@@ -617,6 +631,7 @@ public class FNotepad implements ActionListener {
         toMenu.add(temp);
         return temp;
     }
+
     ////////////////////////////////////
     JCheckBoxMenuItem createCheckBoxMenuItem(String s, int key, JMenu toMenu, ActionListener al) {
         JCheckBoxMenuItem temp = new JCheckBoxMenuItem(s);
@@ -626,6 +641,7 @@ public class FNotepad implements ActionListener {
         toMenu.add(temp);
         return temp;
     }
+
     ////////////////////////////////////
     JMenu createMenu(String s, int key, JMenuBar toMenuBar) {
         JMenu temp = new JMenu(s);
@@ -633,6 +649,7 @@ public class FNotepad implements ActionListener {
         toMenuBar.add(temp);
         return temp;
     }
+
     /*********************************/
     void createMenuBar(JFrame f) {
 
@@ -665,7 +682,7 @@ public class FNotepad implements ActionListener {
         temp = createMenuItem(bundle.getString("editUndo"), KeyEvent.VK_U, editMenu, KeyEvent.VK_Z, this);
         temp.setEnabled(false);
         editMenu.addSeparator();
-        cutItem = createMenuItem(bundle.getString("editCut"), KeyEvent 	.VK_T, editMenu, KeyEvent.VK_X, this);
+        cutItem = createMenuItem(bundle.getString("editCut"), KeyEvent.VK_T, editMenu, KeyEvent.VK_X, this);
         copyItem = createMenuItem(bundle.getString("editCopy"), KeyEvent.VK_C, editMenu, KeyEvent.VK_C, this);
         createMenuItem(bundle.getString("editPaste"), KeyEvent.VK_P, editMenu, KeyEvent.VK_V, this);
         deleteItem = createMenuItem(bundle.getString("editDelete"), KeyEvent.VK_L, editMenu, this);
@@ -737,9 +754,5 @@ public class FNotepad implements ActionListener {
         editMenu.addMenuListener(editMenuListener);
         f.setJMenuBar(mb);
     }
-    /*************Constructor**************/
-////////////////////////////////////
-    public static void main(String[] s) {
-        new FNotepad(true, Locale.GERMAN);
-    }
 }
+
