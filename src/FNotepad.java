@@ -8,7 +8,6 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
-
 /************************************/
 
 public class FNotepad implements ActionListener {
@@ -19,6 +18,8 @@ public class FNotepad implements ActionListener {
     public JFrame f;
     public JTextArea ta;
     public JLabel statusBar;
+    public JToolBar tbar;
+    public JButton exit, save, terminal, open, save_as, cut, paste, copy, german, english, french, italian;
     int tabSize = 4;
 
     private String fileName;
@@ -55,7 +56,131 @@ public class FNotepad implements ActionListener {
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
         createMenuBar(f);
-
+        tbar = new JToolBar();
+        tbar.setSize(1080, 1000);
+        tbar.addSeparator();
+        tbar.setFloatable(false);
+        f.add(tbar, BorderLayout.NORTH);
+        // JButton for opening
+        URL iconURL2 = getClass().getResource("/Icons/Open.png");
+        // iconURL is null when not found
+        ImageIcon icon2 = new ImageIcon(iconURL2);
+        f.setIconImage(icon.getImage());
+        open = new JButton(icon2);
+        open.setSize(100, 50);
+        open.addActionListener(b -> {fileHandler.openFile();});
+        tbar.add(open);
+        // JButton for saving
+        URL iconURL3 = getClass().getResource("/Icons/Save.jpg");
+        // iconURL is null when not found
+        ImageIcon icon3 = new ImageIcon(iconURL3);
+        f.setIconImage(icon.getImage());
+        save = new JButton(icon3);
+        save.setSize(100, 50);
+        save.addActionListener(b -> {fileHandler.saveThisFile();});
+        tbar.add(save);
+        // JButton for save as
+        URL iconURL4 = getClass().getResource("/Icons/Save_as.png");
+        // iconURL is null when not found
+        ImageIcon icon4 = new ImageIcon(iconURL4);
+        f.setIconImage(icon.getImage());
+        save_as = new JButton(icon4);
+        save_as.setSize(100, 50);
+        save_as.addActionListener(b -> {fileHandler.saveAsFile();});
+        tbar.add(save_as);// JButton for paste
+        URL iconURL5 = getClass().getResource("/Icons/Copy.png");
+        // iconURL is null when not found
+        ImageIcon icon5 = new ImageIcon(iconURL5);
+        f.setIconImage(icon.getImage());
+        copy = new JButton(icon5);
+        copy.setSize(100, 50);
+        copy.addActionListener(b -> {ta.copy();});
+        tbar.add(copy);
+        // JButton for cut
+        URL iconURL6 = getClass().getResource("/Icons/Cut.png");
+        // iconURL is null when not found
+        ImageIcon icon6 = new ImageIcon(iconURL6);
+        f.setIconImage(icon.getImage());
+        cut = new JButton(icon6);
+        cut.setSize(100, 50);
+        cut.addActionListener(a -> {ta.cut();});
+        tbar.add(cut);
+        // JButton for paste
+        URL iconURL7 = getClass().getResource("/Icons/Paste.png");
+        // iconURL is null when not found
+        ImageIcon icon7 = new ImageIcon(iconURL7);
+        f.setIconImage(icon.getImage());
+        paste = new JButton(icon7);
+        paste.setSize(100, 50);
+        paste.addActionListener(b -> {ta.paste();});
+        tbar.add(paste);
+        // JButton for Terminal
+        URL iconURL8 = getClass().getResource("/Icons/Terminal.png");
+        // iconURL is null when not found
+        ImageIcon icon8 = new ImageIcon(iconURL8);
+        f.setIconImage(icon.getImage());
+        terminal = new JButton(icon8);
+        terminal.setSize(100, 50);
+        terminal.addActionListener(c -> {;
+            ProcessBuilder pb = new ProcessBuilder( "C:/Windows/system32/cmd.exe", "/c", "start");
+            ProcessBuilder lt = new ProcessBuilder("x-terminal-emulator", "/c", "start");
+            String os = System.getProperty("os.name").toLowerCase();
+            try {
+                if (os.indexOf("win") >= 0) {
+                    pb.start();
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    lt.start();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        tbar.add(terminal);
+        // JButton for german
+        URL iconURL9 = getClass().getResource("/Icons/Germany.png");
+        // iconURL is null when not found
+        ImageIcon icon9 = new ImageIcon(iconURL9);
+        f.setIconImage(icon.getImage());
+        german = new JButton(icon9);
+        german.setSize(100, 50);
+        german.addActionListener(b -> {new FNotepad(true, Locale.GERMAN);f.dispose();});
+        tbar.add(german);
+        // JButton for english
+        URL iconURL10 = getClass().getResource("/Icons/English.png");
+        // iconURL is null when not found
+        ImageIcon icon10 = new ImageIcon(iconURL10);
+        f.setIconImage(icon.getImage());
+        english = new JButton(icon10);
+        english.setSize(100, 50);
+        english.addActionListener(b -> {new FNotepad(true, Locale.ENGLISH);f.dispose();});
+        tbar.add(english);
+         // JButton for french
+        URL iconURL11 = getClass().getResource("/Icons/France.png");
+        // iconURL is null when not found
+        ImageIcon icon11 = new ImageIcon(iconURL11);
+        f.setIconImage(icon.getImage());
+        french = new JButton(icon11);
+        french.setSize(100, 50);
+        french.addActionListener(b -> {new FNotepad(true, Locale.FRENCH);f.dispose();});
+        tbar.add(french);
+        // JButton for italian
+        URL iconURL12 = getClass().getResource("/Icons/Italia.png");
+        // iconURL is null when not found
+        ImageIcon icon12 = new ImageIcon(iconURL12);
+        f.setIconImage(icon.getImage());
+        italian = new JButton(icon12);
+        italian.setSize(100, 50);
+        italian.addActionListener(b -> {new FNotepad(true, Locale.ITALIAN);f.dispose();});
+        tbar.add(italian);
+        // JButton for exit
+        URL iconURL13 = getClass().getResource("/Icons/Exit.png");
+        // iconURL is null when not found
+        ImageIcon icon13 = new ImageIcon(iconURL13);
+        f.setIconImage(icon.getImage());
+        exit = new JButton(icon13);
+        exit.setSize(100, 50);
+        exit.addActionListener(a -> {if (fileHandler.confirmSave()) System.exit(0);});
+        tbar.add(exit);
         f.pack();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -258,7 +383,7 @@ public class FNotepad implements ActionListener {
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("website")))
             try {
-               loadwebsite();
+                loadwebsite();
             } catch (Exception e) {
             }
 ////////////////////////////////////
@@ -298,7 +423,7 @@ public class FNotepad implements ActionListener {
 
 /////////////////////////////////////
         else if (cmdText.equals(bundle.getString("commandoopen"))) {
-            ProcessBuilder pb = new ProcessBuilder( "C:/WINDOWS/system32/cmd.exe", "/c", "start");
+            ProcessBuilder pb = new ProcessBuilder( "C:/Windows/system32/cmd.exe", "/c", "start");
             ProcessBuilder lt = new ProcessBuilder("x-terminal-emulator", "/c", "start");
             String os = System.getProperty("os.name").toLowerCase();
             try {
@@ -460,7 +585,7 @@ public class FNotepad implements ActionListener {
                     cmd.append(String.format("%s \"%s\"", browsers[i], url));
                 else
                     cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
-                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
+                // Wenn der erste nicht funktioniert, wird der n�chste probiert usw.
             }
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
@@ -484,7 +609,7 @@ public class FNotepad implements ActionListener {
                     cmd.append(String.format("%s \"%s\"", browsers[i], url));
                 else
                     cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
-                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
+                // Wenn der erste nicht funktioniert, wird der n�chste probiert usw.
             }
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
@@ -519,7 +644,7 @@ public class FNotepad implements ActionListener {
                     cmd.append(String.format("%s \"%s\"", browsers[i], url));
                 else
                     cmd.append(String.format(" || %s \"%s\"", browsers[i], url));
-                // Wenn der erste nicht funktioniert, wird der nächste probiert usw.
+                // Wenn der erste nicht funktioniert, wird der n�chste probiert usw.
             }
             rt.exec(new String[]{"sh", "-c", cmd.toString()});
         }
@@ -558,7 +683,7 @@ public class FNotepad implements ActionListener {
     /*********************************/
     void createMenuBar(JFrame f) {
 
-        JMenuBar mb = new JMenuBar(); // Menü-Leiste
+        JMenuBar mb = new JMenuBar(); // Men�-Leiste
         JMenuItem temp;
 
         JMenu fileMenu = createMenu(bundle.getString("fileText"), KeyEvent.VK_F, mb);
@@ -584,7 +709,7 @@ public class FNotepad implements ActionListener {
         temp = createMenuItem(bundle.getString("editUndo"), KeyEvent.VK_U, editMenu, KeyEvent.VK_Z, this);
         temp.setEnabled(false);
         editMenu.addSeparator();
-        cutItem = createMenuItem(bundle.getString("editCut"), KeyEvent 	.VK_T, editMenu, KeyEvent.VK_X, this);
+        cutItem = createMenuItem(bundle.getString("editCut"), KeyEvent  .VK_T, editMenu, KeyEvent.VK_X, this);
         copyItem = createMenuItem(bundle.getString("editCopy"), KeyEvent.VK_C, editMenu, KeyEvent.VK_C, this);
         createMenuItem(bundle.getString("editPaste"), KeyEvent.VK_P, editMenu, KeyEvent.VK_V, this);
         deleteItem = createMenuItem(bundle.getString("editDelete"), KeyEvent.VK_L, editMenu, this);
@@ -655,9 +780,9 @@ public class FNotepad implements ActionListener {
         };
         editMenu.addMenuListener(editMenuListener);
         f.setJMenuBar(mb);
-    }
-    /*************Constructor**************/
-////////////////////////////////////
+    } 
+     /*************Constructor**************/
+     ////////////////////////////////////
     public static void main(String[] s) {
         new FNotepad(true, Locale.GERMAN);
     }
