@@ -1,6 +1,17 @@
 # FNotepad Changelog
 
-## FNotepad [v1.4.0][0] (2021-03-20)
+## FNotepad [v1.4.1][0] (2021-07-05)
+
+### Added
+- Buttons with Icons
+- Splash screen
+
+### Changed
+- README
+- Bug fixes
+
+
+## FNotepad [v1.4.0][12] (2021-03-20)
 
 ### Added
 - Online and offline help in all languages
@@ -125,14 +136,15 @@
 
 
 [0]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/latest
-[11]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.5
-[10]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.4
-[9]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.3
-[8]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.2
-[7]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.1
-[6]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.2
-[5]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.1
-[4]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.0
-[3]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.1
-[2]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.0
 [1]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.0.0
+[2]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.0
+[3]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.1.1
+[4]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.0
+[5]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.1
+[6]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.2.2
+[7]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.1
+[8]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.2
+[9]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.3
+[10]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.4
+[11]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.3.5
+[12]: https://github.com/fantastic-octo-garbanzo/FNotepad/tree/main/release/v1.4.0
