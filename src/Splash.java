@@ -15,8 +15,7 @@ public class Splash extends JWindow {
     public JLabel infoLabel ;
     public JPanel panel;
 
-    public Splash()
-    {
+    public Splash() {
         infoLabel = new JLabel("FNotepad 1.4.1");
         URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon logo = new ImageIcon(iconurl);
@@ -46,44 +45,29 @@ public class Splash extends JWindow {
         setEnabled(true);
         setVisible(true);
 
-
         JProgressBar progress = new JProgressBar(0, 50);
-
-
         progress.setSize(486, 20);
-
-
         progress.setValue(0);
-
-
         progress.setStringPainted(true);
-
-
         panel.add(progress);
-
         container.add(panel);
 
-
-        for(int i=0; i<=progress.getMaximum(); i++){
+        for(int i = 0; i <= progress.getMaximum(); i++) {
             progress.setValue(i);
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
-    public void showSplash()
-    {
+    public void showSplash() {
         setVisible(true);
         dispose();
     }
 
-    public void updateInfoLabel(String info)
-    {
+    public void updateInfoLabel(String info) {
         infoLabel.setText(info);
     }
-
 }
