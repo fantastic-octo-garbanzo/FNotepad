@@ -36,6 +36,7 @@ public class FNotepad implements ActionListener {
     JDialog backgroundDialog = null;
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
@@ -53,9 +54,13 @@ public class FNotepad implements ActionListener {
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
 
+        f.pack();
 
-        ta = new JTextArea(150, 172);
-        tb = new JTextArea(150, 172);
+        int a = (int)screenSize.getWidth() - f.getInsets().left - f.getInsets().right;
+        int b = (int)screenSize.getHeight() - f.getInsets().top - f.getInsets().bottom;
+
+        ta = new JTextArea(a, b);
+        tb = new JTextArea(a, b);
 
         statusBar = new JLabel(bundle.getString("statusbar.init1") + tabSize + bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
@@ -68,7 +73,6 @@ public class FNotepad implements ActionListener {
         tab.addTab("Tab", new JScrollPane(p1));
         p1.add(ta);
         f.add(tab);
-        f.pack();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         if(!fullscreen){f.setBounds(200, 80, 700, 600);}
@@ -174,6 +178,7 @@ public class FNotepad implements ActionListener {
             }
         };
         ta.getDocument().addDocumentListener(myListener);
+        tb.getDocument().addDocumentListener(myListener);
 /////////
         WindowListener frameClose = new WindowAdapter() {
             public void windowClosing(WindowEvent we) {
