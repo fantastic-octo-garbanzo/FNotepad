@@ -143,7 +143,7 @@ public class FNotepad implements ActionListener {
         f.setIconImage(icon.getImage());
         german = new JButton(icon9);
         german.setSize(100, 50);
-        german.addActionListener(b -> {new FNotepad(true, Locale.GERMAN);f.dispose();});
+        german.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.GERMAN);f.dispose();});
         tbar.add(german);
         // JButton for english
         URL iconURL10 = getClass().getResource("/Icons/English.png");
@@ -152,7 +152,7 @@ public class FNotepad implements ActionListener {
         f.setIconImage(icon.getImage());
         english = new JButton(icon10);
         english.setSize(100, 50);
-        english.addActionListener(b -> {new FNotepad(true, Locale.ENGLISH);f.dispose();});
+        english.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.ENGLISH);f.dispose();});
         tbar.add(english);
          // JButton for french
         URL iconURL11 = getClass().getResource("/Icons/France.png");
@@ -161,7 +161,7 @@ public class FNotepad implements ActionListener {
         f.setIconImage(icon.getImage());
         french = new JButton(icon11);
         french.setSize(100, 50);
-        french.addActionListener(b -> {new FNotepad(true, Locale.FRENCH);f.dispose();});
+        french.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.FRENCH);f.dispose();});
         tbar.add(french);
         // JButton for italian
         URL iconURL12 = getClass().getResource("/Icons/Italia.png");
@@ -170,7 +170,7 @@ public class FNotepad implements ActionListener {
         f.setIconImage(icon.getImage());
         italian = new JButton(icon12);
         italian.setSize(100, 50);
-        italian.addActionListener(b -> {new FNotepad(true, Locale.ITALIAN);f.dispose();});
+        italian.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.ITALIAN);f.dispose();});
         tbar.add(italian);
         // JButton for exit
         URL iconURL13 = getClass().getResource("/Icons/Exit.png");
