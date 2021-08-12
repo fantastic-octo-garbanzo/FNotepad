@@ -292,9 +292,6 @@ public class FNotepad implements ActionListener {
             if (fileHandler.confirmSave()) System.exit(0);
         }
 ////////////////////////////////////
-        else if (cmdText.equals(bundle.getString("filePrint")))
-            new PrintFrame();
-////////////////////////////////////
         else if (cmdText.equals(bundle.getString("editCut")))
             ta.cut();
 ////////////////////////////////////
@@ -697,6 +694,7 @@ public class FNotepad implements ActionListener {
         createMenuItem(bundle.getString("filePageSetup"), KeyEvent.VK_U, fileMenu, this);
         fileMenu.addSeparator();
         temp = createMenuItem(bundle.getString("filePrint"), KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp.setEnabled(false);
         fileMenu.addSeparator();
         createMenuItem(bundle.getString("fileExit"), KeyEvent.VK_X, fileMenu, this);
 
