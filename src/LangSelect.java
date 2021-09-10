@@ -11,7 +11,7 @@ import java.util.Locale;
 public class LangSelect extends JFrame {
 
     public LangSelect(){
-        setTitle("Language - FNotepad 1.4.1");
+        setTitle("Language - FNotepad 14.1");
         JLabel l = new JLabel("Welcome to FNotepad");
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
