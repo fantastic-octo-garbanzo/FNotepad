@@ -24,7 +24,7 @@ public class FNotepad implements ActionListener {
 
     private String fileName;
     private boolean saved = true;
-    String applicationName = "FNotepad";
+    String applicationName = "FNotepad 1.4.1";
 
     FileOperation fileHandler;
     FontChooser fontDialog = null;

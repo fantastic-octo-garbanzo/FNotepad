@@ -11,7 +11,7 @@ import java.util.Locale;
 public class LangSelect extends JFrame {
 
     public LangSelect(){
-        setTitle("Language - FNotepad");
+        setTitle("Language - FNotepad 1.4.1");
         JLabel l = new JLabel("Welcome to FNotepad");
         l.setBounds(225,50, 100,50);
         l.setSize(400,100);
@@ -57,7 +57,7 @@ public class LangSelect extends JFrame {
         c.addItemListener(ie -> {
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
-                setTitle("FNotepad - Sprache");
+                setTitle("Sprache - FNotepad 1.4.1");
                 b.setText("Sprache ausw\u00E4hlen");
                 a.setText("Abbrechen");
                 ch.removeAllItems();
@@ -66,7 +66,7 @@ public class LangSelect extends JFrame {
             }
             if(c.getSelectedItem().equals("Italiano")) {
                 l.setText("Benvenuto in FNotepad!");
-                setTitle("FNotepad - Lingua");
+                setTitle("Lingua - FNotepad 1.4.1");
                 b.setText("seleziona la tua lingua");
                 a.setText("Interrompi");
                 ch.removeAllItems();
@@ -75,7 +75,7 @@ public class LangSelect extends JFrame {
             }
             if(c.getSelectedItem().equals("Fran\u00E7ais")) {
                 l.setText("Benvenuto in FNotepad!");
-                setTitle("FNotepad - Langue");
+                setTitle("Langue - FNotepad 1.4.1");
                 b.setText("sélectionnez votre langue");
                 a.setText("Stop");
                 ch.removeAllItems();
@@ -84,7 +84,7 @@ public class LangSelect extends JFrame {
             }
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
-                setTitle("FNotepad - Language");
+                setTitle("Language - FNotepad 1.4.1");
                 b.setText("Choose Language");
                 a.setText("Cancel");
                 ch.removeAllItems();
