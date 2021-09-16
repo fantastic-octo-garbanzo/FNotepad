@@ -8,6 +8,8 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
+import javax.swing.undo.*;
+import javax.swing.event.UndoableEditEvent;
 /************************************/
 
 public class FNotepad implements ActionListener {
@@ -19,7 +21,7 @@ public class FNotepad implements ActionListener {
     public JTextArea ta;
     public JLabel statusBar;
     public JToolBar tbar;
-    public JButton exit, save, terminal, open, save_as, cut, paste, copy, german, english, french, italian;
+    public JButton exit, save, terminal, open, save_as, cut, paste, undo, copy, german, english, french, italian;
     int tabSize = 4;
 
     private String fileName;
@@ -62,58 +64,79 @@ public class FNotepad implements ActionListener {
         tbar.setFloatable(false);
         f.add(tbar, BorderLayout.NORTH);
         // JButton for opening
-        URL iconURL2 = getClass().getResource("/Icons/Open.png");
+        URL iconURL1 = getClass().getResource("/Icons/Open.png");
         // iconURL is null when not found
-        ImageIcon icon2 = new ImageIcon(iconURL2);
+        ImageIcon icon1 = new ImageIcon(iconURL1);
         f.setIconImage(icon.getImage());
-        open = new JButton(icon2);
+        open = new JButton(icon1);
         open.setSize(100, 50);
         open.addActionListener(b -> {fileHandler.openFile();});
         tbar.add(open);
         // JButton for saving
-        URL iconURL3 = getClass().getResource("/Icons/Save.jpg");
+        URL iconURL2 = getClass().getResource("/Icons/Save.jpg");
         // iconURL is null when not found
-        ImageIcon icon3 = new ImageIcon(iconURL3);
+        ImageIcon icon2 = new ImageIcon(iconURL2);
         f.setIconImage(icon.getImage());
-        save = new JButton(icon3);
+        save = new JButton(icon2);
         save.setSize(100, 50);
         save.addActionListener(b -> {fileHandler.saveThisFile();});
         tbar.add(save);
         // JButton for save as
-        URL iconURL4 = getClass().getResource("/Icons/Save_as.png");
+        URL iconURL3 = getClass().getResource("/Icons/Save_as.png");
         // iconURL is null when not found
-        ImageIcon icon4 = new ImageIcon(iconURL4);
+        ImageIcon icon3 = new ImageIcon(iconURL3);
         f.setIconImage(icon.getImage());
-        save_as = new JButton(icon4);
+        save_as = new JButton(icon3);
         save_as.setSize(100, 50);
         save_as.addActionListener(b -> {fileHandler.saveAsFile();});
         tbar.add(save_as);// JButton for paste
-        URL iconURL5 = getClass().getResource("/Icons/Copy.png");
+        URL iconURL4 = getClass().getResource("/Icons/Copy.png");
         // iconURL is null when not found
-        ImageIcon icon5 = new ImageIcon(iconURL5);
+        ImageIcon icon4 = new ImageIcon(iconURL4);
         f.setIconImage(icon.getImage());
-        copy = new JButton(icon5);
+        copy = new JButton(icon4);
         copy.setSize(100, 50);
         copy.addActionListener(b -> {ta.copy();});
         tbar.add(copy);
         // JButton for cut
-        URL iconURL6 = getClass().getResource("/Icons/Cut.png");
+        URL iconURL5 = getClass().getResource("/Icons/Cut.png");
         // iconURL is null when not found
-        ImageIcon icon6 = new ImageIcon(iconURL6);
+        ImageIcon icon5 = new ImageIcon(iconURL5);
         f.setIconImage(icon.getImage());
-        cut = new JButton(icon6);
+        cut = new JButton(icon5);
         cut.setSize(100, 50);
         cut.addActionListener(a -> {ta.cut();});
         tbar.add(cut);
         // JButton for paste
-        URL iconURL7 = getClass().getResource("/Icons/Paste.png");
+        URL iconURL6 = getClass().getResource("/Icons/Paste.png");
         // iconURL is null when not found
-        ImageIcon icon7 = new ImageIcon(iconURL7);
+        ImageIcon icon6 = new ImageIcon(iconURL6);
         f.setIconImage(icon.getImage());
-        paste = new JButton(icon7);
+        paste = new JButton(icon6);
         paste.setSize(100, 50);
         paste.addActionListener(b -> {ta.paste();});
         tbar.add(paste);
+        // JButton for undo
+        URL iconURL7 = getClass().getResource("/Icons/Undo.png");
+        // iconURL is null when not found
+        ImageIcon icon7 = new ImageIcon(iconURL7);
+        f.setIconImage(icon.getImage());
+        undo = new JButton(icon7);
+        undo.setSize(100, 50);
+        final UndoManager undomanager = new UndoManager();
+        ta.getDocument().addUndoableEditListener( undomanager );
+        undomanager.setLimit( 1000 );
+        undo.addActionListener( new ActionListener() {
+            @Override public void actionPerformed( ActionEvent e ) {
+                undomanager.end();
+
+                if ( undomanager.canUndo() )
+                    undomanager.undo();
+                ta.requestFocus();
+            }
+        } );
+        f.add( undo, BorderLayout.PAGE_END );
+        tbar.add(undo);
         // JButton for Terminal
         URL iconURL8 = getClass().getResource("/Icons/Terminal.png");
         // iconURL is null when not found
@@ -310,6 +333,16 @@ public class FNotepad implements ActionListener {
             if (findReplaceDialog == null)
                 findReplaceDialog = new FindDialog(FNotepad.this.ta);
             findReplaceDialog.showDialog(FNotepad.this.f, true);//find
+        }
+/////////////////////////////////////
+        else if(cmdText.equals(bundle.getString("editUndo"))) {
+            final UndoManager undomanager = new UndoManager();
+            ta.getDocument().addUndoableEditListener( undomanager );
+            undomanager.setLimit( 1000 );
+            undomanager.end();
+            if ( undomanager.canUndo() )
+                undomanager.undo();
+            ta.requestFocus();
         }
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("editFindNext"))) {
@@ -699,7 +732,7 @@ public class FNotepad implements ActionListener {
         createMenuItem(bundle.getString("fileExit"), KeyEvent.VK_X, fileMenu, this);
 
         temp = createMenuItem(bundle.getString("editUndo"), KeyEvent.VK_U, editMenu, KeyEvent.VK_Z, this);
-        temp.setEnabled(false);
+        temp.setEnabled(true);
         editMenu.addSeparator();
         cutItem = createMenuItem(bundle.getString("editCut"), KeyEvent  .VK_T, editMenu, KeyEvent.VK_X, this);
         copyItem = createMenuItem(bundle.getString("editCopy"), KeyEvent.VK_C, editMenu, KeyEvent.VK_C, this);
