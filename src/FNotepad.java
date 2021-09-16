@@ -336,13 +336,19 @@ public class FNotepad implements ActionListener {
         }
 /////////////////////////////////////
         else if(cmdText.equals(bundle.getString("editUndo"))) {
-            final UndoManager undomanager = new UndoManager();
-            ta.getDocument().addUndoableEditListener( undomanager );
-            undomanager.setLimit( 1000 );
-            undomanager.end();
-            if ( undomanager.canUndo() )
-                undomanager.undo();
-            ta.requestFocus();
+            final UndoManager undomanager1 = new UndoManager();
+            ta.getDocument().addUndoableEditListener( undomanager1 );
+            undomanager1.setLimit( 1000 );
+
+            undo.addActionListener( new ActionListener() {
+                @Override public void actionPerformed( ActionEvent a ) {
+                    undomanager1.end();
+
+                    if ( undomanager1.canUndo() )
+                        undomanager1.undo();
+                    ta.requestFocus();
+                }
+            } );
         }
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("editFindNext"))) {
