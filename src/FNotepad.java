@@ -183,8 +183,8 @@ public class FNotepad implements ActionListener {
         tbar.add(exit);
         f.pack();
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        if(!fullscreen){f.setBounds(200, 80, 700, 600);}
+        if(fullscreen){f.setExtendedState(JFrame.MAXIMIZED_BOTH);}
+        else{f.setBounds(200, 80, 700, 600);}
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
@@ -291,9 +291,6 @@ public class FNotepad implements ActionListener {
         else if (cmdText.equals(bundle.getString("fileExit"))) {
             if (fileHandler.confirmSave()) System.exit(0);
         }
-////////////////////////////////////
-        else if (cmdText.equals(bundle.getString("filePrint")))
-            new PrintFrame();
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("editCut")))
             ta.cut();
@@ -697,6 +694,7 @@ public class FNotepad implements ActionListener {
         createMenuItem(bundle.getString("filePageSetup"), KeyEvent.VK_U, fileMenu, this);
         fileMenu.addSeparator();
         temp = createMenuItem(bundle.getString("filePrint"), KeyEvent.VK_P, fileMenu, KeyEvent.VK_P, this);
+        temp.setEnabled(false);
         fileMenu.addSeparator();
         createMenuItem(bundle.getString("fileExit"), KeyEvent.VK_X, fileMenu, this);
 
