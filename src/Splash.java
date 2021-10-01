@@ -35,15 +35,8 @@ public class Splash extends JWindow {
         container.add(panel);
 
 
-
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        int w = getSize().width;
-        int h = getSize().height;
-        int x = (dim.width-w)/2;
-        int y = (dim.height-h)/2;
         setBounds(30, 80, 486, 486);
         setLocationRelativeTo(null);
-        setEnabled(true);
         setVisible(true);
 
 
