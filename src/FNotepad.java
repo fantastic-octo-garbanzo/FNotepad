@@ -450,17 +450,15 @@ public class FNotepad implements ActionListener {
             } catch (Exception e) {
             }
         }
-//////////////////////////////////////
-
 /////////////////////////////////////
         else if (cmdText.equals(bundle.getString("commandoopen"))) {
             ProcessBuilder pb = new ProcessBuilder( "C:/Windows/system32/cmd.exe", "/c", "start");
             ProcessBuilder lt = new ProcessBuilder("x-terminal-emulator", "/c", "start");
-            String os = System.getProperty("os.name").toLowerCase();
+            String os = System.getProperty("os.name").toLowerCase();                                                   
             try {
-                if (os.indexOf("win") >= 0) {
+                if (os.indexOf("win") >= 0) {   
                     pb.start();
-                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {    
                     lt.start();
                 }
             } catch (IOException e) {
@@ -812,9 +810,4 @@ public class FNotepad implements ActionListener {
         editMenu.addMenuListener(editMenuListener);
         f.setJMenuBar(mb);
     } 
-     /*************Constructor**************/
-     ////////////////////////////////////
-    public static void main(String[] s) {
-        new FNotepad(true, Locale.GERMAN);
-    }
 }

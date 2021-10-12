@@ -1,19 +1,34 @@
 package src;
 // Imports
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.net.URL;
-import java.util.Locale;
+import javax.swing.event.*;
+import java.awt.event.*;
+import java.net.*;
+import java.util.*; 
 
 /**********/
 
 // Begin of class LangSelect
 public class LangSelect extends JFrame {
-
+    
     public LangSelect(){
+    
+String os = System.getProperty("os.name").toLowerCase();
+    
+    try {
+                if (os.indexOf("win") >= 0) {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+                }
+            } catch(Exception e) {
+                System.err.println("Setting Look and Feel Failed");
+            }
+    
+    
         setTitle("Language - FNotepad 1.4.1");
         JLabel l = new JLabel("Welcome to FNotepad");
-        l.setBounds(225,50, 100,50);
+        l.setBounds(590,50, 100,50);
         l.setSize(400,100);
 
         URL iconURL = getClass().getResource("/bin/FNotepad.jpg");
@@ -22,11 +37,11 @@ public class LangSelect extends JFrame {
 
         // choose language button
         JButton b = new JButton("Choose Language");
-        b.setBounds(200,300, 200,50);
+        b.setBounds(550,300, 200,50);
 
         // cancel button
         JButton a = new JButton("Cancel");
-        a.setBounds(200, 375, 200, 50);
+        a.setBounds(550, 375, 200, 50);
 
         // Menu
         String[] languagesList = {"English", "Deutsch", "Italiano", "Fran\u00E7ais"};
@@ -34,10 +49,10 @@ public class LangSelect extends JFrame {
 
 
         JComboBox c = new JComboBox(languagesList);
-        c.setBounds(250,150, 100,50);
+        c.setBounds(600,150, 100,50);
 
         JComboBox ch = new JComboBox(windowList);
-        ch.setBounds(250,225, 100,50);
+        ch.setBounds(600,225, 100,50);
 
         add(l);
         add(a);
@@ -53,7 +68,7 @@ public class LangSelect extends JFrame {
         setVisible(true);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+    
         c.addItemListener(ie -> {
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
@@ -111,12 +126,11 @@ public class LangSelect extends JFrame {
                 if (ch.getSelectedItem().equals("windowed")) {new FNotepad(false, Locale.ENGLISH);}
             }
             dispose();
-        });
+        });  
+    
         a.addActionListener((ActionEvent actionEvent) -> {
             System.exit(0);
-            setVisible(false);
         });
-
     }
     public static void main(String[] args) {
         new Splash().showSplash();

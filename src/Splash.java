@@ -1,10 +1,6 @@
 package src;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
 
@@ -67,7 +63,7 @@ public class Splash extends JWindow {
         for(int i=0; i<=progress.getMaximum(); i++){
             progress.setValue(i);
             try {
-                Thread.sleep(20);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
