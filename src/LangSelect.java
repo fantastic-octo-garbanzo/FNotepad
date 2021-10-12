@@ -15,16 +15,15 @@ public class LangSelect extends JFrame {
     
 String os = System.getProperty("os.name").toLowerCase();
     
-    try {
-                if (os.indexOf("win") >= 0) {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
-                    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-                }
-            } catch(Exception e) {
-                System.err.println("Setting Look and Feel Failed");
+        try {
+            if (os.indexOf("win") >= 0) {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             }
-    
+        } catch(Exception e) {
+            System.err.println("Setting Look and Feel Failed");
+        }
     
         setTitle("Language - FNotepad 1.4.1");
         JLabel l = new JLabel("Welcome to FNotepad");
