@@ -19,13 +19,13 @@ String os = System.getProperty("os.name").toLowerCase();
             if (os.indexOf("win") >= 0) {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } else if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
-                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
             }
         } catch(Exception e) {
             System.err.println("Setting Look and Feel Failed");
         }
     
-        setTitle("Language - FNotepad 1.4.1");
+        setTitle("Language - FNotepad 1.4.2");
         JLabel l = new JLabel("Welcome to FNotepad");
         l.setBounds(590,50, 100,50);
         l.setSize(400,100);
@@ -71,7 +71,7 @@ String os = System.getProperty("os.name").toLowerCase();
         c.addItemListener(ie -> {
             if(c.getSelectedItem().equals("Deutsch")) {
                 l.setText("Willkommen im FNotepad!");
-                setTitle("Sprache - FNotepad 1.4.1");
+                setTitle("Sprache - FNotepad 1.4.2");
                 b.setText("Sprache ausw\u00E4hlen");
                 a.setText("Abbrechen");
                 ch.removeAllItems();
@@ -80,7 +80,7 @@ String os = System.getProperty("os.name").toLowerCase();
             }
             if(c.getSelectedItem().equals("Italiano")) {
                 l.setText("Benvenuto in FNotepad!");
-                setTitle("Lingua - FNotepad 1.4.1");
+                setTitle("Lingua - FNotepad 1.4.2");
                 b.setText("seleziona la tua lingua");
                 a.setText("Interrompi");
                 ch.removeAllItems();
@@ -89,7 +89,7 @@ String os = System.getProperty("os.name").toLowerCase();
             }
             if(c.getSelectedItem().equals("Fran\u00E7ais")) {
                 l.setText("Benvenuto in FNotepad!");
-                setTitle("Langue - FNotepad 1.4.1");
+                setTitle("Langue - FNotepad 1.4.2");
                 b.setText("sélectionnez votre langue");
                 a.setText("Stop");
                 ch.removeAllItems();
@@ -98,7 +98,7 @@ String os = System.getProperty("os.name").toLowerCase();
             }
             if(c.getSelectedItem().equals("English")) {
                 l.setText("Welcome to FNotepad!");
-                setTitle("Language - FNotepad 1.4.1");
+                setTitle("Language - FNotepad 1.4.2");
                 b.setText("Choose Language");
                 a.setText("Cancel");
                 ch.removeAllItems();
