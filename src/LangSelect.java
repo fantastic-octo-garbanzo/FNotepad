@@ -48,10 +48,10 @@ String os = System.getProperty("os.name").toLowerCase();
 
 
         JComboBox c = new JComboBox(languagesList);
-        c.setBounds(600,150, 100,50);
+        c.setBounds(550,150, 200,50);
 
         JComboBox ch = new JComboBox(windowList);
-        ch.setBounds(600,225, 100,50);
+        ch.setBounds(550,225, 200,50);
 
         add(l);
         add(a);
