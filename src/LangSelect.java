@@ -13,7 +13,7 @@ public class LangSelect extends JFrame {
     
     public LangSelect(){
     
-String os = System.getProperty("os.name").toLowerCase();
+        String os = System.getProperty("os.name").toLowerCase();
     
         try {
             if (os.indexOf("win") >= 0) {
