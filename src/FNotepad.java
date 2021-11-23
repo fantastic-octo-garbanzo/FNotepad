@@ -73,7 +73,7 @@ public class FNotepad implements ActionListener {
         open.addActionListener(b -> {fileHandler.openFile();});
         tbar.add(open);
         // JButton for saving
-        URL iconURL2 = getClass().getResource("/Icons/Save.jpg");
+        URL iconURL2 = getClass().getResource("/Icons/Save.png");
         // iconURL is null when not found
         ImageIcon icon2 = new ImageIcon(iconURL2);
         f.setIconImage(icon.getImage());
