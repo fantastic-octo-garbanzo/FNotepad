@@ -13,7 +13,7 @@ public class Splash extends JWindow {
 
     public Splash()
     {
-        infoLabel = new JLabel("FNotepad 1.4.1");
+        infoLabel = new JLabel("FNotepad 1.4.2");
         URL iconurl = getClass().getResource("/bin/FNotepad.jpg");
         ImageIcon logo = new ImageIcon(iconurl);
         container = this.getContentPane();
