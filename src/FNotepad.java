@@ -159,48 +159,12 @@ public class FNotepad implements ActionListener {
             }
         });
         tbar.add(terminal);
-        // JButton for german
-        URL iconURL9 = getClass().getResource("/Icons/Germany.png");
+        // JButton for exit
+        URL iconURL9 = getClass().getResource("/Icons/Exit.png");
         // iconURL is null when not found
         ImageIcon icon9 = new ImageIcon(iconURL9);
         f.setIconImage(icon.getImage());
-        german = new JButton(icon9);
-        german.setSize(100, 50);
-        german.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.GERMAN);f.dispose();});
-        tbar.add(german);
-        // JButton for english
-        URL iconURL10 = getClass().getResource("/Icons/English.png");
-        // iconURL is null when not found
-        ImageIcon icon10 = new ImageIcon(iconURL10);
-        f.setIconImage(icon.getImage());
-        english = new JButton(icon10);
-        english.setSize(100, 50);
-        english.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.ENGLISH);f.dispose();});
-        tbar.add(english);
-         // JButton for french
-        URL iconURL11 = getClass().getResource("/Icons/France.png");
-        // iconURL is null when not found
-        ImageIcon icon11 = new ImageIcon(iconURL11);
-        f.setIconImage(icon.getImage());
-        french = new JButton(icon11);
-        french.setSize(100, 50);
-        french.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.FRENCH);f.dispose();});
-        tbar.add(french);
-        // JButton for italian
-        URL iconURL12 = getClass().getResource("/Icons/Italia.png");
-        // iconURL is null when not found
-        ImageIcon icon12 = new ImageIcon(iconURL12);
-        f.setIconImage(icon.getImage());
-        italian = new JButton(icon12);
-        italian.setSize(100, 50);
-        italian.addActionListener(b -> {if (fileHandler.confirmSave()) new FNotepad(true, Locale.ITALIAN);f.dispose();});
-        tbar.add(italian);
-        // JButton for exit
-        URL iconURL13 = getClass().getResource("/Icons/Exit.png");
-        // iconURL is null when not found
-        ImageIcon icon13 = new ImageIcon(iconURL13);
-        f.setIconImage(icon.getImage());
-        exit = new JButton(icon13);
+        exit = new JButton(icon9);
         exit.setSize(100, 50);
         exit.addActionListener(a -> {if (fileHandler.confirmSave()) System.exit(0);});
         tbar.add(exit);

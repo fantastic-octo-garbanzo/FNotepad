@@ -74,7 +74,7 @@ jFace=new JList(fontNames); jFace.setSelectedIndex(0);
 jFace.addListSelectionListener(new ListSelectionListener()
 {public void valueChanged(ListSelectionEvent ev){tf.setFont(createFont());}});
 
-String[] fontStyles={"Regular","Italic","Bold","Bold Italic"};
+String[] fontStyles={"Normal","Kursiv","Fett","Fett und Kursiv"};
 jStyle=new JList(fontStyles);jStyle.setSelectedIndex(0); 
 
 jStyle.addListSelectionListener(new ListSelectionListener()
@@ -91,9 +91,9 @@ jSize.addListSelectionListener(new ListSelectionListener()
 JPanel jpLabel=new JPanel();
 jpLabel.setLayout(new GridLayout(1,3));
 
-jpLabel.add(new JLabel("Font",JLabel.CENTER));
-jpLabel.add(new JLabel("Font Style",JLabel.CENTER));
-jpLabel.add(new JLabel("Size",JLabel.CENTER));
+jpLabel.add(new JLabel("Schrift",JLabel.CENTER));
+jpLabel.add(new JLabel("Schriftart",JLabel.CENTER));
+jpLabel.add(new JLabel("Schriftgr\u00F6\u00DFee",JLabel.CENTER));
 
 JPanel jpList=new JPanel();
 jpList.setLayout(new GridLayout(1,3));
@@ -103,7 +103,7 @@ jpList.add(new JScrollPane(jStyle));
 jpList.add(new JScrollPane(jSize));
 
 okButton=new JButton("OK");
-JButton cancelButton=new JButton("Cancel");
+JButton cancelButton=new JButton("Abbrechen");
 
 okButton.addActionListener(
 new ActionListener()
@@ -148,9 +148,10 @@ add(new JLabel("  "),BorderLayout.EAST);//dummy label
 add(new JLabel("  "),BorderLayout.WEST);//dummy label
 
 tf.setFont(thisFont);
-tf.append("\nA quick brown fox jumps over the lazy dog.");
-tf.append("\n0123456789");
-tf.append("\n~!@#$%^&*()_+|?><\n");
+tf.append("Hallo. Willkommen bei FNotepad 1.4.2");
+tf.append("\n\n Das ist eine Testnachricht.");
+tf.append("\n\n0123456789");
+tf.append("\n~!@#$%^&*()_+|?><");
 
 }
 //////////////////////////
