@@ -36,13 +36,6 @@ fontButton.addActionListener(ac);
 add(ta,BorderLayout.CENTER);
 add(fontButton,BorderLayout.SOUTH);
 
-setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-setBounds(50,50,400,400);
-ta.append("Hallo. Willkommen bei FNotepad 1.4.2");
-ta.append("\n\n Das ist eine Testnachricht.");
-ta.append("\n\n0123456789");
-ta.append("\n~!@#$%^&*()_+|?><");
-setVisible(true);
 }
 
 }
@@ -93,7 +86,7 @@ jpLabel.setLayout(new GridLayout(1,3));
 
 jpLabel.add(new JLabel("Schrift",JLabel.CENTER));
 jpLabel.add(new JLabel("Schriftart",JLabel.CENTER));
-jpLabel.add(new JLabel("Schriftgr\u00F6\u00DFee",JLabel.CENTER));
+jpLabel.add(new JLabel("Schriftgr\u00F6\u00DFe",JLabel.CENTER));
 
 JPanel jpList=new JPanel();
 jpList.setLayout(new GridLayout(1,3));
