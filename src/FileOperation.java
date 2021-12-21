@@ -1,5 +1,6 @@
 package src;
 // Imports
+
 import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,43 +10,48 @@ class FileOperationExample extends JFrame {
     JMenu file;
     JMenuItem open;
     JTextArea ta;
-    FileOperationExample(){
+
+    FileOperationExample() {
         open = new JMenuItem("\u00D6ffne Datei");
         file = new JMenu("Datei");
         file.add(open);
         mb = new JMenuBar();
-        mb.setBounds(0,0,800,20);
+        mb.setBounds(0, 0, 800, 20);
         mb.add(file);
-        ta = new JTextArea(800,800);
-        ta.setBounds(0,20,800,800);
+        ta = new JTextArea(800, 800);
+        ta.setBounds(0, 20, 800, 800);
         add(mb);
         add(ta);
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == open) {
+        if (e.getSource() == open) {
             JFileChooser fc = new JFileChooser();
             int i = fc.showOpenDialog(this);
-            if(i == JFileChooser.APPROVE_OPTION) {
+            if (i == JFileChooser.APPROVE_OPTION) {
                 File f = fc.getSelectedFile();
                 String filepath = f.getPath();
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(filepath));
-                    String s1 = "",s2 = "";
-                    while((s1 = br.readLine()) != null){
-                        s2+=s1+"\n";
+                    String s1 = "", s2 = "";
+                    while ((s1 = br.readLine()) != null) {
+                        s2 += s1 + "\n";
                     }
                     ta.setText(s2);
                     br.close();
-                }catch (Exception ex) {ex.printStackTrace();}
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         }
     }
+
     ///////////////////////////////////////
     public static void main(String[] args) {
         new FileOperationExample();
     }
 }
+
 /*************************************/
 // Beginn der Klasse FileOperation
 public class FileOperation {
@@ -62,22 +68,27 @@ public class FileOperation {
     FileWriter fout = null;
     FileInputStream fin = null;
     BufferedReader din = null;
+
     /////////////////////////////
     public static boolean isSave() {
         return saved;
     }
+
     /////////////////////////////
     void setSave(boolean saved) {
         this.saved = saved;
     }
+
     /////////////////////////////
     public static String getFileName() {
         return new String(fileName);
     }
+
     /////////////////////////////
     void setFileName(String fileName) {
         this.fileName = new String(fileName);
     }
+
     /////////////////////////
     public FileOperation(FNotepad npd) {
         this.npd = npd;
@@ -106,6 +117,7 @@ public class FileOperation {
         chooser.addChoosableFileFilter(new Filefilter(".asm", "Assembler(*.asm)"));
         chooser.setCurrentDirectory(new File("."));
     }
+
     //////////////////////////////////////
     boolean saveFile(File temp) {
         try {
@@ -123,6 +135,7 @@ public class FileOperation {
         updateStatus(temp, true);
         return true;
     }
+
     //////////////////////////////////////
     public boolean saveThisFile() {
         if (!newFileFlag) {
@@ -130,6 +143,7 @@ public class FileOperation {
         }
         return saveAsFile();
     }
+
     //////////////////////////////////////
     public boolean saveAsFile() {
         chooser.setDialogTitle(this.npd.bundle.getString("FileOperation.save1"));
@@ -149,6 +163,7 @@ public class FileOperation {
         } while (true);
         return saveFile(temp);
     }
+
     //////////////////////////////////////
     boolean openFile(File temp) {
         try {
@@ -176,6 +191,7 @@ public class FileOperation {
         this.npd.ta.setCaretPosition(0);
         return true;
     }
+
     //////////////////////////////////////
     public void openFile() {
         if (!confirmSave()) return;
@@ -208,6 +224,7 @@ public class FileOperation {
             newFileFlag = true;
 
     }
+
     //////////////////////////////////////
     void updateStatus(File temp, boolean saved) {
         if (saved) {
@@ -225,6 +242,7 @@ public class FileOperation {
             npd.statusBar.setText(this.npd.bundle.getString("FileOperation.readonly2") + temp.getPath());
         }
     }
+
     //////////////////////////////////////
     public boolean confirmSave() {
         String strMsg = this.npd.bundle.getString("FileOperation.confirmSave1") + fileName + this.npd.bundle.getString("FileOperation.confirmSave2");
@@ -236,6 +254,7 @@ public class FileOperation {
         }
         return true;
     }
+
     //////////////////////////////////////
     public void newFile() {
         if (!confirmSave()) return;
