@@ -10,7 +10,6 @@ import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
 import javax.swing.undo.*;
-import javax.swing.event.UndoableEditEvent;
 
 /************************************/
 
@@ -23,7 +22,7 @@ public class FNotepad implements ActionListener {
     public JTextArea ta;
     public JLabel statusBar;
     public JToolBar tbar;
-    public JButton exit, save, terminal, open, save_as, cut, paste, undo, copy, german, english, french, italian;
+    public JButton exit, save, terminal, open, save_as, cut, paste, undo, copy;
     int tabSize = 4;
 
     private String fileName;
@@ -41,7 +40,7 @@ public class FNotepad implements ActionListener {
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
 
     /****************************/
-    public FNotepad(boolean fullscreen, Locale startLanguage) {
+    public FNotepad(Locale startLanguage) {
         this.locale = startLanguage;
         this.bundle = ResourceBundle.getBundle("Bundle_" + locale, locale);
         this.fileName = bundle.getString("fileName");
@@ -186,12 +185,8 @@ public class FNotepad implements ActionListener {
         });
         tbar.add(exit);
         f.pack();
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        if (fullscreen) {
-            f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        } else {
-            f.setBounds(200, 80, 700, 600);
-        }
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setVisible(true);
 
         fileHandler = new FileOperation(this);
@@ -414,18 +409,6 @@ public class FNotepad implements ActionListener {
             showTabulatorDialog();
         }
 ////////////////////////////////////
-        else if (cmdText.equals(bundle.getString("Lang1"))) {
-            changeLanguage1();
-        }
-////////////////////////////////////
-        else if (cmdText.equals(bundle.getString("Lang2"))) {
-            changeLanguage2();
-        }
-////////////////////////////////////
-        else if (cmdText.equals(bundle.getString("Lang3"))) {
-            changeLanguage3();
-        }
-////////////////////////////////////
         else if (cmdText.equals(bundle.getString("helpHelpTopic"))) {
             try {
                 loadHelp();
@@ -523,66 +506,9 @@ public class FNotepad implements ActionListener {
 
         foregroundDialog.setVisible(true);
     }
-
-    ///////////////////////////////////
-    void changeLanguage1() {
-        if (!FileOperation.saved) {
-            fileHandler.saveAsFile();
-        }
-        if (locale == Locale.ENGLISH) {
-            new FNotepad(true, Locale.GERMAN);
-        }
-        if (locale == Locale.GERMAN) {
-            new FNotepad(true, Locale.ENGLISH);
-        }
-        if (locale == Locale.ITALIAN) {
-            new FNotepad(true, Locale.ENGLISH);
-        }
-        if (locale == Locale.FRENCH) {
-            new FNotepad(true, Locale.ENGLISH);
-        }
-        f.dispose();
-    }
-
-    ///////////////////////////////////
-    void changeLanguage2() {
-        if (!FileOperation.saved) fileHandler.saveAsFile();
-        if (locale == Locale.ENGLISH) {
-            new FNotepad(true, Locale.ITALIAN);
-        }
-        if (locale == Locale.GERMAN) {
-            new FNotepad(true, Locale.ITALIAN);
-        }
-        if (locale == Locale.ITALIAN) {
-            new FNotepad(true, Locale.GERMAN);
-        }
-        if (locale == Locale.FRENCH) {
-            new FNotepad(true, Locale.GERMAN);
-        }
-        f.dispose();
-    }
-
-    ///////////////////////////////////
-    void changeLanguage3() {
-        if (!FileOperation.saved) fileHandler.saveAsFile();
-        if (locale == locale.ENGLISH) {
-            new FNotepad(true, Locale.FRENCH);
-        }
-        if (locale == Locale.GERMAN) {
-            new FNotepad(true, Locale.FRENCH);
-        }
-        if (locale == Locale.ITALIAN) {
-            new FNotepad(true, Locale.FRENCH);
-        }
-        if (locale == Locale.FRENCH) {
-            new FNotepad(true, Locale.ITALIAN);
-        }
-        f.dispose();
-    }
-
     ///////////////////////////////////
     void newWindow() {
-        new FNotepad(true, locale);
+        new FNotepad(locale);
     }
 
     ////////////////////////////////////
@@ -717,7 +643,6 @@ public class FNotepad implements ActionListener {
         JMenu formatMenu = createMenu(bundle.getString("formatText"), KeyEvent.VK_O, mb);
         JMenu viewMenu = createMenu(bundle.getString("viewText"), KeyEvent.VK_V, mb);
         JMenu helpMenu = createMenu(bundle.getString("helpText"), KeyEvent.VK_H, mb);
-        JMenu changeMenu = createMenu(bundle.getString("changeText"), KeyEvent.VK_G, mb);
 
         createMenuItem(bundle.getString("windowNew"), KeyEvent.VK_G, fileMenu, KeyEvent.VK_G, this);
         createMenuItem(bundle.getString("fileNew"), KeyEvent.VK_N, fileMenu, KeyEvent.VK_N, this);
@@ -768,10 +693,6 @@ public class FNotepad implements ActionListener {
         helpMenu.addSeparator();
         createMenuItem(bundle.getString("helpAboutFNotepad"), KeyEvent.VK_A, helpMenu, this);
 
-        createMenuItem(bundle.getString("Lang1"), KeyEvent.VK_G, changeMenu, this);
-        createMenuItem(bundle.getString("Lang2"), KeyEvent.VK_Y, changeMenu, this);
-        createMenuItem(bundle.getString("Lang3"), KeyEvent.VK_F, changeMenu, this);
-
         MenuListener editMenuListener = new MenuListener() {
             public void menuSelected(MenuEvent evvvv) {
                 if (FNotepad.this.ta.getText().length() == 0) {
@@ -806,5 +727,18 @@ public class FNotepad implements ActionListener {
         };
         editMenu.addMenuListener(editMenuListener);
         f.setJMenuBar(mb);
+    }
+    public static void main(String[] args) throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // Verwendet System Thema
+        } catch(Exception ex) {
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); // Wenn System Thema nicht gefunden, wird Standard Java Thema verwendet
+        }
+        new Splash().showSplash();
+        try {
+            new FNotepad(Locale.getDefault()); // Verwendet Systemsprache
+        } catch(Exception ex) {
+            new FNotepad(Locale.ENGLISH); // Wenn Systemsprache nicht gefunden, wird Englisch verwendet
+        }
     }
 }
