@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/fantastic-octo-garbanzo/FNotepad)
 
 ## About
-[FNotepad][6] is a notepad and texteditor written in Java, availible in German, English, French and Italian.
+[FNotepad][6] is a notepad and texteditor written in Java, availible in German, English, French, Italian and Spanish.
 
 ## Features
 - File operations
