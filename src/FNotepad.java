@@ -24,6 +24,8 @@ public class FNotepad implements ActionListener {
     public JToolBar tbar;
     public JButton exit, save, terminal, open, save_as, cut, paste, undo, copy;
     int tabSize = 4;
+    public JTabbedPane tab;
+    public JPanel panel, panel2;
 
     private String fileName;
     private boolean saved = true;
@@ -38,6 +40,7 @@ public class FNotepad implements ActionListener {
     JDialog foregroundDialog = null;
     JDialog tabulatorSize;
     JMenuItem cutItem, copyItem, deleteItem, findItem, findNextItem, replaceItem, gotoItem, selectAllItem;
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     /****************************/
     public FNotepad(Locale startLanguage) {
@@ -51,10 +54,19 @@ public class FNotepad implements ActionListener {
         ImageIcon icon = new ImageIcon(iconURL);
         f.setIconImage(icon.getImage());
 
-        ta = new JTextArea(30, 60);
+        panel = new JPanel();
+
+        f.pack();
+
+        int x = (int)screenSize.getWidth() - f.getInsets().left - f.getInsets().right;
+        int y = (int)screenSize.getHeight() - f.getInsets().top - f.getInsets().bottom;
+
+        ta = new JTextArea(x, y);
+
+        // ta = new JTextArea(30, 60);
         statusBar = new JLabel(bundle.getString("statusbar.init1") + tabSize + bundle.getString("statusbar.init2"), JLabel.RIGHT);
         ta.setTabSize(tabSize);
-        f.add(new JScrollPane(ta), BorderLayout.CENTER);
+        // f.add(new JScrollPane(ta), BorderLayout.CENTER);
         f.add(statusBar, BorderLayout.SOUTH);
         f.add(new JLabel("  "), BorderLayout.EAST);
         f.add(new JLabel("  "), BorderLayout.WEST);
@@ -184,7 +196,10 @@ public class FNotepad implements ActionListener {
             if (fileHandler.confirmSave()) System.exit(0);
         });
         tbar.add(exit);
-        f.pack();
+        tab = new JTabbedPane();
+        tab.addTab("Tab", new JScrollPane(panel));
+        panel.add(ta);
+        f.add(tab);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setVisible(true);
@@ -287,7 +302,20 @@ public class FNotepad implements ActionListener {
 ////////////////////////////////////
         else if (cmdText.equals(bundle.getString("fileSave")))
             fileHandler.saveThisFile();
+/////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("newtab"))) {
+            tab.addTab("Tab", new JScrollPane(panel));
+            panel.add(ta);
+        }
+/////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("rTab"))) {
+            tab.removeTabAt(0);
+        }
 ////////////////////////////////////
+        else if (cmdText.equals(bundle.getString("raTab"))) {
+            tab.removeAll();
+        }
+///////////////////////////////////
         else if (cmdText.equals(bundle.getString("fileSaveAs")))
             fileHandler.saveAsFile();
 ////////////////////////////////////
@@ -649,6 +677,9 @@ public class FNotepad implements ActionListener {
         createMenuItem(bundle.getString("fileOpen"), KeyEvent.VK_O, fileMenu, KeyEvent.VK_O, this);
         createMenuItem(bundle.getString("fileSave"), KeyEvent.VK_S, fileMenu, KeyEvent.VK_S, this);
         createMenuItem(bundle.getString("fileSaveAs"), KeyEvent.VK_A, fileMenu, this);
+        createMenuItem(bundle.getString("newtab"), KeyEvent.VK_B, fileMenu, this);
+        createMenuItem(bundle.getString("rTab"), KeyEvent.VK_C, fileMenu, this);
+        createMenuItem(bundle.getString("raTab"), KeyEvent.VK_D, fileMenu, this);
         fileMenu.addSeparator();
         createMenuItem(bundle.getString("filePageSetup"), KeyEvent.VK_U, fileMenu, this);
         fileMenu.addSeparator();
