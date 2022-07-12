@@ -304,8 +304,15 @@ public class FNotepad implements ActionListener {
             fileHandler.saveThisFile();
 /////////////////////////////////////
         else if (cmdText.equals(bundle.getString("newtab"))) {
-            tab.addTab("Tab", new JScrollPane(panel));
-            panel.add(ta);
+            int x = (int)screenSize.getWidth() - f.getInsets().left - f.getInsets().right;
+            int y = (int)screenSize.getHeight() - f.getInsets().top - f.getInsets().bottom;
+            ta = new JTextArea(x, y);
+            ta.setEditable(true);
+            panel = new JPanel();
+			panel.add(ta);
+            
+            tab.add("Tab ",new JScrollPane(panel));
+               
         }
 /////////////////////////////////////
         else if (cmdText.equals(bundle.getString("rTab"))) {
