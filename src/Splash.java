@@ -22,8 +22,6 @@ public class Splash extends JWindow {
 
         panel = new JPanel(new BorderLayout());
 
-        panel.setBorder(BorderFactory.createLineBorder(Color.RED));
-
         panel.add(label, BorderLayout.CENTER);
         panel.add(infoLabel, BorderLayout.SOUTH);
 
