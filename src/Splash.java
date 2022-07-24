@@ -46,6 +46,8 @@ public class Splash extends JWindow {
 
         progress.setStringPainted(true);
 
+        progress.setForeground(Color.BLACK);
+
 
         panel.add(progress);
 
